@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "serve": "ng serve"
+  },
+    "peerDependencies": {
+    "ngx-eco-theme": "0.0.1"
+  }
+}
