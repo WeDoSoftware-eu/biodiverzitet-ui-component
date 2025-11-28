@@ -1,0 +1,20 @@
+{
+  "name": "ngx-eco-theme",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build",
+    "pack": "mkdirp ../../bin && npm pack --pack-destination ../../bin",
+    "link": "cd ../../dist/ngx-eco-theme && npm link"
+  },
+  "peerDependencies": {
+    "@angular/common": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/material": "^18.2.14",
+    "@angular/animations": "^18.2.14"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
