@@ -1,6 +1,12 @@
 {
   "name": "eco-components",
   "version": "0.0.0",
+  "private": true,
+
+  "workspaces": [
+    "projects/ngx-eco-theme"
+  ],
+
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +14,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+
   "dependencies": {
     "@angular/animations": "^18.2.0",
     "@angular/cdk": "^18.2.14",
@@ -24,6 +30,7 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
+
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.21",
     "@angular/cli": "^18.2.21",
