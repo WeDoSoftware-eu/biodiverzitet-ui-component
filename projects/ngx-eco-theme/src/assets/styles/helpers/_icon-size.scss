@@ -1,0 +1,13 @@
+@use "variables";
+
+@mixin icon_size {
+  @each $key, $value in variables.$icons {
+    .icon-#{$key} {
+      height: #{$value} + variables.$unit !important;
+      width: #{$value} + variables.$unit !important;
+      line-height: #{$value + 8} + variables.$unit !important;
+    }
+  }
+}
+
+@include icon_size;

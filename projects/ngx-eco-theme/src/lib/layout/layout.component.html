@@ -1,0 +1,11 @@
+<mat-drawer-container class="layout-container">
+  <mat-drawer mode="side" opened class="side-container">
+    <eco-sidebar></eco-sidebar>
+  </mat-drawer>
+  <mat-drawer-content class="content-container">
+        <eco-header></eco-header>
+        <main class="components-route">
+          <router-outlet></router-outlet>
+        </main>
+  </mat-drawer-content>
+</mat-drawer-container>
