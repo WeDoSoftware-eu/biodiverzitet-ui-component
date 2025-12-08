@@ -7,12 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SIDEBAR_ITEMS } from './sidebar.token';
 import { RoutingService } from './routing.service';
-import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'eco-sidebar',
   standalone: true,
-  imports: [CommonModule, NavItemComponent, MatListModule, MatIconModule, MatSidenavModule, RouterLink, RouterModule, TranslateModule],
+  imports: [CommonModule, NavItemComponent, MatListModule, MatIconModule, MatSidenavModule, RouterLink, RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })

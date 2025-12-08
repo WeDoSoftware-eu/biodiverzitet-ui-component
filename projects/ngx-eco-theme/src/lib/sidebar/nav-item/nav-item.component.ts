@@ -13,7 +13,6 @@ import { NavService } from './nav.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { NavItem } from './nav-item.model';
-import { TranslateModule } from '@ngx-translate/core';
 import { expanded } from '../../../animations/expanded.animation';
 import { indicatorRotate } from '../../../animations/indicator-rotate.animation';
 
@@ -21,7 +20,7 @@ import { indicatorRotate } from '../../../animations/indicator-rotate.animation'
 @Component({
   selector: 'eco-nav-item',
   standalone: true,
-  imports:[CommonModule, MatIconModule, TranslateModule, RouterModule],
+  imports:[CommonModule, MatIconModule, RouterModule],
   animations: [indicatorRotate, expanded],
   styleUrl: './nav-item.component.scss',
   templateUrl: './nav-item.component.html',
