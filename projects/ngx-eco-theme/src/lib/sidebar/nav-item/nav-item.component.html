@@ -1,35 +1,31 @@
-
 <a
+  [routerLink]="item()?.route"
+  routerLinkActive="active-menu"
+  [routerLinkActiveOptions]="{ exact: true }"
   (click)="onItemSelected(item()!)"
-  style="display: flex; justify-content: space-between;"
-  [ngClass]="{
-    'active-menu': item()?.route ? router.isActive(item()!.route!, true) : false,
-    expanded: expanded(),
-    activemenu: isChildActive(),
-    subMenu: !item()?.children,
-  }"
+  [class.expanded]="expanded()"
+  [class.subMenu]="!item()?.children"
   class="menu-list-item"
 >
   <div class="icon-name-container">
-     @if(item()?.children){
-          <mat-icon>{{item()?.iconName}}</mat-icon>
-     }
-
-    <span class="hide-menu">{{ item()?.displayName | translate }}</span>
+    @if(item()?.children){
+      <mat-icon>{{ item()?.iconName }}</mat-icon>
+    }
+    <span class="hide-menu">{{ item()?.displayName }}</span>
   </div>
 
-    @if(item()?.children){
-     <div class="d-flex align-items-center gap-4">
+  @if(item()?.children){
+    <div class="d-flex align-items-center gap-4">
       <span class="arrow-icon">
         <mat-icon [@indicatorRotate]="expanded() ? 'expanded' : 'collapsed'">
           expand_more
         </mat-icon>
       </span>
     </div>
-    }
+  }
 </a>
 
-@if (expanded()) {
+<div [@expanded]="expanded() ? 'expanded' : 'collapsed'">
   @for (child of item()?.children; track child) {
     <eco-nav-item
       [item]="child"
@@ -37,4 +33,4 @@
       [depth]="depth() + 1"
     />
   }
-}
+</div>

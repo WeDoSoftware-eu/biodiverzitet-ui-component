@@ -155,3 +155,22 @@ html.green_theme {
   --mat-sys-secondary-fixed-dim: rgb(195, 208, 70, 0.15); //#D0FADF
   --mat-sys-tertiary: rgb(208, 250, 223); //#D0FADF
 }
+html{
+  // Body / Text
+  --sys-body-small-size: 12px;
+  --sys-body-medium-size: 14px;
+  --sys-body-large-size: 16px;
+
+  // Titles
+  --sys-title-medium-size: 24px !important; //m3 1rem default
+  --sys-subtitle-size: 16px;
+
+  // Profile
+  --sys-profile-name-size: 16px;
+  --sys-profile-role-size: 14px;
+
+  // Icons
+  --sys-icon-size: 20px;
+  --sys-arrow-size: 10px;
+  --sys-notifications-size: 22px
+}

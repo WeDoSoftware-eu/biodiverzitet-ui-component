@@ -16,7 +16,7 @@
 
     .page-title {
       text-align: start;
-      font-size: 24px;
+      font-size: var(--sys-title-medium-size);
       font-weight: 600;
       color: $text-color;
       margin: 0;
@@ -25,7 +25,7 @@
 
     .page-subtitle {
       text-align: start;
-      font-size: 16px;
+      font-size: var(--sys-subtitle-size);
       color: $text-color;
       margin: 0;
       line-height: $line-height;
@@ -51,7 +51,7 @@
 
     .notification-icon {
       display: flex;
-      font-size: 22px;
+      font-size: var(--sys-notifications-size);
       color: $text-color;
     }
 
@@ -94,14 +94,14 @@
         text-align: left;
 
         .profile-name {
-          font-size: 16px;
+          font-size: var(--sys-body-large-size);
           font-weight: 600;
           color: $text-color;
           line-height: $line-height;
         }
 
         .profile-role {
-          font-size: 14px;
+          font-size: var(--sys-body-medium-size);
           font-weight: 300;
           color: $text-color;
           line-height: $line-height;
@@ -109,7 +109,7 @@
       }
 
       .arrow-icon {
-        font-size: 0.625rem;
+        font-size: var(--sys-arrow-size);
         color: $text-color;
         margin-left: 0.25rem;
       }
@@ -123,11 +123,11 @@
   .topbar {
     .topbar-left {
       .page-title {
-        font-size: 1rem;
+        font-size: var(--sys-title-medium-size);
       }
 
       .page-subtitle {
-        font-size: 0.75rem;
+        font-size: var(--sys-subtitle-size);
         align-self: start;
       }
     }

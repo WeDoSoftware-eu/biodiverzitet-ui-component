@@ -27,7 +27,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 - Calling build for particular project.
 - Calling link script for particular project. E.g. "<code>cd ../../dist/ngx-eco-theme && npm link</code>".
 - Optionally, calling pack script for particular project and installing lib from generated file. Generated tarballs should be outputted in "bin" folder, that is ignored by git.
-- Created script with watch: npm run link:local
+- Created script with watch: npm run build:dev
 - Calling link function in consuming app. E.g. "<code>npm link ngx-eco-theme</code>".
 
 #### Notes:

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
@@ -21,6 +21,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
-
-
+  brandingTitle = input<string>('');
+  title = input<string>('');
+  subtitle = input<string>('');
 }

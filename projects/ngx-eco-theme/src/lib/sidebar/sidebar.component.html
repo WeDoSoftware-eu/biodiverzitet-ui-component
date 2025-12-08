@@ -1,17 +1,11 @@
-  <!-- <mat-sidenav #leftsidenav class="sidebarNav">
-    <mat-nav-list class="sidebar-list"> -->
-      <div class="sidebar-container">
-        <div class="branding-container" routerLink="/">
-          <img src="/assets/images/logo/srbija-side-menu.png" alt="Srbija Grb" />
-          <p>
-            МИНИСТАРСТО ЗАШТИТЕ <br>
-            ЖИВОТНЕ СРЕДИНЕ
-          </p>
-        </div>
-        @for(item of navItems; track item) {
-        <eco-nav-item [item]="item"> </eco-nav-item>
-        }
-      </div>
-
-    <!-- </mat-nav-list>
-  </mat-sidenav> -->
+<div class="sidebar-container">
+  <div class="branding-container" routerLink="/">
+    <img src="/assets/images/logo/srbija-side-menu.png" alt="Srbija Grb" />
+    <p>
+      {{ brandingTitle() }}
+    </p>
+  </div>
+  @for(item of navItems; track item) {
+  <eco-nav-item [item]="item"> </eco-nav-item>
+  }
+</div>

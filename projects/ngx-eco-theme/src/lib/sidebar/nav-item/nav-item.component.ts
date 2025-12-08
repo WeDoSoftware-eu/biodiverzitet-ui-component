@@ -7,37 +7,22 @@ import {
   computed,
   effect,
   inject,
-  OnInit
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NavService } from './nav.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { NavItem } from './nav-item.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { expanded } from '../../../animations/expanded.animation';
+import { indicatorRotate } from '../../../animations/indicator-rotate.animation';
 
 
 @Component({
   selector: 'eco-nav-item',
   standalone: true,
-  imports:[CommonModule, MatIconModule, TranslateModule],
-  animations: [
-    trigger('indicatorRotate', [
-      state('collapsed', style({ transform: 'rotate(0deg)' })),
-      state('expanded', style({ transform: 'rotate(180deg)' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4,0.0,0.2,1)')
-      ),
-    ]),
-  ],
+  imports:[CommonModule, MatIconModule, TranslateModule, RouterModule],
+  animations: [indicatorRotate, expanded],
   styleUrl: './nav-item.component.scss',
   templateUrl: './nav-item.component.html',
 })
