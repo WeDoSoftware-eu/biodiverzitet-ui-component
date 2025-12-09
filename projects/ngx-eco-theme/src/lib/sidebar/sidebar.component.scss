@@ -1,0 +1,22 @@
+.sidebar-container{
+  padding: 20px;
+
+  .branding-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    img{
+      margin-right: 10px;
+      height: 58px;
+      width: 32px;
+    }
+
+    p{
+      font-size: var(--sys-body-small-size);
+      text-align: start;
+      font-weight: 700;
+    }
+  }
+}

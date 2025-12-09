@@ -1,0 +1,11 @@
+<div class="sidebar-container">
+  <div class="branding-container" routerLink="/">
+    <img src="/assets/images/logo/srbija-side-menu.png" alt="Srbija Grb" />
+    <p>
+      {{ brandingTitle() }}
+    </p>
+  </div>
+  @for(item of navItems; track item) {
+  <eco-nav-item [item]="item"> </eco-nav-item>
+  }
+</div>

@@ -1,0 +1,145 @@
+@use "../../assets/styles/variables" as *;
+
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 45px 20px;
+  height: 70px;
+  background-color: $white;
+  border-bottom: 1px solid $borderBottm;
+  box-shadow: $box-shadow;
+
+  .topbar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+
+    .page-title {
+      text-align: start;
+      font-size: var(--sys-title-medium-size);
+      font-weight: 600;
+      color: $text-color;
+      margin: 0;
+      line-height: $line-height;
+    }
+
+    .page-subtitle {
+      text-align: start;
+      font-size: var(--sys-subtitle-size);
+      color: $text-color;
+      margin: 0;
+      line-height: $line-height;
+      align-self: start;
+    }
+  }
+
+  .flex-spacer {
+    flex: 1 1 auto;
+  }
+
+  // Notification Button
+  .notification-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+    border: none;
+    background-color: #ECECEC;
+    border-radius: $border-radius-circle;
+    height: 44px;
+    width: 44px;
+
+    .notification-icon {
+      display: flex;
+      font-size: var(--sys-notifications-size);
+      color: $text-color;
+    }
+
+    &:hover {
+      background-color: $text-hover;
+    }
+  }
+
+  // Profile Button
+  .profile-btn {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    min-height: 48px;
+
+    border: none;
+    background: $white;
+
+    &:hover {
+      background-color: $text-hover;
+    }
+
+    .profile-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 40px;
+        height: 40px;
+      }
+
+      .profile-info-inline {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+        text-align: left;
+
+        .profile-name {
+          font-size: var(--sys-body-large-size);
+          font-weight: 600;
+          color: $text-color;
+          line-height: $line-height;
+        }
+
+        .profile-role {
+          font-size: var(--sys-body-medium-size);
+          font-weight: 300;
+          color: $text-color;
+          line-height: $line-height;
+        }
+      }
+
+      .arrow-icon {
+        font-size: var(--sys-arrow-size);
+        color: $text-color;
+        margin-left: 0.25rem;
+      }
+    }
+  }
+
+}
+
+
+@media (max-width: 991px) {
+  .topbar {
+    .topbar-left {
+      .page-title {
+        font-size: var(--sys-title-medium-size);
+      }
+
+      .page-subtitle {
+        font-size: var(--sys-subtitle-size);
+        align-self: start;
+      }
+    }
+
+    .profile-btn {
+      .profile-info-inline {
+        display: none;
+      }
+    }
+
+    .notification-btn {
+      margin-right: 0.25rem;
+    }
+  }
+}

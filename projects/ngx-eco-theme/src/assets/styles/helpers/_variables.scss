@@ -1,0 +1,83 @@
+@use "functions" as *;
+
+// Utility Map
+
+$utilities: () !default;
+$unit: "px";
+
+// Spacing
+
+$spacer: 16 !default;
+$spacers: (
+  0: 0,
+  $spacer * 0.25: #{$spacer * 0.25} + $unit,
+  $spacer * 0.5: #{$spacer * 0.5} + $unit,
+  $spacer * 0.75: #{$spacer * 0.75} + $unit,
+  $spacer: #{$spacer} + $unit,
+  $spacer * 1.25: #{$spacer * 1.25} + $unit,
+  $spacer * 1.5: #{$spacer * 1.5} + $unit,
+  $spacer * 1.75: #{$spacer * 1.75} + $unit,
+  $spacer * 2: #{$spacer * 2} + $unit,
+  $spacer * 3: #{$spacer * 3} + $unit,
+) !default;
+$negative-spacers: negativify-map($spacers) !default;
+
+// Border
+
+$border-color: var(--mat-sys-outline-variant) !default;
+$borders: (
+  0: 0,
+  1: 1px solid $border-color,
+  2: 2px solid $border-color,
+  4: 4px solid $border-color,
+  8: 8px solid $border-color,
+) !default;
+
+// Border radius
+
+$radius-base: 7 !default;
+$radius: (
+  0: 0,
+  $radius-base: #{$radius-base} + $unit,
+  $radius-base * 2: #{$radius-base * 2} + $unit,
+  $radius-base * 3: #{$radius-base * 3} + $unit,
+  $radius-base * 4: #{$radius-base * 4} + $unit,
+  full: 9999px,
+) !default;
+
+// Icons
+
+$icon-base: 16 !default;
+$icons: (
+  $icon-base: $icon-base,
+  $icon-base * 2: $icon-base * 2,
+  $icon-base * 3: $icon-base * 3,
+  $icon-base * 4: $icon-base * 4,
+) !default;
+
+// Sizing
+
+$sizes: (
+  0: 0,
+  20: 20%,
+  25: 25%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  75: 75%,
+  80: 80%,
+  full: 100%,
+  auto: auto,
+) !default;
+
+@media (min-width: 768px) {
+  body {
+    .flex-lg-row {
+      flex-direction: row !important;
+    }
+
+    .justify-content-lg-end {
+      justify-content: flex-end !important;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<mat-toolbar class="topbar">
+  <div class="topbar-left">
+    <h1 class="page-title" [attr.aria-label]="'title:' + title()">{{ title() }}</h1>
+    <p class="page-subtitle" [attr.aria-label]="'subtitle:' + subtitle()">{{ subtitle() }}</p>
+  </div>
+
+  <span class="flex-spacer"></span>
+
+  <button mat-icon-button
+        aria-label="Notifications"
+        class="notification-btn">
+
+      <mat-icon class="notification-icon">notifications</mat-icon>
+  </button>
+
+  <button mat-button
+          aria-label="Profile"
+          class="profile-btn">
+    <div class="profile-content">
+      <img src="/assets/images/profile/user-1.png" alt="Profile" />
+      <div class="profile-info-inline">
+        <span class="profile-name">Љубица Илић</span>
+        <span class="profile-role">Профил</span>
+      </div>
+      <i data-icon="solar:alt-arrow-down-bold" class="iconify arrow-icon"></i>
+    </div>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,48 @@
+//font
+$font-family: "Roboto", sans-serif;
+$font-bold: 700;
+$font-normal: 400;
+
+$borderColor: var(--mat-sys-outline-variant);
+$borderformColor: var(--mat-sys-outline-variant);
+$borderBottm: #e0e0e0;
+
+$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+$primary: var(--mat-sys-primary);
+$secondary: var(--mat-sys-secondary);
+$accent: var(--mat-sys-secondary);
+$error: var(--mat-sys-error);
+$warning: #FBD49E;
+$success: #5BFAD1;
+$white: #ffffff;
+
+$light: var(--mat-sys-surface-bright);
+$light-primary: var(--mat-sys-primary-fixed-dim);
+$light-secondary: var(--mat-sys-secondary-fixed-dim);
+$light-accent: var(--mat-sys-secondary-fixed-dim);
+$light-error: var(--mat-sys-error-fixed-dim);
+$light-warning: #f8c20a26;
+$light-success: #36c76c26;
+
+//cards
+$card-bg: #EFF3F4;
+$card-hover: #D0FADF;
+$card-title: #737373;
+
+//side-nav
+$side-nav-bg: #ACAFB740;
+
+$border-radius-sm: 4px;
+$border-radius-xl: 28px;
+$border-radius-circle: 50%;
+
+$text-color: var(--mat-sys-on-background);
+
+$layout-bg: #f4f7fb;
+
+//Text
+$text-color: #272727;
+$text-hover: #f5f5f5;
+$line-height: 1.5;
+
