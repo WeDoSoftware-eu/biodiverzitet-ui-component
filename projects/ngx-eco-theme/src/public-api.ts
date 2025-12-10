@@ -16,3 +16,4 @@ export * from './lib/table/table.model';
 
 /* TOKEN */
 export * from './lib/sidebar/sidebar.token';
+export * from './lib/eco-theme-I18n';

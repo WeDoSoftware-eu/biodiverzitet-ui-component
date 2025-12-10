@@ -1,9 +1,10 @@
-import { Component, input, output, computed } from '@angular/core';
+import { Component, input, output, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 
 @Component({
   selector: 'eco-table-paginator',
@@ -19,11 +20,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './table-paginator.component.scss',
 })
 export class TablePaginatorComponent {
+  private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
   totalItems = input<number>(0);
   pageSize = input<number>(10);
   pageIndex = input<number>(0);
+
+  latUpdateTitle = this.i18n.paginator.lastUpdateTitle;
+  latUpdate = input<string>('');
 
   pageChange = output<PageEvent>();
   pageInput: number | null = null;
@@ -31,18 +37,17 @@ export class TablePaginatorComponent {
   totalPages = computed(() => Math.ceil(this.totalItems() / this.pageSize()));
 
   rangeLabel = computed(() => {
-    console.log(this.totalItems())
     const total = this.totalItems();
     const size = this.pageSize();
     const index = this.pageIndex();
 
     if (total === 0) {
-      return `Приказано 0 од 0`;
+      return `${this.i18n.paginator.displayedLabel} 0 ${this.i18n.paginator.ofLabel} 0`;
     }
     const startIndex = index * size + 1;
     const endIndex = startIndex < total ? Math.min(startIndex + size - 1, total) : total;
 
-    return `Приказано ${endIndex} од ${total}`;
+    return `${this.i18n.paginator.displayedLabel} ${endIndex} ${this.i18n.paginator.ofLabel} ${total}`;
   });
 
   pagesToDisplay = computed(() => {

@@ -1,4 +1,4 @@
-import { Component, input, output, computed, viewChild } from '@angular/core';
+import { Component, input, output, computed, viewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TableColumn, TableAction, TableConfig, ServerSideEvent } from './table.model';
+import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 
 @Component({
   selector: 'eco-table',
@@ -22,6 +23,8 @@ import { TableColumn, TableAction, TableConfig, ServerSideEvent } from './table.
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent<T> {
+  private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   config = input.required<TableConfig<T>>();
   data = input<T[]>([]);
 
@@ -61,7 +64,7 @@ export class TableComponent<T> {
   }
 
   get emptyMessage(): string {
-    return this.config().emptyMessage || 'Нема података за приказ';
+    return this.config().emptyMessage || `${this.i18n.table.noData}`;
   }
 
   get isLoading(): boolean {
