@@ -1,0 +1,100 @@
+@use "../../../assets/styles/variables" as *;
+
+.paginator-container {
+  align-items: center;
+  margin: 15px 0;
+
+  .pagination-buttons{
+    display: flex;
+    gap: 5px;
+  }
+
+  .custom-paginator-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    .range-label{
+      color: $paginator-text-color;
+
+      p{
+        font-size: var(--sys-body-medium-size);
+      }
+    }
+
+    button.mat-mdc-mini-fab {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: $paginator-bg-radius;
+      background: $paginator-bg-color;
+      color: $text-color;
+      box-shadow: none;
+      font-size: var(--sys-body-extra-small-size);
+
+      &.active-page {
+        background-color: $primary;
+        color: $white;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .ellipsis {
+      font-size: 18px;
+      color: $paginator-text-color;
+      padding: 0 4px;
+    }
+
+    .goto-page-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 20px;
+      font-size: var(--sys-body-extra-small-size);
+      padding: 2px 10px;
+      background: $paginator-bg-color;
+
+      input[type="number"] {
+        padding: 5px 8px;
+        border: 1px solid $white;
+        border-radius: $paginator-bg-radius;
+        text-align: center;
+        width: 17px;
+        height: 17px;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      button.mat-mdc-stroked-button {
+        height: 32px;
+        line-height: 32px;
+        padding: 0 10px;
+      }
+    }
+
+    .last-update-text {
+      margin-left: 20px;
+      font-size: var(--sys-body-medium-size);
+      color: $paginator-text-color;
+      display: flex;
+
+      p{
+        margin-left: 5px;
+        font-weight: $font-bold;
+      }
+    }
+  }
+}

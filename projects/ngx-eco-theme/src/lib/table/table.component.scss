@@ -1,0 +1,153 @@
+@use "../../assets/styles/variables" as *;
+
+.table-container {
+  width: 100%;
+  background: $white;
+  overflow: hidden;
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .table-wrapper {
+    position: relative;
+    overflow: auto;
+    padding: 20px;
+    border: $border-table;
+    border-radius: $table-border-radius;
+
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    table {
+      width: 100%;
+      background: transparent;
+      box-shadow: none;
+
+      th {
+        background-color: transparent;
+        font-weight: 600;
+        color: $text-color;
+        padding: 2px;
+        white-space: nowrap;
+        border-bottom: $border-table;
+      }
+
+      td {
+        padding: 0px;
+        border-bottom: $border-table;
+      }
+
+      tr:hover {
+        background-color: $table-tr-hover;
+      }
+
+      // Badge styling
+      .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+        min-width: 80px;
+
+        // Status colors
+        &.aktivan, &.active {
+          background-color: $table-active-badge-bg;
+          color: $table-active-badge-color;
+        }
+
+        &.deaktiviran, &.inactive {
+          background-color: $table-deactive-badge-bg;
+          color: $table-deactive-badge-color;
+        }
+        &.zavrseno, &.completed {
+          background-color: $table-done-badge-bg;
+          color: $table-done-badge-color;
+        }
+
+        &.u-toku, &.in-progress {
+          background-color: $table-in-progress-badge-bg;
+          color: $table-in-progress-badge-color;
+        }
+      }
+
+      // Actions container
+      .actions-container {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        button {
+          mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      // No data message
+      .no-data-row {
+        height: 200px;
+
+        .mat-cell {
+          border: none;
+        }
+
+        .no-data-message {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #999;
+          padding: 40px;
+
+          mat-icon {
+            font-size: 48px;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+          }
+
+          p {
+            margin: 0;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .table-container {
+    .table-wrapper {
+      table {
+        th, td {
+          padding: 0px;
+          font-size: 14px;
+        }
+
+        .status-badge {
+          font-size: 11px;
+          padding: 3px 8px;
+          min-width: 60px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+<div class="paginator-container">
+  @if (totalPages() > 0) {
+    <div class="custom-paginator-controls">
+
+      <div class="range-label">
+        <p>{{ rangeLabel() }}</p>
+      </div>
+
+      <div class="pagination-buttons">
+        <button
+          mat-mini-fab
+          color="primary"
+          (click)="changePage('first')"
+          [disabled]="pageIndex() === 0"
+          aria-label="First page"
+        >
+          <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+
+        <button
+          mat-mini-fab
+          color="primary"
+          (click)="changePage(-1)"
+          [disabled]="pageIndex() === 0"
+          aria-label="Previous page"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        @for (page of pagesToDisplay(); track page) {
+          @if (page === '...') {
+            <button mat-mini-fab>
+              ...
+            </button>
+          } @else {
+            <button
+              mat-mini-fab
+              [class.active-page]="page === pageIndex() + 1"
+              (click)="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+          }
+        }
+
+        <button
+          mat-mini-fab
+          color="primary"
+          (click)="changePage(1)"
+          [disabled]="pageIndex() === totalPages() - 1"
+          aria-label="Next page"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <button
+          mat-mini-fab
+          color="primary"
+          (click)="changePage('last')"
+          [disabled]="pageIndex() === totalPages() - 1"
+          aria-label="Last page"
+        >
+          <mat-icon>keyboard_double_arrow_right</mat-icon>
+        </button>
+
+        <div class="goto-page-container">
+          <p>Иди на</p>
+          <input
+            type="number"
+            [(ngModel)]="pageInput"
+            min="1"
+            [max]="totalPages()"
+            (ngModelChange)="goToPage(pageInput)"
+          />
+          <p>страну</p>
+        </div>
+      </div>
+
+      <div class="last-update-text">
+        Последње ажурирање: <p>Данас</p>
+      </div>
+
+    </div>
+  }
+</div>

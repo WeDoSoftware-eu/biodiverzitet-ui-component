@@ -2,15 +2,17 @@
  * Public API Surface of ngx-eco-theme
  */
 
-/* MODEL */
+/* COMPONENTS */
 export * from './lib/theme-test/theme-test.component';
 export * from './lib/header/header.component';
 export * from './lib/layout/layout.component';
+export * from './lib/table/table.component';
+export * from './lib/table/table-paginator/table-paginator.component';
+export * from './lib/table/table-search/table-search.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';
+export * from './lib/table/table.model';
 
-/* MODEL */
+/* TOKEN */
 export * from './lib/sidebar/sidebar.token';
-
-

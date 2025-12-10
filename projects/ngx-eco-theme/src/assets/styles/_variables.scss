@@ -6,6 +6,7 @@ $font-normal: 400;
 $borderColor: var(--mat-sys-outline-variant);
 $borderformColor: var(--mat-sys-outline-variant);
 $borderBottm: #e0e0e0;
+$border-table: 1px solid rgba(172, 175, 183, 0.25);
 
 $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
@@ -46,3 +47,20 @@ $text-color: #272727;
 $text-hover: #f5f5f5;
 $line-height: 1.5;
 
+//Table
+$table-tr-hover: #f9f9f9;
+$table-border-radius: 16px;
+$table-status-badge-radius: 12px;
+$table-active-badge-bg: #D0FADF;
+$table-deactive-badge-bg: #FFDDDD;
+$table-in-progress-badge-bg: #FBD49E;
+$table-done-badge-bg: #5C9FD6;
+$table-active-badge-color: #059856;
+$table-deactive-badge-color: #860909;
+$table-in-progress-badge-color: #B77D2B;
+$table-done-badge-color: $white;
+
+//Paginator
+$paginator-text-color: #626262;
+$paginator-bg-color: #E6E6E6;
+$paginator-bg-radius: 2px;
