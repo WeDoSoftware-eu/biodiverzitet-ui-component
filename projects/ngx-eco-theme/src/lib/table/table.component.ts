@@ -32,10 +32,36 @@ export class TableComponent<T> {
     this.config().columns.map(col => col.key)
   );
 
-
   readonly dataSource = computed(() => new MatTableDataSource<T>(this.data() || []));
 
-  getColumnValue(row: T, column: TableColumn<T>): any {
+  readonly processedData = computed(() => {
+    const rows = this.data() || [];
+    const columns = this.config().columns;
+
+    return rows.map(row => {
+      const processedRow: any = { _original: row };
+
+      columns.forEach(column => {
+        const value = this.getColumnValue(row, column);
+        processedRow[column.key] = {
+          raw: value,
+          badge: column.type === 'badge' ? {
+            class: column.badgeConfig?.getClass ? column.badgeConfig.getClass(row) : '',
+            value: column.badgeConfig?.getValue ? column.badgeConfig.getValue(row) : value
+          } : null,
+          actions: column.type === 'actions' && column.actions ?
+            column.actions.map(action => ({
+              ...action,
+              visible: action.show ? action.show(row) : true
+            })) : null
+        };
+      });
+
+      return processedRow;
+    });
+  });
+
+  private getColumnValue(row: T, column: TableColumn<T>): any {
     const keys = column.key.split('.');
     let value: any = row;
 
@@ -46,21 +72,9 @@ export class TableComponent<T> {
     return value;
   }
 
-  getBadgeClass(row: T, column: TableColumn<T>): string {
-    return column.badgeConfig?.getClass ? column.badgeConfig.getClass(row) : '';
-  }
-
-  getBadgeValue(row: T, column: TableColumn<T>): string {
-    return column.badgeConfig?.getValue ? column.badgeConfig.getValue(row) : this.getColumnValue(row, column);
-  }
-
-  shouldShowAction(row: T, action: TableAction<T>): boolean {
-    return action.show ? action.show(row) : true;
-  }
-
-  onActionClick(row: T, action: TableAction<T>, event: Event): void {
+  onActionClick(row: any, action: TableAction<T>, event: Event): void {
     event.stopPropagation();
-    action.onClick(row);
+    action.onClick(row._original);
   }
 
   get emptyMessage(): string {

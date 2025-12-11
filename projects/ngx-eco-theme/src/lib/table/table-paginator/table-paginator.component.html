@@ -27,7 +27,7 @@
           <mat-icon>chevron_left</mat-icon>
         </button>
 
-        @for (page of pagesToDisplay(); track page) {
+        @for (page of pagesToDisplay(); track $index) {
           @if (page === '...') {
             <button mat-mini-fab>
               ...

@@ -8,7 +8,7 @@
   <div class="table-wrapper" [class.loading]="isLoading">
     <table
       mat-table
-      [dataSource]="dataSource()"
+      [dataSource]="processedData()"
       class="mat-elevation-z2"
     >
 
@@ -31,28 +31,28 @@
           >
             @if (!column.type || column.type === 'text') {
               @if (column.pipe === 'date') {
-                {{ getColumnValue(row, column) | date:(column.pipeFormat || 'dd.MM.yyyy HH:mm') }}
+                {{ row[column.key].raw | date:(column.pipeFormat || 'dd.MM.yyyy HH:mm') }}
               } @else if (column.pipe === 'number') {
-                {{ getColumnValue(row, column) | number:(column.pipeFormat || '1.0-2') }}
+                {{ row[column.key].raw | number:(column.pipeFormat || '1.0-2') }}
               } @else {
-                {{ getColumnValue(row, column) }}
+                {{ row[column.key].raw }}
               }
             }
 
             @if (column.type === 'badge') {
-              <span class="status-badge" [ngClass]="getBadgeClass(row, column)">
-                {{ getBadgeValue(row, column) }}
+              <span class="status-badge" [ngClass]="row[column.key].badge.class">
+                {{ row[column.key].badge.value }}
               </span>
             }
 
             @if (column.type === 'date') {
-              {{ getColumnValue(row, column) | date:(column.pipeFormat || 'dd.MM.yyyy HH:mm') }}
+              {{ row[column.key].raw | date:(column.pipeFormat || 'dd.MM.yyyy HH:mm') }}
             }
 
             @if (column.type === 'actions') {
               <div class="actions-container">
-                @for (action of column.actions; track action.icon) {
-                  @if(shouldShowAction(row, action)){
+                @for (action of row[column.key].actions; track action.icon) {
+                  @if(action.visible){
                     <button
                       mat-icon-button
                       [matTooltip]="action.tooltip || ''"
