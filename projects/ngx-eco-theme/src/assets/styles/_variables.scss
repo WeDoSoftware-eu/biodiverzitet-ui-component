@@ -47,20 +47,33 @@ $text-color: #272727;
 $text-hover: #f5f5f5;
 $line-height: 1.5;
 
+//Header
+$header-z-index: 101;
+
 //Table
 $table-tr-hover: #f9f9f9;
 $table-border-radius: 16px;
 $table-status-badge-radius: 12px;
-$table-active-badge-bg: #D0FADF;
-$table-deactive-badge-bg: #FFDDDD;
-$table-in-progress-badge-bg: #FBD49E;
-$table-done-badge-bg: #5C9FD6;
-$table-active-badge-color: #059856;
-$table-deactive-badge-color: #860909;
-$table-in-progress-badge-color: #B77D2B;
-$table-done-badge-color: $white;
+$table-z-index: 10;
+$table-icon-color: #656565;
+$table-td-color: #626262;
+$table-th-color: #1A1A1A;
 
 //Paginator
 $paginator-text-color: #626262;
 $paginator-bg-color: #E6E6E6;
 $paginator-bg-radius: 2px;
+$paginator-go-to-padding: 0 10px;
+$paginator-go-to-input-size: 23px;
+$paginator-go-to-input-border: 1px solid $white;
+
+//Chip
+$chip-border-radius: 16px;
+$chip-active-badge-bg: #D0FADF;
+$chip-inactive-badge-bg: #FFDDDD;
+$chip-in-progress-badge-bg: #FBD49E;
+$chip-completed-badge-bg: #5C9FD6;
+$chip-active-badge-color: #059856;
+$chip-inactive-badge-color: #860909;
+$chip-in-progress-badge-color: #B77D2B;
+$chip-completed-badge-color: $white;

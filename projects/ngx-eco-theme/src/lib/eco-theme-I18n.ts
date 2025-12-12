@@ -7,6 +7,13 @@ export interface EcoThemeI18n {
     displayedLabel: string;
     noData: string;
     lastUpdateTitle:string;
+    firstPage: string;
+    previousPage: string;
+    nextPage: string;
+    lastPage: string;
+    page: string;
+    goTo: string;
+    side: string;
   };
   table: {
     noData: string;
@@ -22,7 +29,14 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     ofLabel: 'од',
     displayedLabel: 'Приказано',
     noData: 'Нема података',
-    lastUpdateTitle: 'Последње ажурирање'
+    lastUpdateTitle: 'Последње ажурирање',
+    firstPage: 'Прва страна',
+    previousPage: 'Претходна страна',
+    nextPage: "Следећа страна",
+    lastPage: "Последња страна",
+    page: "Страна: ",
+    goTo: "Иди на",
+    side: "страну"
   },
   table: {
     noData: 'Нема података за приказ',

@@ -1,10 +1,13 @@
-import { Component, input, output, computed, inject, signal } from '@angular/core';
+import { Component, input, output, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { debounceInteraction } from '../../../decorators/debounce.decorator';
+
 
 @Component({
   selector: 'eco-table-paginator',
@@ -14,15 +17,14 @@ import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
     FormsModule
   ],
   templateUrl: './table-paginator.component.html',
   styleUrl: './table-paginator.component.scss',
 })
 export class TablePaginatorComponent {
-  private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
-
-  private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
 
   totalItems = input<number>(0);
   pageSize = input<number>(10);
@@ -93,17 +95,12 @@ export class TablePaginatorComponent {
       return pages;
   });
 
+  @debounceInteraction()
   goToPage(pageNumber: number | string | null): void {
-    if (this.debounceTimeout !== null) {
-      clearTimeout(this.debounceTimeout);
+    if (typeof pageNumber === 'number') {
+      const pageIndex = pageNumber - 1;
+      this.emitPageEvent(pageIndex);
     }
-
-    this.debounceTimeout = setTimeout(() => {
-      if (typeof pageNumber === 'number') {
-        const pageIndex = pageNumber - 1;
-        this.emitPageEvent(pageIndex);
-      }
-    }, 300);
   }
 
   goToCustomPage(): void {

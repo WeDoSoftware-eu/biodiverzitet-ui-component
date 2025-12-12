@@ -1,0 +1,45 @@
+@use "../../assets/styles/variables" as *;
+
+mat-chip {
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  font-size: var(--sys-body-small-size);
+  border-radius: $chip-border-radius;
+  text-transform: capitalize;
+
+  &.active {
+    background-color: $chip-active-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-active-badge-color};
+
+    mat-icon{
+      color: $chip-active-badge-color;
+    }
+  }
+
+  &.inactive {
+    background-color: $chip-inactive-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-inactive-badge-color};
+
+    mat-icon{
+      color: $chip-inactive-badge-color;
+    }
+  }
+
+  &.completed {
+    background-color: $chip-completed-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-completed-badge-color};
+
+    mat-icon{
+      color: $chip-completed-badge-color;
+    }
+  }
+
+  &.in-progress {
+    background-color: $chip-in-progress-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-in-progress-badge-color};
+
+    mat-icon{
+      color: $chip-in-progress-badge-color;
+    }
+  }
+}

@@ -9,8 +9,8 @@
       <div class="pagination-buttons">
         <button
           mat-mini-fab
-          color="primary"
           (click)="changePage('first')"
+          [matTooltip]="i18n.paginator.firstPage"
           [disabled]="pageIndex() === 0"
           aria-label="First page"
         >
@@ -19,8 +19,8 @@
 
         <button
           mat-mini-fab
-          color="primary"
           (click)="changePage(-1)"
+          [matTooltip]="i18n.paginator.previousPage"
           [disabled]="pageIndex() === 0"
           aria-label="Previous page"
         >
@@ -36,6 +36,7 @@
             <button
               mat-mini-fab
               [class.active-page]="page === pageIndex() + 1"
+              [matTooltip]="i18n.paginator.page + page"
               (click)="goToPage(page)"
             >
               {{ page }}
@@ -45,8 +46,8 @@
 
         <button
           mat-mini-fab
-          color="primary"
           (click)="changePage(1)"
+          [matTooltip]="i18n.paginator.nextPage"
           [disabled]="pageIndex() === totalPages() - 1"
           aria-label="Next page"
         >
@@ -55,8 +56,8 @@
 
         <button
           mat-mini-fab
-          color="primary"
           (click)="changePage('last')"
+          [matTooltip]="i18n.paginator.lastPage"
           [disabled]="pageIndex() === totalPages() - 1"
           aria-label="Last page"
         >
@@ -64,7 +65,7 @@
         </button>
 
         <div class="goto-page-container">
-          <p>Иди на</p>
+          <p>{{ i18n.paginator.goTo }}</p>
           <input
             type="number"
             [(ngModel)]="pageInput"
@@ -72,7 +73,7 @@
             [max]="totalPages()"
             (ngModelChange)="goToPage(pageInput)"
           />
-          <p>страну</p>
+          <p>{{ i18n.paginator.side }}</p>
         </div>
       </div>
 

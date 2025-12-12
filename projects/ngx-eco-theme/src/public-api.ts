@@ -9,6 +9,7 @@ export * from './lib/layout/layout.component';
 export * from './lib/table/table.component';
 export * from './lib/table/table-paginator/table-paginator.component';
 export * from './lib/table/table-search/table-search.component';
+export * from './lib/chip/chip.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';

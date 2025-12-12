@@ -9,7 +9,6 @@
     <table
       mat-table
       [dataSource]="processedData()"
-      class="mat-elevation-z2"
     >
 
       @for (column of config().columns; track column.key) {
@@ -40,9 +39,15 @@
             }
 
             @if (column.type === 'badge') {
-              <span class="status-badge" [ngClass]="row[column.key].badge.class">
+              <eco-chip [status]="row[column.key].badge.class">{{ row[column.key].badge.value }}</eco-chip>
+              <!-- <mat-chip class="status-badge" [ngClass]="row[column.key].badge.class">
+                <img
+                  matChipAvatar
+                  src="https://material.angular.dev/assets/img/examples/shiba1.jpg"
+                  alt="Photo of a Shiba Inu"
+                />
                 {{ row[column.key].badge.value }}
-              </span>
+              </mat-chip> -->
             }
 
             @if (column.type === 'date') {

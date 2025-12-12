@@ -1,7 +1,7 @@
 export interface TableColumn<T> {
   key: string;
   label: string;
-  type?: 'text' | 'badge' | 'date' | 'actions';
+  type?: 'text' | 'badge' | 'date' | 'actions' | 'number' | 'enum';
   width?: string;
   align?: 'left' | 'center' | 'right';
   pipe?: 'date' | 'number';
@@ -27,8 +27,26 @@ export interface TableConfig<T> {
   emptyMessage?: string;
 }
 
-export interface ServerSideEvent {
+export interface FilterEvent {
   pageIndex: number;
   pageSize: number;
   searchText: string;
 }
+
+export interface ProcessedAction<T> extends TableAction<T> {
+  visible: boolean;
+}
+
+export interface ProcessedCellValue<T> {
+  raw: unknown;
+  badge: {
+    class: string;
+    value: unknown;
+  } | null;
+  actions: ProcessedAction<T>[] | null;
+}
+
+export type ProcessedRow<T> = {
+  _original: T;
+  [key: string]: ProcessedCellValue<T> | T;
+};

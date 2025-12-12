@@ -1,12 +1,13 @@
-import { Component, input, output, computed, viewChild, inject } from '@angular/core';
+import { Component, input, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TableColumn, TableAction, TableConfig, ServerSideEvent } from './table.model';
+import { TableColumn, TableAction, TableConfig, ProcessedRow, ProcessedAction, ProcessedCellValue } from './table.model';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
+import { ChipComponent } from '../chip/chip.component';
 
 @Component({
   selector: 'eco-table',
@@ -18,6 +19,7 @@ import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
     MatButtonModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    ChipComponent
   ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
@@ -34,32 +36,39 @@ export class TableComponent<T> {
 
   readonly dataSource = computed(() => new MatTableDataSource<T>(this.data() || []));
 
-  readonly processedData = computed(() => {
-    const rows = this.data() || [];
-    const columns = this.config().columns;
+readonly processedData = computed((): ProcessedRow<T>[] => {
+  const rows: T[] = this.data() || [];
+  const columns = this.config().columns as TableColumn<T>[];
 
-    return rows.map(row => {
-      const processedRow: any = { _original: row };
+  return rows.map((row: T) => {
 
-      columns.forEach(column => {
-        const value = this.getColumnValue(row, column);
-        processedRow[column.key] = {
-          raw: value,
-          badge: column.type === 'badge' ? {
-            class: column.badgeConfig?.getClass ? column.badgeConfig.getClass(row) : '',
-            value: column.badgeConfig?.getValue ? column.badgeConfig.getValue(row) : value
-          } : null,
-          actions: column.type === 'actions' && column.actions ?
-            column.actions.map(action => ({
-              ...action,
-              visible: action.show ? action.show(row) : true
-            })) : null
-        };
-      });
+    const processedRow: ProcessedRow<T> = {
+      _original: row
+    } as ProcessedRow<T>;
 
-      return processedRow;
+    columns.forEach(column => {
+      const value = this.getColumnValue(row, column);
+
+
+      processedRow[column.key] = {
+        raw: value,
+        badge: column.type === 'badge' ? {
+          class: column.badgeConfig?.getClass ? column.badgeConfig.getClass(row) : '',
+          value: column.badgeConfig?.getValue ? column.badgeConfig.getValue(row) : value
+        } : null,
+
+        actions: column.type === 'actions' && column.actions ?
+          column.actions.map(action => ({
+            ...action,
+            visible: action.show ? action.show(row) : true
+          } as ProcessedAction<T>))
+          : null
+      } as ProcessedCellValue<T>;
     });
+
+    return processedRow;
   });
+});
 
   private getColumnValue(row: T, column: TableColumn<T>): any {
     const keys = column.key.split('.');

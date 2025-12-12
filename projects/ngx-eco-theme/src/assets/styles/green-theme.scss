@@ -175,5 +175,10 @@ html{
   // Icons
   --sys-icon-size: 20px;
   --sys-arrow-size: 10px;
-  --sys-notifications-size: 22px
+  --sys-notifications-size: 22px;
+
+  //Chip
+  --mdc-chip-label-text-color: $table-active-badge-color;
+
+
 }

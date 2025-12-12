@@ -118,7 +118,7 @@ Display status badges with custom styling:
   align: 'center',
   badgeConfig: {
     getValue: (row) => row.status,
-    getClass: (row) => `badge-${row.status.toLowerCase()}`
+    getClass: (row) => `${row.status.toLowerCase()}`
   }
 }
 ```
@@ -126,19 +126,41 @@ Display status badges with custom styling:
 Add corresponding CSS classes:
 
 ```scss
-.active {
-  background: $table-active-badge-bg;
-  color: $table-active-badge-color;
-  padding: 4px 12px;
-  border-radius: 12px;
-}
+  &.active {
+    background-color: $chip-active-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-active-badge-color};
 
-.badge-inactive {
-  background: $table-deactive-badge-bg;
-  color: $table-deactive-badge-color;
-  padding: 4px 12px;
-  border-radius: 12px;
-}
+    mat-icon{
+      color: $chip-active-badge-color;
+    }
+  }
+
+  &.inactive {
+    background-color: $chip-inactive-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-inactive-badge-color};
+
+    mat-icon{
+      color: $chip-inactive-badge-color;
+    }
+  }
+
+  &.completed {
+    background-color: $chip-done-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-done-badge-color};
+
+    mat-icon{
+      color: $chip-done-badge-color;
+    }
+  }
+
+  &.in-progress {
+    background-color: $chip-in-progress-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-in-progress-badge-color};
+
+    mat-icon{
+      color: $chip-in-progress-badge-color;
+    }
+  }
 ```
 
 ### Date Columns
@@ -261,10 +283,10 @@ Handle server-side pagination and filtering:
 
 ```typescript
 import { debounceTime, Subject, takeUntil } from 'rxjs';
-import { ServerSideEvent } from "ngx-eco-theme";
+import { FilterEvent } from "ngx-eco-theme";
 
 export class UsersComponent {
-  private queryParams$ = new Subject<ServerSideEvent>();
+  private queryParams$ = new Subject<FilterEvent>();
   private destroy$ = new Subject<void>();
 
   currentPageIndex = signal(0);
@@ -298,7 +320,7 @@ export class UsersComponent {
   }
 
   private emitQueryParams(): void {
-    const event: ServerSideEvent = {
+    const event: FilterEvent = {
       pageIndex: this.currentPageIndex(),
       pageSize: this.currentPageSize(),
       searchText: this.currentSearchText()
@@ -306,7 +328,7 @@ export class UsersComponent {
     this.queryParams$.next(event);
   }
 
-  fetchDataFromAPI(params: ServerSideEvent): void {
+  fetchDataFromAPI(params: FilterEvent): void {
     this.tableConfig.update(config => ({ ...config, loading: true }));
 
     this.apiService.getUsers(params).subscribe(response => {
@@ -327,7 +349,7 @@ import {
   TableComponent, 
   TableConfig, 
   TablePaginatorComponent,
-  ServerSideEvent 
+  FilterEvent 
 } from "ngx-eco-theme";
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 
@@ -336,7 +358,7 @@ interface Product {
   name: string;
   price: number;
   stock: number;
-  status: 'available' | 'out-of-stock';
+  status: 'active' | 'inactive';
   createdAt: string;
 }
 
@@ -366,7 +388,7 @@ export class ProductsComponent {
   currentPageSize = signal(10);
   currentSearchText = signal('');
 
-  private queryParams$ = new Subject<ServerSideEvent>();
+  private queryParams$ = new Subject<FilterEvent>();
   private destroy$ = new Subject<void>();
 
   tableConfig = signal<TableConfig<Product>>({
@@ -400,8 +422,8 @@ export class ProductsComponent {
         type: 'badge',
         align: 'center',
         badgeConfig: {
-          getValue: (row) => row.status === 'available' ? 'Available' : 'Out of Stock',
-          getClass: (row) => `badge-${row.status}`
+          getValue: (row) => row.status === 'active' ? 'Active' : 'Inactive',
+          getClass: (row) => `${row.status}`
         }
       },
       { 
@@ -464,7 +486,7 @@ export class ProductsComponent {
   }
 
   private emitQueryParams(): void {
-    const event: ServerSideEvent = {
+    const event: FilterEvent = {
       pageIndex: this.currentPageIndex(),
       pageSize: this.currentPageSize(),
       searchText: this.currentSearchText()
@@ -472,7 +494,7 @@ export class ProductsComponent {
     this.queryParams$.next(event);
   }
 
-  loadData(event: ServerSideEvent): void {
+  loadData(event: FilterEvent): void {
     this.tableConfig.update(config => ({ ...config, loading: true }));
 
     // Replace with actual API call
