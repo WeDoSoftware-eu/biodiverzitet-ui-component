@@ -110,5 +110,27 @@
     </div>
   </div>
 </section>
+<mat-divider></mat-divider>
+<section>
+  <div class="example-label">Table Example</div>
+  <eco-chip status="active">Active</eco-chip> <br>
+  <eco-chip status="completed">Completed</eco-chip> <br>
+  <eco-chip status="in-progress">In progress</eco-chip> <br>
+  <eco-chip status="inactive">Inactive</eco-chip>
+</section>
+<mat-divider></mat-divider>
+<section>
+  <div class="example-label">Table Example</div>
+  <eco-table
+    [config]="tableConfig()"
+    [data]="tableData()"
+  />
 
-<h2>End</h2>
+  <eco-table-paginator
+    [totalItems]="totalItems()"
+    [pageSize]="currentPageSize()"
+    [pageIndex]="currentPageIndex()"
+    (pageChange)="onPageChange($event)"
+  />
+</section>
+

@@ -158,8 +158,11 @@ html.green_theme {
 html{
   // Body / Text
   --sys-body-small-size: 12px;
+  --sys-body-extra-small-size: 10px;
   --sys-body-medium-size: 14px;
   --sys-body-large-size: 16px;
+  --sys-body-large-size: 16px;
+
 
   // Titles
   --sys-title-medium-size: 24px !important; //m3 1rem default
@@ -172,5 +175,10 @@ html{
   // Icons
   --sys-icon-size: 20px;
   --sys-arrow-size: 10px;
-  --sys-notifications-size: 22px
+  --sys-notifications-size: 22px;
+
+  //Chip
+  --mdc-chip-label-text-color: $table-active-badge-color;
+
+
 }
