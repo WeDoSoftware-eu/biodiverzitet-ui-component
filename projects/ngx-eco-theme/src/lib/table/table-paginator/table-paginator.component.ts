@@ -121,6 +121,8 @@ export class TablePaginatorComponent {
     }else{
       if (step === 'first') newIndex = 0;
       if (step === 'last') newIndex = this.totalPages() - 1;
+
+      this.emitPageEvent(newIndex as number);
     }
   }
 
