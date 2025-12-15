@@ -1,0 +1,25 @@
+@use "../../assets/styles/variables" as *;
+
+.button-container {
+  border-radius: $buttons-border-radius;
+  font-weight: $font-normal;
+  font-size: var(--sys-body-medium-size);
+
+  mat-icon {
+    padding: $buttons-padding-icon;
+  }
+
+  &.primary {
+    background-color: $buttons-primary-bg;
+    color: $buttons-primary-color;
+  }
+  &.secondary {
+    background-color: $buttons-secondary-bg;
+    color: $buttons-secondary-color;
+  }
+  &.tertiary {
+    border: $buttons-tertiary-border;
+    background-color: $buttons-tertiary-bg;
+    color: $buttons-tertiary-color;
+  }
+}

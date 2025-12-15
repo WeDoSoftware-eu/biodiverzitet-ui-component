@@ -11,10 +11,11 @@ $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
 $primary: var(--mat-sys-primary);
 $secondary: var(--mat-sys-secondary);
+
 $accent: var(--mat-sys-secondary);
 $error: var(--mat-sys-error);
-$warning: #FBD49E;
-$success: #5BFAD1;
+$warning: #fbd49e;
+$success: #5bfad1;
 $white: #ffffff;
 
 $light: var(--mat-sys-surface-bright);
@@ -26,12 +27,12 @@ $light-warning: #f8c20a26;
 $light-success: #36c76c26;
 
 //cards
-$card-bg: #EFF3F4;
-$card-hover: #D0FADF;
+$card-bg: #eff3f4;
+$card-hover: #d0fadf;
 $card-title: #737373;
 
 //side-nav
-$side-nav-bg: #ACAFB740;
+$side-nav-bg: #acafb740;
 
 $border-radius-sm: 4px;
 $border-radius-xl: 28px;
@@ -44,5 +45,16 @@ $layout-bg: #f4f7fb;
 //Text
 $text-color: #272727;
 $text-hover: #f5f5f5;
+$text-button-colors: #474747;
 $line-height: 1.5;
 
+//Buttons
+$buttons-border-radius: 2px;
+$buttons-padding-icon: 0 5px;
+$buttons-primary-color: $white;
+$buttons-primary-bg: $primary;
+$buttons-secondary-color: $text-button-colors;
+$buttons-secondary-bg: #ececec;
+$buttons-tertiary-color: $text-button-colors;
+$buttons-tertiary-bg: $white;
+$buttons-tertiary-border: 1px solid #d8d8d8;
