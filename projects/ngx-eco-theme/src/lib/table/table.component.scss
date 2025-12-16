@@ -1,0 +1,124 @@
+@use "../../assets/styles/variables" as *;
+
+.table-container {
+  width: 100%;
+  background: $white;
+  overflow: hidden;
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: $table-z-index;
+  }
+
+  .table-wrapper {
+    position: relative;
+    overflow: auto;
+    padding: 20px;
+    border: $border-table;
+    border-radius: $table-border-radius;
+
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    table {
+      width: 100%;
+      background: transparent;
+      box-shadow: none;
+
+      th {
+        background-color: transparent;
+        font-weight: 600;
+        color: $table-th-color;
+        padding: 2px;
+        white-space: nowrap;
+        border-bottom: $border-table;
+      }
+
+      td {
+        padding: 0px;
+        border-bottom: $border-table;
+        color: $table-td-color;
+      }
+
+      tr:hover {
+        background-color: $table-tr-hover;
+      }
+
+      // Actions container
+      .actions-container {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        button {
+          mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            color: $table-icon-color;
+          }
+        }
+      }
+
+      // No data message
+      .no-data-row {
+        height: 200px;
+
+        .mat-cell {
+          border: none;
+        }
+
+        .no-data-message {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #999;
+          padding: 40px;
+
+          mat-icon {
+            font-size: 48px;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+          }
+
+          p {
+            margin: 0;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .table-container {
+    .table-wrapper {
+      table {
+        th, td {
+          padding: 0px;
+          font-size: 14px;
+        }
+
+        .status-badge {
+          font-size: 11px;
+          padding: 3px 8px;
+          min-width: 60px;
+        }
+      }
+    }
+  }
+}
