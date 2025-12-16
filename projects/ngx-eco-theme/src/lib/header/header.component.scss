@@ -17,21 +17,13 @@
     flex-direction: column;
     gap: 0.125rem;
 
-    // .page-title {
-    //   text-align: start;
-    //   font-size: var(--sys-title-medium-size);
-    //   font-weight: 600;
-    //   color: $text-color;
-    //   margin: 0;
-    //   line-height: $line-height;
-    // }
+    .page-title {
+      text-align: start;
+    }
 
     .page-subtitle {
       text-align: start;
-      font-size: var(--sys-subtitle-size);
-      color: $text-color;
       margin: 0;
-      line-height: $line-height;
       align-self: start;
     }
   }
@@ -123,10 +115,6 @@
 @media (max-width: 991px) {
   .topbar {
     .topbar-left {
-      // .page-title {
-      //   font-size: var(--sys-title-medium-size);
-      // }
-
       .page-subtitle {
         font-size: var(--sys-subtitle-size);
         align-self: start;

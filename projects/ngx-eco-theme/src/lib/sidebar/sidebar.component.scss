@@ -1,22 +1,24 @@
-.sidebar-container{
+@use "../../assets/styles/variables" as *;
+
+.sidebar-container {
   padding: 20px;
 
-  .branding-container{
+  .branding-container {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     cursor: pointer;
 
-    img{
+    img {
       margin-right: 10px;
       height: 58px;
       width: 32px;
     }
 
-    p{
-      font-size: var(--sys-body-small-size);
+    p {
+      font-size: $logo-text-size;
       text-align: start;
-      font-weight: 700;
+      font-weight: $text-bold;
     }
   }
 }

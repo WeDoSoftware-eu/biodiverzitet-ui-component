@@ -4,7 +4,7 @@
   align-items: center;
   margin: 15px 0;
 
-  .pagination-buttons{
+  .pagination-buttons {
     display: flex;
     gap: 5px;
   }
@@ -15,11 +15,11 @@
     justify-content: space-between;
     gap: 8px;
 
-    .range-label{
+    .range-label {
       color: $paginator-text-color;
 
-      p{
-        font-size: var(--sys-body-medium-size);
+      p {
+        font-size: var(--mat-sys-body-medium-size);
       }
     }
 
@@ -31,11 +31,11 @@
       background: $paginator-bg-color;
       color: $text-color;
       box-shadow: none;
-      font-size: var(--sys-body-extra-small-size);
+      font-size: var(--mat-sys-label-small-size);
 
       &.active-page {
         background-color: $primary;
-        color: $white;
+        color: $white !important;
       }
 
       &:disabled {
@@ -45,7 +45,7 @@
     }
 
     .ellipsis {
-      font-size: 18px;
+      font-size: var(--mat-sys-body-medium-size);
       color: $paginator-text-color;
       padding: 0 4px;
     }
@@ -55,7 +55,7 @@
       align-items: center;
       gap: 5px;
       margin-left: 20px;
-      font-size: var(--sys-body-extra-small-size);
+      font-size: var(--mat-sys-label-small-size);
       background: $paginator-bg-color;
       padding: $paginator-go-to-padding;
 
@@ -86,13 +86,12 @@
 
     .last-update-text {
       margin-left: 20px;
-      font-size: var(--sys-body-medium-size);
+      font-size: var(--mat-sys-body-medium-size);
       color: $paginator-text-color;
       display: flex;
 
-      p{
+      p {
         margin-left: 5px;
-        font-weight: $font-bold;
       }
     }
   }

@@ -167,35 +167,49 @@ html.green_theme {
   --mat-sys-tertiary: rgb(208, 250, 223); //#D0FADF
 }
 html {
+  // Body, Titles, Headlines
+  --mat-sys-on-surface: #272727;
+
+  --mat-sys-line-height: 1.5;
+
+  //Labels, Subtitles
+  --mat-sys-on-surface-variant: #474747;
+
   /* --- HEADLINE LARGE --- */
   --mat-sys-headline-large-size: 36px;
   --mat-sys-headline-large-weight: 700;
-  --mat-sys-headline-large-line-height: 1.5;
+  --mat-sys-headline-large-line-height: var(--mat-sys-line-height);
   --mat-sys-headline-large-tracking: -0.25px;
 
   /* --- HEADLINE MEDIUM --- */
   --mat-sys-headline-medium-size: 24px;
   --mat-sys-headline-medium-weight: 700;
-  --mat-sys-headline-medium-line-height: 1.5;
+  --mat-sys-headline-medium-line-height: var(--mat-sys-line-height);
   --mat-sys-headline-medium-tracking: -0.25px;
 
   /* --- TITLE MEDIUM --- */
   --mat-sys-title-medium-size: 24px;
   --mat-sys-title-medium-weight: 500;
-  --mat-sys-title-medium-line-height: 32px;
+  --mat-sys-title-medium-line-height: var(--mat-sys-line-height);
   --mat-sys-title-medium-tracking: 0.15px;
 
   /* --- BODY MEDIUM --- */
   --mat-sys-body-medium-size: 16px;
   --mat-sys-body-medium-weight: 400;
-  --mat-sys-body-medium-line-height: 20px;
+  --mat-sys-body-medium-line-height: var(--mat-sys-line-height);
   --mat-sys-body-medium-tracking: 0.25px;
 
   /* --- LABEL SMALL --- */
   --mat-sys-label-small-size: 10px;
   --mat-sys-label-small-weight: 500;
-  --mat-sys-label-small-line-height: 16px;
+  --mat-sys-label-small-line-height: var(--mat-sys-line-height);
   --mat-sys-label-small-tracking: 0.4px;
+
+  /* --- SPAN MEDIUM --- */
+  --mat-sys-span-medium-size: 16px;
+  --mat-sys-span-medium-weight: 400;
+  --mat-sys-span-medium-line-height: var(--mat-sys-line-height);
+  --mat-sys-span-medium-tracking: 0.4px;
 
   // Profile
   --sys-profile-name-size: 16px;
@@ -209,21 +223,41 @@ html {
   //Chip
   --mdc-chip-label-text-color: $table-active-badge-color;
 }
-h1 {
-  font-size: var(--mat-sys-headline-large-size) !important;
-  font-weight: var(--mat-sys-headline-large-weight) !important;
-  line-height: var(--mat-sys-headline-large-line-height) !important;
-  letter-spacing: var(--mat-sys-headline-large-tracking) !important;
-}
-h2 {
-  font-size: var(--mat-sys-headline-medium-size) !important;
-  font-weight: var(--mat-sys-headline-medium-weight) !important;
-  line-height: var(--mat-sys-headline-medium-line-height) !important;
-  letter-spacing: var(--mat-sys-headline-medium-tracking) !important;
-}
-p {
-  font-size: var(--mat-sys-body-medium-size) !important;
-  font-weight: var(--mat-sys-body-medium-weight) !important;
-  line-height: var(--mat-sys-body-medium-line-height) !important;
-  letter-spacing: var(--mat-sys-body-medium-tracking) !important;
+.mat-typography.mat-typography {
+  h1,
+  .mat-headline-large {
+    font-size: var(--mat-sys-headline-large-size);
+    font-weight: var(--mat-sys-headline-large-weight);
+    line-height: var(--mat-sys-headline-large-line-height);
+    letter-spacing: var(--mat-sys-headline-large-tracking);
+    color: var(--mat-sys-on-surface);
+  }
+
+  h2,
+  .mat-headline-medium {
+    font-size: var(--mat-sys-headline-medium-size);
+    font-weight: var(--mat-sys-headline-medium-weight);
+    line-height: var(--mat-sys-headline-medium-line-height);
+    letter-spacing: var(--mat-sys-headline-medium-tracking);
+    color: var(--mat-sys-on-surface);
+  }
+
+  p,
+  .mat-body-medium {
+    font-size: var(--mat-sys-body-medium-size);
+    font-weight: var(--mat-sys-body-medium-weight);
+    line-height: var(--mat-sys-body-medium-line-height);
+    letter-spacing: var(--mat-sys-body-medium-tracking);
+    color: var(--mat-sys-on-surface);
+    margin: 0;
+  }
+
+  span,
+  .mat-label-medium {
+    font-size: var(--mat-sys-span-medium-size);
+    font-weight: var(--mat-sys-span-medium-weight);
+    line-height: var(--mat-sys-span-medium-line-height);
+    letter-spacing: var(--mat-sys-span-medium-tracking);
+    color: var(--mat-sys-on-surface);
+  }
 }
