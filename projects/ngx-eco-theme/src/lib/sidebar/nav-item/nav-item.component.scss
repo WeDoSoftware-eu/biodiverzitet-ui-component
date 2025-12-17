@@ -1,42 +1,48 @@
 @use "../../../assets/styles/variables" as *;
 
-.menu-list-item{
+.menu-list-item {
   display: flex;
   justify-content: space-between;
-  font-family: $font-family;
-  font-weight: 700;
-  font-style: normal;
-  font-size: var(--sys-body-large-size);
   line-height: $line-height;
   cursor: pointer;
   text-decoration: none;
   color: $text-color;
 
-  .icon-name-container{
+  .icon-name-container {
     display: flex;
     text-align: center;
-  }
-  .icon-name-container mat-icon{
-    font-size: var(--sys-icon-size);
-    margin-right: 10px;
-  }
-  .hide-menu{
-    text-align: start;
+
+    mat-icon {
+      font-size: var(--sys-icon-size);
+      margin-right: 10px;
+    }
+
+    .hide-menu {
+      text-align: start;
+
+      &.parentMenu {
+        font-weight: $text-bold;
+      }
+    }
   }
 
+  &.active-menu {
+    .hide-menu {
+      color: $primary;
+    }
+  }
 }
-.subMenu{
-  padding-left: 30px;
-  border-left: 3px solid $primary;
+
+.subMenu {
+  padding: 5px 0 5px 30px;
   margin-left: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  border-left: 3px solid $primary;
   font-weight: 400;
   text-align: start;
-}
-.subMenu:hover{
-  color: $primary;
-}
-.active-menu{
-  color: $primary;
+
+  &:hover {
+    .hide-menu {
+      color: $primary;
+    }
+  }
 }

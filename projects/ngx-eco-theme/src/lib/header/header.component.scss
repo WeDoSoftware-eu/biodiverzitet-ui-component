@@ -19,19 +19,11 @@
 
     .page-title {
       text-align: start;
-      font-size: var(--sys-title-medium-size);
-      font-weight: 600;
-      color: $text-color;
-      margin: 0;
-      line-height: $line-height;
     }
 
     .page-subtitle {
       text-align: start;
-      font-size: var(--sys-subtitle-size);
-      color: $text-color;
       margin: 0;
-      line-height: $line-height;
       align-self: start;
     }
   }
@@ -47,7 +39,7 @@
     justify-content: center;
     margin-right: 0.5rem;
     border: none;
-    background-color: #ECECEC;
+    background-color: #ececec;
     border-radius: $border-radius-circle;
     height: 44px;
     width: 44px;
@@ -118,17 +110,11 @@
       }
     }
   }
-
 }
-
 
 @media (max-width: 991px) {
   .topbar {
     .topbar-left {
-      .page-title {
-        font-size: var(--sys-title-medium-size);
-      }
-
       .page-subtitle {
         font-size: var(--sys-subtitle-size);
         align-self: start;
