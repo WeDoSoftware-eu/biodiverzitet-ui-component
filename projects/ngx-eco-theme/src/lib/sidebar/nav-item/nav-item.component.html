@@ -9,7 +9,7 @@
 >
   <div class="icon-name-container">
     @if(item()?.children){
-    <mat-icon>{{ item()?.iconName }}</mat-icon>
+    <eco-icon [icon]="item()?.iconName!"></eco-icon>
     }
     <span class="hide-menu" [class.parentMenu]="item()?.children">{{
       item()?.displayName
@@ -17,12 +17,12 @@
   </div>
 
   @if(item()?.children){
-  <div class="d-flex align-items-center gap-4">
-    <span class="arrow-icon">
-      <mat-icon [@indicatorRotate]="expanded() ? 'expanded' : 'collapsed'">
-        expand_more
-      </mat-icon>
-    </span>
+  <div class="d-flex align-items-center gap-4 menu-icon">
+    <eco-icon
+      class="expand-icon"
+      [@indicatorRotate]="expanded() ? 'expanded' : 'collapsed'"
+      icon="arrow-down"
+    ></eco-icon>
   </div>
   }
 </a>

@@ -3,7 +3,6 @@
 
 @use "sass:map";
 @use "@angular/material" as mat;
-
 // Note: Color palettes are generated from primary: #19A08C, secondary: #1CC79B, tertiary: #1CC79B, neutral: #FFFFFF
 // Values for tones 40 and 80 have been altered manually to match exact required color
 $_palettes: (
@@ -259,5 +258,14 @@ html {
     line-height: var(--mat-sys-span-medium-line-height);
     letter-spacing: var(--mat-sys-span-medium-tracking);
     color: var(--mat-sys-on-surface);
+  }
+}
+
+.expand-icon {
+  display: inline-block;
+  transform-origin: center center;
+
+  i {
+    display: inline-block;
   }
 }

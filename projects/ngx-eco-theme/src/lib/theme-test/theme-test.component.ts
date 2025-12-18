@@ -10,6 +10,7 @@ import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { FilterEvent, TableConfig } from '../table/table.model';
 import { PageEvent } from '@angular/material/paginator';
 import { ChipComponent } from '../chip/chip.component';
+import { ECO_ICONS, IconComponent } from '../icon/icon.component';
 
 interface MyItem {
   id: number;
@@ -27,7 +28,8 @@ interface MyItem {
     MatIconModule,
     TableComponent,
     TablePaginatorComponent,
-    ChipComponent
+    ChipComponent,
+    IconComponent,
   ],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -44,31 +46,41 @@ export class ThemeTestComponent {
   private queryParams$$ = new Subject<FilterEvent>();
   private destroy$$ = new Subject<void>();
 
+  icons = ECO_ICONS;
+
   constructor() {
     this.tableConfig.set({
       columns: [
         { key: 'id', label: 'ID' },
-        { key: 'name', label: 'Ime'},
-        { key: 'status', label: 'Status', type: 'badge', align: 'center',
+        { key: 'name', label: 'Ime' },
+        {
+          key: 'status',
+          label: 'Status',
+          type: 'badge',
+          align: 'center',
           badgeConfig: {
             getValue: (row) => row.status,
             getClass: (row) => `${row.status}`,
-          }
+          },
         },
-        { key: 'actions', label: 'Akcije', type: 'actions', width: '10%', align: 'center',
-          actions: [{ icon: 'edit', onClick: (row) => console.log('Edit', row) }]
-        }
+        {
+          key: 'actions',
+          label: 'Akcije',
+          type: 'actions',
+          width: '10%',
+          align: 'center',
+          actions: [
+            { icon: 'edit', onClick: (row) => console.log('Edit', row) },
+          ],
+        },
       ],
       loading: false,
-      emptyMessage: 'Nema rezultata po zadatom upitu.'
+      emptyMessage: 'Nema rezultata po zadatom upitu.',
     });
 
     this.queryParams$$
-      .pipe(
-        debounceTime(50),
-        takeUntil(this.destroy$$)
-      )
-      .subscribe(event => {
+      .pipe(debounceTime(50), takeUntil(this.destroy$$))
+      .subscribe((event) => {
         this.loadData(event);
       });
   }
@@ -88,7 +100,6 @@ export class ThemeTestComponent {
     this.emitQueryParams();
   }
 
-
   private emitQueryParams(): void {
     const event: FilterEvent = {
       pageIndex: this.currentPageIndex(),
@@ -99,19 +110,22 @@ export class ThemeTestComponent {
   }
 
   loadData(event: FilterEvent): void {
-    this.tableConfig.update(config => ({ ...config, loading: true }));
+    this.tableConfig.update((config) => ({ ...config, loading: true }));
 
     // Simulating API call:
     setTimeout(() => {
-        const mockData: MyItem[] = Array.from({ length: event.pageSize }, (_, i) => ({
-            id: i + 1 + event.pageIndex * event.pageSize,
-            name: `Stavka ${i + 1 + event.pageIndex * event.pageSize}`,
-            status: ['active', 'inactive'][i % 2] as 'active' | 'inactive'
-        }));
+      const mockData: MyItem[] = Array.from(
+        { length: event.pageSize },
+        (_, i) => ({
+          id: i + 1 + event.pageIndex * event.pageSize,
+          name: `Stavka ${i + 1 + event.pageIndex * event.pageSize}`,
+          status: ['active', 'inactive'][i % 2] as 'active' | 'inactive',
+        })
+      );
 
-        this.tableData.set(mockData);
-        this.totalItems.set(100);
-        this.tableConfig.update(config => ({ ...config, loading: false }));
+      this.tableData.set(mockData);
+      this.totalItems.set(100);
+      this.tableConfig.update((config) => ({ ...config, loading: false }));
     }, 500);
   }
 }

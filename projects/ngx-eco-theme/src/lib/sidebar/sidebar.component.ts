@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NavItemComponent } from './nav-item/nav-item.component';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SIDEBAR_ITEMS } from './sidebar.token';
 import { RoutingService } from './routing.service';
@@ -11,9 +10,16 @@ import { RoutingService } from './routing.service';
 @Component({
   selector: 'eco-sidebar',
   standalone: true,
-  imports: [CommonModule, NavItemComponent, MatListModule, MatIconModule, MatSidenavModule, RouterLink, RouterModule],
+  imports: [
+    CommonModule,
+    NavItemComponent,
+    MatListModule,
+    MatSidenavModule,
+    RouterLink,
+    RouterModule,
+  ],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
   brandingTitle = input<string>('');
@@ -24,7 +30,7 @@ export class SidebarComponent {
   private routing = inject(RoutingService);
 
   toggleSection(sectionName: string): void {
-    this.expandedSections.update(sections => {
+    this.expandedSections.update((sections) => {
       const newSections = new Set(sections);
       if (newSections.has(sectionName)) {
         newSections.delete(sectionName);
@@ -40,7 +46,7 @@ export class SidebarComponent {
   }
 
   navigateTo(route: string): void {
-      this.routing.navigateTo(route);
+    this.routing.navigateTo(route);
   }
 
   isActive(route: string): boolean {

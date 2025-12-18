@@ -2,12 +2,11 @@ import { Component, input, output, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { debounceInteraction } from '../../../decorators/debounce.decorator';
-
+import { IconComponent } from '../../icon/icon.component';
 
 @Component({
   selector: 'eco-table-paginator',
@@ -16,9 +15,9 @@ import { debounceInteraction } from '../../../decorators/debounce.decorator';
     CommonModule,
     MatPaginatorModule,
     MatButtonModule,
-    MatIconModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    IconComponent,
   ],
   templateUrl: './table-paginator.component.html',
   styleUrl: './table-paginator.component.scss',
@@ -47,52 +46,53 @@ export class TablePaginatorComponent {
       return `${this.i18n.paginator.displayedLabel} 0 ${this.i18n.paginator.ofLabel} 0`;
     }
     const startIndex = index * size + 1;
-    const endIndex = startIndex < total ? Math.min(startIndex + size - 1, total) : total;
+    const endIndex =
+      startIndex < total ? Math.min(startIndex + size - 1, total) : total;
 
     return `${this.i18n.paginator.displayedLabel} ${endIndex} ${this.i18n.paginator.ofLabel} ${total}`;
   });
 
   pagesToDisplay = computed(() => {
-      const total = this.totalPages();
-      const current = this.pageIndex() + 1;
-      const pages: (number | string)[] = [];
+    const total = this.totalPages();
+    const current = this.pageIndex() + 1;
+    const pages: (number | string)[] = [];
 
-      if (total <= 6) {
-          for (let i = 1; i <= total; i++) pages.push(i);
-          return pages;
-      }
-
-      let start: number;
-      let end: number;
-
-      if (current === 1) {
-          start = 1;
-          end = 3;
-      } else if (current >= total - 1) {
-          start = total - 2;
-          end = total;
-      } else {
-          start = current - 1;
-          end = current + 1;
-      }
-
-      if (start > 1) {
-          pages.push(1);
-          pages.push('...');
-      }
-
-      for (let i = start; i <= end; i++) {
-          pages.push(i);
-      }
-
-      if (end < total - 1) {
-          pages.push('...');
-          pages.push(total);
-      } else if (end === total - 1) {
-          pages.push(total);
-      }
-
+    if (total <= 6) {
+      for (let i = 1; i <= total; i++) pages.push(i);
       return pages;
+    }
+
+    let start: number;
+    let end: number;
+
+    if (current === 1) {
+      start = 1;
+      end = 3;
+    } else if (current >= total - 1) {
+      start = total - 2;
+      end = total;
+    } else {
+      start = current - 1;
+      end = current + 1;
+    }
+
+    if (start > 1) {
+      pages.push(1);
+      pages.push('...');
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (end < total - 1) {
+      pages.push('...');
+      pages.push(total);
+    } else if (end === total - 1) {
+      pages.push(total);
+    }
+
+    return pages;
   });
 
   @debounceInteraction()
@@ -104,7 +104,11 @@ export class TablePaginatorComponent {
   }
 
   goToCustomPage(): void {
-    if (this.pageInput !== null && this.pageInput >= 1 && this.pageInput <= this.totalPages()) {
+    if (
+      this.pageInput !== null &&
+      this.pageInput >= 1 &&
+      this.pageInput <= this.totalPages()
+    ) {
       this.goToPage(this.pageInput);
       this.pageInput = null;
     }
@@ -112,13 +116,13 @@ export class TablePaginatorComponent {
 
   changePage(step: number | string): void {
     let newIndex;
-    if(typeof step === 'number'){
-      newIndex =  this.pageIndex() + step;
+    if (typeof step === 'number') {
+      newIndex = this.pageIndex() + step;
 
       if (newIndex >= 0 && newIndex < this.totalPages()) {
         this.emitPageEvent(newIndex);
       }
-    }else{
+    } else {
       if (step === 'first') newIndex = 0;
       if (step === 'last') newIndex = this.totalPages() - 1;
 
@@ -128,11 +132,11 @@ export class TablePaginatorComponent {
 
   emitPageEvent(pageIndex: number): void {
     if (pageIndex !== this.pageIndex()) {
-        this.pageChange.emit({
-            pageIndex: pageIndex,
-            pageSize: this.pageSize(),
-            length: this.totalItems()
-        });
+      this.pageChange.emit({
+        pageIndex: pageIndex,
+        pageSize: this.pageSize(),
+        length: this.totalItems(),
+      });
     }
   }
 }
