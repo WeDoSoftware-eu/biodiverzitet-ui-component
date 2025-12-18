@@ -1,29 +1,30 @@
 @use "../../assets/styles/variables" as *;
 
 .topbar {
+  display: flex;
+  align-items: center;
+  padding: $header-padding;
+  height: $header-height;
+  background-color: $white;
+  border-bottom: 1px solid $borderBottm;
+  box-shadow: $box-shadow;
   position: sticky;
   top: 0;
   z-index: $header-z-index;
 
-  display: flex;
-  align-items: center;
-  height: 70px;
-  padding: 45px 20px;
-
-  background-color: $white;
-  border-bottom: 1px solid $borderBottm;
-  box-shadow: $box-shadow;
-
-  &-left {
+  .topbar-left {
     display: flex;
     flex-direction: column;
-    gap: 0.125rem;
+    gap: 2px;
 
-    .page-title,
+    .page-title {
+      text-align: start;
+    }
+
     .page-subtitle {
       text-align: start;
-      align-self: start;
       margin: 0;
+      align-self: start;
     }
   }
 
@@ -31,24 +32,22 @@
     flex: 1 1 auto;
   }
 
+  // Notification Button
   .notification-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    margin-right: 0.5rem;
-    width: 44px;
-    height: 44px;
-
+    margin-right: 8px;
     border: none;
+    background-color: $buttons-secondary-bg;
     border-radius: $border-radius-circle;
-    background-color: #ececec;
-    cursor: pointer;
+    height: $header-notifications-button-size;
+    width: $header-notifications-button-size;
 
     eco-icon {
       display: flex;
-      font-size: $header-notifications-icons-size;
-      color: $header-notifications-icons-color;
+      font-size: var(--sys-notifications-size);
+      color: $text-color;
     }
 
     &:hover {
@@ -56,17 +55,16 @@
     }
   }
 
+  // Profile Button
   .profile-btn {
     display: flex;
     align-items: center;
-
+    padding: 4px 12px;
+    border-radius: 8px;
     min-height: 48px;
-    padding: 0.25rem 0.75rem;
 
     border: none;
-    border-radius: 8px;
-    background-color: $white;
-    cursor: pointer;
+    background: $white;
 
     &:hover {
       background-color: $text-hover;
@@ -75,50 +73,51 @@
     .profile-content {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 12px;
 
       img {
-        width: 40px;
-        height: 40px;
         border-radius: 50%;
         object-fit: cover;
+        width: 40px;
+        height: 40px;
       }
 
       .profile-info-inline {
         display: flex;
         flex-direction: column;
-        gap: 0.125rem;
+        gap: 2px;
         text-align: left;
 
         .profile-name {
           font-size: var(--sys-body-large-size);
-          font-weight: 600;
+          font-weight: $text-semi-bold;
           color: $text-color;
           line-height: $line-height;
         }
 
         .profile-role {
           font-size: var(--sys-body-medium-size);
-          font-weight: 300;
+          font-weight: $text-normal;
           color: $text-color;
           line-height: $line-height;
         }
       }
 
       .arrow-icon {
-        margin-left: 0.25rem;
         font-size: var(--sys-arrow-size);
         color: $text-color;
+        margin-left: 4px;
       }
     }
   }
 }
 
-@media (max-width: map-get($breakpoints, lg-down)) {
+@media (max-width: 991px) {
   .topbar {
-    &-left {
+    .topbar-left {
       .page-subtitle {
         font-size: var(--sys-subtitle-size);
+        align-self: start;
       }
     }
 
@@ -129,7 +128,7 @@
     }
 
     .notification-btn {
-      margin-right: 0.25rem;
+      margin-right: 4px;
     }
   }
 }
