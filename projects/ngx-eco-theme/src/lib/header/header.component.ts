@@ -9,13 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'eco-header',
   standalone: true,
-  imports: [
-    MatDividerModule,
-    RouterModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule
-  ],
+  imports: [MatDividerModule, RouterModule, MatMenuModule, MatToolbarModule, MatIconModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

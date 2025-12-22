@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router, IsActiveMatchOptions } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoutingService {
   private router = inject(Router);
@@ -16,7 +16,7 @@ export class RoutingService {
       paths: 'exact',
       queryParams: 'ignored',
       matrixParams: 'ignored',
-      fragment: 'ignored'
+      fragment: 'ignored',
     };
 
     return this.router.isActive(route, options);

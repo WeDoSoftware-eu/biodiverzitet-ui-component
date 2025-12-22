@@ -11,9 +11,17 @@ import { RoutingService } from './routing.service';
 @Component({
   selector: 'eco-sidebar',
   standalone: true,
-  imports: [CommonModule, NavItemComponent, MatListModule, MatIconModule, MatSidenavModule, RouterLink, RouterModule],
+  imports: [
+    CommonModule,
+    NavItemComponent,
+    MatListModule,
+    MatIconModule,
+    MatSidenavModule,
+    RouterLink,
+    RouterModule,
+  ],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
   brandingTitle = input<string>('');
@@ -40,7 +48,7 @@ export class SidebarComponent {
   }
 
   navigateTo(route: string): void {
-      this.routing.navigateTo(route);
+    this.routing.navigateTo(route);
   }
 
   isActive(route: string): boolean {

@@ -1,5 +1,6 @@
 <button mat-button class="button-container" [ngClass]="buttonClass()">
-  @if(icon()){
-  <mat-icon>{{ icon() }}</mat-icon>
-  } <ng-content></ng-content>
+  @if (icon()) {
+    <mat-icon>{{ icon() }}</mat-icon>
+  }
+  <ng-content></ng-content>
 </button>

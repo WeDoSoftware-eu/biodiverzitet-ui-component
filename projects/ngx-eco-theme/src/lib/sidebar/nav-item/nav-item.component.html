@@ -8,31 +8,25 @@
   class="menu-list-item"
 >
   <div class="icon-name-container">
-    @if(item()?.children){
-    <mat-icon>{{ item()?.iconName }}</mat-icon>
+    @if (item()?.children) {
+      <mat-icon>{{ item()?.iconName }}</mat-icon>
     }
-    <span class="hide-menu" [class.parentMenu]="item()?.children">{{
-      item()?.displayName
-    }}</span>
+    <span class="hide-menu" [class.parentMenu]="item()?.children">{{ item()?.displayName }}</span>
   </div>
 
-  @if(item()?.children){
-  <div class="d-flex align-items-center gap-4">
-    <span class="arrow-icon">
-      <mat-icon [@indicatorRotate]="expanded() ? 'expanded' : 'collapsed'">
-        expand_more
-      </mat-icon>
-    </span>
-  </div>
+  @if (item()?.children) {
+    <div class="d-flex align-items-center gap-4">
+      <span class="arrow-icon">
+        <mat-icon [@indicatorRotate]="expanded() ? 'expanded' : 'collapsed'">
+          expand_more
+        </mat-icon>
+      </span>
+    </div>
   }
 </a>
 
 <div [@expanded]="expanded() ? 'expanded' : 'collapsed'">
   @for (child of item()?.children; track child) {
-  <eco-nav-item
-    [item]="child"
-    (click)="onSubItemSelected(child)"
-    [depth]="depth() + 1"
-  />
+    <eco-nav-item [item]="child" (click)="onSubItemSelected(child)" [depth]="depth() + 1" />
   }
 </div>

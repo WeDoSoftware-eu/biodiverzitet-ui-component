@@ -16,17 +16,15 @@ import { NavItem } from './nav-item.model';
 import { expanded } from '../../../animations/expanded.animation';
 import { indicatorRotate } from '../../../animations/indicator-rotate.animation';
 
-
 @Component({
   selector: 'eco-nav-item',
   standalone: true,
-  imports:[CommonModule, MatIconModule, RouterModule],
+  imports: [CommonModule, MatIconModule, RouterModule],
   animations: [indicatorRotate, expanded],
   styleUrl: './nav-item.component.scss',
   templateUrl: './nav-item.component.html',
 })
 export class NavItemComponent {
-
   item = input<NavItem>();
   depth = input<number>(0);
   selectedIcon = input<string>();
@@ -59,7 +57,6 @@ export class NavItemComponent {
     );
   }
 
-
   onItemSelected(item: NavItem) {
     if (!item.children?.length) {
       this.router.navigate([item.route]);
@@ -90,9 +87,10 @@ export class NavItemComponent {
     if (!children) return false;
 
     const check = (list: NavItem[]): boolean => {
-      return list.some(child =>
-        (child.route && this.router.isActive(child.route, true)) ||
-        (child.children && check(child.children))
+      return list.some(
+        child =>
+          (child.route && this.router.isActive(child.route, true)) ||
+          (child.children && check(child.children))
       );
     };
 

@@ -1,7 +1,6 @@
 <div class="paginator-container">
   @if (totalPages() > 0) {
     <div class="custom-paginator-controls">
-
       <div class="range-label">
         <p>{{ rangeLabel() }}</p>
       </div>
@@ -29,9 +28,7 @@
 
         @for (page of pagesToDisplay(); track $index) {
           @if (page === '...') {
-            <button mat-mini-fab>
-              ...
-            </button>
+            <button mat-mini-fab>...</button>
           } @else {
             <button
               mat-mini-fab
@@ -78,9 +75,9 @@
       </div>
 
       <div class="last-update-text">
-        {{latUpdateTitle}}: <p>{{ latUpdate() }}</p>
+        {{ latUpdateTitle }}:
+        <p>{{ latUpdate() }}</p>
       </div>
-
     </div>
   }
 </div>

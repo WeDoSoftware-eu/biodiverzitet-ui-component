@@ -3,9 +3,9 @@
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
   </mat-drawer>
   <mat-drawer-content class="content-container">
-        <eco-header [title]="title()" [subtitle]="subtitle()"></eco-header>
-        <main class="components-route">
-          <ng-content></ng-content>
-        </main>
+    <eco-header [title]="title()" [subtitle]="subtitle()"></eco-header>
+    <main class="components-route">
+      <ng-content></ng-content>
+    </main>
   </mat-drawer-content>
 </mat-drawer-container>
