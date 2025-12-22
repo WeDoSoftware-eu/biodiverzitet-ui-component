@@ -80,18 +80,22 @@ export class TableComponent<T> {
     });
   });
 
-  private getColumnValue(row: T, column: TableColumn<T>): any {
+  private getColumnValue(row: T, column: TableColumn<T>): unknown {
     const keys = column.key.split('.');
-    let value: any = row;
+    let value: unknown = row;
 
     for (const key of keys) {
-      value = value?.[key];
+      if (typeof value === 'object' && value !== null && key in value) {
+        value = (value as Record<string, unknown>)[key];
+      } else {
+        return undefined;
+      }
     }
 
     return value;
   }
 
-  onActionClick(row: any, action: TableAction<T>, event: Event): void {
+  onActionClick(row: { _original: T }, action: TableAction<T>, event: Event): void {
     event.stopPropagation();
     action.onClick(row._original);
   }

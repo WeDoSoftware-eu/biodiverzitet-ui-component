@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": ["dist", "projects/**/src/assets/icons/*.html"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -17,7 +17,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "eco",
             "style": "camelCase"
           }
         ],
@@ -25,7 +25,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "eco",
             "style": "kebab-case"
           }
         ],

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit, OnDestroy } from '@angular/core';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,7 +32,7 @@ interface MyItem {
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
 })
-export class ThemeTestComponent {
+export class ThemeTestComponent implements OnInit, OnDestroy {
   tableData = signal<MyItem[]>([]);
   totalItems = signal<number>(0);
   tableConfig = signal<TableConfig<MyItem>>({ columns: [], loading: false });
