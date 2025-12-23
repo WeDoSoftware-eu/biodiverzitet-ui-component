@@ -10,6 +10,7 @@ import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { FilterEvent, TableConfig } from '../table/table.model';
 import { PageEvent } from '@angular/material/paginator';
 import { ChipComponent } from '../chip/chip.component';
+import { ECO_ICONS, IconComponent } from '../icon/icon.component';
 
 interface MyItem {
   id: number;
@@ -28,6 +29,7 @@ interface MyItem {
     TableComponent,
     TablePaginatorComponent,
     ChipComponent,
+    IconComponent,
   ],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -43,6 +45,8 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
 
   private queryParams$$ = new Subject<FilterEvent>();
   private destroy$$ = new Subject<void>();
+
+  icons = ECO_ICONS;
 
   constructor() {
     this.tableConfig.set({
@@ -102,7 +106,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   }
 
   loadData(event: FilterEvent): void {
-    this.tableConfig.update(config => ({ ...config, loading: true }));
+    this.tableConfig.update((config) => ({ ...config, loading: true }));
 
     // Simulating API call:
     setTimeout(() => {

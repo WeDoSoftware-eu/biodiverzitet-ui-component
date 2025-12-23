@@ -1,7 +1,6 @@
 import { Component, input, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -15,6 +14,7 @@ import {
 } from './table.model';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { ChipComponent } from '../chip/chip.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'eco-table',
@@ -22,17 +22,18 @@ import { ChipComponent } from '../chip/chip.component';
   imports: [
     CommonModule,
     MatTableModule,
-    MatIconModule,
     MatButtonModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
     ChipComponent,
+    IconComponent,
   ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent<T> {
-  private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+  private i18n =
+    inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
 
   config = input.required<TableConfig<T>>();
   data = input<T[]>([]);

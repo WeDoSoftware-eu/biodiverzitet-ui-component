@@ -12,9 +12,14 @@
     display: flex;
     text-align: center;
 
-    mat-icon {
-      font-size: var(--sys-icon-size);
-      margin-right: 10px;
+    eco-icon {
+      font-size: 20px;
+      margin-right: $sidebar-icon-margin-right;
+    }
+
+    eco-icon.expand-icon {
+      font-size: $sidebar-expand-icon;
+      margin-right: $sidebar-icon-margin-right;
     }
 
     .hide-menu {
@@ -45,4 +50,7 @@
       color: $primary;
     }
   }
+}
+.menu-icon eco-icon {
+  font-size: $sidebar-expand-icon;
 }

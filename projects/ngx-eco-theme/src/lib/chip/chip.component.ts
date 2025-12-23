@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
+import { EcoIcon, IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'eco-chip',
   standalone: true,
-  imports: [CommonModule, MatChipsModule, MatIconModule],
+  imports: [CommonModule, MatChipsModule, IconComponent],
   templateUrl: './chip.component.html',
   styleUrl: './chip.component.scss',
 })
 export class ChipComponent {
-  status = input.required<'active' | 'inactive' | 'completed' | 'in-progress'>();
+  icon = input<EcoIcon>();
+  status = input.required<
+    'active' | 'inactive' | 'completed' | 'in-progress'
+  >();
 }

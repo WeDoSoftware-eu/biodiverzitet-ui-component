@@ -261,3 +261,12 @@ html {
     color: var(--mat-sys-on-surface);
   }
 }
+
+.expand-icon {
+  display: inline-block;
+  transform-origin: center center;
+
+  i {
+    display: inline-block;
+  }
+}

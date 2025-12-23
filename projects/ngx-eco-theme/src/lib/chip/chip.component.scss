@@ -11,7 +11,7 @@ mat-chip {
     background-color: $chip-active-badge-bg;
     --mdc-chip-label-text-color: #{$chip-active-badge-color};
 
-    mat-icon {
+    eco-icon {
       color: $chip-active-badge-color;
     }
   }
@@ -20,7 +20,7 @@ mat-chip {
     background-color: $chip-inactive-badge-bg;
     --mdc-chip-label-text-color: #{$chip-inactive-badge-color};
 
-    mat-icon {
+    eco-icon {
       color: $chip-inactive-badge-color;
     }
   }
@@ -29,7 +29,7 @@ mat-chip {
     background-color: $chip-completed-badge-bg;
     --mdc-chip-label-text-color: #{$chip-completed-badge-color};
 
-    mat-icon {
+    eco-icon {
       color: $chip-completed-badge-color;
     }
   }
@@ -38,7 +38,7 @@ mat-chip {
     background-color: $chip-in-progress-badge-bg;
     --mdc-chip-label-text-color: #{$chip-in-progress-badge-color};
 
-    mat-icon {
+    eco-icon {
       color: $chip-in-progress-badge-color;
     }
   }

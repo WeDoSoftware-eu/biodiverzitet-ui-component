@@ -2,11 +2,11 @@ import { Component, input, output, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { debounceInteraction } from '../../../decorators/debounce.decorator';
+import { IconComponent } from '../../icon/icon.component';
 
 @Component({
   selector: 'eco-table-paginator',
@@ -15,9 +15,9 @@ import { debounceInteraction } from '../../../decorators/debounce.decorator';
     CommonModule,
     MatPaginatorModule,
     MatButtonModule,
-    MatIconModule,
     MatTooltipModule,
     FormsModule,
+    IconComponent,
   ],
   templateUrl: './table-paginator.component.html',
   styleUrl: './table-paginator.component.scss',
@@ -46,7 +46,8 @@ export class TablePaginatorComponent {
       return `${this.i18n.paginator.displayedLabel} 0 ${this.i18n.paginator.ofLabel} 0`;
     }
     const startIndex = index * size + 1;
-    const endIndex = startIndex < total ? Math.min(startIndex + size - 1, total) : total;
+    const endIndex =
+      startIndex < total ? Math.min(startIndex + size - 1, total) : total;
 
     return `${this.i18n.paginator.displayedLabel} ${endIndex} ${this.i18n.paginator.ofLabel} ${total}`;
   });
@@ -103,7 +104,11 @@ export class TablePaginatorComponent {
   }
 
   goToCustomPage(): void {
-    if (this.pageInput !== null && this.pageInput >= 1 && this.pageInput <= this.totalPages()) {
+    if (
+      this.pageInput !== null &&
+      this.pageInput >= 1 &&
+      this.pageInput <= this.totalPages()
+    ) {
       this.goToPage(this.pageInput);
       this.pageInput = null;
     }

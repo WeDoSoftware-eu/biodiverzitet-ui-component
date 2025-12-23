@@ -1,83 +1,81 @@
 <div class="paginator-container">
   @if (totalPages() > 0) {
-    <div class="custom-paginator-controls">
-      <div class="range-label">
-        <p>{{ rangeLabel() }}</p>
-      </div>
+  <div class="custom-paginator-controls">
+    <div class="range-label">
+      <p>{{ rangeLabel() }}</p>
+    </div>
 
-      <div class="pagination-buttons">
-        <button
-          mat-mini-fab
-          (click)="changePage('first')"
-          [matTooltip]="i18n.paginator.firstPage"
-          [disabled]="pageIndex() === 0"
-          aria-label="First page"
-        >
-          <mat-icon>keyboard_double_arrow_left</mat-icon>
-        </button>
+    <div class="pagination-buttons">
+      <button
+        mat-mini-fab
+        (click)="changePage('first')"
+        [matTooltip]="i18n.paginator.firstPage"
+        [disabled]="pageIndex() === 0"
+        aria-label="First page"
+      >
+        <eco-icon icon="first-page"></eco-icon>
+      </button>
 
-        <button
-          mat-mini-fab
-          (click)="changePage(-1)"
-          [matTooltip]="i18n.paginator.previousPage"
-          [disabled]="pageIndex() === 0"
-          aria-label="Previous page"
-        >
-          <mat-icon>chevron_left</mat-icon>
-        </button>
+      <button
+        mat-mini-fab
+        (click)="changePage(-1)"
+        [matTooltip]="i18n.paginator.previousPage"
+        [disabled]="pageIndex() === 0"
+        aria-label="Previous page"
+      >
+        <eco-icon icon="previous-page"></eco-icon>
+      </button>
 
-        @for (page of pagesToDisplay(); track $index) {
-          @if (page === '...') {
-            <button mat-mini-fab>...</button>
-          } @else {
-            <button
-              mat-mini-fab
-              [class.active-page]="page === pageIndex() + 1"
-              [matTooltip]="i18n.paginator.page + page"
-              (click)="goToPage(page)"
-            >
-              {{ page }}
-            </button>
-          }
-        }
+      @for (page of pagesToDisplay(); track $index) { @if (page === '...') {
+      <button mat-mini-fab>...</button>
+      } @else {
+      <button
+        mat-mini-fab
+        [class.active-page]="page === pageIndex() + 1"
+        [matTooltip]="i18n.paginator.page + page"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+      } }
 
-        <button
-          mat-mini-fab
-          (click)="changePage(1)"
-          [matTooltip]="i18n.paginator.nextPage"
-          [disabled]="pageIndex() === totalPages() - 1"
-          aria-label="Next page"
-        >
-          <mat-icon>chevron_right</mat-icon>
-        </button>
+      <button
+        mat-mini-fab
+        (click)="changePage(1)"
+        [matTooltip]="i18n.paginator.nextPage"
+        [disabled]="pageIndex() === totalPages() - 1"
+        aria-label="Next page"
+      >
+        <eco-icon icon="next-page"></eco-icon>
+      </button>
 
-        <button
-          mat-mini-fab
-          (click)="changePage('last')"
-          [matTooltip]="i18n.paginator.lastPage"
-          [disabled]="pageIndex() === totalPages() - 1"
-          aria-label="Last page"
-        >
-          <mat-icon>keyboard_double_arrow_right</mat-icon>
-        </button>
+      <button
+        mat-mini-fab
+        (click)="changePage('last')"
+        [matTooltip]="i18n.paginator.lastPage"
+        [disabled]="pageIndex() === totalPages() - 1"
+        aria-label="Last page"
+      >
+        <eco-icon icon="last-page"></eco-icon>
+      </button>
 
-        <div class="goto-page-container">
-          <p>{{ i18n.paginator.goTo }}</p>
-          <input
-            type="number"
-            [(ngModel)]="pageInput"
-            min="1"
-            [max]="totalPages()"
-            (ngModelChange)="goToPage(pageInput)"
-          />
-          <p>{{ i18n.paginator.side }}</p>
-        </div>
-      </div>
-
-      <div class="last-update-text">
-        {{ latUpdateTitle }}:
-        <p>{{ latUpdate() }}</p>
+      <div class="goto-page-container">
+        <p>{{ i18n.paginator.goTo }}</p>
+        <input
+          type="number"
+          [(ngModel)]="pageInput"
+          min="1"
+          [max]="totalPages()"
+          (ngModelChange)="goToPage(pageInput)"
+        />
+        <p>{{ i18n.paginator.side }}</p>
       </div>
     </div>
+
+    <div class="last-update-text">
+      {{ latUpdateTitle }}:
+      <p>{{ latUpdate() }}</p>
+    </div>
+  </div>
   }
 </div>

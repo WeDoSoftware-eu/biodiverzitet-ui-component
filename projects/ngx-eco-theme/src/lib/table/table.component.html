@@ -38,47 +38,38 @@
               <eco-chip [status]="row[column.key].badge.class">{{
                 row[column.key].badge.value
               }}</eco-chip>
-              <!-- <mat-chip class="status-badge" [ngClass]="row[column.key].badge.class">
-                <img
-                  matChipAvatar
-                  src="https://material.angular.dev/assets/img/examples/shiba1.jpg"
-                  alt="Photo of a Shiba Inu"
-                />
-                {{ row[column.key].badge.value }}
-              </mat-chip> -->
-            }
-
-            @if (column.type === 'date') {
-              {{ row[column.key].raw | date: column.pipeFormat || 'dd.MM.yyyy HH:mm' }}
-            }
-
-            @if (column.type === 'actions') {
-              <div class="actions-container">
-                @for (action of row[column.key].actions; track action.icon) {
-                  @if (action.visible) {
-                    <button
-                      mat-icon-button
-                      [matTooltip]="action.tooltip || ''"
-                      [color]="action.color || 'primary'"
-                      (click)="onActionClick(row, action, $event)"
-                    >
-                      <mat-icon>{{ action.icon }}</mat-icon>
-                    </button>
-                  }
-                }
-              </div>
-            }
-          </td>
-        </ng-container>
+          } @if (column.type === 'date') {
+          {{
+            row[column.key].raw | date : column.pipeFormat || "dd.MM.yyyy HH:mm"
+          }}
+          } @if (column.type === 'actions') {
+          <div class="actions-container">
+            @for (action of row[column.key].actions; track action.icon) {
+            @if(action.visible){
+            <button
+              mat-icon-button
+              [matTooltip]="action.tooltip || ''"
+              (click)="onActionClick(row, action, $event)"
+            >
+              <eco-icon [icon]="action.icon"></eco-icon>
+            </button>
+            } }
+          </div>
+          }
+        </td>
+      </ng-container>
       }
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></tr>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns(); sticky: true"
+      ></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
 
       <tr class="mat-row no-data-row" *matNoDataRow>
         <td class="mat-cell" [attr.colspan]="displayedColumns().length">
           <div class="no-data-message">
-            <mat-icon>inbox</mat-icon>
+            <eco-icon icon="data"></eco-icon>
             <p>{{ emptyMessage }}</p>
           </div>
         </td>

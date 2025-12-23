@@ -33,6 +33,10 @@
       box-shadow: none;
       font-size: var(--mat-sys-label-small-size);
 
+      eco-icon {
+        font-size: $paginator-icons-size;
+      }
+
       &.active-page {
         background-color: $primary;
         color: $white !important;

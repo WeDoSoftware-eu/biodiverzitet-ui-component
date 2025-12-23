@@ -4,12 +4,18 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'eco-header',
   standalone: true,
-  imports: [MatDividerModule, RouterModule, MatMenuModule, MatToolbarModule, MatIconModule],
+  imports: [
+    MatDividerModule,
+    RouterModule,
+    MatMenuModule,
+    MatToolbarModule,
+    IconComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

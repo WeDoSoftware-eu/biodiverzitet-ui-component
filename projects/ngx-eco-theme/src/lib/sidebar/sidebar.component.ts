@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NavItemComponent } from './nav-item/nav-item.component';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SIDEBAR_ITEMS } from './sidebar.token';
 import { RoutingService } from './routing.service';
@@ -15,7 +14,6 @@ import { RoutingService } from './routing.service';
     CommonModule,
     NavItemComponent,
     MatListModule,
-    MatIconModule,
     MatSidenavModule,
     RouterLink,
     RouterModule,
@@ -32,7 +30,7 @@ export class SidebarComponent {
   private routing = inject(RoutingService);
 
   toggleSection(sectionName: string): void {
-    this.expandedSections.update(sections => {
+    this.expandedSections.update((sections) => {
       const newSections = new Set(sections);
       if (newSections.has(sectionName)) {
         newSections.delete(sectionName);

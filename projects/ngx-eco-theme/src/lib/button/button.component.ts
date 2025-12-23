@@ -1,16 +1,16 @@
 import { Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { EcoIcon, IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'eco-button',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, CommonModule],
+  imports: [MatButtonModule, CommonModule, IconComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  icon = input<string>();
+  icon = input<EcoIcon>();
   buttonClass = input<'primary' | 'secondary' | 'tertiary'>('primary');
 }

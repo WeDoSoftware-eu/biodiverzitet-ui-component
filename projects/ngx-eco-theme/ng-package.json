@@ -5,6 +5,11 @@
     "entryFile": "src/public-api.ts"
   },
   "assets": [
-    { "input": "src/assets/styles", "glob": "**/*.scss", "output": "styles" }
+    { "input": "src/assets/styles", "glob": "**/*.scss", "output": "styles" },
+    {
+      "input": "src/assets/icons",
+      "glob": "**/*.css",
+      "output": "styles/icons"
+    }
   ]
 }
