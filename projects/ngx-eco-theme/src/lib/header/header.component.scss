@@ -3,8 +3,8 @@
 .topbar {
   display: flex;
   align-items: center;
-  padding: 45px 20px;
-  height: 70px;
+  padding: $header-padding;
+  height: $header-height;
   background-color: $white;
   border-bottom: 1px solid $borderBottm;
   box-shadow: $box-shadow;
@@ -15,7 +15,7 @@
   .topbar-left {
     display: flex;
     flex-direction: column;
-    gap: 0.125rem;
+    gap: 2px;
 
     .page-title {
       text-align: start;
@@ -37,14 +37,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 0.5rem;
+    margin-right: 8px;
     border: none;
-    background-color: #ececec;
+    background-color: $buttons-secondary-bg;
     border-radius: $border-radius-circle;
-    height: 44px;
-    width: 44px;
+    height: $header-notifications-button-size;
+    width: $header-notifications-button-size;
 
-    .notification-icon {
+    eco-icon {
       display: flex;
       font-size: var(--sys-notifications-size);
       color: $text-color;
@@ -59,7 +59,7 @@
   .profile-btn {
     display: flex;
     align-items: center;
-    padding: 0.25rem 0.75rem;
+    padding: 4px 12px;
     border-radius: 8px;
     min-height: 48px;
 
@@ -73,7 +73,7 @@
     .profile-content {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 12px;
 
       img {
         border-radius: 50%;
@@ -85,19 +85,19 @@
       .profile-info-inline {
         display: flex;
         flex-direction: column;
-        gap: 0.125rem;
+        gap: 2px;
         text-align: left;
 
         .profile-name {
           font-size: var(--sys-body-large-size);
-          font-weight: 600;
+          font-weight: $text-semi-bold;
           color: $text-color;
           line-height: $line-height;
         }
 
         .profile-role {
           font-size: var(--sys-body-medium-size);
-          font-weight: 300;
+          font-weight: $text-normal;
           color: $text-color;
           line-height: $line-height;
         }
@@ -106,7 +106,7 @@
       .arrow-icon {
         font-size: var(--sys-arrow-size);
         color: $text-color;
-        margin-left: 0.25rem;
+        margin-left: 4px;
       }
     }
   }
@@ -128,7 +128,7 @@
     }
 
     .notification-btn {
-      margin-right: 0.25rem;
+      margin-right: 4px;
     }
   }
 }

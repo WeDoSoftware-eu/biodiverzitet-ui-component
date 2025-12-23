@@ -1,3 +1,5 @@
+import { EcoIcon } from '../icon/icon.component';
+
 export interface TableColumn<T> {
   key: string;
   label: string;
@@ -14,7 +16,7 @@ export interface TableColumn<T> {
 }
 
 export interface TableAction<T> {
-  icon: string;
+  icon: EcoIcon;
   tooltip?: string;
   color?: string;
   show?: (row: T) => boolean;

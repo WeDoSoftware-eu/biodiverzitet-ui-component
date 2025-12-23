@@ -11,6 +11,7 @@ export * from './lib/table/table-paginator/table-paginator.component';
 export * from './lib/table/table-search/table-search.component';
 export * from './lib/chip/chip.component';
 export * from './lib/button/button.component';
+export * from './lib/icon/icon.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';

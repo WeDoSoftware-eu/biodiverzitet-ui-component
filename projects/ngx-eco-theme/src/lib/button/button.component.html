@@ -1,5 +1,5 @@
 <button mat-button class="button-container" [ngClass]="buttonClass()">
   @if(icon()){
-  <mat-icon>{{ icon() }}</mat-icon>
+  <eco-icon [icon]="icon()!"></eco-icon>
   } <ng-content></ng-content>
 </button>

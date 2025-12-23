@@ -22,11 +22,29 @@ $light-error: var(--mat-sys-error-fixed-dim);
 $light-warning: #f8c20a26;
 $light-success: #36c76c26;
 
+// breakpoints
+$breakpoints: (
+  lg: 900px,
+  lg-down: 991px,
+  md: 768px,
+  sm: 580px,
+  xs: 480px,
+);
+
 //cards
 $card-bg: #eff3f4;
 $card-hover: #d0fadf;
 $card-title: #737373;
 $card-text-size: 20px;
+$card-text-size: 20px;
+$card-icon-circle: 62px;
+$card-icon-size: 30px;
+$card-icon-hover-colors: (
+  1: #f68d88,
+  2: #5d84fb,
+  3: #4ab59c,
+  4: #7b6de4,
+);
 
 //side-nav
 $side-nav-bg: #acafb740;
@@ -50,9 +68,16 @@ $line-height: 1.5;
 
 //Header
 $header-z-index: 101;
+$header-height: 70px;
+$header-padding: 45px 20px;
+$header-notifications-icons-size: 24px;
+$header-notifications-icons-color: #626262;
+$header-notifications-button-size: 44px;
 
 //Sidebar
 $logo-text-size: 12px !important;
+$sidebar-expand-icon: 8px;
+$sidebar-icon-margin-right: 10px;
 
 //Table
 $table-tr-hover: #f9f9f9;
@@ -70,6 +95,7 @@ $paginator-bg-radius: 2px;
 $paginator-go-to-padding: 0 10px;
 $paginator-go-to-input-size: 23px;
 $paginator-go-to-input-border: 1px solid $white;
+$paginator-icons-size: 20px;
 
 //Chip
 $chip-border-radius: 16px;
