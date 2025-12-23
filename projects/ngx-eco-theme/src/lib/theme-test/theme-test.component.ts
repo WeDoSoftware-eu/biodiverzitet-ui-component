@@ -106,7 +106,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   }
 
   loadData(event: FilterEvent): void {
-    this.tableConfig.update((config) => ({ ...config, loading: true }));
+    this.tableConfig.update(config => ({ ...config, loading: true }));
 
     // Simulating API call:
     setTimeout(() => {

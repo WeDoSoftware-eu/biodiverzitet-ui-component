@@ -32,8 +32,7 @@ import { IconComponent } from '../icon/icon.component';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent<T> {
-  private i18n =
-    inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+  private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
 
   config = input.required<TableConfig<T>>();
   data = input<T[]>([]);

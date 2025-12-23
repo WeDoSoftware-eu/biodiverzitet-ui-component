@@ -46,8 +46,7 @@ export class TablePaginatorComponent {
       return `${this.i18n.paginator.displayedLabel} 0 ${this.i18n.paginator.ofLabel} 0`;
     }
     const startIndex = index * size + 1;
-    const endIndex =
-      startIndex < total ? Math.min(startIndex + size - 1, total) : total;
+    const endIndex = startIndex < total ? Math.min(startIndex + size - 1, total) : total;
 
     return `${this.i18n.paginator.displayedLabel} ${endIndex} ${this.i18n.paginator.ofLabel} ${total}`;
   });
@@ -104,11 +103,7 @@ export class TablePaginatorComponent {
   }
 
   goToCustomPage(): void {
-    if (
-      this.pageInput !== null &&
-      this.pageInput >= 1 &&
-      this.pageInput <= this.totalPages()
-    ) {
+    if (this.pageInput !== null && this.pageInput >= 1 && this.pageInput <= this.totalPages()) {
       this.goToPage(this.pageInput);
       this.pageInput = null;
     }

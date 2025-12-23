@@ -38,32 +38,30 @@
               <eco-chip [status]="row[column.key].badge.class">{{
                 row[column.key].badge.value
               }}</eco-chip>
-          } @if (column.type === 'date') {
-          {{
-            row[column.key].raw | date : column.pipeFormat || "dd.MM.yyyy HH:mm"
-          }}
-          } @if (column.type === 'actions') {
-          <div class="actions-container">
-            @for (action of row[column.key].actions; track action.icon) {
-            @if(action.visible){
-            <button
-              mat-icon-button
-              [matTooltip]="action.tooltip || ''"
-              (click)="onActionClick(row, action, $event)"
-            >
-              <eco-icon [icon]="action.icon"></eco-icon>
-            </button>
-            } }
-          </div>
-          }
-        </td>
-      </ng-container>
+            }
+            @if (column.type === 'date') {
+              {{ row[column.key].raw | date: column.pipeFormat || 'dd.MM.yyyy HH:mm' }}
+            }
+            @if (column.type === 'actions') {
+              <div class="actions-container">
+                @for (action of row[column.key].actions; track action.icon) {
+                  @if (action.visible) {
+                    <button
+                      mat-icon-button
+                      [matTooltip]="action.tooltip || ''"
+                      (click)="onActionClick(row, action, $event)"
+                    >
+                      <eco-icon [icon]="action.icon"></eco-icon>
+                    </button>
+                  }
+                }
+              </div>
+            }
+          </td>
+        </ng-container>
       }
 
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns(); sticky: true"
-      ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
 
       <tr class="mat-row no-data-row" *matNoDataRow>

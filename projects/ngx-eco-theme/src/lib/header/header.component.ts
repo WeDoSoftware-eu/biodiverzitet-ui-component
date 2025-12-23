@@ -9,13 +9,7 @@ import { IconComponent } from '../icon/icon.component';
 @Component({
   selector: 'eco-header',
   standalone: true,
-  imports: [
-    MatDividerModule,
-    RouterModule,
-    MatMenuModule,
-    MatToolbarModule,
-    IconComponent,
-  ],
+  imports: [MatDividerModule, RouterModule, MatMenuModule, MatToolbarModule, IconComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
