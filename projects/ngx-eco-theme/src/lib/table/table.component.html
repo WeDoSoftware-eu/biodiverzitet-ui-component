@@ -1,76 +1,67 @@
 <div class="table-container">
-  @if(isLoading){
-  <div class="loading-container">
-    <mat-spinner diameter="50"></mat-spinner>
-  </div>
+  @if (isLoading) {
+    <div class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
   }
 
   <div class="table-wrapper" [class.loading]="isLoading">
     <table mat-table [dataSource]="processedData()">
       @for (column of config().columns; track column.key) {
-      <ng-container [matColumnDef]="column.key">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [style.width]="column.width"
-          [style.text-align]="column.align || 'left'"
-        >
-          {{ column.label }}
-        </th>
+        <ng-container [matColumnDef]="column.key">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            [style.width]="column.width"
+            [style.text-align]="column.align || 'left'"
+          >
+            {{ column.label }}
+          </th>
 
-        <td
-          mat-cell
-          *matCellDef="let row"
-          [style.text-align]="column.align || 'left'"
-          [style.place-items]="column.align || 'left'"
-        >
-          @if (!column.type || column.type === 'text') { @if (column.pipe ===
-          'date') {
-          {{
-            row[column.key].raw | date : column.pipeFormat || "dd.MM.yyyy HH:mm"
-          }}
-          } @else if (column.pipe === 'number') {
-          {{ row[column.key].raw | number : column.pipeFormat || "1.0-2" }}
-          } @else {
-          {{ row[column.key].raw }}
-          } } @if (column.type === 'badge') {
-          <eco-chip [status]="row[column.key].badge.class">{{
-            row[column.key].badge.value
-          }}</eco-chip>
-          <!-- <mat-chip class="status-badge" [ngClass]="row[column.key].badge.class">
-                <img
-                  matChipAvatar
-                  src="https://material.angular.dev/assets/img/examples/shiba1.jpg"
-                  alt="Photo of a Shiba Inu"
-                />
-                {{ row[column.key].badge.value }}
-              </mat-chip> -->
-          } @if (column.type === 'date') {
-          {{
-            row[column.key].raw | date : column.pipeFormat || "dd.MM.yyyy HH:mm"
-          }}
-          } @if (column.type === 'actions') {
-          <div class="actions-container">
-            @for (action of row[column.key].actions; track action.icon) {
-            @if(action.visible){
-            <button
-              mat-icon-button
-              [matTooltip]="action.tooltip || ''"
-              (click)="onActionClick(row, action, $event)"
-            >
-              <eco-icon [icon]="action.icon"></eco-icon>
-            </button>
-            } }
-          </div>
-          }
-        </td>
-      </ng-container>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            [style.text-align]="column.align || 'left'"
+            [style.place-items]="column.align || 'left'"
+          >
+            @if (!column.type || column.type === 'text') {
+              @if (column.pipe === 'date') {
+                {{ row[column.key].raw | date: column.pipeFormat || 'dd.MM.yyyy HH:mm' }}
+              } @else if (column.pipe === 'number') {
+                {{ row[column.key].raw | number: column.pipeFormat || '1.0-2' }}
+              } @else {
+                {{ row[column.key].raw }}
+              }
+            }
+
+            @if (column.type === 'badge') {
+              <eco-chip [status]="row[column.key].badge.class">{{
+                row[column.key].badge.value
+              }}</eco-chip>
+            }
+            @if (column.type === 'date') {
+              {{ row[column.key].raw | date: column.pipeFormat || 'dd.MM.yyyy HH:mm' }}
+            }
+            @if (column.type === 'actions') {
+              <div class="actions-container">
+                @for (action of row[column.key].actions; track action.icon) {
+                  @if (action.visible) {
+                    <button
+                      mat-icon-button
+                      [matTooltip]="action.tooltip || ''"
+                      (click)="onActionClick(row, action, $event)"
+                    >
+                      <eco-icon [icon]="action.icon"></eco-icon>
+                    </button>
+                  }
+                }
+              </div>
+            }
+          </td>
+        </ng-container>
       }
 
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns(); sticky: true"
-      ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
 
       <tr class="mat-row no-data-row" *matNoDataRow>

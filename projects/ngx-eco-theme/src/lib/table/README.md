@@ -5,7 +5,7 @@
 Import the required components in your Angular component:
 
 ```typescript
-import { TableComponent, TableConfig, TablePaginatorComponent } from "ngx-eco-theme";
+import { TableComponent, TableConfig, TablePaginatorComponent } from 'ngx-eco-theme';
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ import { TableComponent, TableConfig, TablePaginatorComponent } from "ngx-eco-th
 
 ```typescript
 import { Component, signal } from '@angular/core';
-import { TableComponent, TableConfig } from "ngx-eco-theme";
+import { TableComponent, TableConfig } from 'ngx-eco-theme';
 
 interface User {
   id: number;
@@ -26,25 +26,20 @@ interface User {
   selector: 'app-users',
   standalone: true,
   imports: [TableComponent],
-  template: `
-    <eco-table 
-      [config]="tableConfig()" 
-      [data]="tableData()">
-    </eco-table>
-  `
+  template: ` <eco-table [config]="tableConfig()" [data]="tableData()"> </eco-table> `,
 })
 export class UsersComponent {
   tableData = signal<User[]>([
     { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
   ]);
 
   tableConfig = signal<TableConfig<User>>({
     columns: [
       { key: 'id', label: 'ID' },
       { key: 'name', label: 'Name' },
-      { key: 'email', label: 'Email' }
-    ]
+      { key: 'email', label: 'Email' },
+    ],
   });
 }
 ```
@@ -53,22 +48,20 @@ export class UsersComponent {
 
 ```typescript
 import { PageEvent } from '@angular/material/paginator';
-import { TablePaginatorComponent } from "ngx-eco-theme";
+import { TablePaginatorComponent } from 'ngx-eco-theme';
 
 @Component({
   template: `
-    <eco-table 
-      [config]="tableConfig()" 
-      [data]="tableData()">
-    </eco-table>
-    
+    <eco-table [config]="tableConfig()" [data]="tableData()"> </eco-table>
+
     <eco-table-paginator
       [totalItems]="totalItems()"
       [pageSize]="pageSize()"
       [pageIndex]="pageIndex()"
-      (pageChange)="onPageChange($event)">
+      (pageChange)="onPageChange($event)"
+    >
     </eco-table-paginator>
-  `
+  `,
 })
 export class UsersComponent {
   tableData = signal<User[]>([]);
@@ -126,41 +119,41 @@ Display status badges with custom styling:
 Add corresponding CSS classes:
 
 ```scss
-  &.active {
-    background-color: $chip-active-badge-bg;
-    --mdc-chip-label-text-color: #{$chip-active-badge-color};
+&.active {
+  background-color: $chip-active-badge-bg;
+  --mdc-chip-label-text-color: #{$chip-active-badge-color};
 
-    mat-icon{
-      color: $chip-active-badge-color;
-    }
+  mat-icon {
+    color: $chip-active-badge-color;
   }
+}
 
-  &.inactive {
-    background-color: $chip-inactive-badge-bg;
-    --mdc-chip-label-text-color: #{$chip-inactive-badge-color};
+&.inactive {
+  background-color: $chip-inactive-badge-bg;
+  --mdc-chip-label-text-color: #{$chip-inactive-badge-color};
 
-    mat-icon{
-      color: $chip-inactive-badge-color;
-    }
+  mat-icon {
+    color: $chip-inactive-badge-color;
   }
+}
 
-  &.completed {
-    background-color: $chip-done-badge-bg;
-    --mdc-chip-label-text-color: #{$chip-done-badge-color};
+&.completed {
+  background-color: $chip-done-badge-bg;
+  --mdc-chip-label-text-color: #{$chip-done-badge-color};
 
-    mat-icon{
-      color: $chip-done-badge-color;
-    }
+  mat-icon {
+    color: $chip-done-badge-color;
   }
+}
 
-  &.in-progress {
-    background-color: $chip-in-progress-badge-bg;
-    --mdc-chip-label-text-color: #{$chip-in-progress-badge-color};
+&.in-progress {
+  background-color: $chip-in-progress-badge-bg;
+  --mdc-chip-label-text-color: #{$chip-in-progress-badge-color};
 
-    mat-icon{
-      color: $chip-in-progress-badge-color;
-    }
+  mat-icon {
+    color: $chip-in-progress-badge-color;
   }
+}
 ```
 
 ### Date Columns
@@ -178,6 +171,7 @@ Format dates using Angular's date pipe:
 ```
 
 Available date formats:
+
 - `'short'` - 1/1/24, 12:00 PM
 - `'medium'` - Jan 1, 2024, 12:00:00 PM
 - `'long'` - January 1, 2024 at 12:00:00 PM
@@ -200,6 +194,7 @@ Format numbers using Angular's number pipe:
 Format pattern: `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`
 
 Examples:
+
 - `'1.0-0'` - 1234 (no decimals)
 - `'1.2-2'` - 1234.56 (always 2 decimals)
 - `'1.0-2'` - 1234.5 (up to 2 decimals)
@@ -233,6 +228,7 @@ Add interactive buttons to each row:
 ```
 
 Action properties:
+
 - `icon` - Material icon name
 - `tooltip` - Hover text
 - `color` - Material button color (primary, accent, warn)
@@ -283,7 +279,7 @@ Handle server-side pagination and filtering:
 
 ```typescript
 import { debounceTime, Subject, takeUntil } from 'rxjs';
-import { FilterEvent } from "ngx-eco-theme";
+import { FilterEvent } from 'ngx-eco-theme';
 
 export class UsersComponent {
   private queryParams$ = new Subject<FilterEvent>();
@@ -294,14 +290,9 @@ export class UsersComponent {
   currentSearchText = signal('');
 
   constructor() {
-    this.queryParams$
-      .pipe(
-        debounceTime(300),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(event => {
-        this.fetchDataFromAPI(event);
-      });
+    this.queryParams$.pipe(debounceTime(300), takeUntil(this.destroy$)).subscribe(event => {
+      this.fetchDataFromAPI(event);
+    });
   }
 
   ngOnInit(): void {
@@ -323,7 +314,7 @@ export class UsersComponent {
     const event: FilterEvent = {
       pageIndex: this.currentPageIndex(),
       pageSize: this.currentPageSize(),
-      searchText: this.currentSearchText()
+      searchText: this.currentSearchText(),
     };
     this.queryParams$.next(event);
   }
@@ -345,12 +336,7 @@ export class UsersComponent {
 ```typescript
 import { Component, signal } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { 
-  TableComponent, 
-  TableConfig, 
-  TablePaginatorComponent,
-  FilterEvent 
-} from "ngx-eco-theme";
+import { TableComponent, TableConfig, TablePaginatorComponent, FilterEvent } from 'ngx-eco-theme';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 interface Product {
@@ -367,23 +353,21 @@ interface Product {
   standalone: true,
   imports: [TableComponent, TablePaginatorComponent],
   template: `
-    <eco-table 
-      [config]="tableConfig()" 
-      [data]="tableData()">
-    </eco-table>
-    
+    <eco-table [config]="tableConfig()" [data]="tableData()"> </eco-table>
+
     <eco-table-paginator
       [totalItems]="totalItems()"
       [pageSize]="currentPageSize()"
       [pageIndex]="currentPageIndex()"
-      (pageChange)="onPageChange($event)">
+      (pageChange)="onPageChange($event)"
+    >
     </eco-table-paginator>
-  `
+  `,
 })
 export class ProductsComponent {
   tableData = signal<Product[]>([]);
   totalItems = signal(0);
-  
+
   currentPageIndex = signal(0);
   currentPageSize = signal(10);
   currentSearchText = signal('');
@@ -393,49 +377,49 @@ export class ProductsComponent {
 
   tableConfig = signal<TableConfig<Product>>({
     columns: [
-      { 
-        key: 'id', 
-        label: 'ID', 
-        width: '80px' 
+      {
+        key: 'id',
+        label: 'ID',
+        width: '80px',
       },
-      { 
-        key: 'name', 
-        label: 'Product Name' 
+      {
+        key: 'name',
+        label: 'Product Name',
       },
-      { 
-        key: 'price', 
-        label: 'Price', 
+      {
+        key: 'price',
+        label: 'Price',
         pipe: 'number',
         pipeFormat: '1.2-2',
-        align: 'right'
+        align: 'right',
       },
-      { 
-        key: 'stock', 
-        label: 'Stock', 
+      {
+        key: 'stock',
+        label: 'Stock',
         pipe: 'number',
         pipeFormat: '1.0-0',
-        align: 'center'
+        align: 'center',
       },
-      { 
-        key: 'status', 
-        label: 'Status', 
+      {
+        key: 'status',
+        label: 'Status',
         type: 'badge',
         align: 'center',
         badgeConfig: {
-          getValue: (row) => row.status === 'active' ? 'Active' : 'Inactive',
-          getClass: (row) => `${row.status}`
-        }
+          getValue: row => (row.status === 'active' ? 'Active' : 'Inactive'),
+          getClass: row => `${row.status}`,
+        },
       },
-      { 
-        key: 'createdAt', 
-        label: 'Created', 
+      {
+        key: 'createdAt',
+        label: 'Created',
         type: 'date',
         pipe: 'date',
-        pipeFormat: 'dd/MM/yyyy'
+        pipeFormat: 'dd/MM/yyyy',
       },
-      { 
-        key: 'actions', 
-        label: 'Actions', 
+      {
+        key: 'actions',
+        label: 'Actions',
         type: 'actions',
         width: '120px',
         align: 'center',
@@ -443,31 +427,26 @@ export class ProductsComponent {
           {
             icon: 'edit',
             tooltip: 'Edit Product',
-            onClick: (row) => this.editProduct(row)
+            onClick: row => this.editProduct(row),
           },
           {
             icon: 'delete',
             tooltip: 'Delete Product',
             color: 'warn',
-            show: (row) => row.stock === 0,
-            onClick: (row) => this.deleteProduct(row)
-          }
-        ]
-      }
+            show: row => row.stock === 0,
+            onClick: row => this.deleteProduct(row),
+          },
+        ],
+      },
     ],
     loading: false,
-    emptyMessage: 'No products found'
+    emptyMessage: 'No products found',
   });
 
   constructor() {
-    this.queryParams$
-      .pipe(
-        debounceTime(300),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(event => {
-        this.loadData(event);
-      });
+    this.queryParams$.pipe(debounceTime(300), takeUntil(this.destroy$)).subscribe(event => {
+      this.loadData(event);
+    });
   }
 
   ngOnInit(): void {
@@ -489,7 +468,7 @@ export class ProductsComponent {
     const event: FilterEvent = {
       pageIndex: this.currentPageIndex(),
       pageSize: this.currentPageSize(),
-      searchText: this.currentSearchText()
+      searchText: this.currentSearchText(),
     };
     this.queryParams$.next(event);
   }
@@ -505,7 +484,7 @@ export class ProductsComponent {
         price: Math.random() * 100,
         stock: Math.floor(Math.random() * 50),
         status: i % 2 === 0 ? 'available' : 'out-of-stock',
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       }));
 
       this.tableData.set(mockData);
@@ -522,3 +501,4 @@ export class ProductsComponent {
     console.log('Delete:', product);
   }
 }
+```

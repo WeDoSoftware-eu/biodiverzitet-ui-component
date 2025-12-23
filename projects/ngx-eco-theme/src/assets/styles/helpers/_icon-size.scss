@@ -1,4 +1,4 @@
-@use "variables";
+@use 'variables';
 
 @mixin icon_size {
   @each $key, $value in variables.$icons {

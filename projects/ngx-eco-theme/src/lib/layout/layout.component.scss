@@ -1,17 +1,17 @@
-@use "../../assets/styles/variables" as *;
+@use '../../assets/styles/variables' as *;
 
-.layout-container{
+.layout-container {
   min-height: 100vh;
 }
-.content-container{
+.content-container {
   height: 100vh !important;
 }
-.components-route{
+.components-route {
   min-height: calc(100% - 95px);
   align-content: center;
   background-color: $white;
 }
-.side-container{
+.side-container {
   background-color: $side-nav-bg;
   width: 260px;
   border-radius: 0;

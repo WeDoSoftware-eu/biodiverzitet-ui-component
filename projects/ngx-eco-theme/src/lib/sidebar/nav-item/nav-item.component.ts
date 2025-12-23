@@ -61,7 +61,7 @@ export class NavItemComponent {
     if (!item.children?.length) {
       this.router.navigate([item.route]);
     } else {
-      this.expanded.update((v) => !v);
+      this.expanded.update(v => !v);
     }
 
     window.scroll({ top: 0, behavior: 'smooth' });
@@ -88,7 +88,7 @@ export class NavItemComponent {
 
     const check = (list: NavItem[]): boolean => {
       return list.some(
-        (child) =>
+        child =>
           (child.route && this.router.isActive(child.route, true)) ||
           (child.children && check(child.children))
       );

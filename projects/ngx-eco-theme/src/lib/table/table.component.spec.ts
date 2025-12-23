@@ -3,18 +3,15 @@ import { TableComponent } from './table.component';
 import { FormsModule } from '@angular/forms';
 
 describe('TableComponent', () => {
-  let component: TableComponent<any>;
-  let fixture: ComponentFixture<TableComponent<any>>;
+  let component: TableComponent<unknown>;
+  let fixture: ComponentFixture<TableComponent<unknown>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        TableComponent,
-        FormsModule
-      ]
+      imports: [TableComponent, FormsModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TableComponent<any>);
+    fixture = TestBed.createComponent(TableComponent<unknown>);
     component = fixture.componentInstance;
 
     fixture.detectChanges();

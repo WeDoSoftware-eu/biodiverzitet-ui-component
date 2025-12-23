@@ -32,19 +32,14 @@ import { IconComponent } from '../icon/icon.component';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent<T> {
-  private i18n =
-    inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+  private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
 
   config = input.required<TableConfig<T>>();
   data = input<T[]>([]);
 
-  readonly displayedColumns = computed(() =>
-    this.config().columns.map((col) => col.key)
-  );
+  readonly displayedColumns = computed(() => this.config().columns.map(col => col.key));
 
-  readonly dataSource = computed(
-    () => new MatTableDataSource<T>(this.data() || [])
-  );
+  readonly dataSource = computed(() => new MatTableDataSource<T>(this.data() || []));
 
   readonly processedData = computed((): ProcessedRow<T>[] => {
     const rows: T[] = this.data() || [];
@@ -55,7 +50,7 @@ export class TableComponent<T> {
         _original: row,
       } as ProcessedRow<T>;
 
-      columns.forEach((column) => {
+      columns.forEach(column => {
         const value = this.getColumnValue(row, column);
 
         processedRow[column.key] = {
@@ -63,23 +58,19 @@ export class TableComponent<T> {
           badge:
             column.type === 'badge'
               ? {
-                  class: column.badgeConfig?.getClass
-                    ? column.badgeConfig.getClass(row)
-                    : '',
-                  value: column.badgeConfig?.getValue
-                    ? column.badgeConfig.getValue(row)
-                    : value,
+                  class: column.badgeConfig?.getClass ? column.badgeConfig.getClass(row) : '',
+                  value: column.badgeConfig?.getValue ? column.badgeConfig.getValue(row) : value,
                 }
               : null,
 
           actions:
             column.type === 'actions' && column.actions
               ? column.actions.map(
-                  (action) =>
+                  action =>
                     ({
                       ...action,
                       visible: action.show ? action.show(row) : true,
-                    } as ProcessedAction<T>)
+                    }) as ProcessedAction<T>
                 )
               : null,
         } as ProcessedCellValue<T>;
@@ -89,18 +80,22 @@ export class TableComponent<T> {
     });
   });
 
-  private getColumnValue(row: T, column: TableColumn<T>): any {
+  private getColumnValue(row: T, column: TableColumn<T>): unknown {
     const keys = column.key.split('.');
-    let value: any = row;
+    let value: unknown = row;
 
     for (const key of keys) {
-      value = value?.[key];
+      if (typeof value === 'object' && value !== null && key in value) {
+        value = (value as Record<string, unknown>)[key];
+      } else {
+        return undefined;
+      }
     }
 
     return value;
   }
 
-  onActionClick(row: any, action: TableAction<T>, event: Event): void {
+  onActionClick(row: { _original: T }, action: TableAction<T>, event: Event): void {
     event.stopPropagation();
     action.onClick(row._original);
   }

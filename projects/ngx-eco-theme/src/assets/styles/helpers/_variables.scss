@@ -1,9 +1,9 @@
-@use "functions" as *;
+@use 'functions' as *;
 
 // Utility Map
 
 $utilities: () !default;
-$unit: "px";
+$unit: 'px';
 
 // Spacing
 

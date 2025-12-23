@@ -1,18 +1,18 @@
-@use "../../../assets/styles/variables" as *;
+@use '../../../assets/styles/variables' as *;
 
 .search-container {
-    padding: 16px 0;
+  padding: 16px 0;
 
+  .search-field {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container {
     .search-field {
-      width: 100%;
-      max-width: 400px;
+      max-width: 100%;
     }
   }
-
-  @media (max-width: 768px) {
-    .search-container {
-      .search-field {
-        max-width: 100%;
-      }
-    }
-  }
+}

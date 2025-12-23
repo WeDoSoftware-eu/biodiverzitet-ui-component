@@ -6,7 +6,7 @@ export interface EcoThemeI18n {
     ofLabel: string;
     displayedLabel: string;
     noData: string;
-    lastUpdateTitle:string;
+    lastUpdateTitle: string;
     firstPage: string;
     previousPage: string;
     nextPage: string;
@@ -32,14 +32,14 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     lastUpdateTitle: 'Последње ажурирање',
     firstPage: 'Прва страна',
     previousPage: 'Претходна страна',
-    nextPage: "Следећа страна",
-    lastPage: "Последња страна",
-    page: "Страна: ",
-    goTo: "Иди на",
-    side: "страну"
+    nextPage: 'Следећа страна',
+    lastPage: 'Последња страна',
+    page: 'Страна: ',
+    goTo: 'Иди на',
+    side: 'страну',
   },
   table: {
     noData: 'Нема података за приказ',
-    loading: 'Учитавање...'
-  }
+    loading: 'Учитавање...',
+  },
 };

@@ -30,7 +30,7 @@ export class SidebarComponent {
   private routing = inject(RoutingService);
 
   toggleSection(sectionName: string): void {
-    this.expandedSections.update((sections) => {
+    this.expandedSections.update(sections => {
       const newSections = new Set(sections);
       if (newSections.has(sectionName)) {
         newSections.delete(sectionName);

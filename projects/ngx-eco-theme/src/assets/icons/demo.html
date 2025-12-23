@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Font Demo &amp; Reference</title>
@@ -30,8 +30,11 @@
         text-decoration-skip-ink: none;
         text-decoration-color: var(--color, var(--blue2));
         text-underline-offset: 4px;
-        transition: text-decoration 0.3s, text-decoration-color 0.5s,
-          text-underline-offset 0.3s, color 0.2s;
+        transition:
+          text-decoration 0.3s,
+          text-decoration-color 0.5s,
+          text-underline-offset 0.3s,
+          color 0.2s;
       }
       .decoratedLinks a:hover {
         --color: var(--off5);
@@ -54,7 +57,11 @@
         color-scheme: light;
         background: var(--on2);
         color: var(--fg);
-        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          sans-serif;
         font-size: 16px;
         line-height: 1.5;
         --bg: #eaeaea;
@@ -118,8 +125,14 @@
       .monospace,
       code,
       pre {
-        font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
-          Liberation Mono, monospace;
+        font-family:
+          ui-monospace,
+          SFMono-Regular,
+          SF Mono,
+          Menlo,
+          Consolas,
+          Liberation Mono,
+          monospace;
       }
       body {
         margin: 0;
@@ -335,13 +348,9 @@
       }
       ._demo_copied::after {
         align-items: center;
-        background: linear-gradient(
-          to left,
-          var(--background, var(--on2)) 8ch,
-          transparent
-        );
+        background: linear-gradient(to left, var(--background, var(--on2)) 8ch, transparent);
         color: var(--color, var(--green));
-        content: "✓ Copied";
+        content: '✓ Copied';
         display: flex;
         font-size: max(1rem, 0.5em);
         height: 100%;
@@ -377,32 +386,26 @@
     <details open>
       <summary>Setup</summary>
       <p>
-        The generated <code>style.css</code> defines the font face
-        <em>EcoIcons</em>.
+        The generated <code>style.css</code> defines the font face <em>EcoIcons</em>.
         <br />
-        You can either copy the contents of <code>style.css</code> to your own
-        CSS or link to it in your HTML like so:
+        You can either copy the contents of <code>style.css</code> to your own CSS or link to it in
+        your HTML like so:
       </p>
       <div class="rltv">
         <pre>&lt;link rel="stylesheet" href="style.css"&gt;</pre>
         <button class="copy">Copy</button>
       </div>
       <p>
-        This code assumes <code>style.css</code> is located in the same
-        directory as the HTML file linking to it. The second line is for
-        <a
-          href="https://highperformancewebfonts.com/read/on-the-origins-of-cross"
-        >
+        This code assumes <code>style.css</code> is located in the same directory as the HTML file
+        linking to it. The second line is for
+        <a href="https://highperformancewebfonts.com/read/on-the-origins-of-cross">
           enabling early font downloads</a
         >.
       </p>
     </details>
     <details open>
       <summary>Inserting &amp; Customizing</summary>
-      <p>
-        Use the CSS class <code>icon</code> to apply the generated font to any
-        text:
-      </p>
+      <p>Use the CSS class <code>icon</code> to apply the generated font to any text:</p>
       <div data-lang="HTML">
         <pre>&lt;span <em>class="icon"</em>&gt;&#xf042;&lt;/span&gt;</pre>
       </div>
@@ -418,9 +421,7 @@
 </pre>
       </div>
       <div data-lang="HTML">
-        <pre>
-&lt;span class="icon <em>my-size</em>"&gt;&#xf042;&lt;/span&gt;</pre
-        >
+        <pre>&lt;span class="icon <em>my-size</em>"&gt;&#xf031;&lt;/span&gt;</pre>
       </div>
     </details>
     <details open>
@@ -443,8 +444,8 @@
           <input id="size" type="number" value="32" min="8" max="99999" />
         </label>
         <p>
-          <strong>Note</strong>: Size is not reflected in the code that gets
-          copied. Use <code>font-size</code> in CSS to change the size.
+          <strong>Note</strong>: Size is not reflected in the code that gets copied. Use
+          <code>font-size</code> in CSS to change the size.
         </p>
       </div>
       <div class="_demo_glyphs">
@@ -454,81 +455,41 @@
         <div class="_demo_glyph">
           <span class="eco-icon-solving-cases"></span> eco-icon-solving-cases
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-codetables"></span> eco-icon-codetables
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-file-paper"></span> eco-icon-file-paper
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-add-people"></span> eco-icon-add-people
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-codetables"></span> eco-icon-codetables</div>
+        <div class="_demo_glyph"><span class="eco-icon-file-paper"></span> eco-icon-file-paper</div>
+        <div class="_demo_glyph"><span class="eco-icon-add-people"></span> eco-icon-add-people</div>
         <div class="_demo_glyph">
           <span class="eco-icon-in-progress"></span> eco-icon-in-progress
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-key"></span> eco-icon-key
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-line-chart"></span> eco-icon-line-chart
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-link"></span> eco-icon-link
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-starts"></span> eco-icon-starts
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-envelope"></span> eco-icon-envelope
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-key"></span> eco-icon-key</div>
+        <div class="_demo_glyph"><span class="eco-icon-line-chart"></span> eco-icon-line-chart</div>
+        <div class="_demo_glyph"><span class="eco-icon-link"></span> eco-icon-link</div>
+        <div class="_demo_glyph"><span class="eco-icon-starts"></span> eco-icon-starts</div>
+        <div class="_demo_glyph"><span class="eco-icon-envelope"></span> eco-icon-envelope</div>
         <div class="_demo_glyph">
           <span class="eco-icon-in-preparation"></span> eco-icon-in-preparation
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-m2"></span> eco-icon-m2
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-guard"></span> eco-icon-guard
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-m2"></span> eco-icon-m2</div>
+        <div class="_demo_glyph"><span class="eco-icon-guard"></span> eco-icon-guard</div>
         <div class="_demo_glyph">
           <span class="eco-icon-playlist-add"></span> eco-icon-playlist-add
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-cancel"></span> eco-icon-cancel
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-upload"></span> eco-icon-upload
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-circle"></span> eco-icon-circle
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-declined"></span> eco-icon-declined
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-next-page"></span> eco-icon-next-page
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-last-page"></span> eco-icon-last-page
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-cancel"></span> eco-icon-cancel</div>
+        <div class="_demo_glyph"><span class="eco-icon-upload"></span> eco-icon-upload</div>
+        <div class="_demo_glyph"><span class="eco-icon-circle"></span> eco-icon-circle</div>
+        <div class="_demo_glyph"><span class="eco-icon-declined"></span> eco-icon-declined</div>
+        <div class="_demo_glyph"><span class="eco-icon-next-page"></span> eco-icon-next-page</div>
+        <div class="_demo_glyph"><span class="eco-icon-last-page"></span> eco-icon-last-page</div>
         <div class="_demo_glyph">
           <span class="eco-icon-previous-page"></span> eco-icon-previous-page
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-first-page"></span> eco-icon-first-page
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-first-page"></span> eco-icon-first-page</div>
         <div class="_demo_glyph">
           <span class="eco-icon-task-complete"></span> eco-icon-task-complete
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-event"></span> eco-icon-event
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-search"></span> eco-icon-search
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-ruler"></span> eco-icon-ruler
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-event"></span> eco-icon-event</div>
+        <div class="_demo_glyph"><span class="eco-icon-search"></span> eco-icon-search</div>
+        <div class="_demo_glyph"><span class="eco-icon-ruler"></span> eco-icon-ruler</div>
         <div class="_demo_glyph">
           <span class="eco-icon-rounded-info"></span> eco-icon-rounded-info
         </div>
@@ -540,90 +501,44 @@
           <span class="eco-icon-rounded-arrow-up"></span>
           eco-icon-rounded-arrow-up
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-pulse"></span> eco-icon-pulse
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-pin"></span> eco-icon-pin
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-person"></span> eco-icon-person
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-pulse"></span> eco-icon-pulse</div>
+        <div class="_demo_glyph"><span class="eco-icon-pin"></span> eco-icon-pin</div>
+        <div class="_demo_glyph"><span class="eco-icon-person"></span> eco-icon-person</div>
         <div class="_demo_glyph">
           <span class="eco-icon-notifications"></span> eco-icon-notifications
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-layers"></span> eco-icon-layers
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-hour-arrow"></span> eco-icon-hour-arrow
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-hour"></span> eco-icon-hour
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-gps"></span> eco-icon-gps
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-layers"></span> eco-icon-layers</div>
+        <div class="_demo_glyph"><span class="eco-icon-hour-arrow"></span> eco-icon-hour-arrow</div>
+        <div class="_demo_glyph"><span class="eco-icon-hour"></span> eco-icon-hour</div>
+        <div class="_demo_glyph"><span class="eco-icon-gps"></span> eco-icon-gps</div>
         <div class="_demo_glyph">
           <span class="eco-icon-full-screen"></span> eco-icon-full-screen
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-file"></span> eco-icon-file
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-eye"></span> eco-icon-eye
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-export"></span> eco-icon-export
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-file"></span> eco-icon-file</div>
+        <div class="_demo_glyph"><span class="eco-icon-eye"></span> eco-icon-eye</div>
+        <div class="_demo_glyph"><span class="eco-icon-export"></span> eco-icon-export</div>
         <div class="_demo_glyph">
           <span class="eco-icon-edit-outline"></span> eco-icon-edit-outline
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-edit"></span> eco-icon-edit
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-delete"></span> eco-icon-delete
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-data"></span> eco-icon-data
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-cycle"></span> eco-icon-cycle
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-correct"></span> eco-icon-correct
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-columns"></span> eco-icon-columns
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-calendar"></span> eco-icon-calendar
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-bar-chart"></span> eco-icon-bar-chart
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-arrow-down"></span> eco-icon-arrow-down
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-edit"></span> eco-icon-edit</div>
+        <div class="_demo_glyph"><span class="eco-icon-delete"></span> eco-icon-delete</div>
+        <div class="_demo_glyph"><span class="eco-icon-data"></span> eco-icon-data</div>
+        <div class="_demo_glyph"><span class="eco-icon-cycle"></span> eco-icon-cycle</div>
+        <div class="_demo_glyph"><span class="eco-icon-correct"></span> eco-icon-correct</div>
+        <div class="_demo_glyph"><span class="eco-icon-columns"></span> eco-icon-columns</div>
+        <div class="_demo_glyph"><span class="eco-icon-calendar"></span> eco-icon-calendar</div>
+        <div class="_demo_glyph"><span class="eco-icon-bar-chart"></span> eco-icon-bar-chart</div>
+        <div class="_demo_glyph"><span class="eco-icon-arrow-down"></span> eco-icon-arrow-down</div>
         <div class="_demo_glyph">
           <span class="eco-icon-access-alarm"></span> eco-icon-access-alarm
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-overlay"></span> eco-icon-overlay
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-zoom-out"></span> eco-icon-zoom-out
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-zoom-in"></span> eco-icon-zoom-in
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-overlay"></span> eco-icon-overlay</div>
+        <div class="_demo_glyph"><span class="eco-icon-zoom-out"></span> eco-icon-zoom-out</div>
+        <div class="_demo_glyph"><span class="eco-icon-zoom-in"></span> eco-icon-zoom-in</div>
         <div class="_demo_glyph">
           <span class="eco-icon-warrning-sign"></span> eco-icon-warrning-sign
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-warrning"></span> eco-icon-warrning
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-warrning"></span> eco-icon-warrning</div>
         <div class="_demo_glyph">
           <span class="eco-icon-video-camera"></span> eco-icon-video-camera
         </div>
@@ -634,24 +549,16 @@
           <span class="eco-icon-unknown-document"></span>
           eco-icon-unknown-document
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-tune"></span> eco-icon-tune
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-tune"></span> eco-icon-tune</div>
         <div class="_demo_glyph">
           <span class="eco-icon-trending-up"></span> eco-icon-trending-up
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-tree"></span> eco-icon-tree
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-tree"></span> eco-icon-tree</div>
         <div class="_demo_glyph">
           <span class="eco-icon-text-snippet"></span> eco-icon-text-snippet
         </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-storage"></span> eco-icon-storage
-        </div>
-        <div class="_demo_glyph">
-          <span class="eco-icon-servers"></span> eco-icon-servers
-        </div>
+        <div class="_demo_glyph"><span class="eco-icon-storage"></span> eco-icon-storage</div>
+        <div class="_demo_glyph"><span class="eco-icon-servers"></span> eco-icon-servers</div>
       </div>
 
       <label id="test">
@@ -660,60 +567,58 @@
       </label>
     </details>
     <footer>
-      <p class="mvn decoratedLinks">
-        Generated by <a href="https://icomoon.io">IcoMoon</a>
-      </p>
+      <p class="mvn decoratedLinks">Generated by <a href="https://icomoon.io">IcoMoon</a></p>
     </footer>
     <!-- The following script is not required for using generated glyphs. -->
     <script>
       let tid, tid2;
-      const wrapper = document.querySelector("._demo_glyphs");
-      const copiedClass = "_demo_copied";
-      const glyphClass = "_demo_glyph";
+      const wrapper = document.querySelector('._demo_glyphs');
+      const copiedClass = '_demo_copied';
+      const glyphClass = '_demo_glyph';
       const ligatures = {};
-      document.getElementById("copy_settings").removeAttribute("style");
-      document.querySelectorAll("." + glyphClass).forEach(function (x) {
+      document.getElementById('copy_settings').removeAttribute('style');
+      document.querySelectorAll('.' + glyphClass).forEach(function (x) {
         try {
-          x.setAttribute("title", x.childNodes[1].textContent.trim());
+          x.setAttribute('title', x.childNodes[1].textContent.trim());
         } catch (ignore) {}
-        x.outerHTML = x.outerHTML.replace(/<(\/?)div/, "<$1button");
+        x.outerHTML = x.outerHTML.replace(/<(\/?)div/, '<$1button');
       });
       document.body.addEventListener(
-        "click",
+        'click',
         function (e) {
           let className;
           let copySubject;
           let target = e.target;
           let text;
-          if (target.classList.contains("copy")) {
-            let pre = target.parentElement.querySelector("pre");
+          if (target.classList.contains('copy')) {
+            let pre = target.parentElement.querySelector('pre');
             navigator.clipboard.writeText(pre.innerText).then(function () {
               target.disabled = true;
-              target.textContent = "✓ Copied";
+              target.textContent = '✓ Copied';
               clearTimeout(tid2);
               tid2 = setTimeout(function () {
                 target.disabled = false;
-                target.textContent = "Copy";
+                target.textContent = 'Copy';
               }, 1000);
             });
           } else if (target.classList.contains(glyphClass)) {
             try {
-              copySubject = document.getElementById("copy_subject").value;
-              if (copySubject === "html") {
+              copySubject = document.getElementById('copy_subject').value;
+              if (copySubject === 'html') {
                 text = target.children[0].outerHTML;
-              } else if (copySubject === "html_old") {
+              } else if (copySubject === 'html_old') {
                 className = target.children[0].className;
                 text = `<span class="${className}"></span>`;
               } else {
                 text = target.children[0].textContent;
-                if (copySubject === "code") {
+                if (copySubject === 'code') {
                   text = text.codePointAt(0).toString(16);
-                } else if (copySubject === "ligatures") {
-                  text = ligatures[text.codePointAt(0)] || "";
+                } else if (copySubject === 'ligatures') {
+                  text = ligatures[text.codePointAt(0)] || '';
                 }
               }
               navigator.clipboard.writeText(text).then(function () {
-                const xs = document.querySelectorAll("." + copiedClass);
+                const xs = document.querySelectorAll('.' + copiedClass);
                 xs.forEach(function (x) {
                   x.classList.remove(copiedClass);
                 });
@@ -728,8 +633,8 @@
         },
         false
       );
-      document.getElementById("size").addEventListener(
-        "change",
+      document.getElementById('size').addEventListener(
+        'change',
         function (e) {
           let size = Number(e.target.value);
           if (size < 8) {
@@ -737,7 +642,7 @@
             e.target.value = size;
           }
           if (!Number.isNaN(size)) {
-            document.body.style.setProperty("--glyph-size", size + "px");
+            document.body.style.setProperty('--glyph-size', size + 'px');
           }
         },
         false

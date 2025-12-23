@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit, OnDestroy } from '@angular/core';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,7 +34,7 @@ interface MyItem {
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
 })
-export class ThemeTestComponent {
+export class ThemeTestComponent implements OnInit, OnDestroy {
   tableData = signal<MyItem[]>([]);
   totalItems = signal<number>(0);
   tableConfig = signal<TableConfig<MyItem>>({ columns: [], loading: false });
@@ -59,8 +59,8 @@ export class ThemeTestComponent {
           type: 'badge',
           align: 'center',
           badgeConfig: {
-            getValue: (row) => row.status,
-            getClass: (row) => `${row.status}`,
+            getValue: row => row.status,
+            getClass: row => `${row.status}`,
           },
         },
         {
@@ -69,20 +69,16 @@ export class ThemeTestComponent {
           type: 'actions',
           width: '10%',
           align: 'center',
-          actions: [
-            { icon: 'edit', onClick: (row) => console.log('Edit', row) },
-          ],
+          actions: [{ icon: 'edit', onClick: row => console.log('Edit', row) }],
         },
       ],
       loading: false,
       emptyMessage: 'Nema rezultata po zadatom upitu.',
     });
 
-    this.queryParams$$
-      .pipe(debounceTime(50), takeUntil(this.destroy$$))
-      .subscribe((event) => {
-        this.loadData(event);
-      });
+    this.queryParams$$.pipe(debounceTime(50), takeUntil(this.destroy$$)).subscribe(event => {
+      this.loadData(event);
+    });
   }
 
   ngOnInit(): void {
@@ -110,22 +106,19 @@ export class ThemeTestComponent {
   }
 
   loadData(event: FilterEvent): void {
-    this.tableConfig.update((config) => ({ ...config, loading: true }));
+    this.tableConfig.update(config => ({ ...config, loading: true }));
 
     // Simulating API call:
     setTimeout(() => {
-      const mockData: MyItem[] = Array.from(
-        { length: event.pageSize },
-        (_, i) => ({
-          id: i + 1 + event.pageIndex * event.pageSize,
-          name: `Stavka ${i + 1 + event.pageIndex * event.pageSize}`,
-          status: ['active', 'inactive'][i % 2] as 'active' | 'inactive',
-        })
-      );
+      const mockData: MyItem[] = Array.from({ length: event.pageSize }, (_, i) => ({
+        id: i + 1 + event.pageIndex * event.pageSize,
+        name: `Stavka ${i + 1 + event.pageIndex * event.pageSize}`,
+        status: ['active', 'inactive'][i % 2] as 'active' | 'inactive',
+      }));
 
       this.tableData.set(mockData);
       this.totalItems.set(100);
-      this.tableConfig.update((config) => ({ ...config, loading: false }));
+      this.tableConfig.update(config => ({ ...config, loading: false }));
     }, 500);
   }
 }
