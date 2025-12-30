@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+@use '../variables' as *;
+
+.mat-mdc-select {
+  @include mat.select-overrides(());
+}
+
+.mat-mdc-select-arrow {
+  svg {
+    display: none;
+  }
+
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+
+  width: 18px !important;
+  height: 14px !important;
+  font-weight: 700;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

@@ -13,6 +13,9 @@
     background-color: $buttons-primary-bg;
     color: $buttons-primary-color;
   }
+  &.primary:hover {
+    color: #0f3e29;
+  }
   &.secondary {
     background-color: $buttons-secondary-bg;
     color: $buttons-secondary-color;

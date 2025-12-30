@@ -9,9 +9,12 @@ export * from './lib/layout/layout.component';
 export * from './lib/table/table.component';
 export * from './lib/table/table-paginator/table-paginator.component';
 export * from './lib/table/table-search/table-search.component';
+export * from './lib/table/table-filter/table-filter.component';
+export * from './lib/table/base-table.component';
 export * from './lib/chip/chip.component';
 export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
+export * from './lib/modal/modal.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';
@@ -20,3 +23,13 @@ export * from './lib/table/table.model';
 /* TOKEN */
 export * from './lib/sidebar/sidebar.token';
 export * from './lib/eco-theme-I18n';
+export * from './lib/modal/modal.token';
+
+/* STORE */
+export * from './lib/table/table-filter/table-filter-store';
+
+/* SERVICES */
+export * from './services/validator.service';
+
+/* SERVICES */
+export * from './pipes/joinByProp.pipe';

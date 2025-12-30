@@ -62,7 +62,7 @@
         </button>
 
         <div class="goto-page-container">
-          <p>{{ i18n.paginator.goTo }}</p>
+          <p class="mat-body-medium">{{ i18n.paginator.goTo }}</p>
           <input
             type="number"
             [(ngModel)]="pageInput"
@@ -70,7 +70,7 @@
             [max]="totalPages()"
             (ngModelChange)="goToPage(pageInput)"
           />
-          <p>{{ i18n.paginator.side }}</p>
+          <p class="mat-body-medium">{{ i18n.paginator.side }}</p>
         </div>
       </div>
 

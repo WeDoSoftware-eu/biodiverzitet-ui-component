@@ -26,21 +26,25 @@
           >
             @if (!column.type || column.type === 'text') {
               @if (column.pipe === 'date') {
-                {{ row[column.key].raw | date: column.pipeFormat || 'dd.MM.yyyy HH:mm' }}
+                {{ row[column.key].raw | date: column.pipeFormat || 'dd-MM-yy HH:mm' }}
               } @else if (column.pipe === 'number') {
                 {{ row[column.key].raw | number: column.pipeFormat || '1.0-2' }}
+              } @else if (column.valuePrepareFunction) {
+                <div [innerHTML]="column.valuePrepareFunction(column.key, row._original)"></div>
               } @else {
                 {{ row[column.key].raw }}
               }
             }
 
             @if (column.type === 'badge') {
-              <eco-chip [status]="row[column.key].badge.class">{{
-                row[column.key].badge.value
-              }}</eco-chip>
+              <eco-chip
+                [status]="row[column.key].badge.class"
+                [icon]="row[column.key].badge.icon"
+                >{{ row[column.key].badge.value }}</eco-chip
+              >
             }
             @if (column.type === 'date') {
-              {{ row[column.key].raw | date: column.pipeFormat || 'dd.MM.yyyy HH:mm' }}
+              {{ row[column.key].raw | date: column.pipeFormat || 'dd-MM-yy HH:mm' }}
             }
             @if (column.type === 'actions') {
               <div class="actions-container">

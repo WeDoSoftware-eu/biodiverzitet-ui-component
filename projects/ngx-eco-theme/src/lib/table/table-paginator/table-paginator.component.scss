@@ -39,7 +39,7 @@
 
       &.active-page {
         background-color: $primary;
-        color: $white !important;
+        color: $white;
       }
 
       &:disabled {

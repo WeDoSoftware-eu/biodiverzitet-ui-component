@@ -1,6 +1,7 @@
 <div class="search-container">
-  <mat-form-field class="search-field">
-    <mat-label>{{ 'Search' }}</mat-label>
-    <input matInput />
+  <mat-form-field class="search-field no-subscription">
+    <mat-label>{{ 'Претрага' }}</mat-label>
+    <input matInput [(ngModel)]="searchText" (ngModelChange)="searchTextChange($event)" />
+    <eco-icon icon="search" matSuffix></eco-icon>
   </mat-form-field>
 </div>

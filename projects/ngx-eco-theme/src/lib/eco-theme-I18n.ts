@@ -19,6 +19,9 @@ export interface EcoThemeI18n {
     noData: string;
     loading: string;
   };
+  tableFilter: {
+    clearFilter: string;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -41,5 +44,8 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   table: {
     noData: 'Нема података за приказ',
     loading: 'Учитавање...',
+  },
+  tableFilter: {
+    clearFilter: 'Поништи филтер',
   },
 };

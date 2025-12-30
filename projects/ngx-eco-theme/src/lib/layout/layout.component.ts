@@ -5,11 +5,19 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'eco-layout',
   standalone: true,
-  imports: [MatDividerModule, RouterModule, HeaderComponent, MatSidenavModule, SidebarComponent],
+  imports: [
+    MatDividerModule,
+    RouterModule,
+    HeaderComponent,
+    MatSidenavModule,
+    SidebarComponent,
+    ButtonComponent,
+  ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })

@@ -1,6 +1,9 @@
 <mat-drawer-container class="layout-container">
   <mat-drawer mode="side" opened class="side-container">
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
+    <eco-button icon="person" buttonClass="secondary">
+      <a routerLink="/admin">Админ панел</a>
+    </eco-button>
   </mat-drawer>
   <mat-drawer-content class="content-container">
     <eco-header [title]="title()" [subtitle]="subtitle()"></eco-header>
