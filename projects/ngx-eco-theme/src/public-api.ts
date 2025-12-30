@@ -30,6 +30,7 @@ export * from './lib/table/table-filter/table-filter-store';
 
 /* SERVICES */
 export * from './services/validator.service';
+export * from './lib/snackbar/snackbar.service';
 
-/* SERVICES */
+/* PIPES */
 export * from './pipes/joinByProp.pipe';

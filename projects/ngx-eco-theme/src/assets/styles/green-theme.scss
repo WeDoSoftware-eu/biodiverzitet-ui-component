@@ -276,3 +276,11 @@ html {
     display: inline-block;
   }
 }
+
+.mat-mdc-snack-bar-container {
+  .mat-mdc-snackbar-surface {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+}

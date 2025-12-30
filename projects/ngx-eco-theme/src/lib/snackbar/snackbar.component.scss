@@ -1,0 +1,79 @@
+@use '../../assets/styles/variables' as *;
+
+.snackbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $snackbar-gap;
+  padding: $snackbar-padding;
+  border-radius: $snackbar-border-radius;
+  box-shadow: $snackbar-box-sadow;
+  border: $snackbar-border;
+}
+
+.snackbar-content {
+  display: flex;
+  align-items: center;
+  place-content: space-between;
+  gap: $snackbar-content-gap;
+  flex: 1;
+}
+
+.snackbar-icon {
+  font-size: $snackbar-icon-size;
+}
+
+/* Success variant */
+.snackbar-success {
+  background: $snackbar-success-bg;
+  color: $white;
+
+  .snackbar-action-button {
+    color: $white;
+  }
+
+  .snackbar-close-button {
+    color: $white;
+  }
+}
+
+/* Warning variant */
+.snackbar-warning {
+  background-color: $warning;
+  color: $text-color;
+
+  .snackbar-warning .snackbar-action-button {
+    color: $text-color;
+  }
+
+  .snackbar-warning .snackbar-close-button {
+    color: $text-color;
+  }
+}
+
+/* Info  */
+.snackbar-info {
+  background-color: $accent;
+  color: $white;
+
+  .snackbar-action-button {
+    color: $white;
+  }
+
+  .snackbar-close-button {
+    color: $white;
+  }
+}
+/* Error */
+.snackbar-info {
+  background-color: $error;
+  color: $white;
+
+  .snackbar-action-button {
+    color: $white;
+  }
+
+  .snackbar-close-button {
+    color: $white;
+  }
+}

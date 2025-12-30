@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@use '../variables' as *;
+
+:root {
+  @include mat.menu-overrides(
+    (
+      container-shape: $white,
+      divider-color: red,
+      container-color: $white,
+      item-hover-state-layer-color: $white,
+    )
+  );
+}

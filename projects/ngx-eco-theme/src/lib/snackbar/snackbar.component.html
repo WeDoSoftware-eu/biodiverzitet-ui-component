@@ -1,0 +1,6 @@
+<div class="snackbar-container" [ngClass]="'snackbar-' + data.type">
+  <div class="snackbar-content">
+    <span class="snackbar-message">{{ data.message }}</span>
+    <eco-icon class="snackbar-icon" [icon]="getIcon()"></eco-icon>
+  </div>
+</div>

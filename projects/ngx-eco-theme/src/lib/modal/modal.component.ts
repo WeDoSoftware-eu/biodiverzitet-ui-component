@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
-import { MODAL_DATA, MODAL_MODE } from './modal.token';
+import { MODAL_DATA, MODAL_MODE, MODAL_STORE } from './modal.token';
 import { IconComponent } from '../icon/icon.component';
 import { ButtonComponent } from '../button/button.component';
 
@@ -24,6 +24,7 @@ export interface ModalData<T extends ModalFormComponent> {
   mode: ModalMode;
   payload?: unknown;
   data: T;
+  store: unknown;
 }
 
 export interface ModalFormComponent {
@@ -50,6 +51,7 @@ export class ModalComponent implements AfterViewInit {
     providers: [
       { provide: MODAL_MODE, useValue: this.data.mode },
       { provide: MODAL_DATA, useValue: this.data.data },
+      { provide: MODAL_STORE, useValue: this.data.store },
     ],
     parent: inject(Injector),
   });

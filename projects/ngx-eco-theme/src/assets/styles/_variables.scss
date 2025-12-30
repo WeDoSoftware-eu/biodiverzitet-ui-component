@@ -119,3 +119,15 @@ $buttons-tertiary-color: $text-button-colors;
 $buttons-tertiary-bg: $white;
 $buttons-tertiary-border: 1px solid #d8d8d8;
 $buttons-font-size: 18px;
+//Snackbar
+$snackbar-success-bg: linear-gradient(263.31deg, #059856 -2.85%, #22cf81 118.36%);
+$snackbar-icon-size: 30px;
+$snackbar-box-sadow:
+  0 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0 6px 10px 0 rgba(0, 0, 0, 0.14),
+  0 1px 18px 0 rgba(0, 0, 0, 0.12);
+$snackbar-padding: 8px 8px 8px 16px;
+$snackbar-gap: 16px;
+$snackbar-content-gap: 12px;
+$snackbar-border-radius: 6px;
+$snackbar-border: 1px solid $white;
