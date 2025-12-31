@@ -14,7 +14,8 @@
     "publish": "npm publish",
     "test": "ng test ngx-eco-theme --watch=false",
     "test:ci": "ng test ngx-eco-theme --watch=false --browsers=ChromeHeadless --code-coverage && npm run generate-coverage-badge",
-    "generate-coverage-badge": "coverage-badges --output ../../coverage/ngx-eco-theme/coverage-badge.svg --source ../../coverage/ngx-eco-theme/coverage-final.json --label \"ngx-eco-theme coverage\""
+    "generate-coverage-badge": "coverage-badges --output ../../coverage/ngx-eco-theme/coverage-badge.svg --source ../../coverage/ngx-eco-theme/coverage-final.json --label \"ngx-eco-theme coverage\"",
+    "version-patch": "npm version patch"
   },
   "peerDependencies": {
     "@angular/common": "^18.2.14",
