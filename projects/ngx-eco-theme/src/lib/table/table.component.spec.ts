@@ -1,18 +1,45 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TableComponent } from './table.component';
 import { FormsModule } from '@angular/forms';
+import { ComponentRef } from '@angular/core';
+import { TableConfig } from './table.model';
+
+interface TestModel {
+  id: number,
+  name: string
+}
 
 describe('TableComponent', () => {
-  let component: TableComponent<unknown>;
-  let fixture: ComponentFixture<TableComponent<unknown>>;
+  let component: TableComponent<TestModel>;
+  let componentRef: ComponentRef<TableComponent<TestModel>>;
+  let fixture: ComponentFixture<TableComponent<TestModel>>;
+  let config: TableConfig<TestModel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TableComponent, FormsModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TableComponent<unknown>);
+    fixture = TestBed.createComponent(TableComponent<TestModel>);
     component = fixture.componentInstance;
+    componentRef = fixture.componentRef;
+
+    config = {
+      loading: false,
+      emptyMessage: 'no data',
+      columns: [
+        {
+          key: 'id',
+          label: 'ID'
+        },
+        {
+          key: 'name',
+          label: 'Name'
+        }
+      ]
+    };
+
+    componentRef.setInput('config', config);
 
     fixture.detectChanges();
   });

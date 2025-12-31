@@ -11,5 +11,5 @@ import { ThemeTestComponent } from '../../../ngx-eco-theme/src/public-api';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'eco-theme-sample';
+  title = 'Testing theme';
 }

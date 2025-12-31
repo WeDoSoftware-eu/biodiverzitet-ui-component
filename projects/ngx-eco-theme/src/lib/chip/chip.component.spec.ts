@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { ComponentRef } from '@angular/core';
 import { ChipComponent } from './chip.component';
 
-describe('HeaderComponent', () => {
+describe('ChipComponent', () => {
   let component: ChipComponent;
+  let componentRef: ComponentRef<ChipComponent>;
   let fixture: ComponentFixture<ChipComponent>;
 
   beforeEach(async () => {
@@ -13,6 +15,8 @@ describe('HeaderComponent', () => {
 
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
+    componentRef = fixture.componentRef;
+    componentRef.setInput('status', 'active');
     fixture.detectChanges();
   });
 
