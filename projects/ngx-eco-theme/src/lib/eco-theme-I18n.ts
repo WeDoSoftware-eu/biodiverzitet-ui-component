@@ -22,6 +22,9 @@ export interface EcoThemeI18n {
   tableFilter: {
     clearFilter: string;
   };
+  sideBar: {
+    adminPanel: string;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -47,5 +50,8 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   },
   tableFilter: {
     clearFilter: 'Поништи филтер',
+  },
+  sideBar: {
+    adminPanel: 'Админ панел',
   },
 };
