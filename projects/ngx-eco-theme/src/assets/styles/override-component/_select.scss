@@ -22,3 +22,8 @@
   background-position: center;
   background-size: contain;
 }
+.mat-mdc-form-field.mat-form-field-appearance-fill {
+  .mat-mdc-select-arrow-wrapper {
+    transform: translateY(0px);
+  }
+}
