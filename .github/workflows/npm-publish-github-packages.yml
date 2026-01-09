@@ -23,7 +23,7 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: |
-          cd projects\ngx-eco-theme
+          cd projects/ngx-eco-theme
           npm run test:ci
 
   publish-gpr:
@@ -41,7 +41,7 @@ jobs:
       - run: npm ci
       - run: npx ng build ngx-eco-theme
       - run: |
-          cd projects\ngx-eco-theme
+          cd projects/ngx-eco-theme
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
