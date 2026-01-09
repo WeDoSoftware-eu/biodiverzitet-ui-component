@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { ThemeTestComponent } from '../../../ngx-eco-theme/src/public-api';
 
 @Component({
-  selector: 'eco-root',
+  selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, ThemeTestComponent],
   templateUrl: './app.component.html',
