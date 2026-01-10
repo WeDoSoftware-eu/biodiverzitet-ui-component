@@ -19,6 +19,8 @@ export * from './lib/gis/location-button/location-button.component';
 export * from './lib/gis/map-controls/map-controls.component';
 export * from './lib/gis/measure-button/measure-button.component';
 export * from './lib/gis/search/search.component';
+export * from './lib/gis/legend-button/legend-button.component';
+export * from './lib/gis/download-button/download-button.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';

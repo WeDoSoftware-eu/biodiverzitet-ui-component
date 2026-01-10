@@ -16,7 +16,7 @@ export class MapControlsComponent {
   zoomIn = output<void>();
   zoomOut = output<void>();
   fullscreen = output<void>();
-  infoClick = output<void>();
+  homeViewClick = output<void>();
 
   onZoomIn(): void {
     this.zoomIn.emit();
@@ -30,7 +30,7 @@ export class MapControlsComponent {
     this.fullscreen.emit();
   }
 
-  onInfoClick(): void {
-    this.infoClick.emit();
+  onHomeViewClick(): void {
+    this.homeViewClick.emit();
   }
 }
