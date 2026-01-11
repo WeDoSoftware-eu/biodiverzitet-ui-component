@@ -1,0 +1,41 @@
+<div class="layers-selector">
+  <div class="header">
+    <span class="title">{{ title() }}</span>
+    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="layers-list">
+    @for (layer of layers(); track trackByLayerId($index, layer)) {
+      <div class="layer-item">
+        <span class="layer-name">{{ layer.name }}</span>
+        <button
+          class="visibility-toggle"
+          (click)="onLayerToggle(layer)"
+          [attr.aria-label]="layer.visible ? 'Сакриј слој ' + layer.name : 'Прикажи слој ' + layer.name"
+          [attr.aria-pressed]="layer.visible"
+        >
+          @if (layer.visible) {
+            <!-- EyeOptic icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" class="eye-icon">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 3.625c-4.187 0-5.945 3.766-5.945 3.844S2.813 11.312 7 11.312s5.945-3.765 5.945-3.843S11.187 3.625 7 3.625M2.169 5.813L.61 4.252m4.525-.354L4.5 1.843m7.331 3.97l1.559-1.56m-4.525-.355L9.5 1.843"></path>
+                <path d="M5.306 7.081a1.738 1.738 0 1 0 3.388.776a1.738 1.738 0 1 0-3.388-.776"></path>
+              </g>
+            </svg>
+          } @else {
+            <!-- EyeClosed icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="eye-icon">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-.722-3.25M2 8a10.645 10.645 0 0 0 20 0m-2 7l-1.726-2.05M4 15l1.726-2.05M9 18l.722-3.25"></path>
+            </svg>
+          }
+        </button>
+      </div>
+    } @empty {
+      <div class="no-layers">Нема доступних слојева</div>
+    }
+  </div>
+</div>

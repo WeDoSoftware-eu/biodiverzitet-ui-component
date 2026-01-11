@@ -21,10 +21,12 @@ export * from './lib/gis/measure-button/measure-button.component';
 export * from './lib/gis/search/search.component';
 export * from './lib/gis/legend-button/legend-button.component';
 export * from './lib/gis/download-button/download-button.component';
+export * from './lib/gis/layers-selector/layers-selector.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';
 export * from './lib/table/table.model';
+export * from './lib/gis/layers-selector/layer.model';
 
 /* TOKEN */
 export * from './lib/sidebar/sidebar.token';
