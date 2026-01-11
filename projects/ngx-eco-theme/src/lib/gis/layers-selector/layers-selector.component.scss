@@ -1,5 +1,5 @@
 .layers-selector {
-  width: 260px;
+  width: 400px;
   background: #ffffff;
   border-radius: 8px;
   border: 0.67px solid #e5e7eb;
@@ -56,6 +56,58 @@
     max-height: 300px;
     overflow-y: auto;
 
+    .layer-group {
+      display: flex;
+      flex-direction: column;
+
+      .group-header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 8px 8px 0;
+        border-radius: 6px;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: #f0f0f0;
+        }
+
+        .arrow-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 16px;
+          height: 16px;
+          color: #666666;
+          transition: transform 0.2s ease;
+
+          &.expanded {
+            transform: rotate(90deg);
+          }
+        }
+
+        .group-name {
+          font-family: 'Inter', sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          color: #333333;
+        }
+      }
+
+      .group-layers {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-left: 22px;
+
+        .layer-item {
+          padding: 6px 8px 6px 10px;
+        }
+      }
+    }
+
     .layer-item {
       display: flex;
       align-items: center;
@@ -64,6 +116,8 @@
       padding: 8px 8px 8px 10px;
       border-radius: 6px;
       transition: background 0.2s ease;
+      cursor: pointer;
+      user-select: none;
 
       &:hover {
         background: #f8f9fa;
@@ -85,26 +139,10 @@
         width: 28px;
         height: 28px;
         min-width: 28px;
-        border: none;
-        background: transparent;
-        border-radius: 4px;
-        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
-        transition: background 0.2s ease, color 0.2s ease;
         color: #626262;
-
-        &:hover {
-          background: #e9ecef;
-          color: #333333;
-        }
-
-        &:focus {
-          outline: none;
-          box-shadow: 0 0 0 2px rgba(25, 160, 140, 0.25);
-        }
 
         .eye-icon {
           width: 18px;

@@ -9,14 +9,59 @@
   </div>
 
   <div class="layers-list">
+    <!-- Layer Groups -->
+    @for (group of groups(); track group.id) {
+      <div class="layer-group">
+        <!-- Group header sa strelicom -->
+        <div class="group-header" (click)="toggleGroupExpanded(group.id)">
+          <span class="arrow-icon" [class.expanded]="isGroupExpanded(group.id)">
+            <!-- Arrow icon - rotira se kada je otvoreno -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6l-6 6z"/>
+            </svg>
+          </span>
+          <span class="group-name">{{ group.name }}</span>
+        </div>
+
+        <!-- Layers lista - prikazuje se samo ako je expanded -->
+        @if (isGroupExpanded(group.id)) {
+          <div class="group-layers">
+            @for (layer of group.layers; track layer.id) {
+              <div class="layer-item" (click)="onLayerToggle(layer)">
+                <span class="layer-name">{{ layer.name }}</span>
+                <span
+                  class="visibility-toggle"
+                  [attr.aria-label]="layer.visible ? 'Сакриј слој ' + layer.name : 'Прикажи слој ' + layer.name"
+                >
+                  @if (layer.visible) {
+                    <!-- EyeOptic icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" class="eye-icon">
+                      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 3.625c-4.187 0-5.945 3.766-5.945 3.844S2.813 11.312 7 11.312s5.945-3.765 5.945-3.843S11.187 3.625 7 3.625M2.169 5.813L.61 4.252m4.525-.354L4.5 1.843m7.331 3.97l1.559-1.56m-4.525-.355L9.5 1.843"></path>
+                        <path d="M5.306 7.081a1.738 1.738 0 1 0 3.388.776a1.738 1.738 0 1 0-3.388-.776"></path>
+                      </g>
+                    </svg>
+                  } @else {
+                    <!-- EyeClosed icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="eye-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-.722-3.25M2 8a10.645 10.645 0 0 0 20 0m-2 7l-1.726-2.05M4 15l1.726-2.05M9 18l.722-3.25"></path>
+                    </svg>
+                  }
+                </span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Standalone Layers (bez grupe) -->
     @for (layer of layers(); track trackByLayerId($index, layer)) {
-      <div class="layer-item">
+      <div class="layer-item" (click)="onLayerToggle(layer)">
         <span class="layer-name">{{ layer.name }}</span>
-        <button
+        <span
           class="visibility-toggle"
-          (click)="onLayerToggle(layer)"
           [attr.aria-label]="layer.visible ? 'Сакриј слој ' + layer.name : 'Прикажи слој ' + layer.name"
-          [attr.aria-pressed]="layer.visible"
         >
           @if (layer.visible) {
             <!-- EyeOptic icon -->
@@ -32,9 +77,11 @@
               <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-.722-3.25M2 8a10.645 10.645 0 0 0 20 0m-2 7l-1.726-2.05M4 15l1.726-2.05M9 18l.722-3.25"></path>
             </svg>
           }
-        </button>
+        </span>
       </div>
-    } @empty {
+    }
+
+    @if (groups().length === 0 && layers().length === 0) {
       <div class="no-layers">Нема доступних слојева</div>
     }
   </div>
