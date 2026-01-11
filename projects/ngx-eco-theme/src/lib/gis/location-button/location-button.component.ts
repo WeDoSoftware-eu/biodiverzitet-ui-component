@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./location-button.component.scss'],
 })
 export class LocationButtonComponent {
-  @Output() buttonClick = new EventEmitter<void>();
+  isActive = input<boolean>(false);
+  buttonClick = output<void>();
 
   onClick(): void {
     this.buttonClick.emit();

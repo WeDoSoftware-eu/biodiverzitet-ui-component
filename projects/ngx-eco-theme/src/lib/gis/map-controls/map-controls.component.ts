@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,11 +18,18 @@ export class MapControlsComponent {
   fullscreen = output<void>();
   homeViewClick = output<void>();
 
+  // Click feedback states
+  zoomInClicked = signal(false);
+  zoomOutClicked = signal(false);
+  homeViewClicked = signal(false);
+
   onZoomIn(): void {
+    this.triggerClickFeedback(this.zoomInClicked);
     this.zoomIn.emit();
   }
 
   onZoomOut(): void {
+    this.triggerClickFeedback(this.zoomOutClicked);
     this.zoomOut.emit();
   }
 
@@ -31,6 +38,12 @@ export class MapControlsComponent {
   }
 
   onHomeViewClick(): void {
+    this.triggerClickFeedback(this.homeViewClicked);
     this.homeViewClick.emit();
+  }
+
+  private triggerClickFeedback(clickedSignal: ReturnType<typeof signal<boolean>>): void {
+    clickedSignal.set(true);
+    setTimeout(() => clickedSignal.set(false), 1000);
   }
 }

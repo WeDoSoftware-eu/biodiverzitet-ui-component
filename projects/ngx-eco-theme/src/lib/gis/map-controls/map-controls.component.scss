@@ -28,7 +28,7 @@
   border-radius: 8px;
   border: 0.67px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.5s ease, color 0.5s ease, background 0.2s ease;
   color: #626262;
 
   &:hover {
@@ -42,6 +42,12 @@
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+
+  &.clicked {
+    border: 0.8px solid #19a08c;
+    color: #19a08c;
+    transition: border-color 0s, color 0s;
   }
 
   svg {

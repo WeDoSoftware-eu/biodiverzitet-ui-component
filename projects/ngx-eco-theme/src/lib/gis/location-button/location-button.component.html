@@ -1,6 +1,7 @@
-<div class="location-container">
+<div class="location-container" [class.active]="isActive()">
   <button
     class="location-button"
+    [class.active]="isActive()"
     (click)="onClick()"
     aria-label="Pronadi moju lokaciju"
     title="Moja lokacija"
