@@ -6,6 +6,7 @@ import { IconComponent } from '../../icon/icon.component';
 import { TableFilterStoreService } from '../table-filter/table-filter-store';
 import { FormsModule } from '@angular/forms';
 import { debounceInteraction } from '../../../decorators/debounce.decorator';
+import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 
 @Component({
   selector: 'eco-table-search',
@@ -15,6 +16,8 @@ import { debounceInteraction } from '../../../decorators/debounce.decorator';
   styleUrl: './table-search.component.scss',
 })
 export class TableSearchComponent implements OnInit {
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   public storeKey = input.required<string>();
 
   changed = output();

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChipComponent } from './chip.component';
 
-describe('HeaderComponent', () => {
+describe('ChipComponent', () => {
   let component: ChipComponent;
   let fixture: ComponentFixture<ChipComponent>;
 

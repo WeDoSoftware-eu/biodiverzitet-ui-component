@@ -10,6 +10,11 @@
       "input": "src/assets/icons",
       "glob": "**/*.css",
       "output": "styles/icons"
+    },
+    {
+      "input": "src/assets/icons/svg",
+      "glob": "**/*.svg",
+      "output": "styles/icons-svg"
     }
   ]
 }

@@ -8,6 +8,8 @@
 @use 'override-component/button';
 @use 'override-component/modal';
 @use 'override-component/select';
+
+@use 'helpers/index';
 // Note: Color palettes are generated from primary: #19A08C, secondary: #1CC79B, tertiary: #1CC79B, neutral: #FFFFFF
 // Values for tones 40 and 80 have been altered manually to match exact required color
 $_palettes: (
@@ -232,7 +234,6 @@ html {
   --mat-form-field-filled-with-label-container-padding-bottom: 8px;
 }
 .mat-typography {
-  //h1
   .mat-headline-large {
     font-size: var(--mat-sys-headline-large-size);
     font-weight: var(--mat-sys-headline-large-weight);
@@ -240,7 +241,6 @@ html {
     letter-spacing: var(--mat-sys-headline-large-tracking);
   }
 
-  //h2
   .mat-headline-medium,
   .mat-toolbar h2 {
     font-size: var(--mat-sys-headline-medium-size);
@@ -249,7 +249,6 @@ html {
     letter-spacing: var(--mat-sys-headline-medium-tracking);
   }
 
-  //p
   .mat-body-medium {
     font-size: var(--mat-sys-body-medium-size);
     font-weight: var(--mat-sys-body-medium-weight);
@@ -258,7 +257,6 @@ html {
     margin: 0;
   }
 
-  //Span
   .mat-label-medium,
   .mdc-button__label {
     font-size: var(--mat-sys-span-medium-size);

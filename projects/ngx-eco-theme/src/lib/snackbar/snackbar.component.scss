@@ -4,9 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $snackbar-gap;
   padding: $snackbar-padding;
-  border-radius: $snackbar-border-radius;
   box-shadow: $snackbar-box-sadow;
   border: $snackbar-border;
 }
@@ -15,12 +13,7 @@
   display: flex;
   align-items: center;
   place-content: space-between;
-  gap: $snackbar-content-gap;
   flex: 1;
-}
-
-.snackbar-icon {
-  font-size: $snackbar-icon-size;
 }
 
 /* Success variant */

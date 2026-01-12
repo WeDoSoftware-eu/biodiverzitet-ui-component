@@ -22,8 +22,14 @@ export interface EcoThemeI18n {
   tableFilter: {
     clearFilter: string;
   };
+  tableSerach: {
+    search: string;
+  };
   sideBar: {
     adminPanel: string;
+  };
+  modal: {
+    save: string;
   };
 }
 
@@ -51,7 +57,13 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   tableFilter: {
     clearFilter: 'Поништи филтер',
   },
+  tableSerach: {
+    search: 'Претрага',
+  },
   sideBar: {
     adminPanel: 'Админ панел',
+  },
+  modal: {
+    save: 'Сачувај',
   },
 };

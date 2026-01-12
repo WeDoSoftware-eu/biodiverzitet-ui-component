@@ -22,7 +22,6 @@
     overflow: auto;
     padding: 20px;
     border: $border-table;
-    border-radius: $table-border-radius;
 
     &.loading {
       opacity: 0.5;
@@ -56,7 +55,6 @@
       // Actions container
       .actions-container {
         display: flex;
-        gap: 4px;
         align-items: center;
 
         button {

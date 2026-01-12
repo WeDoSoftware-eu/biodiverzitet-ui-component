@@ -9,7 +9,7 @@
 >
   <div class="icon-name-container">
     @if (item()?.children) {
-      <eco-icon [icon]="item()?.iconName!"></eco-icon>
+      <eco-icon class="m-r-10" [icon]="item()?.iconName!"></eco-icon>
     }
     <span class="hide-menu" [class.parentMenu]="item()?.children">{{ item()?.displayName }}</span>
   </div>
@@ -17,7 +17,7 @@
   @if (item()?.children) {
     <div class="d-flex align-items-center gap-4 menu-icon">
       <eco-icon
-        class="expand-icon"
+        class="expand-icon m-r-10"
         [@indicatorRotate]="expanded() ? 'expanded' : 'collapsed'"
         icon="arrow-down"
       ></eco-icon>

@@ -8,10 +8,7 @@ export type FilterValue = string | number | boolean | string[] | number[] | null
 export type BaseFilter = Record<string, FilterValue>;
 
 @Directive()
-export abstract class BaseTableComponent<
-  T,
-  TFilter extends BaseFilter = BaseFilter,
-> implements OnDestroy {
+export abstract class BaseTableDirective<T, TFilter extends BaseFilter> implements OnDestroy {
   protected filterStore = inject(TableFilterStoreService);
 
   tableData = signal<T[]>([]);
@@ -19,19 +16,22 @@ export abstract class BaseTableComponent<
   tableConfig = signal<TableConfig<T>>({ columns: [], loading: false });
 
   currentPageIndex = signal(0);
+
+  // Default page size is 10. Override in subclasses if a different page size is required.
   currentPageSize = signal(10);
 
   protected queryParams$$ = new Subject<FilterEvent>();
-  public destroy$$ = new Subject<void>();
+  protected destroy$$ = new Subject<void>();
 
   protected abstract get filterStoreKey(): string;
+
   protected abstract initTableConfig(): void;
   protected abstract fetchData(filterBody: FilterEvent & TFilter): void;
 
   constructor() {
-    this.queryParams$$.pipe(debounceTime(50), takeUntil(this.destroy$$)).subscribe(event => {
-      this.loadData(event);
-    });
+    this.queryParams$$
+      .pipe(debounceTime(50), takeUntil(this.destroy$$))
+      .subscribe(event => this.loadData(event));
   }
 
   ngOnDestroy(): void {
@@ -56,17 +56,17 @@ export abstract class BaseTableComponent<
   loadData(event: FilterEvent): void {
     this.tableConfig.update(config => ({ ...config, loading: true }));
 
-    const filter = this.filterStore.get<TFilter>(this.filterStoreKey)();
+    const filter = this.filterStore.get(this.filterStoreKey)() as TFilter;
 
-    const filterBody: FilterEvent & TFilter = {
+    const filterBody = {
       ...event,
       ...filter,
-    };
+    } as FilterEvent & TFilter;
 
     this.fetchData(filterBody);
   }
 
-  onFilter(_value?: unknown): void {
+  onFilter(): void {
     this.emitQueryParams();
   }
 

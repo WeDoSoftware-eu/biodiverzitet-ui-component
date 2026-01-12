@@ -4,7 +4,6 @@ mat-chip {
   --mdc-chip-outline-color: transparent;
   --mdc-chip-outline-width: 0;
   font-size: var(--mat-sys-label-small-size);
-  border-radius: $chip-border-radius;
   text-transform: capitalize;
 
   &.active {
@@ -41,9 +40,5 @@ mat-chip {
     eco-icon {
       color: $chip-in-progress-badge-color;
     }
-  }
-
-  eco-icon {
-    margin-right: 5px;
   }
 }

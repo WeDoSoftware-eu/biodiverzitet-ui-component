@@ -4,51 +4,60 @@
       <div class="form-fields">
         @for (f of fields(); track f.key) {
           <div class="form-field-group" mat-menu-item>
-            @if (f.type === 'text') {
-              <mat-form-field class="no-subscription" appearance="outline">
-                <input matInput [placeholder]="f.label" [formControlName]="f.key" />
-              </mat-form-field>
-            }
+            @switch (f.type) {
+              @case ('text') {
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput [placeholder]="f.label" [formControlName]="f.key" />
+                </mat-form-field>
+              }
 
-            @if (f.type === 'select' || f.type === 'multiselect') {
-              <mat-form-field class="no-subscription" appearance="outline">
-                <mat-select
+              @case ('select') {
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <mat-select [placeholder]="f.label" [multiple]="false" [formControlName]="f.key">
+                    @for (o of f.options ?? []; track o.value) {
+                      <mat-option [value]="o.value">{{ o.label }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              }
+
+              @case ('multiselect') {
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <mat-select [placeholder]="f.label" [multiple]="true" [formControlName]="f.key">
+                    @for (o of f.options ?? []; track o.value) {
+                      <mat-option [value]="o.value">{{ o.label }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              }
+
+              @case ('date') {
+                <input
+                  matInput
                   [placeholder]="f.label"
-                  [multiple]="f.type === 'multiselect'"
+                  [matDatepicker]="picker"
                   [formControlName]="f.key"
-                >
-                  @for (o of f.options ?? []; track o.value) {
-                    <mat-option [value]="o.value">{{ o.label }}</mat-option>
-                  }
-                </mat-select>
-              </mat-form-field>
-            }
+                />
+                <mat-datepicker #picker />
+              }
 
-            @if (f.type === 'date') {
-              <input
-                matInput
-                [placeholder]="f.label"
-                [matDatepicker]="picker"
-                [formControlName]="f.key"
-              />
-              <mat-datepicker #picker />
-            }
-
-            @if (f.type === 'checkbox') {
-              <label class="checkbox">
-                <input type="checkbox" [formControlName]="f.key" />
-                {{ f.label }}
-              </label>
+              @case ('checkbox') {
+                <label class="checkbox">
+                  <input type="checkbox" [formControlName]="f.key" />
+                  {{ f.label }}
+                </label>
+              }
             }
           </div>
         }
       </div>
     </form>
+
     @if (hasFilters()) {
       <div class="actions">
-        <eco-button buttonClass="tertiary" icon="cancel" (click)="clear()">{{
-          i18n.tableFilter.clearFilter
-        }}</eco-button>
+        <eco-button buttonClass="tertiary" icon="cancel" (click)="clear()">
+          {{ i18n.tableFilter.clearFilter }}
+        </eco-button>
       </div>
     }
   </div>

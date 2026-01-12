@@ -1,9 +1,7 @@
 @use '../../assets/styles/variables' as *;
 
 .button-container {
-  border-radius: $buttons-border-radius;
   font-weight: var(--mat-sys-headline-large-weight);
-  font-size: var(--mat-sys-body-medium-size);
 
   eco-icon {
     padding: $buttons-padding-icon;
@@ -14,7 +12,7 @@
     color: $buttons-primary-color;
   }
   &.primary:hover {
-    color: #0f3e29;
+    color: $buttons-primary-color-hover;
   }
   &.secondary {
     background-color: $buttons-secondary-bg;

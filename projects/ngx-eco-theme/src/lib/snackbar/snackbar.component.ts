@@ -22,6 +22,7 @@ export class SnackbarComponent {
       success: 'correct',
       warning: 'warrning',
       info: 'rounded-info',
+      erorr: 'cancel',
     };
     return icons[this.data.type] || 'info';
   }

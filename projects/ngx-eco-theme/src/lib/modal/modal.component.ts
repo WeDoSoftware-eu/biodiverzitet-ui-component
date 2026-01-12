@@ -14,6 +14,7 @@ import { FormGroup } from '@angular/forms';
 import { MODAL_DATA, MODAL_MODE, MODAL_STORE } from './modal.token';
 import { IconComponent } from '../icon/icon.component';
 import { ButtonComponent } from '../button/button.component';
+import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 
 export type ModalMode = 'add' | 'edit' | 'view';
 
@@ -40,6 +41,8 @@ export interface ModalFormComponent {
   styleUrl: './modal.component.scss',
 })
 export class ModalComponent implements AfterViewInit {
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   @ViewChild('dynamicComponentContainer', { read: ViewContainerRef })
   container!: ViewContainerRef;
   readonly data = inject<ModalData<ModalFormComponent>>(MAT_DIALOG_DATA);

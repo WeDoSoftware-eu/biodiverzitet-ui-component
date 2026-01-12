@@ -10,7 +10,6 @@ export * from './lib/table/table.component';
 export * from './lib/table/table-paginator/table-paginator.component';
 export * from './lib/table/table-search/table-search.component';
 export * from './lib/table/table-filter/table-filter.component';
-export * from './lib/table/base-table.component';
 export * from './lib/chip/chip.component';
 export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
@@ -34,3 +33,6 @@ export * from './lib/snackbar/snackbar.service';
 
 /* PIPES */
 export * from './pipes/joinByProp.pipe';
+
+/* DIRECTIVES */
+export * from './lib/table/base-table.directive';

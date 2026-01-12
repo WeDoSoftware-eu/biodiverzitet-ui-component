@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableSearchComponent } from './table-search.component';
 
-describe('HeaderComponent', () => {
+describe('ChipComponent', () => {
   let component: TableSearchComponent;
   let fixture: ComponentFixture<TableSearchComponent>;
 

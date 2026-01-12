@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableFilterComponent } from './table-filter.component';
 
-describe('HeaderComponent', () => {
+describe('ChipComponent', () => {
   let component: TableFilterComponent;
   let fixture: ComponentFixture<TableFilterComponent>;
 

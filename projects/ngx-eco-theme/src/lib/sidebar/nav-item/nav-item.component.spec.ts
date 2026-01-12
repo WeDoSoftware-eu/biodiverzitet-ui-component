@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavItemComponent } from './nav-item.component';
 
-describe('HeaderComponent', () => {
+describe('ChipComponent', () => {
   let component: NavItemComponent;
   let fixture: ComponentFixture<NavItemComponent>;
 
