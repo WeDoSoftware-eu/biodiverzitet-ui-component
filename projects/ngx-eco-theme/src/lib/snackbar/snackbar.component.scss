@@ -21,11 +21,7 @@
   background: $snackbar-success-bg;
   color: $white;
 
-  .snackbar-action-button {
-    color: $white;
-  }
-
-  .snackbar-close-button {
+  .snackbar-icon {
     color: $white;
   }
 }
@@ -35,11 +31,7 @@
   background-color: $warning;
   color: $text-color;
 
-  .snackbar-warning .snackbar-action-button {
-    color: $text-color;
-  }
-
-  .snackbar-warning .snackbar-close-button {
+  .snackbar-icon {
     color: $text-color;
   }
 }
@@ -49,24 +41,16 @@
   background-color: $accent;
   color: $white;
 
-  .snackbar-action-button {
-    color: $white;
-  }
-
-  .snackbar-close-button {
+  .snackbar-icon {
     color: $white;
   }
 }
 /* Error */
-.snackbar-info {
+.snackbar-error {
   background-color: $error;
   color: $white;
 
-  .snackbar-action-button {
-    color: $white;
-  }
-
-  .snackbar-close-button {
+  .snackbar-icon {
     color: $white;
   }
 }
