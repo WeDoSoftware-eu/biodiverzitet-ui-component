@@ -10,5 +10,5 @@ export interface MapLayerGroup {
   id: string;
   name: string;
   layers: MapLayer[];
-  expanded: boolean; // false po defaultu - zatvoreno
+  expanded: boolean;  // false po defaultu - zatvoreno
 }
