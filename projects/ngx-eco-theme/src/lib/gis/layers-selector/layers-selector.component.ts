@@ -1,11 +1,12 @@
 import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MapLayer, MapLayerGroup } from './layer.model';
 
 @Component({
   selector: 'eco-layers-selector',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTooltipModule],
   templateUrl: './layers-selector.component.html',
   styleUrls: ['./layers-selector.component.scss'],
 })

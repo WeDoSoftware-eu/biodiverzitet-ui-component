@@ -62,7 +62,7 @@
 
       .group-header {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 6px;
         padding: 8px 8px 8px 0;
         border-radius: 6px;
@@ -80,6 +80,8 @@
           justify-content: center;
           width: 16px;
           height: 16px;
+          min-width: 16px;
+          margin-top: 2px;
           color: #666666;
           transition: transform 0.2s ease;
 
@@ -93,6 +95,7 @@
           font-size: 13px;
           font-weight: 700;
           color: #333333;
+          text-align: left;
         }
       }
 
