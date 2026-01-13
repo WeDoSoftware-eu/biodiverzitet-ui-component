@@ -71,8 +71,12 @@
   background: #333;
   top: -3px;
 
-  &--left { left: -1.5px; }
-  &--right { right: -1.5px; }
+  &--left {
+    left: -1.5px;
+  }
+  &--right {
+    right: -1.5px;
+  }
 }
 
 .scale-label {

@@ -7,7 +7,7 @@ import { MapCoordinates, ScaleBarConfig } from './map-status-bar.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './map-status-bar.component.html',
-  styleUrls: ['./map-status-bar.component.scss']
+  styleUrls: ['./map-status-bar.component.scss'],
 })
 export class MapStatusBarComponent {
   epsgCode = input<string>('EPSG:32634');
@@ -70,7 +70,7 @@ export class MapStatusBarComponent {
       scaleValue: distance,
       unit,
       label: `${distance} ${unit}`,
-      widthPx
+      widthPx,
     };
   }
 }
