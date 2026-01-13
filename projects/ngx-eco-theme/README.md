@@ -20,7 +20,7 @@ Call `version-patch` script to update version, then build the package.
 After building your library, go to the dist folder `cd dist/ngx-eco-theme` and run `npm publish`.
 
 ### Publishing - release
-At time of writing, script `npm-publish-github-packages.yml` fails to publish due to authorization. Possible issue is that `registry-url: https://npm.pkg.github.com/` needs to be `registry-url: https://npm.pkg.github.com/WeDoSoftware-eu`.
+Library can be published when creating new release [here](https://github.com/WeDoSoftware-eu/biodiverzitet-ui-component/releases/new).
 
 ## Running unit tests
 
