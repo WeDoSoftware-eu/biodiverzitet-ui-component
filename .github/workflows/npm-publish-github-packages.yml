@@ -37,11 +37,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: https://npm.pkg.github.com/WeDoSoftware-eu/
+          registry-url: https://npm.pkg.github.com/
+          scope: '@WeDoSoftware-eu'
       - run: npm ci
-      - run: npx ng build ngx-eco-theme
-      - run: |
-          cd projects/ngx-eco-theme
-          npm publish
+      - run: npm publish @WeDoSoftware-eu/ngx-eco-theme
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
