@@ -40,6 +40,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@WeDoSoftware-eu'
       - run: npm ci
-      - run: npm publish @WeDoSoftware-eu/ngx-eco-theme
+      - run: npm publish @WeDoSoftware-eu/ngx-eco-theme --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
