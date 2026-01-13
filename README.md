@@ -1,6 +1,8 @@
 # biodiverzitet-ui-component
 UI components for the Biodiverzitet / Sync Ecology application
 
+![Coverage](./coverage/ngx-eco-theme/coverage-badge.svg)
+
 ## Use of library
 
 ### Styles

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TablePaginatorComponent } from './table-paginator.component';
 
-describe('HeaderComponent', () => {
+describe('TablePaginatorComponent', () => {
   let component: TablePaginatorComponent;
   let fixture: ComponentFixture<TablePaginatorComponent>;
 

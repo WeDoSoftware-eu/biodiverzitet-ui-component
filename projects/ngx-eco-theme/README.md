@@ -11,9 +11,16 @@ Run `ng generate component component-name --project ngx-eco-theme` to generate a
 
 Run `ng build ngx-eco-theme` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Publishing
+## Publishing - locally
+Create personal access token (PAT) with permission `write:packages` from `https://github.com/settings/tokens`.
 
-After building your library with `ng build ngx-eco-theme`, go to the dist folder `cd dist/ngx-eco-theme` and run `npm publish`.
+Login to WeDoSoftware-eu registry by calling `npm login --scope=@WeDoSoftware-eu --auth-type=legacy --registry=https://npm.pkg.github.com/WeDoSoftware-eu`. Use your GitHub name and created PAT as your password.
+
+Call `version-patch` script to update version, then build the package.
+After building your library, go to the dist folder `cd dist/ngx-eco-theme` and run `npm publish`.
+
+### Publishing - release
+At time of writing, script `npm-publish-github-packages.yml` fails to publish due to authorization. Possible issue is that `registry-url: https://npm.pkg.github.com/` needs to be `registry-url: https://npm.pkg.github.com/WeDoSoftware-eu`.
 
 ## Running unit tests
 

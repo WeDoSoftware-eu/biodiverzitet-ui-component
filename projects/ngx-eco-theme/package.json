@@ -1,11 +1,21 @@
 {
-  "name": "ngx-eco-theme",
+  "name": "@WeDoSoftware-eu/ngx-eco-theme",
+  "description": "Shared library for UI components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeDoSoftware-eu/biodiverzitet-ui-component.git"
+  },
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
     "pack": "mkdirp ../../bin && npm pack --pack-destination ../../bin",
-    "link": "cd ../../dist/ngx-eco-theme && npm link"
+    "link": "cd ../../dist/ngx-eco-theme && npm link",
+    "publish": "npm publish",
+    "test": "ng test ngx-eco-theme --watch=false",
+    "test:ci": "ng test ngx-eco-theme --watch=false --browsers=ChromeHeadless --code-coverage && npm run generate-coverage-badge",
+    "generate-coverage-badge": "coverage-badges --output ../../coverage/ngx-eco-theme/coverage-badge.svg --source ../../coverage/ngx-eco-theme/coverage-final.json --label \"ngx-eco-theme coverage\"",
+    "version-patch": "npm version patch"
   },
   "peerDependencies": {
     "@angular/common": "^18.2.14",
