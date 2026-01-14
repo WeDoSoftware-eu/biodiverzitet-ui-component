@@ -21,10 +21,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: |
+      - name: Test and build
+        run: |
+          npm ci
           cd projects/ngx-eco-theme
           npm run test:ci
+          npm run build
 
   publish-gpr:
     needs: build
@@ -38,8 +40,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://npm.pkg.github.com/
-          scope: '@WeDoSoftware-eu'
-      - run: npm ci
-      - run: npm publish @WeDoSoftware-eu/ngx-eco-theme --registry=https://npm.pkg.github.com/
+          scope: '@wedosoftware-eu'
+      - name: Publish GPR
+        run: |
+          npm ci
+          npm publish @wedosoftware-eu/ngx-eco-theme --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
