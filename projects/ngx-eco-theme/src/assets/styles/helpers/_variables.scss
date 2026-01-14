@@ -41,22 +41,22 @@ $borders: (
 $radius-base: 2 !default;
 $radius: (
   0: 0,
-  $radius-base: #{$radius-base} + $unit,
   // 2
-  $radius-base * 2: #{$radius-base * 2} + $unit,
+  $radius-base: #{$radius-base} + $unit,
   // 4
-  $radius-base * 3: #{$radius-base * 3} + $unit,
+  $radius-base * 2: #{$radius-base * 2} + $unit,
   // 6
-  $radius-base * 4: #{$radius-base * 4} + $unit,
+  $radius-base * 3: #{$radius-base * 3} + $unit,
   // 8
-  $radius-base * 5: #{$radius-base * 5} + $unit,
+  $radius-base * 4: #{$radius-base * 4} + $unit,
   // 10
-  $radius-base * 6: #{$radius-base * 6} + $unit,
+  $radius-base * 5: #{$radius-base * 5} + $unit,
   // 12
-  $radius-base * 7: #{$radius-base * 7} + $unit,
+  $radius-base * 6: #{$radius-base * 6} + $unit,
   // 14
+  $radius-base * 7: #{$radius-base * 7} + $unit,
+  // 16
   $radius-base * 8: #{$radius-base * 8} + $unit,
-  // 16 ✅
   full: 9999px,
 ) !default;
 
