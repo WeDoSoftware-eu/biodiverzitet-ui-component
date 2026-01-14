@@ -6,6 +6,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SIDEBAR_ITEMS } from './sidebar.token';
 import { RoutingService } from './routing.service';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'eco-sidebar',
@@ -17,6 +18,7 @@ import { RoutingService } from './routing.service';
     MatSidenavModule,
     RouterLink,
     RouterModule,
+    ButtonComponent,
   ],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],

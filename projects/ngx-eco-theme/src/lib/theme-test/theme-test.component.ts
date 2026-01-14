@@ -11,6 +11,10 @@ import { FilterEvent, TableConfig } from '../table/table.model';
 import { PageEvent } from '@angular/material/paginator';
 import { ChipComponent } from '../chip/chip.component';
 import { ECO_ICONS, IconComponent } from '../icon/icon.component';
+import {
+  FilterFieldConfig,
+  TableFilterComponent,
+} from '../table/table-filter/table-filter.component';
 
 interface MyItem {
   id: number;
@@ -30,6 +34,7 @@ interface MyItem {
     TablePaginatorComponent,
     ChipComponent,
     IconComponent,
+    TableFilterComponent,
   ],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -48,6 +53,34 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
 
   icons = ECO_ICONS;
 
+  roles = signal([
+    { value: 'admin', label: 'Администратор' },
+    { value: 'chief', label: 'Начелник' },
+    { value: 'employee', label: 'Службеник' },
+    { value: 'trainee', label: 'Приправник' },
+  ]);
+
+  filters: FilterFieldConfig[] = [
+    {
+      key: 'status',
+      label: 'Статус',
+      type: 'select',
+      options: [
+        { value: 'active', label: 'активан' },
+        { value: 'blocked', label: 'блокиран' },
+      ],
+    },
+    {
+      key: 'roles',
+      label: 'Роле',
+      type: 'multiselect',
+      options: [
+        { value: 'active', label: 'активан' },
+        { value: 'blocked', label: 'блокиран' },
+      ],
+    },
+  ];
+
   constructor() {
     this.tableConfig.set({
       columns: [
@@ -61,6 +94,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
           badgeConfig: {
             getValue: row => row.status,
             getClass: row => `${row.status}`,
+            getIcon: () => 'circle',
           },
         },
         {
@@ -100,7 +134,6 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     const event: FilterEvent = {
       pageIndex: this.currentPageIndex(),
       pageSize: this.currentPageSize(),
-      searchText: this.currentSearchText(),
     };
     this.queryParams$$.next(event);
   }
@@ -120,5 +153,9 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
       this.totalItems.set(100);
       this.tableConfig.update(config => ({ ...config, loading: false }));
     }, 500);
+  }
+
+  onFilter(value: unknown) {
+    console.log('FILTER:', value);
   }
 }

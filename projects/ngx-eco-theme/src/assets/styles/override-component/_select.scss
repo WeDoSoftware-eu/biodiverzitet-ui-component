@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@use '../variables' as *;
+
+.mat-mdc-select {
+  @include mat.select-overrides(());
+}
+
+.mat-mdc-select-arrow {
+  svg {
+    display: none;
+  }
+
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+
+  width: 10px !important;
+  height: 14px !important;
+  font-weight: 700;
+  background-image: url('/assets/icons-svg/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.mat-mdc-form-field.mat-form-field-appearance-fill {
+  .mat-mdc-select-arrow-wrapper {
+    transform: translateY(0px);
+  }
+}

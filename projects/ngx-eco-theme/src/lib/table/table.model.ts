@@ -8,9 +8,11 @@ export interface TableColumn<T> {
   align?: 'left' | 'center' | 'right';
   pipe?: 'date' | 'number';
   pipeFormat?: string;
+  valuePrepareFunction?: (key: string, row: T) => unknown;
   badgeConfig?: {
     getValue: (row: T) => string;
     getClass: (row: T) => string;
+    getIcon: (row: T) => EcoIcon;
   };
   actions?: TableAction<T>[];
 }
@@ -32,7 +34,6 @@ export interface TableConfig<T> {
 export interface FilterEvent {
   pageIndex: number;
   pageSize: number;
-  searchText: string;
 }
 
 export interface ProcessedAction<T> extends TableAction<T> {

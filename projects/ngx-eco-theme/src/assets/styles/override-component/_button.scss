@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-outlined-button {
+  @include mat.button-overrides(());
+
+  .mdc-button__label {
+    display: flex;
+    gap: 2px;
+  }
+}

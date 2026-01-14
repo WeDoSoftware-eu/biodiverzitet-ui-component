@@ -15,7 +15,6 @@
   .topbar-left {
     display: flex;
     flex-direction: column;
-    gap: 2px;
 
     .page-title {
       text-align: start;
@@ -37,10 +36,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 8px;
     border: none;
     background-color: $buttons-secondary-bg;
-    border-radius: $border-radius-circle;
     height: $header-notifications-button-size;
     width: $header-notifications-button-size;
 
@@ -60,7 +57,6 @@
     display: flex;
     align-items: center;
     padding: 4px 12px;
-    border-radius: 8px;
     min-height: 48px;
 
     border: none;
@@ -73,10 +69,8 @@
     .profile-content {
       display: flex;
       align-items: center;
-      gap: 12px;
 
       img {
-        border-radius: 50%;
         object-fit: cover;
         width: 40px;
         height: 40px;
@@ -85,7 +79,6 @@
       .profile-info-inline {
         display: flex;
         flex-direction: column;
-        gap: 2px;
         text-align: left;
 
         .profile-name {
@@ -106,7 +99,6 @@
       .arrow-icon {
         font-size: var(--sys-arrow-size);
         color: $text-color;
-        margin-left: 4px;
       }
     }
   }
@@ -128,7 +120,7 @@
     }
 
     .notification-btn {
-      margin-right: 4px;
+      margin-right: 4px !important;
     }
   }
 }

@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComponentRef } from '@angular/core';
 import { ECO_ICONS, IconComponent } from './icon.component';
 
+import { IconComponent } from './icon.component';
+
 describe('IconComponent', () => {
   let component: IconComponent;
   let componentRef: ComponentRef<IconComponent>;

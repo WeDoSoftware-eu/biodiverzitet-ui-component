@@ -1,11 +1,14 @@
 @use '../../../assets/styles/variables' as *;
 
 .search-container {
-  padding: 16px 0;
+  // padding: 16px 0;
 
   .search-field {
     width: 100%;
-    max-width: 400px;
+    min-width: 400px;
+    eco-icon {
+      font-size: 20px;
+    }
   }
 }
 
