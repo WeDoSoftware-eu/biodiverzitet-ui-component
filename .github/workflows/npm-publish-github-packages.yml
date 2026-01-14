@@ -41,9 +41,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: https://npm.pkg.github.com/
           scope: '@wedosoftware-eu'
-      - name: Publish GPR
+      - name: Publish GPR - ngx-eco-theme
         run: |
           npm ci
-          npm publish @wedosoftware-eu/ngx-eco-theme --registry=https://npm.pkg.github.com/
+          cd dist/ngx-eco-theme
+          npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
