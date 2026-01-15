@@ -1,29 +1,34 @@
 @use '../../assets/styles/variables' as *;
 
-.topbar {
+mat-toolbar.topbar {
   display: flex;
   align-items: center;
-  padding: $header-padding;
   height: $header-height;
-  background-color: $white;
-  border-bottom: 1px solid $borderBottm;
-  box-shadow: $box-shadow;
+  padding: $header-padding;
+
   position: sticky;
   top: 0;
   z-index: $header-z-index;
 
+  background-color: $white;
+  border-bottom: 1px solid $borderBottm;
+  box-shadow: $box-shadow;
+
+  /* ----------------------------------
+   * LEFT SIDE
+   * ---------------------------------- */
   .topbar-left {
     display: flex;
-    flex-direction: column;
+    align-items: center;
 
     .page-title {
       text-align: start;
     }
 
     .page-subtitle {
-      text-align: start;
       margin: 0;
-      align-self: start;
+      text-align: start;
+      align-self: flex-start;
     }
   }
 
@@ -31,15 +36,21 @@
     flex: 1 1 auto;
   }
 
-  // Notification Button
+  /* ----------------------------------
+   * ICON BUTTONS (previous / notifications)
+   * ---------------------------------- */
+  .previous-btn,
   .notification-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    background-color: $buttons-secondary-bg;
-    height: $header-notifications-button-size;
+
     width: $header-notifications-button-size;
+    height: $header-notifications-button-size;
+
+    border: none;
+    cursor: pointer;
+    background-color: $buttons-secondary-bg;
 
     eco-icon {
       display: flex;
@@ -52,15 +63,17 @@
     }
   }
 
-  // Profile Button
+  /* ----------------------------------
+   * PROFILE BUTTON
+   * ---------------------------------- */
   .profile-btn {
     display: flex;
     align-items: center;
-    padding: 4px 12px;
     min-height: 48px;
+    padding: 4px 12px;
 
     border: none;
-    background: $white;
+    background-color: $white;
 
     &:hover {
       background-color: $text-hover;
@@ -70,12 +83,6 @@
       display: flex;
       align-items: center;
 
-      img {
-        object-fit: cover;
-        width: 40px;
-        height: 40px;
-      }
-
       .profile-info-inline {
         display: flex;
         flex-direction: column;
@@ -84,19 +91,20 @@
         .profile-name {
           font-size: var(--sys-body-large-size);
           font-weight: $text-semi-bold;
-          color: $text-color;
           line-height: $line-height;
+          color: $text-color;
         }
 
         .profile-role {
           font-size: var(--sys-body-medium-size);
           font-weight: $text-normal;
-          color: $text-color;
           line-height: $line-height;
+          color: $text-color;
         }
       }
 
       .arrow-icon {
+        margin-left: 10px;
         font-size: var(--sys-arrow-size);
         color: $text-color;
       }
@@ -104,13 +112,43 @@
   }
 }
 
+/* ----------------------------------
+   * PROFILE MENU (mat-menu)
+   * ---------------------------------- */
+.profile-menu-panel {
+  mat-divider {
+    border-color: $muted-color;
+  }
+}
+
+.profile-links-container {
+  a {
+    display: block;
+    text-decoration: none !important;
+    color: $text-color !important;
+    cursor: pointer;
+  }
+
+  .menu-item {
+    &:hover {
+      background-color: $muted-color;
+    }
+  }
+}
+/* ----------------------------------
+ * SHARED MENU STYLES
+ * ---------------------------------- */
+.devider {
+  border-color: $muted-color;
+}
+
+/* ----------------------------------
+ * RESPONSIVE
+ * ---------------------------------- */
 @media (max-width: 991px) {
-  .topbar {
-    .topbar-left {
-      .page-subtitle {
-        font-size: var(--sys-subtitle-size);
-        align-self: start;
-      }
+  mat-toolbar.topbar {
+    .page-subtitle {
+      font-size: var(--sys-subtitle-size);
     }
 
     .profile-btn {
@@ -119,6 +157,7 @@
       }
     }
 
+    .previous-btn,
     .notification-btn {
       margin-right: 4px !important;
     }

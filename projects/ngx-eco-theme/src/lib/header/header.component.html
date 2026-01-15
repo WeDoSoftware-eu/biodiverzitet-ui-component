@@ -1,51 +1,67 @@
 <mat-toolbar class="topbar">
   <div class="topbar-left gap-2">
-    <h2 class="page-title" [attr.aria-label]="'title:' + title()">
-      {{ title() }}
-    </h2>
-    <p class="page-subtitle mat-body-medium" [attr.aria-label]="'subtitle:' + subtitle()">
-      {{ subtitle() }}
-    </p>
+    <div>
+      @if (showBackButton) {
+        <button
+          aria-label="Previous page"
+          class="previous-btn rounded-full m-r-8"
+          (click)="goBack()"
+        >
+          <eco-icon icon="previous-page"></eco-icon>
+        </button>
+      }
+    </div>
+    <div>
+      <h2 class="page-title" [attr.aria-label]="'title:' + title()">
+        {{ title() }}
+      </h2>
+      <p class="page-subtitle mat-body-medium" [attr.aria-label]="'subtitle:' + subtitle()">
+        {{ subtitle() }}
+      </p>
+    </div>
   </div>
 
   <span class="flex-spacer"></span>
 
-  <button aria-label="Notifications" class="notification-btn rounded-full m-r-8">
+  <button
+    aria-label="Notifications"
+    class="notification-btn rounded-full m-r-8"
+    routerLink="/notifications"
+  >
     <eco-icon icon="notifications"></eco-icon>
   </button>
 
   <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
     <div class="profile-content">
       <div class="profile-info-inline">
-        <span class="profile-name">Љубица Илић</span>
-        <span class="profile-role">Профил</span>
+        <span class="profile-name">{{ authUser?.fullName() }}</span>
+        <span class="profile-role">{{ i18n.header.profile }}</span>
       </div>
-      <eco-icon icon="arrow-down" class="icon-32"></eco-icon>
+      <eco-icon icon="arrow-down" class="arrow-icon m-l-10"></eco-icon>
     </div>
   </button>
-  <mat-menu #profilemenu="matMenu" xPosition="before" class="topbar-dd cardWithShadow">
-    <div class="p-x-32 p-y-16">
-      <div class="d-flex align-items-center p-b-24 b-b-1 m-t-16">
-        <div class="m-l-16">
-          <h6 class="f-s-14 f-w-600 m-0 d-flex align-items-center">
-            David McMichael
-            <span class="f-s-14 d-block text-success m-l-4">Pro</span>
-          </h6>
-          <span class="text-muted"> david&#64;wrappixel.com </span>
+
+  <!-- Profile menu -->
+  <mat-menu
+    #profilemenu="matMenu"
+    xPosition="before"
+    class="profile-menu-panel rounded-12 p-x-16 p-y-16"
+  >
+    <div>
+      <div class="d-flex text-left p-b-24 m-t-16">
+        <div>
+          <h6 class="mat-body-medium">{{ authUser?.fullName() }}</h6>
+          <span class="mat-body-medium">{{ authUser?.email() }}</span>
         </div>
       </div>
     </div>
-    <div class="p-x-32 p-b-16">
-      @for (profile of profileLinks; track profile.title) {
-        <a
-          class="p-8 text-decoration-none d-block text-hover-primary"
-          [routerLink]="[profile.link]"
-        >
-          <div class="d-flex align-items-center">
-            <eco-icon [icon]="profile.icon"></eco-icon>
-            <h5 class="f-s-14 f-w-600 m-0 lh-md hover-text">
-              {{ profile.title }}
-            </h5>
+    <mat-divider class="devider"></mat-divider>
+    <div class="profile-links-container">
+      @for (profile of profileLinks; track profile.id) {
+        <a [routerLink]="profile.link || null" (click)="handleProfileClick(profile, $event)">
+          <div class="menu-item d-flex align-items-center p-x-12 p-y-4 rounded-10">
+            <eco-icon class="mat-headline-medium m-r-16 m-b-0" [icon]="profile.icon"></eco-icon>
+            <h5 class="mat-body-medium m-0">{{ profile.title }}</h5>
           </div>
         </a>
       }

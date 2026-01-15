@@ -15,6 +15,7 @@ import {
   FilterFieldConfig,
   TableFilterComponent,
 } from '../table/table-filter/table-filter.component';
+import { HeaderComponent } from '../header/header.component';
 
 interface MyItem {
   id: number;
@@ -35,6 +36,7 @@ interface MyItem {
     ChipComponent,
     IconComponent,
     TableFilterComponent,
+    HeaderComponent,
   ],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',

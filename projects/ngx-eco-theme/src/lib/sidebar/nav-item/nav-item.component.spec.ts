@@ -11,10 +11,7 @@ describe('NavItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NavItemComponent],
-      providers: [
-        provideRouter([]),
-        provideNoopAnimations()
-      ]
+      providers: [provideRouter([]), provideNoopAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavItemComponent);

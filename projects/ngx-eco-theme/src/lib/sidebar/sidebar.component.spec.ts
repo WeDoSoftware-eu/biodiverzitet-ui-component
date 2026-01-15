@@ -9,9 +9,7 @@ import { provideNoopAnimations } from '@angular/platform-browser/animations';
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
   let fixture: ComponentFixture<SidebarComponent>;
-  const navItems: NavItem[] = [
-    { displayName: 'Link 1' }
-  ];
+  const navItems: NavItem[] = [{ displayName: 'Link 1' }];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,8 +17,8 @@ describe('SidebarComponent', () => {
       providers: [
         { provide: SIDEBAR_ITEMS, useValue: navItems },
         provideRouter([]),
-        provideNoopAnimations()
-      ]
+        provideNoopAnimations(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SidebarComponent);

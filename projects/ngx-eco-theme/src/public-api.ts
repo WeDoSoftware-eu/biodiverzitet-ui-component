@@ -23,6 +23,7 @@ export * from './lib/table/table.model';
 export * from './lib/sidebar/sidebar.token';
 export * from './lib/eco-theme-I18n';
 export * from './lib/modal/modal.token';
+export * from './lib/user/user.token';
 
 /* STORE */
 export * from './lib/table/table-filter/table-filter-store';
