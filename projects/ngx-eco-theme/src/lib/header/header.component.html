@@ -1,16 +1,16 @@
 <mat-toolbar class="topbar">
-  <div class="topbar-left">
+  <div class="topbar-left gap-2">
     <h2 class="page-title" [attr.aria-label]="'title:' + title()">
       {{ title() }}
     </h2>
-    <p class="page-subtitle" [attr.aria-label]="'subtitle:' + subtitle()">
+    <p class="page-subtitle mat-body-medium" [attr.aria-label]="'subtitle:' + subtitle()">
       {{ subtitle() }}
     </p>
   </div>
 
   <span class="flex-spacer"></span>
 
-  <button aria-label="Notifications" class="notification-btn">
+  <button aria-label="Notifications" class="notification-btn rounded-full m-r-8">
     <eco-icon icon="notifications"></eco-icon>
   </button>
 

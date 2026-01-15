@@ -1,36 +1,39 @@
 <div class="paginator-container">
   @if (totalPages() > 0) {
-    <div class="custom-paginator-controls">
+    <div class="custom-paginator-controls gap-8">
       <div class="range-label">
         <p>{{ rangeLabel() }}</p>
       </div>
 
-      <div class="pagination-buttons">
+      <div class="pagination-buttons gap-6">
         <button
+          class="rounded-2"
           mat-mini-fab
           (click)="changePage('first')"
           [matTooltip]="i18n.paginator.firstPage"
           [disabled]="pageIndex() === 0"
           aria-label="First page"
         >
-          <eco-icon icon="first-page"></eco-icon>
+          <eco-icon class="icon-16" icon="first-page"></eco-icon>
         </button>
 
         <button
+          class="rounded-2"
           mat-mini-fab
           (click)="changePage(-1)"
           [matTooltip]="i18n.paginator.previousPage"
           [disabled]="pageIndex() === 0"
           aria-label="Previous page"
         >
-          <eco-icon icon="previous-page"></eco-icon>
+          <eco-icon class="icon-16" icon="previous-page"></eco-icon>
         </button>
 
         @for (page of pagesToDisplay(); track $index) {
           @if (page === '...') {
-            <button mat-mini-fab>...</button>
+            <button mat-mini-fab class="rounded-2">...</button>
           } @else {
             <button
+              class="rounded-2"
               mat-mini-fab
               [class.active-page]="page === pageIndex() + 1"
               [matTooltip]="i18n.paginator.page + page"
@@ -42,41 +45,44 @@
         }
 
         <button
+          class="rounded-2"
           mat-mini-fab
           (click)="changePage(1)"
           [matTooltip]="i18n.paginator.nextPage"
           [disabled]="pageIndex() === totalPages() - 1"
           aria-label="Next page"
         >
-          <eco-icon icon="next-page"></eco-icon>
+          <eco-icon class="icon-16" icon="next-page"></eco-icon>
         </button>
 
         <button
+          class="rounded-2"
           mat-mini-fab
           (click)="changePage('last')"
           [matTooltip]="i18n.paginator.lastPage"
           [disabled]="pageIndex() === totalPages() - 1"
           aria-label="Last page"
         >
-          <eco-icon icon="last-page"></eco-icon>
+          <eco-icon class="icon-16" icon="last-page"></eco-icon>
         </button>
 
-        <div class="goto-page-container">
-          <p>{{ i18n.paginator.goTo }}</p>
+        <div class="goto-page-container gap-6 m-l-20">
+          <p class="mat-body-medium">{{ i18n.paginator.goTo }}</p>
           <input
+            class="rounded-2"
             type="number"
             [(ngModel)]="pageInput"
             min="1"
             [max]="totalPages()"
             (ngModelChange)="goToPage(pageInput)"
           />
-          <p>{{ i18n.paginator.side }}</p>
+          <p class="mat-body-medium">{{ i18n.paginator.side }}</p>
         </div>
       </div>
 
-      <div class="last-update-text">
+      <div class="last-update-text m-l-20">
         {{ latUpdateTitle }}:
-        <p>{{ latUpdate() }}</p>
+        <p class="m-l-5">{{ latUpdate() }}</p>
       </div>
     </div>
   }

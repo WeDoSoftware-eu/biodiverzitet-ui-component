@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+.mat-mdc-dialog-container {
+  @include mat.dialog-overrides(
+    (
+      container-shape: 20px,
+    )
+  );
+}

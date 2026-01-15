@@ -10,6 +10,9 @@ $unit: 'px';
 $spacer: 16 !default;
 $spacers: (
   0: 0,
+  // fine spacing
+  2: 2px,
+  6: 6px,
   $spacer * 0.25: #{$spacer * 0.25} + $unit,
   $spacer * 0.5: #{$spacer * 0.5} + $unit,
   $spacer * 0.75: #{$spacer * 0.75} + $unit,
@@ -35,13 +38,25 @@ $borders: (
 
 // Border radius
 
-$radius-base: 7 !default;
+$radius-base: 2 !default;
 $radius: (
   0: 0,
+  // 2
   $radius-base: #{$radius-base} + $unit,
+  // 4
   $radius-base * 2: #{$radius-base * 2} + $unit,
+  // 6
   $radius-base * 3: #{$radius-base * 3} + $unit,
+  // 8
   $radius-base * 4: #{$radius-base * 4} + $unit,
+  // 10
+  $radius-base * 5: #{$radius-base * 5} + $unit,
+  // 12
+  $radius-base * 6: #{$radius-base * 6} + $unit,
+  // 14
+  $radius-base * 7: #{$radius-base * 7} + $unit,
+  // 16
+  $radius-base * 8: #{$radius-base * 8} + $unit,
   full: 9999px,
 ) !default;
 

@@ -4,7 +4,6 @@ mat-chip {
   --mdc-chip-outline-color: transparent;
   --mdc-chip-outline-width: 0;
   font-size: var(--mat-sys-label-small-size);
-  border-radius: $chip-border-radius;
   text-transform: capitalize;
 
   &.active {

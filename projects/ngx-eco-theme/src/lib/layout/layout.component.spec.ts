@@ -11,6 +11,7 @@ describe('LayoutComponent', () => {
     { displayName: 'Link 1' }
   ];
 
+describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
 

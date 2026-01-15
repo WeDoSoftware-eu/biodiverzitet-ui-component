@@ -1,0 +1,56 @@
+@use '../../assets/styles/variables' as *;
+
+.snackbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $snackbar-padding;
+  box-shadow: $snackbar-box-sadow;
+  border: $snackbar-border;
+}
+
+.snackbar-content {
+  display: flex;
+  align-items: center;
+  place-content: space-between;
+  flex: 1;
+}
+
+/* Success variant */
+.snackbar-success {
+  background: $snackbar-success-bg;
+  color: $white;
+
+  .snackbar-icon {
+    color: $white;
+  }
+}
+
+/* Warning variant */
+.snackbar-warning {
+  background-color: $warning;
+  color: $text-color;
+
+  .snackbar-icon {
+    color: $text-color;
+  }
+}
+
+/* Info  */
+.snackbar-info {
+  background-color: $accent;
+  color: $white;
+
+  .snackbar-icon {
+    color: $white;
+  }
+}
+/* Error */
+.snackbar-error {
+  background-color: $error;
+  color: $white;
+
+  .snackbar-icon {
+    color: $white;
+  }
+}

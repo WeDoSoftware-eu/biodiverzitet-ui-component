@@ -11,15 +11,14 @@
   .icon-name-container {
     display: flex;
     text-align: center;
+    align-items: anchor-center;
 
     eco-icon {
       font-size: 20px;
-      margin-right: $sidebar-icon-margin-right;
     }
 
     eco-icon.expand-icon {
       font-size: $sidebar-expand-icon;
-      margin-right: $sidebar-icon-margin-right;
     }
 
     .hide-menu {

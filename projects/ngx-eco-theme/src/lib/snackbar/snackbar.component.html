@@ -1,0 +1,6 @@
+<div class="snackbar-container gap-16 rounded-8" [ngClass]="'snackbar-' + data.type">
+  <div class="snackbar-content gap-16">
+    <span class="snackbar-message">{{ data.message }}</span>
+    <eco-icon class="snackbar-icon icon-32" [icon]="getIcon()"></eco-icon>
+  </div>
+</div>
