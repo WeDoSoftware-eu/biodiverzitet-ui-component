@@ -1,27 +1,70 @@
 <mat-toolbar class="topbar">
   <div class="topbar-left gap-2">
-    <h2 class="page-title" [attr.aria-label]="'title:' + title()">
-      {{ title() }}
-    </h2>
-    <p class="page-subtitle mat-body-medium" [attr.aria-label]="'subtitle:' + subtitle()">
-      {{ subtitle() }}
-    </p>
+    <div>
+      @if (showBackButton) {
+        <button
+          aria-label="Previous page"
+          class="previous-btn rounded-full m-r-8"
+          (click)="goBack()"
+        >
+          <eco-icon icon="previous-page"></eco-icon>
+        </button>
+      }
+    </div>
+    <div>
+      <h2 class="page-title" [attr.aria-label]="'title:' + title()">
+        {{ title() }}
+      </h2>
+      <p class="page-subtitle mat-body-medium" [attr.aria-label]="'subtitle:' + subtitle()">
+        {{ subtitle() }}
+      </p>
+    </div>
   </div>
 
   <span class="flex-spacer"></span>
 
-  <button aria-label="Notifications" class="notification-btn rounded-full m-r-8">
+  <button
+    aria-label="Notifications"
+    class="notification-btn rounded-full m-r-8"
+    routerLink="/notifications"
+  >
     <eco-icon icon="notifications"></eco-icon>
   </button>
 
-  <button mat-button aria-label="Profile" class="profile-btn rounded-8">
-    <div class="profile-content gap-12">
-      <img src="/assets/images/profile/user-1.png" class="rounded-full" alt="Profile" />
-      <div class="profile-info-inline gap-2">
-        <span class="profile-name">Љубица Илић</span>
-        <span class="profile-role">Профил</span>
+  <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
+    <div class="profile-content">
+      <div class="profile-info-inline">
+        <span class="profile-name">{{ authUser?.fullName() }}</span>
+        <span class="profile-role">{{ i18n.header.profile }}</span>
       </div>
-      <i data-icon="solar:alt-arrow-down-bold" class="iconify arrow-icon m-l-4"></i>
+      <eco-icon icon="arrow-down" class="arrow-icon m-l-10"></eco-icon>
     </div>
   </button>
+
+  <!-- Profile menu -->
+  <mat-menu
+    #profilemenu="matMenu"
+    xPosition="before"
+    class="profile-menu-panel rounded-12 p-x-16 p-y-16"
+  >
+    <div>
+      <div class="d-flex text-left p-b-24 m-t-16">
+        <div>
+          <h6 class="mat-body-medium">{{ authUser?.fullName() }}</h6>
+          <span class="mat-body-medium">{{ authUser?.email() }}</span>
+        </div>
+      </div>
+    </div>
+    <mat-divider class="devider"></mat-divider>
+    <div class="profile-links-container">
+      @for (profile of profileLinks; track profile.id) {
+        <a [routerLink]="profile.link || null" (click)="handleProfileClick(profile, $event)">
+          <div class="menu-item d-flex align-items-center p-x-12 p-y-4 rounded-10">
+            <eco-icon class="mat-headline-medium m-r-16 m-b-0" [icon]="profile.icon"></eco-icon>
+            <h5 class="mat-body-medium m-0">{{ profile.title }}</h5>
+          </div>
+        </a>
+      }
+    </div>
+  </mat-menu>
 </mat-toolbar>
