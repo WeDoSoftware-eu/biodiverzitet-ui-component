@@ -3,7 +3,7 @@
     <form [formGroup]="form()" class="table-filter-form">
       <div class="form-fields">
         @for (f of fields(); track f.key) {
-          <div class="form-field-group" mat-menu-item>
+          <div class="form-field-group p-0">
             @switch (f.type) {
               @case ('text') {
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
