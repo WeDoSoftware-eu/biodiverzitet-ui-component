@@ -8,9 +8,10 @@
     width: 260px;
 
     eco-button {
-      position: fixed;
+      position: absolute;
       bottom: 20px;
       place-self: center;
+      width: 90%;
       a {
         color: $text-color;
         text-decoration: none;

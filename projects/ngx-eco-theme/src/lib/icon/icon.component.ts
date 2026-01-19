@@ -82,6 +82,8 @@ export const ECO_ICONS = [
   'codetables',
   'blocked',
   'logout',
+  'back',
+  'change-password',
 ] as const;
 
 export type EcoIcon = (typeof ECO_ICONS)[number];
