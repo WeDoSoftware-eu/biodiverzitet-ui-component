@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, OnDestroy, DestroyRef } from '@angular/core';
+import { Component, inject, input, OnInit, DestroyRef, output } from '@angular/core';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
@@ -38,6 +38,8 @@ export class HeaderComponent implements OnInit {
 
   title = input<string>('');
   subtitle = input<string>('');
+
+  logoutClicked = output<void>();
 
   profileLinks: profileItems[] = [
     {
@@ -82,9 +84,7 @@ export class HeaderComponent implements OnInit {
 
   //Call auth store to logout user
   async onLogout() {
-    if (this.authUser) {
-      await this.authUser.logout();
-    }
+    this.logoutClicked.emit();
   }
 
   //Call this function if link is null

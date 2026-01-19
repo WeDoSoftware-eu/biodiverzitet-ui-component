@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
@@ -28,4 +28,6 @@ export class LayoutComponent {
   brandingTitle = input<string>('');
   title = input<string>('');
   subtitle = input<string>('');
+
+  logoutClicked = output<void>();
 }
