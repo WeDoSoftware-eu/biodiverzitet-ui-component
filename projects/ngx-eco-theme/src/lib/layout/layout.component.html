@@ -6,7 +6,11 @@
     </eco-button>
   </mat-drawer>
   <mat-drawer-content class="content-container">
-    <eco-header [title]="title()" [subtitle]="subtitle()"></eco-header>
+    <eco-header
+      [title]="title()"
+      [subtitle]="subtitle()"
+      (logoutClicked)="logoutClicked.emit()"
+    ></eco-header>
     <main class="components-route">
       <ng-content></ng-content>
     </main>
