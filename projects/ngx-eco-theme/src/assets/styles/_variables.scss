@@ -1,7 +1,8 @@
 $borderColor: var(--mat-sys-outline-variant);
 $borderformColor: var(--mat-sys-outline-variant);
 $borderBottm: #e0e0e0;
-$border-table: 1px solid rgba(172, 175, 183, 0.25);
+$muted-color: rgba(172, 175, 183, 0.25);
+$border-table: 1px solid $muted-color;
 
 $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 

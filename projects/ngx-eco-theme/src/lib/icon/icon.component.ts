@@ -80,6 +80,8 @@ export const ECO_ICONS = [
   'view-agenda',
   'solving-cases',
   'codetables',
+  'blocked',
+  'logout',
 ] as const;
 
 export type EcoIcon = (typeof ECO_ICONS)[number];

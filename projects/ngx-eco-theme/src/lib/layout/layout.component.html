@@ -1,4 +1,4 @@
-<mat-drawer-container class="layout-container">
+<mat-drawer-container class="layout-container" [dir]="'ltr'">
   <mat-drawer mode="side" opened class="side-container rounded-0">
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
     <eco-button icon="person" buttonClass="secondary">
@@ -6,7 +6,11 @@
     </eco-button>
   </mat-drawer>
   <mat-drawer-content class="content-container">
-    <eco-header [title]="title()" [subtitle]="subtitle()"></eco-header>
+    <eco-header
+      [title]="title()"
+      [subtitle]="subtitle()"
+      (logoutClicked)="logoutClicked.emit()"
+    ></eco-header>
     <main class="components-route">
       <ng-content></ng-content>
     </main>
