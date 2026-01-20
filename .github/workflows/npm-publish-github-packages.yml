@@ -21,8 +21,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: |
+      - name: Test ngx-eco-theme
+        run: |
+          npm ci
           cd projects/ngx-eco-theme
           npm run test:ci
 
@@ -38,10 +39,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npx ng build ngx-eco-theme
-      - run: |
+          scope: '@wedosoftware-eu'
+      - name: Build ngx-eco-theme
+        run: |
+          npm ci
           cd projects/ngx-eco-theme
-          npm publish
+          npm run build
+      - name: Publish ngx-eco-theme
+        run: |
+          cd dist/ngx-eco-theme
+          npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

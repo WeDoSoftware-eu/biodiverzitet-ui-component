@@ -60,6 +60,7 @@ export class TableComponent<T> {
               ? {
                   class: column.badgeConfig?.getClass ? column.badgeConfig.getClass(row) : '',
                   value: column.badgeConfig?.getValue ? column.badgeConfig.getValue(row) : value,
+                  icon: column.badgeConfig?.getIcon ? column.badgeConfig.getIcon(row) : value,
                 }
               : null,
 

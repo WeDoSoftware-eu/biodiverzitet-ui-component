@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <div class="title">
+    <h2 class="mat-headline-medium">{{ data.title }}</h2>
+    <p class="mat-body-small modal-subtitle">{{ data.subtitle }}</p>
+  </div>
+  <button mat-icon-button mat-dialog-close class="close-button">
+    <eco-icon icon="cancel"></eco-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <ng-template #dynamicComponentContainer></ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  @if (data.mode !== 'view') {
+    <eco-button (click)="save()" buttonClass="primary" icon="correct">{{
+      i18n.modal.save
+    }}</eco-button>
+  }
+</mat-dialog-actions>

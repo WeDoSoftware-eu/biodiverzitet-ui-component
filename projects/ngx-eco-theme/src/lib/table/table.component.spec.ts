@@ -5,8 +5,8 @@ import { ComponentRef } from '@angular/core';
 import { TableConfig } from './table.model';
 
 interface TestModel {
-  id: number,
-  name: string
+  id: number;
+  name: string;
 }
 
 describe('TableComponent', () => {
@@ -30,13 +30,13 @@ describe('TableComponent', () => {
       columns: [
         {
           key: 'id',
-          label: 'ID'
+          label: 'ID',
         },
         {
           key: 'name',
-          label: 'Name'
-        }
-      ]
+          label: 'Name',
+        },
+      ],
     };
 
     componentRef.setInput('config', config);

@@ -6,14 +6,12 @@
 
   .pagination-buttons {
     display: flex;
-    gap: 5px;
   }
 
   .custom-paginator-controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
 
     .range-label {
       color: $paginator-text-color;
@@ -27,19 +25,14 @@
       width: 32px;
       height: 32px;
       line-height: 32px;
-      border-radius: $paginator-bg-radius;
       background: $paginator-bg-color;
       color: $text-color;
       box-shadow: none;
       font-size: var(--mat-sys-label-small-size);
 
-      eco-icon {
-        font-size: $paginator-icons-size;
-      }
-
       &.active-page {
         background-color: $primary;
-        color: $white !important;
+        color: $white;
       }
 
       &:disabled {
@@ -57,15 +50,12 @@
     .goto-page-container {
       display: flex;
       align-items: center;
-      gap: 5px;
-      margin-left: 20px;
       font-size: var(--mat-sys-label-small-size);
       background: $paginator-bg-color;
       padding: $paginator-go-to-padding;
 
       input[type='number'] {
         border: $paginator-go-to-input-border;
-        border-radius: $paginator-bg-radius;
         text-align: center;
         width: $paginator-go-to-input-size;
         height: $paginator-go-to-input-size;
@@ -89,14 +79,9 @@
     }
 
     .last-update-text {
-      margin-left: 20px;
       font-size: var(--mat-sys-body-medium-size);
       color: $paginator-text-color;
       display: flex;
-
-      p {
-        margin-left: 5px;
-      }
     }
   }
 }

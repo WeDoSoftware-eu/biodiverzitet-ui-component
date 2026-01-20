@@ -1,7 +1,8 @@
 $borderColor: var(--mat-sys-outline-variant);
 $borderformColor: var(--mat-sys-outline-variant);
 $borderBottm: #e0e0e0;
-$border-table: 1px solid rgba(172, 175, 183, 0.25);
+$muted-color: rgba(172, 175, 183, 0.25);
+$border-table: 1px solid $muted-color;
 
 $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
@@ -70,23 +71,21 @@ $line-height: 1.5;
 $header-z-index: 101;
 $header-height: 70px;
 $header-padding: 45px 20px;
-$header-notifications-icons-size: 24px;
 $header-notifications-icons-color: #626262;
 $header-notifications-button-size: 44px;
 
 //Sidebar
 $logo-text-size: 12px !important;
 $sidebar-expand-icon: 8px;
-$sidebar-icon-margin-right: 10px;
 
 //Table
 $table-tr-hover: #f9f9f9;
-$table-border-radius: 16px;
 $table-status-badge-radius: 12px;
 $table-z-index: 10;
 $table-icon-color: #656565;
 $table-td-color: #626262;
 $table-th-color: #1a1a1a;
+$table-search-input-bg: #eff3f4;
 
 //Paginator
 $paginator-text-color: #626262;
@@ -95,10 +94,8 @@ $paginator-bg-radius: 2px;
 $paginator-go-to-padding: 0 10px;
 $paginator-go-to-input-size: 23px;
 $paginator-go-to-input-border: 1px solid $white;
-$paginator-icons-size: 20px;
 
 //Chip
-$chip-border-radius: 16px;
 $chip-active-badge-bg: #d0fadf;
 $chip-inactive-badge-bg: #ffdddd;
 $chip-in-progress-badge-bg: #fbd49e;
@@ -108,12 +105,21 @@ $chip-inactive-badge-color: #860909;
 $chip-in-progress-badge-color: #b77d2b;
 $chip-completed-badge-color: $white;
 //Buttons
-$buttons-border-radius: 2px;
 $buttons-padding-icon: 0 5px;
 $buttons-primary-color: $white;
 $buttons-primary-bg: $primary;
+$buttons-primary-color-hover: #0f3e29;
 $buttons-secondary-color: $text-button-colors;
 $buttons-secondary-bg: #ececec;
 $buttons-tertiary-color: $text-button-colors;
 $buttons-tertiary-bg: $white;
 $buttons-tertiary-border: 1px solid #d8d8d8;
+//Snackbar
+$snackbar-success-bg: linear-gradient(263.31deg, #059856 -2.85%, #22cf81 118.36%);
+$snackbar-box-sadow:
+  0 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0 6px 10px 0 rgba(0, 0, 0, 0.14),
+  0 1px 18px 0 rgba(0, 0, 0, 0.12);
+$snackbar-padding: 8px 8px 8px 16px;
+$snackbar-border: 1px solid $white;
+$snackbar-icon: 28px;

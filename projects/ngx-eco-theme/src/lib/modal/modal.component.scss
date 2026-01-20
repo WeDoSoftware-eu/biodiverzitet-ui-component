@@ -1,0 +1,51 @@
+@use '../../assets/styles/variables' as *;
+:host {
+  display: block;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #acafb740;
+  button {
+    eco-icon {
+      font-size: 16px;
+    }
+  }
+  .title {
+    display: grid;
+    place-items: flex-start;
+    padding: 10px 0;
+
+    h2 {
+      margin: 0;
+    }
+    .modal-subtitle {
+      color: var(--mat-sys-on-surface-variant);
+      font-size: 14px;
+    }
+  }
+}
+
+.close-button {
+  color: #5d5f5f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+mat-dialog-content {
+  padding: 20px 20px 0 20px !important;
+  margin: 0 !important;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px !important;
+}

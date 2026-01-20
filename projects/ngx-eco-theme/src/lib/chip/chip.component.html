@@ -1,6 +1,6 @@
-<mat-chip [ngClass]="status()">
+<mat-chip [ngClass]="status()" class="rounded-16">
   @if (icon()) {
-    <eco-icon [icon]="icon()!"></eco-icon>
+    <eco-icon class="m-r-6" [icon]="icon()!"></eco-icon>
   }
   <ng-content></ng-content>
 </mat-chip>

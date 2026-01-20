@@ -4,6 +4,12 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
+@use 'override-component/form-field';
+@use 'override-component/button';
+@use 'override-component/modal';
+@use 'override-component/select';
+
+@use 'helpers/index';
 // Note: Color palettes are generated from primary: #19A08C, secondary: #1CC79B, tertiary: #1CC79B, neutral: #FFFFFF
 // Values for tones 40 and 80 have been altered manually to match exact required color
 $_palettes: (
@@ -165,6 +171,7 @@ html.green_theme {
   --mat-sys-secondary: rgb(208, 250, 223); //#D0FADF
   --mat-sys-secondary-fixed-dim: rgb(195, 208, 70, 0.15); //#D0FADF
   --mat-sys-tertiary: rgb(208, 250, 223); //#D0FADF
+  --mat-sys-error: rgb(255, 49, 49); //#FF3131
 }
 html {
   // Body, Titles, Headlines
@@ -222,43 +229,41 @@ html {
 
   //Chip
   --mdc-chip-label-text-color: $table-active-badge-color;
+
+  //Input
+  --mat-form-field-filled-with-label-container-padding-top: 8px;
+  --mat-form-field-filled-with-label-container-padding-bottom: 8px;
 }
-.mat-typography.mat-typography {
-  h1,
+.mat-typography {
   .mat-headline-large {
     font-size: var(--mat-sys-headline-large-size);
     font-weight: var(--mat-sys-headline-large-weight);
     line-height: var(--mat-sys-headline-large-line-height);
     letter-spacing: var(--mat-sys-headline-large-tracking);
-    color: var(--mat-sys-on-surface);
   }
 
-  h2,
-  .mat-headline-medium {
+  .mat-headline-medium,
+  .mat-toolbar h2 {
     font-size: var(--mat-sys-headline-medium-size);
     font-weight: var(--mat-sys-headline-medium-weight);
     line-height: var(--mat-sys-headline-medium-line-height);
     letter-spacing: var(--mat-sys-headline-medium-tracking);
-    color: var(--mat-sys-on-surface);
   }
 
-  p,
   .mat-body-medium {
     font-size: var(--mat-sys-body-medium-size);
     font-weight: var(--mat-sys-body-medium-weight);
     line-height: var(--mat-sys-body-medium-line-height);
     letter-spacing: var(--mat-sys-body-medium-tracking);
-    color: var(--mat-sys-on-surface);
     margin: 0;
   }
 
-  span,
-  .mat-label-medium {
+  .mat-label-medium,
+  .mdc-button__label {
     font-size: var(--mat-sys-span-medium-size);
     font-weight: var(--mat-sys-span-medium-weight);
     line-height: var(--mat-sys-span-medium-line-height);
     letter-spacing: var(--mat-sys-span-medium-tracking);
-    color: var(--mat-sys-on-surface);
   }
 }
 
@@ -269,4 +274,16 @@ html {
   i {
     display: inline-block;
   }
+}
+
+.mat-mdc-snack-bar-container {
+  .mat-mdc-snackbar-surface {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+}
+.mat-mdc-menu-panel.profile-menu-panel {
+  background-color: white;
+  min-width: 300px;
 }

@@ -10,7 +10,7 @@ describe('TableSearchComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TableSearchComponent],
-      providers: [provideNoopAnimations()]
+      providers: [provideNoopAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TableSearchComponent);

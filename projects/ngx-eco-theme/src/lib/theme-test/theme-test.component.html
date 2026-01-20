@@ -1,3 +1,5 @@
+<eco-header title="Test Header"></eco-header>
+
 <mat-slide-toggle>Toggle me!</mat-slide-toggle>
 
 <section>
@@ -113,7 +115,7 @@
 <h2>End</h2>
 <mat-divider></mat-divider>
 <section>
-  <div class="example-label">Table Example</div>
+  <div class="example-label">Chip Example</div>
   <eco-chip status="active">Active</eco-chip> <br />
   <eco-chip status="completed">Completed</eco-chip> <br />
   <eco-chip status="in-progress">In progress</eco-chip> <br />
@@ -121,6 +123,7 @@
 </section>
 <mat-divider></mat-divider>
 <section>
+  <eco-table-filter id="users" [fields]="filters" (changed)="onFilter($event)"> </eco-table-filter>
   <div class="example-label">Table Example</div>
   <eco-table [config]="tableConfig()" [data]="tableData()" />
 
