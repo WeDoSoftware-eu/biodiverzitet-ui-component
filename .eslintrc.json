@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["dist", "projects/**/src/assets/icons/*.html", "projects/eco-theme-sample"],
+  "ignorePatterns": ["dist", "coverage", "projects/**/src/assets/icons/*.html", "projects/eco-theme-sample"],
   "overrides": [
     {
       "files": ["*.ts"],

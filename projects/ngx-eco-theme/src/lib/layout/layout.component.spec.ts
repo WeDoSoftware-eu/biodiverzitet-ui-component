@@ -5,13 +5,11 @@ import { NavItem } from '../sidebar/nav-item/nav-item.model';
 import { SIDEBAR_ITEMS } from '../sidebar/sidebar.token';
 import { LayoutComponent } from './layout.component';
 import { provideRouter } from '@angular/router';
+import { BACK_ROUTES } from '../header/back-route.token';
 
 describe('LayoutComponent', () => {
-  const navItems: NavItem[] = [
-    { displayName: 'Link 1' }
-  ];
+  const navItems: NavItem[] = [{ displayName: 'Link 1' }];
 
-describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
 
@@ -20,9 +18,10 @@ describe('LayoutComponent', () => {
       imports: [LayoutComponent],
       providers: [
         { provide: SIDEBAR_ITEMS, useValue: navItems },
+        { provide: BACK_ROUTES, useValue: [] },
         provideNoopAnimations(),
-        provideRouter([])
-      ]
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);
