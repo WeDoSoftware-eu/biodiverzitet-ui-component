@@ -12,14 +12,12 @@ describe('SnackbarComponent', () => {
   beforeEach(async () => {
     data = {
       message: 'test message',
-      type: 'info'
+      type: 'info',
     };
 
     await TestBed.configureTestingModule({
       imports: [SnackbarComponent],
-      providers: [
-        {provide: MAT_SNACK_BAR_DATA, useValue: data}
-      ]
+      providers: [{ provide: MAT_SNACK_BAR_DATA, useValue: data }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SnackbarComponent);

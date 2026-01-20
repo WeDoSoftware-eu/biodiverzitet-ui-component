@@ -13,7 +13,7 @@ describe('HeaderComponent', () => {
       imports: [HeaderComponent],
       providers: [
         provideRouter([{ path: 'header', component: HeaderComponent }]),
-        { provide: BACK_ROUTES, useValue: [] }
+        { provide: BACK_ROUTES, useValue: [] },
       ],
     });
 

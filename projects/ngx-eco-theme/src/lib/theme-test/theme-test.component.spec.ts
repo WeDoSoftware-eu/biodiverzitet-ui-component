@@ -11,10 +11,7 @@ describe('ThemeTestComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ThemeTestComponent],
-      providers: [
-        { provide: BACK_ROUTES, useValue: [] },
-        provideRouter([])
-      ]
+      providers: [{ provide: BACK_ROUTES, useValue: [] }, provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ThemeTestComponent);
