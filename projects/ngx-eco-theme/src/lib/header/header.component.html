@@ -23,13 +23,15 @@
 
   <span class="flex-spacer"></span>
 
-  <button
-    aria-label="Notifications"
-    class="notification-btn rounded-full m-r-8"
-    routerLink="/notifications"
-  >
-    <eco-icon icon="notifications"></eco-icon>
-  </button>
+  @if (!hideNotifications()) {
+    <button
+      aria-label="Notifications"
+      class="notification-btn rounded-full m-r-8"
+      routerLink="/notifications"
+    >
+      <eco-icon icon="notifications"></eco-icon>
+    </button>
+  }
 
   <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
     <div class="profile-content">

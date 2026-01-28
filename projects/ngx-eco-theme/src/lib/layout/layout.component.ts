@@ -28,6 +28,7 @@ export class LayoutComponent {
   brandingTitle = input<string>('');
   title = input<string>('');
   subtitle = input<string>('');
+  hideNotifications = input<boolean>(false);
 
   logoutClicked = output<void>();
 }
