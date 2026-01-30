@@ -1,0 +1,128 @@
+.legend-selector {
+  width: 400px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 0.67px solid #e5e7eb;
+  box-shadow:
+    0px 4px 6px -4px rgba(0, 0, 0, 0.1),
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  box-sizing: border-box;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+
+    .title {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333333;
+    }
+
+    .close-button {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: #f0f0f0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.2s ease;
+      color: #666666;
+
+      &:hover {
+        background: #e0e0e0;
+      }
+
+      svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  .legend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 8px;
+      border-radius: 6px;
+
+      .legend-symbol {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        min-width: 28px;
+        height: 20px;
+
+        .symbol-fill {
+          width: 20px;
+          height: 14px;
+          border-radius: 2px;
+          border: 1px solid;
+        }
+
+        .symbol-line {
+          width: 24px;
+          height: 12px;
+        }
+
+        .symbol-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        .symbol-composite {
+          width: 24px;
+          height: 12px;
+        }
+
+        .symbol-point {
+          width: 28px;
+          height: 28px;
+        }
+      }
+
+      .legend-name {
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: #333333;
+        flex: 1;
+        text-align: left;
+      }
+    }
+
+    .no-items {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #666666;
+      text-align: center;
+      padding: 20px;
+    }
+  }
+}

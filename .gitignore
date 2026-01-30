@@ -46,3 +46,5 @@ Thumbs.db
 .claude/
 .serena/
 CLAUDE.md
+tmpclaude-*-cwd
+nul

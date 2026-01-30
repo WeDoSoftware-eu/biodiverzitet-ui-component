@@ -1,0 +1,86 @@
+<div class="legend-selector">
+  <div class="header">
+    <span class="title">{{ title() }}</span>
+    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="legend-list">
+    @for (item of items(); track trackByItemId($index, item)) {
+      <div class="legend-item">
+        <span class="legend-symbol">
+          @switch (item.type) {
+            @case ('fill') {
+              <span
+                class="symbol-fill"
+                [style.background-color]="item.color"
+                [style.border-color]="item.strokeColor || 'transparent'"
+              ></span>
+            }
+            @case ('line') {
+              <svg class="symbol-line" viewBox="0 0 24 12" xmlns="http://www.w3.org/2000/svg">
+                <line
+                  x1="0" y1="6" x2="24" y2="6"
+                  [attr.stroke]="item.strokeColor || item.color"
+                  [attr.stroke-width]="item.strokeWidth || 2"
+                  [attr.stroke-dasharray]="item.lineDash ? item.lineDash.join(',') : 'none'"
+                  stroke-linecap="round"
+                />
+              </svg>
+            }
+            @case ('icon') {
+              <span class="symbol-icon" [innerHTML]="item.iconSvg"></span>
+            }
+            @case ('point') {
+              <svg class="symbol-point" viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <mask id="legendTreeCutout" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                    <rect x="0" y="0" width="24" height="24" fill="black"/>
+                    <path fill="white" transform="scale(1.6)" d="M7.5 1C5.423 1 3 2.288 3 5.568C3 7.793 6.462 12.712 7.5 14c.923-1.288 4.5-6.09 4.5-8.432C12 2.288 9.577 1 7.5 1"/>
+                    <g transform="translate(12 10.3) scale(0.62) translate(-12 -12)">
+                      <path fill="black" d="M11 21a1 1 0 1 0 2 0zm0-2v2h2v-2zm-4.549-3.658L12 9l5.549 6.342c.566.646.106 1.658-.753 1.658H7.204c-.86 0-1.319-1.012-.753-1.658"/>
+                      <path fill="black" d="m7.44 9.08l3.76-5.013a1 1 0 0 1 1.6 0l3.76 5.013A1.2 1.2 0 0 1 15.6 11H8.4a1.2 1.2 0 0 1-.96-1.92"/>
+                    </g>
+                  </mask>
+                </defs>
+                <rect x="0" y="0" width="24" height="24" fill="#4CAF50" mask="url(#legendTreeCutout)"/>
+                <path fill="none" stroke="#000000" stroke-width="0.25" transform="scale(1.6)" d="M7.5 1C5.423 1 3 2.288 3 5.568C3 7.793 6.462 12.712 7.5 14c.923-1.288 4.5-6.09 4.5-8.432C12 2.288 9.577 1 7.5 1"/>
+                <g transform="translate(12 10.3) scale(0.62) translate(-12 -12)">
+                  <path fill="none" stroke="#000000" stroke-width="0.5" d="M11 21a1 1 0 1 0 2 0zm0-2v2h2v-2zm-4.549-3.658L12 9l5.549 6.342c.566.646.106 1.658-.753 1.658H7.204c-.86 0-1.319-1.012-.753-1.658"/>
+                  <path fill="none" stroke="#000000" stroke-width="0.5" d="m7.44 9.08l3.76-5.013a1 1 0 0 1 1.6 0l3.76 5.013A1.2 1.2 0 0 1 15.6 11H8.4a1.2 1.2 0 0 1-.96-1.92"/>
+                </g>
+              </svg>
+            }
+            @case ('composite') {
+              <svg class="symbol-composite" viewBox="0 0 24 12" xmlns="http://www.w3.org/2000/svg">
+                @if (item.compositeStyles) {
+                  <line
+                    x1="0" y1="6" x2="24" y2="6"
+                    [attr.stroke]="item.compositeStyles.base.color"
+                    [attr.stroke-width]="item.compositeStyles.base.width"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="0" y1="6" x2="24" y2="6"
+                    [attr.stroke]="item.compositeStyles.overlay.color"
+                    [attr.stroke-width]="item.compositeStyles.overlay.width"
+                    [attr.stroke-dasharray]="item.compositeStyles.overlay.lineDash.join(',')"
+                    stroke-linecap="round"
+                  />
+                }
+              </svg>
+            }
+          }
+        </span>
+        <span class="legend-name">{{ item.name }}</span>
+      </div>
+    }
+
+    @if (items().length === 0) {
+      <div class="no-items">Нема ставки у легенди</div>
+    }
+  </div>
+</div>
