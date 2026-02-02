@@ -48,8 +48,23 @@
         color: $table-td-color;
       }
 
-      tr:hover {
+      td:first-child {
+        border-radius: 10px 0 0 10px;
+        padding-left: 5px;
+      }
+
+      td:last-child {
+        border-radius: 0 10px 10px 0;
+        padding-right: 5px;
+      }
+
+      tr.mat-mdc-row:hover {
         background-color: $table-tr-hover;
+        cursor: pointer;
+      }
+
+      tr.mat-mdc-row.selected {
+        background: rgba(25, 160, 140, 0.15);
       }
 
       // Actions container

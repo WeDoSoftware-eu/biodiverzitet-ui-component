@@ -66,7 +66,12 @@
       }
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns()"
+        (click)="selectRowEvent() && !row._isSelected && rowClick(row)"
+        [class.selected]="row._isSelected"
+      ></tr>
 
       <tr class="mat-row no-data-row" *matNoDataRow>
         <td class="mat-cell" [attr.colspan]="displayedColumns().length">

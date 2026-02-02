@@ -51,5 +51,6 @@ export interface ProcessedCellValue<T> {
 
 export type ProcessedRow<T> = {
   _original: T;
-  [key: string]: ProcessedCellValue<T> | T;
+  _isSelected: boolean;
+  [key: string]: ProcessedCellValue<T> | T | boolean;
 };

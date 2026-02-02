@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, output, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
@@ -7,13 +7,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { debounceTime } from 'rxjs';
 import { TableFilterStoreService } from './table-filter-store';
-import { ButtonComponent } from '../../button/button.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-export type FilterFieldType = 'text' | 'select' | 'multiselect' | 'checkbox' | 'date';
+export type FilterFieldType = 'text' | 'select' | 'multiselect' | 'checkbox' | 'date' | 'tristate';
 
 export interface FilterOption {
-  value: unknown;
+  value: string | number | boolean;
+  label: string;
+}
+
+export interface TriStateOption {
+  value: string;
   label: string;
 }
 
@@ -23,6 +28,11 @@ export interface FilterFieldConfig {
   type: FilterFieldType;
   placeholder?: string;
   options?: FilterOption[];
+  triStateOptions?: TriStateOption[];
+}
+
+export interface TriStateValue {
+  [key: string]: boolean;
 }
 
 @Component({
@@ -35,7 +45,7 @@ export interface FilterFieldConfig {
     MatFormFieldModule,
     MatSelectModule,
     MatDatepickerModule,
-    ButtonComponent,
+    MatCheckboxModule,
   ],
   templateUrl: './table-filter.component.html',
   styleUrl: './table-filter.component.scss',
@@ -47,71 +57,134 @@ export class TableFilterComponent {
   fields = input.required<FilterFieldConfig[]>();
   changed = output<Record<string, unknown>>();
 
-  cancelButtonTitle = signal('');
-
   private store = inject(TableFilterStoreService);
 
   form = signal<FormGroup>(new FormGroup({}));
   formReady = signal(false);
-  hasFilters = signal(false);
+  formValue = signal<Record<string, unknown>>({});
+
+  // Computed signal for tristate labels
+  triStateLabels = computed(() => {
+    const values = this.formValue();
+    const labels: Record<string, string> = {};
+
+    this.fields()
+      .filter(f => f.type === 'tristate')
+      .forEach(field => {
+        const value = values[field.key] as TriStateValue;
+
+        if (!value || typeof value !== 'object' || Object.keys(value).length === 0) {
+          labels[field.key] = field.label || '';
+        } else {
+          const selected = Object.keys(value)
+            .map(id => field.triStateOptions?.find(opt => opt.value === id)?.label)
+            .filter(Boolean);
+
+          labels[field.key] =
+            selected.length > 0 ? `${field.label}: ${selected.join(', ')}` : field.label || '';
+        }
+      });
+
+    return labels;
+  });
+
+  // Computed signal for checkbox checked states
+  triStateCheckedStates = computed(() => {
+    const values = this.formValue();
+    const states: Record<string, boolean> = {};
+
+    this.fields()
+      .filter(f => f.type === 'tristate')
+      .forEach(field => {
+        const value = values[field.key] as TriStateValue;
+
+        if (!value || typeof value !== 'object') {
+          return;
+        }
+
+        field.triStateOptions?.forEach(option => {
+          const state = value[option.value];
+          if (state !== undefined) {
+            // Create keys for both "yes" and "no" checkboxes
+            states[`${field.key}:${option.value}:yes`] = state === true;
+            states[`${field.key}:${option.value}:no`] = state === false;
+          }
+        });
+      });
+
+    return states;
+  });
 
   constructor() {
     effect(
       () => {
         const f = this.fields();
-        if (this.fields().length > 0) this.buildForm(f);
+        if (f.length > 0) {
+          this.buildForm(f);
+        }
       },
       { allowSignalWrites: true }
     );
 
-    effect(() => {
-      if (!this.formReady()) return;
-      const saved = this.store.get(this.id())();
-      this.form().patchValue(saved, { emitEvent: false });
-
-      setTimeout(() => this.checkHasFilters(), 0);
-    });
+    effect(
+      () => {
+        if (!this.formReady()) return;
+        const saved = this.store.get(this.id())();
+        this.form().patchValue(saved, { emitEvent: false });
+        this.formValue.set(this.form().value);
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   private buildForm(fields: FilterFieldConfig[]) {
     const group: Record<string, FormControl> = {};
 
     for (const f of fields) {
-      group[f.key] = new FormControl(
-        f.type === 'multiselect' ? [] : f.type === 'checkbox' ? false : null
-      );
+      if (f.type === 'tristate') {
+        group[f.key] = new FormControl({});
+      } else if (f.type === 'multiselect') {
+        group[f.key] = new FormControl([]);
+      } else if (f.type === 'checkbox') {
+        group[f.key] = new FormControl(false);
+      } else {
+        group[f.key] = new FormControl(null);
+      }
     }
 
     const fg = new FormGroup(group);
 
     fg.valueChanges.pipe(debounceTime(300)).subscribe(value => {
+      this.formValue.set(value);
       this.store.set(this.id(), value);
       this.changed.emit(value);
-      this.checkHasFilters();
     });
 
     this.form.set(fg);
     this.formReady.set(true);
   }
 
-  private checkHasFilters() {
-    const values = this.form().value;
-    const hasAnyValue = Object.values(values).some(value => {
-      if (Array.isArray(value)) {
-        return value.length > 0;
-      }
-      if (typeof value === 'boolean') {
-        return value === true;
-      }
-      return value !== null && value !== undefined && value !== '';
-    });
-    this.hasFilters.set(hasAnyValue);
-  }
+  /** TRI STATE SELECT */
 
-  clear() {
-    this.form().reset();
-    this.store.clear(this.id());
-    this.changed.emit({});
-    this.hasFilters.set(false);
+  //Handle tristate checkbox changes
+  onTriStateChange(fieldKey: string, optionId: string | number, targetValue: boolean): void {
+    const control = this.form().get(fieldKey);
+    if (!control) return;
+
+    const currentValue = control.value as TriStateValue;
+    const newValue: TriStateValue =
+      currentValue && typeof currentValue === 'object' ? { ...currentValue } : {};
+
+    const currentState = newValue[optionId];
+
+    if (currentState === targetValue) {
+      // Clicking the same checkbox again - uncheck it (remove from filter)
+      delete newValue[optionId];
+    } else {
+      // Set to the new value (true or false)
+      newValue[optionId] = targetValue;
+    }
+
+    control.setValue(newValue);
   }
 }
