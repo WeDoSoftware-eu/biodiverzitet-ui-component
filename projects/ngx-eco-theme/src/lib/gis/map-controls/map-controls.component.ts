@@ -9,16 +9,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./map-controls.component.scss'],
 })
 export class MapControlsComponent {
-  // Inputs
   zoomLevel = input<string | number>('100%');
 
-  // Outputs za akcije
   zoomIn = output<void>();
   zoomOut = output<void>();
   fullscreen = output<void>();
   homeViewClick = output<void>();
 
-  // Click feedback states
   zoomInClicked = signal(false);
   zoomOutClicked = signal(false);
   homeViewClicked = signal(false);

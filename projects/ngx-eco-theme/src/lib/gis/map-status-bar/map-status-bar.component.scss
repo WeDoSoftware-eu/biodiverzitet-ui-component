@@ -14,7 +14,6 @@
   white-space: nowrap;
 }
 
-/* Sekcije sa CSS separatorom */
 .bar-section {
   display: flex;
   align-items: center;
@@ -32,16 +31,14 @@
   }
 }
 
-/* EPSG kod */
 .epsg-code {
-  font-size: 8px;
+  font-size: 12px;
   color: $gis-text-secondary;
   font-weight: 500;
 }
 
-/* Koordinate */
 .coordinates {
-  font-size: 8px;
+  font-size: 12px;
   color: $gis-text-title;
   font-weight: 500;
 
@@ -50,7 +47,6 @@
   }
 }
 
-/* Scale bar U-oblik */
 .scale-bar {
   display: flex;
   align-items: center;
@@ -73,12 +69,16 @@
   background: $gis-text-title;
   top: -3px;
 
-  &--left { left: -1.5px; }
-  &--right { right: -1.5px; }
+  &--left {
+    left: -1.5px;
+  }
+  &--right {
+    right: -1.5px;
+  }
 }
 
 .scale-label {
-  font-size: 9px;
+  font-size: 11px;
   color: $gis-text-title;
   font-weight: 600;
 }

@@ -1,21 +1,16 @@
 <div class="map-status-bar">
-  <!-- EPSG sekcija -->
   <div class="bar-section">
     <span class="epsg-code">{{ epsgCode() }}</span>
   </div>
 
-  <!-- Koordinate sekcija -->
   <div class="bar-section">
     @if (coordinates()) {
-      <span class="coordinates">
-        {{ formattedNorthing() }} {{ formattedEasting() }}
-      </span>
+      <span class="coordinates"> {{ formattedNorthing() }} {{ formattedEasting() }} </span>
     } @else {
       <span class="coordinates coordinates--empty">-, -</span>
     }
   </div>
 
-  <!-- Scale bar sekcija -->
   <div class="bar-section scale-bar">
     <div class="scale-line" [style.width.px]="scaleBarConfig().widthPx">
       <div class="scale-tick scale-tick--left"></div>
