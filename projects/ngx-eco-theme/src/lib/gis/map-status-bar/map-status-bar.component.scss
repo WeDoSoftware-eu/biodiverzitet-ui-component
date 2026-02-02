@@ -1,0 +1,84 @@
+@use '../../../assets/styles/variables' as *;
+
+.map-status-bar {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  border: 0.67px solid $gis-border-color;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  gap: 12px;
+  white-space: nowrap;
+}
+
+/* Sekcije sa CSS separatorom */
+.bar-section {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* EPSG kod */
+.epsg-code {
+  font-size: 8px;
+  color: $gis-text-secondary;
+  font-weight: 500;
+}
+
+/* Koordinate */
+.coordinates {
+  font-size: 8px;
+  color: $gis-text-title;
+  font-weight: 500;
+
+  &--empty {
+    color: #999;
+  }
+}
+
+/* Scale bar U-oblik */
+.scale-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.scale-line {
+  position: relative;
+  height: 5px;
+  border: 1.5px solid $gis-text-title;
+  border-top: none;
+  background: transparent;
+  min-width: 40px;
+}
+
+.scale-tick {
+  position: absolute;
+  width: 1.5px;
+  height: 8px;
+  background: $gis-text-title;
+  top: -3px;
+
+  &--left { left: -1.5px; }
+  &--right { right: -1.5px; }
+}
+
+.scale-label {
+  font-size: 9px;
+  color: $gis-text-title;
+  font-weight: 600;
+}

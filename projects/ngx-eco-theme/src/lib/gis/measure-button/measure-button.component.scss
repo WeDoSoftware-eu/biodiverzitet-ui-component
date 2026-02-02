@@ -1,0 +1,50 @@
+@use '../../../assets/styles/variables' as *;
+
+.measure-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  border-radius: 8px;
+  border: $gis-border-light;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $gis-hover-bg;
+  }
+
+  &:active {
+    background: $gis-active-bg;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: $gis-focus-shadow;
+  }
+
+  &.active {
+    border: 0.8px solid $primary;
+
+    .icon {
+      color: $primary;
+    }
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gis-icon-color;
+    transition: color 0.3s ease;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@use '../../../assets/styles/variables' as *;
+
+.legend-button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  border-radius: 10px;
+  border: 0.67px solid $gis-border-color;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $gis-hover-bg;
+  }
+
+  &:active {
+    background: $gis-active-bg;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: $gis-focus-shadow;
+  }
+
+  // Aktivno stanje kada je legenda prikazana
+  &.active {
+    background: $gis-active-bg;
+    border-color: $primary;
+
+    .icon {
+      color: $primary;
+    }
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gis-icon-color;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
