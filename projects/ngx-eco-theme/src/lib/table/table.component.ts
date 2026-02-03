@@ -16,6 +16,14 @@ import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { ChipComponent } from '../chip/chip.component';
 import { IconComponent } from '../icon/icon.component';
 
+interface WithId {
+  id: string | number;
+}
+
+function hasId(obj: unknown): obj is WithId {
+  return typeof obj === 'object' && obj !== null && 'id' in obj;
+}
+
 @Component({
   selector: 'eco-table',
   standalone: true,
@@ -46,21 +54,25 @@ export class TableComponent<T> {
 
   readonly dataSource = computed(() => new MatTableDataSource<T>(this.data() || []));
 
-  // Create a computed Set of selected row for O(1) lookup
-  readonly selectedRowSet = computed(() => {
+  // Create a computed Set of selected row
+  readonly selectedRowId = computed(() => {
     const selected = this.selectedRow();
-    return selected ? new Set([selected._original]) : new Set<T>();
-  });
+    if (!selected) return null;
 
+    const original = selected._original;
+    return hasId(original) ? original.id : null;
+  });
   readonly processedData = computed((): ProcessedRow<T>[] => {
     const rows: T[] = this.data() || [];
     const columns = this.config().columns as TableColumn<T>[];
-    const selectedSet = this.selectedRowSet(); // Access the computed set
+    const selectedId = this.selectedRowId();
 
     return rows.map((row: T) => {
+      const rowId = hasId(row) ? row.id : null;
+
       const processedRow: ProcessedRow<T> = {
         _original: row,
-        _isSelected: selectedSet.has(row), // Add selection flag
+        _isSelected: selectedId !== null && rowId === selectedId,
       } as ProcessedRow<T>;
 
       columns.forEach(column => {
@@ -95,8 +107,6 @@ export class TableComponent<T> {
               : null,
         } as ProcessedCellValue<T>;
       });
-
-      console.log(processedRow);
 
       return processedRow;
     });
