@@ -17,6 +17,7 @@
             mat-icon-button
             type="button"
             class="clear-button"
+            [attr.aria-label]="i18n.datePicker.clearDateLabel"
             (click)="clearDate(); $event.stopPropagation()"
           >
             <mat-icon class="clear-icon">close</mat-icon>
@@ -45,6 +46,7 @@
             mat-icon-button
             type="button"
             class="clear-button"
+            [attr.aria-label]="i18n.datePicker.clearDateLabel"
             (click)="clearDate(); $event.stopPropagation()"
           >
             <mat-icon class="clear-icon">close</mat-icon>

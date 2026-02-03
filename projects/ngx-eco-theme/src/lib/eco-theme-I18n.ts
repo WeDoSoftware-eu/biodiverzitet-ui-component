@@ -51,6 +51,7 @@ export interface EcoThemeI18n {
     calendarLabel: string;
     openCalendarLabel: string;
     closeCalendarLabel: string;
+    clearDateLabel: string;
   };
 }
 
@@ -107,5 +108,6 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     calendarLabel: 'Календар',
     openCalendarLabel: 'Отвори календар',
     closeCalendarLabel: 'Затвори календар',
+    clearDateLabel: 'Обриши датум',
   },
 };
