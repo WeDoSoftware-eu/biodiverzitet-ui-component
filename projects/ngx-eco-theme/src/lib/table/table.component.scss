@@ -46,6 +46,10 @@
         padding: 0px;
         border-bottom: $border-table;
         color: $table-td-color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
       }
 
       td:first-child {
