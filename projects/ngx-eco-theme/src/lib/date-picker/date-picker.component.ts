@@ -84,10 +84,7 @@ export class DatePickerComponent {
   });
 
   constructor() {
-    effect(() => {
       this.updateDatepickerIntl();
-    });
-
     effect(() => {
       if (this.mode() === 'single') {
         const date = this.selectedDate();
