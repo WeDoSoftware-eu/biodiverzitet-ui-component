@@ -119,7 +119,15 @@
     }
   }
 }
-
+.column-icon {
+  font-size: 18px;
+  &.success {
+    color: $success;
+  }
+  &.error {
+    color: $error;
+  }
+}
 // Responsive
 @media (max-width: 768px) {
   .table-container {

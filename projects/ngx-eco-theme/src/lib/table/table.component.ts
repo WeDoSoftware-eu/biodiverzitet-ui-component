@@ -76,7 +76,13 @@ export class TableComponent<T> {
                   icon: column.badgeConfig?.getIcon ? column.badgeConfig.getIcon(row) : value,
                 }
               : null,
-
+          icon:
+            column.type === 'icon'
+              ? {
+                  class: column.iconConfig?.getClass ? column.iconConfig.getClass(row) : '',
+                  icon: column.iconConfig?.getIcon ? column.iconConfig.getIcon(row) : value,
+                }
+              : null,
           actions:
             column.type === 'actions' && column.actions
               ? column.actions.map(
@@ -89,6 +95,8 @@ export class TableComponent<T> {
               : null,
         } as ProcessedCellValue<T>;
       });
+
+      console.log(processedRow);
 
       return processedRow;
     });

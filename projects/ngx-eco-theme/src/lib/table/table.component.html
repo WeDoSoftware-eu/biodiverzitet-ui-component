@@ -43,6 +43,14 @@
                 >{{ row[column.key].badge.value }}</eco-chip
               >
             }
+            @if (column.type === 'icon') {
+              <eco-icon
+                class="column-icon"
+                [ngClass]="row[column.key].icon.class"
+                [icon]="row[column.key].icon.icon"
+                >{{ row[column.key].icon.value }}</eco-icon
+              >
+            }
             @if (column.type === 'date') {
               {{ row[column.key].raw | date: column.pipeFormat || 'dd-MM-yy HH:mm' }}
             }
