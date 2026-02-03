@@ -1,4 +1,14 @@
-import { Component, input, output, model, effect, inject, computed } from '@angular/core';
+import {
+  Component,
+  input,
+  output,
+  model,
+  effect,
+  inject,
+  computed,
+  DestroyRef,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule, MatDatepickerIntl } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -32,6 +42,7 @@ export interface DateRange {
 })
 export class DatePickerComponent {
   private datepickerIntl: MatDatepickerIntl = inject(MatDatepickerIntl);
+  private destroyRef = inject(DestroyRef);
 
   i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
   mode = input<'single' | 'range'>('single');
@@ -84,7 +95,7 @@ export class DatePickerComponent {
   });
 
   constructor() {
-      this.updateDatepickerIntl();
+    this.updateDatepickerIntl();
     effect(() => {
       if (this.mode() === 'single') {
         const date = this.selectedDate();
@@ -116,14 +127,16 @@ export class DatePickerComponent {
       }
     });
 
-    this.dateControl.valueChanges.subscribe((value: Date | null) => {
-      if (this.mode() === 'single') {
-        this.selectedDate.set(value);
-        this.dateChange.emit(value);
-      }
-    });
+    this.dateControl.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((value: Date | null) => {
+        if (this.mode() === 'single') {
+          this.selectedDate.set(value);
+          this.dateChange.emit(value);
+        }
+      });
 
-    this.rangeGroup.valueChanges.subscribe(value => {
+    this.rangeGroup.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
       if (this.mode() === 'range') {
         const range: DateRange = {
           start: value.start || null,
