@@ -38,6 +38,23 @@ export interface EcoThemeI18n {
     myProfile: string;
     logOut: string;
   };
+  datePicker: {
+    selectDate: string;
+    selectPeriod: string;
+    fromDate: string;
+    toDate: string;
+    switchToMultiYearViewLabel: string;
+    nextMonthLabel: string;
+    nextYearLabel: string;
+    nextMultiYearLabel: string;
+    prevMonthLabel: string;
+    prevYearLabel: string;
+    prevMultiYearLabel: string;
+    calendarLabel: string;
+    openCalendarLabel: string;
+    closeCalendarLabel: string;
+    clearDateLabel: string;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -79,5 +96,22 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     profile: 'Профил',
     myProfile: 'Мој профил',
     logOut: 'Одјави се',
+  },
+  datePicker: {
+    selectDate: 'Изаберите датум',
+    selectPeriod: 'Изаберите период',
+    fromDate: 'Од датума',
+    toDate: 'До датума',
+    switchToMultiYearViewLabel: 'Изабери годину',
+    nextMonthLabel: 'Следећи месец',
+    nextYearLabel: 'Следећа година',
+    nextMultiYearLabel: 'Следећих 24 године',
+    prevMonthLabel: 'Претходни месец',
+    prevYearLabel: 'Претходна година',
+    prevMultiYearLabel: 'Претходних 24 године',
+    calendarLabel: 'Календар',
+    openCalendarLabel: 'Отвори календар',
+    closeCalendarLabel: 'Затвори календар',
+    clearDateLabel: 'Обриши датум',
   },
 };

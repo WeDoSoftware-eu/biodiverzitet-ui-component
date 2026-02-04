@@ -1,0 +1,34 @@
+.date-picker-wrapper {
+  display: inline-block;
+  width: 256px;
+
+  .date-picker-field {
+    width: 256px;
+  }
+
+  .suffix-icons {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .clear-button {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .clear-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      color: rgba(0, 0, 0, 0.54);
+    }
+
+    &:hover .clear-icon {
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+}
