@@ -7,6 +7,7 @@ import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { debounceInteraction } from '../../../decorators/debounce.decorator';
 import { IconComponent } from '../../icon/icon.component';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
   selector: 'eco-table-paginator',
@@ -18,6 +19,7 @@ import { IconComponent } from '../../icon/icon.component';
     MatTooltipModule,
     FormsModule,
     IconComponent,
+    ButtonComponent,
   ],
   templateUrl: './table-paginator.component.html',
   styleUrl: './table-paginator.component.scss',
@@ -28,6 +30,7 @@ export class TablePaginatorComponent {
   totalItems = input<number>(0);
   pageSize = input<number>(10);
   pageIndex = input<number>(0);
+  generateButtonShow = input<boolean>(false);
 
   latUpdateTitle = this.i18n.paginator.lastUpdateTitle;
   latUpdate = input<string>('');
@@ -36,20 +39,6 @@ export class TablePaginatorComponent {
   pageInput: number | null = null;
 
   totalPages = computed(() => Math.ceil(this.totalItems() / this.pageSize()));
-
-  rangeLabel = computed(() => {
-    const total = this.totalItems();
-    const size = this.pageSize();
-    const index = this.pageIndex();
-
-    if (total === 0) {
-      return `${this.i18n.paginator.displayedLabel} 0 ${this.i18n.paginator.ofLabel} 0`;
-    }
-    const startIndex = index * size + 1;
-    const endIndex = startIndex < total ? Math.min(startIndex + size - 1, total) : total;
-
-    return `${this.i18n.paginator.displayedLabel} ${endIndex} ${this.i18n.paginator.ofLabel} ${total}`;
-  });
 
   pagesToDisplay = computed(() => {
     const total = this.totalPages();

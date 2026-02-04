@@ -21,6 +21,8 @@ export interface EcoThemeI18n {
   };
   tableFilter: {
     clearFilter: string;
+    yes: string;
+    no: string;
   };
   tableSerach: {
     search: string;
@@ -61,6 +63,8 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   },
   tableFilter: {
     clearFilter: 'Поништи филтер',
+    yes: 'Да',
+    no: 'Не',
   },
   tableSerach: {
     search: 'Претрага',

@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use '../variables' as *;
 
 .mat-mdc-button,
 .mat-mdc-raised-button,
@@ -10,4 +11,20 @@
     display: flex;
     gap: 2px;
   }
+}
+.mat-button-toggle-group {
+  border: none !important;
+  background-color: rgba(239, 243, 244, 1);
+}
+.mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+  background-color: $white !important;
+}
+.mat-button-toggle {
+  border-radius: 20px;
+  border: none;
+  margin: 5px;
+  border-left: none !important;
+}
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 1.5 !important;
 }

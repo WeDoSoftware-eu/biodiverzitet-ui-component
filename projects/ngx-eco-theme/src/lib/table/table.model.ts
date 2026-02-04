@@ -3,7 +3,7 @@ import { EcoIcon } from '../icon/icon.component';
 export interface TableColumn<T> {
   key: string;
   label: string;
-  type?: 'text' | 'badge' | 'date' | 'actions' | 'number' | 'enum';
+  type?: 'text' | 'badge' | 'date' | 'actions' | 'number' | 'enum' | 'icon';
   width?: string;
   align?: 'left' | 'center' | 'right';
   pipe?: 'date' | 'number';
@@ -12,6 +12,10 @@ export interface TableColumn<T> {
   badgeConfig?: {
     getValue: (row: T) => string;
     getClass: (row: T) => string;
+    getIcon: (row: T) => EcoIcon;
+  };
+  iconConfig?: {
+    getClass: (row: T) => 'error' | 'success';
     getIcon: (row: T) => EcoIcon;
   };
   actions?: TableAction<T>[];
@@ -51,5 +55,6 @@ export interface ProcessedCellValue<T> {
 
 export type ProcessedRow<T> = {
   _original: T;
-  [key: string]: ProcessedCellValue<T> | T;
+  _isSelected: boolean;
+  [key: string]: ProcessedCellValue<T> | T | boolean;
 };
