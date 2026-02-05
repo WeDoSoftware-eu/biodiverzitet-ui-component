@@ -173,16 +173,16 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   selectedMarker: MapMarker | null = null;
 
   markers: MapMarker[] = [
-    { id: 0, lat: 45.7297, lng: 20.1052, title: 'Marker 0', state: 1 },
-    { id: 1, lat: 45.248, lng: 20.045, title: 'Marker 1', state: 2 },
-    { id: 2, lat: 45.348, lng: 19.716, title: 'Marker 2', state: 3 },
-    { id: 3, lat: 44.9726, lng: 21.2955, title: 'Marker 3', state: 1 },
-    { id: 4, lat: 45.098, lng: 21.238, title: 'Marker 4', state: 2 },
-    { id: 5, lat: 45.076, lng: 21.202, title: 'Marker 5', state: 3 },
-    { id: 6, lat: 45.2575, lng: 19.773, title: 'Marker 6', state: 1 },
-    { id: 7, lat: 45.249, lng: 19.698, title: 'Marker 7', state: 2 },
-    { id: 8, lat: 43.556, lng: 22.281, title: 'Marker 8', state: 3 },
-    { id: 9, lat: 45.249, lng: 19.716, title: 'Marker 9', state: 1 },
+    { id: 0, lat: 45.7297, lng: 20.1052, title: 'Marker 0', state: 'new' },
+    { id: 1, lat: 45.248, lng: 20.045, title: 'Marker 1', state: 'closed' },
+    { id: 2, lat: 45.348, lng: 19.716, title: 'Marker 2', state: 'active' },
+    { id: 3, lat: 44.9726, lng: 21.2955, title: 'Marker 3', state: 'new' },
+    { id: 4, lat: 45.098, lng: 21.238, title: 'Marker 4', state: 'new' },
+    { id: 5, lat: 45.076, lng: 21.202, title: 'Marker 5', state: 'new' },
+    { id: 6, lat: 45.2575, lng: 19.773, title: 'Marker 6', state: 'new' },
+    { id: 7, lat: 45.249, lng: 19.698, title: 'Marker 7', state: 'new' },
+    { id: 8, lat: 43.556, lng: 22.281, title: 'Marker 8', state: 'new' },
+    { id: 9, lat: 45.249, lng: 19.716, title: 'Marker 9', state: 'new' },
   ];
 
   nationalParks: MapPolygon[] = [

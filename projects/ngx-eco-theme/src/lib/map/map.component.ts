@@ -28,7 +28,7 @@ declare module 'leaflet' {
 /* =======================
    Interfaces
 ======================= */
-export type MarkerState = 1 | 2 | 3;
+export type MarkerState = 'active' | 'closed' | 'new';
 
 export interface MapMarker {
   id: string | number;
@@ -266,7 +266,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initializeStateIcons(): void {
-    const states: MarkerState[] = [1, 2, 3];
+    const states: MarkerState[] = ['new', 'active', 'closed'];
 
     states.forEach(state => {
       const icon = L.icon({
@@ -321,13 +321,13 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         icon: icon,
       });
 
-      marker.bindPopup(`
-        <div class="marker-popup">
-          <h3>${markerData.title}</h3>
-          ${markerData.description ? `<p>${markerData.description}</p>` : ''}
-          ${markerData.state ? `<p><strong>State:</strong> ${markerData.state}</p>` : ''}
-        </div>
-      `);
+      // marker.bindPopup(`
+      //   <div class="marker-popup">
+      //     <h3>${markerData.title}</h3>
+      //     ${markerData.description ? `<p>${markerData.description}</p>` : ''}
+      //     ${markerData.state ? `<p><strong>State:</strong> ${markerData.state}</p>` : ''}
+      //   </div>
+      // `);
 
       marker.on('click', () => this.markerClick.emit(markerData));
 
