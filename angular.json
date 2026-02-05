@@ -30,6 +30,9 @@
               }
             ],
             "styles": [
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
               "projects/eco-theme-sample/src/styles.scss",
               "projects/ngx-eco-theme/src/assets/styles/green-theme.scss",
               "projects/ngx-eco-theme/src/assets/icons/style.css"
@@ -88,7 +91,10 @@
                 "input": "projects/eco-theme-sample/public"
               }
             ],
-            "styles": ["projects/eco-theme-sample/src/styles.scss"],
+            "styles": [
+              "projects/eco-theme-sample/src/styles.scss",
+              "node_modules/leaflet/dist/leaflet.css"
+            ],
             "scripts": []
           }
         }
@@ -124,10 +130,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/ngx-eco-theme/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "karmaConfig": "projects/ngx-eco-theme/karma.conf.js"
           }
         }

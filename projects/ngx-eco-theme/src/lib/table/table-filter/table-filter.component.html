@@ -17,8 +17,8 @@
                     panelClass="tri-state-panel"
                   >
                     <div class="filter-header">
-                      <span class="header-label">{{ i18n.tableFilter.yes ?? 'Да' }}</span>
-                      <span class="header-label">{{ i18n.tableFilter.no ?? 'Не' }}</span>
+                      <span class="header-label">{{ i18n.tableFilter.yes }}</span>
+                      <span class="header-label">{{ i18n.tableFilter.no }}</span>
                     </div>
 
                     @for (option of f.triStateOptions ?? []; track option.value) {
