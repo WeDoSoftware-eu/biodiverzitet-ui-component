@@ -31,12 +31,23 @@ declare module 'leaflet' {
 export type MarkerState = 'active' | 'closed' | 'new';
 
 export interface MapMarker {
-  id: string | number;
+  id: number;
   lat: number;
   lng: number;
   title: string;
-  description?: string;
-  state?: MarkerState;
+  state: 'closed' | 'new' | 'active';
+  regionId: number;
+  regionLabel: string;
+  district: string;
+  reportYear: number;
+  wasteTypeId: number;
+  wasteTypeLabel: string;
+  estimatedAreaM2: number;
+  wasteAmountTons: number;
+  dumpsiteSizeId: number;
+  dumpsiteSizeLabel: string;
+  levelOfOrganisation: 1 | 2 | 3;
+  workStatus: 1 | 2 | 3;
   icon?: L.Icon;
 }
 
@@ -403,9 +414,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   onSearchChange(): void {
     const query = this.searchQuery.toLowerCase();
     this.filteredMarkers = query
-      ? this.markers().filter(
-          m => m.title.toLowerCase().includes(query) || m.description?.toLowerCase().includes(query)
-        )
+      ? this.markers().filter(m => m.title.toLowerCase().includes(query))
       : [...this.markers()];
 
     this.updateMarkers();
