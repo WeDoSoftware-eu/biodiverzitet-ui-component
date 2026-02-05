@@ -15,6 +15,11 @@
       "input": "src/assets/icons/svg",
       "glob": "**/*.svg",
       "output": "styles/icons-svg"
+    },
+    {
+      "input": "src/assets/images",
+      "glob": "**/*.{png,jpg,jpeg,gif,svg,webp}",
+      "output": "styles/lib-images"
     }
   ]
 }

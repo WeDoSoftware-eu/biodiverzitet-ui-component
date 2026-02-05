@@ -16,6 +16,7 @@ import {
   TableFilterComponent,
 } from '../table/table-filter/table-filter.component';
 import { HeaderComponent } from '../header/header.component';
+import { MapComponent, MapMarker, MapPolygon } from '../map/map.component';
 
 interface MyItem {
   id: number;
@@ -37,6 +38,7 @@ interface MyItem {
     IconComponent,
     TableFilterComponent,
     HeaderComponent,
+    MapComponent,
   ],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -159,5 +161,85 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
 
   onFilter(value: unknown) {
     console.log('FILTER:', value);
+  }
+
+  /**
+   *
+   * MAP COMPONENT
+   */
+
+  center: [number, number] = [45.2671, 19.8335];
+  zoom: number = 8;
+  selectedMarker: MapMarker | null = null;
+
+  markers: MapMarker[] = [
+    { id: 0, lat: 45.7297, lng: 20.1052, title: 'Marker 0', state: 1 },
+    { id: 1, lat: 45.248, lng: 20.045, title: 'Marker 1', state: 2 },
+    { id: 2, lat: 45.348, lng: 19.716, title: 'Marker 2', state: 3 },
+    { id: 3, lat: 44.9726, lng: 21.2955, title: 'Marker 3', state: 1 },
+    { id: 4, lat: 45.098, lng: 21.238, title: 'Marker 4', state: 2 },
+    { id: 5, lat: 45.076, lng: 21.202, title: 'Marker 5', state: 3 },
+    { id: 6, lat: 45.2575, lng: 19.773, title: 'Marker 6', state: 1 },
+    { id: 7, lat: 45.249, lng: 19.698, title: 'Marker 7', state: 2 },
+    { id: 8, lat: 43.556, lng: 22.281, title: 'Marker 8', state: 3 },
+    { id: 9, lat: 45.249, lng: 19.716, title: 'Marker 9', state: 1 },
+  ];
+
+  nationalParks: MapPolygon[] = [
+    {
+      id: 'fruska-gora',
+      title: 'Fruška Gora',
+      description: 'Nacionalni park Fruška Gora',
+      coordinates: [
+        [45.18, 19.45],
+        [45.2, 19.5],
+        [45.22, 19.6],
+        [45.2, 19.75],
+        [45.18, 19.85],
+        [45.15, 19.9],
+        [45.12, 19.95],
+        [45.08, 19.93],
+        [45.05, 19.88],
+        [45.03, 19.8],
+        [45.02, 19.7],
+        [45.03, 19.6],
+        [45.05, 19.5],
+        [45.08, 19.45],
+        [45.12, 19.42],
+        [45.15, 19.43],
+        [45.18, 19.45],
+      ],
+      color: '#2d5016',
+      fillColor: '#4a7c2f',
+      fillOpacity: 0.35,
+      weight: 3,
+    },
+    {
+      id: 'deliblato',
+      title: 'Deliblatska Peščara',
+      description: 'Deliblatska Peščara',
+      coordinates: [
+        [44.95, 21.0],
+        [45.1, 21.2],
+        [45.05, 21.4],
+        [44.9, 21.45],
+        [44.8, 21.3],
+        [44.85, 21.1],
+        [44.95, 21.0],
+      ],
+      color: '#d4a373',
+      fillColor: '#e6c9a8',
+      fillOpacity: 0.3,
+      weight: 2,
+    },
+  ];
+
+  onMarkerClick(marker: MapMarker): void {
+    this.selectedMarker = marker;
+    console.log('Marker clicked:', marker);
+  }
+
+  onMapClick(event: any): void {
+    console.log('Map clicked at:', event.latlng);
   }
 }

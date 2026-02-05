@@ -55,6 +55,15 @@ export interface EcoThemeI18n {
     closeCalendarLabel: string;
     clearDateLabel: string;
   };
+  map: {
+    search: string;
+    layers: {
+      title: string;
+      street: string;
+      satellite: string;
+      terrain: string;
+    };
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -113,5 +122,14 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     openCalendarLabel: 'Отвори календар',
     closeCalendarLabel: 'Затвори календар',
     clearDateLabel: 'Обриши датум',
+  },
+  map: {
+    search: 'Претрага',
+    layers: {
+      title: 'Слојеви',
+      street: 'Карта',
+      satellite: 'Сателит',
+      terrain: 'Терен',
+    },
   },
 };

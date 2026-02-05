@@ -15,6 +15,7 @@ export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
 export * from './lib/modal/modal.component';
 export * from './lib/date-picker/date-picker.component';
+export * from './lib/map/map.component';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';

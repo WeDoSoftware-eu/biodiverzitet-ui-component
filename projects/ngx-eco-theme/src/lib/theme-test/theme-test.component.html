@@ -143,3 +143,29 @@
     </div>
   }
 </div>
+
+<div class="container">
+  <eco-map
+    [markers]="markers"
+    [center]="center"
+    [zoom]="zoom"
+    [height]="'600px'"
+    [showLocateButton]="true"
+    [showZoomControls]="true"
+    [showFullscreenButton]="true"
+    [showLayersButton]="true"
+    [polygons]="nationalParks"
+    [showSearchBox]="true"
+    (markerClick)="onMarkerClick($event)"
+    (mapClick)="onMapClick($event)"
+  />
+
+  @if (selectedMarker) {
+    <div class="info">
+      <h3>Selected Marker:</h3>
+      <p><strong>Title:</strong> {{ selectedMarker.title }}</p>
+      <p><strong>Description:</strong> {{ selectedMarker.description }}</p>
+      <p><strong>Coordinates:</strong> {{ selectedMarker.lat }}, {{ selectedMarker.lng }}</p>
+    </div>
+  }
+</div>
