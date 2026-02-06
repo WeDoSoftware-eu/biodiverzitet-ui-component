@@ -1,0 +1,36 @@
+@if (data()) {
+  <div
+    class="hover-tooltip"
+    [class.above]="data()!.showAbove"
+    [class.below]="!data()!.showAbove"
+    [style.left.px]="data()!.position.x"
+    [style.top.px]="data()!.position.y"
+  >
+    <div class="tooltip-content">
+      @for (feature of data()!.features; track feature.layerId + feature.registrationNumber) {
+        <div class="feature-section">
+          <div class="layer-name">{{ feature.layerDisplayName }}</div>
+          @if (feature.featureName) {
+            <div class="feature-row">
+              <span class="feature-label">Назив:</span>
+              <span class="feature-value">{{ feature.featureName }}</span>
+            </div>
+          }
+          @if (feature.featureType) {
+            <div class="feature-row">
+              <span class="feature-label">Тип:</span>
+              <span class="feature-value">{{ feature.featureType }}</span>
+            </div>
+          }
+          @if (feature.registrationNumber) {
+            <div class="feature-row">
+              <span class="feature-label">Рег. бр:</span>
+              <span class="feature-value feature-reg-number">{{ feature.registrationNumber }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+    <div class="tooltip-arrow"></div>
+  </div>
+}

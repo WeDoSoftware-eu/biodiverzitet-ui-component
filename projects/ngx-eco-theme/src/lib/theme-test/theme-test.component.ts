@@ -16,7 +16,7 @@ import {
   TableFilterComponent,
 } from '../table/table-filter/table-filter.component';
 import { HeaderComponent } from '../header/header.component';
-import { MapComponent, MapMarker, MapPolygon } from '../map/map.component';
+// import { MapComponent, MapMarker, MapPolygon } from '../map/map.component'; // COMMENTED OUT
 
 interface MyItem {
   id: number;
@@ -38,7 +38,7 @@ interface MyItem {
     IconComponent,
     TableFilterComponent,
     HeaderComponent,
-    MapComponent,
+    // MapComponent, // COMMENTED OUT
   ],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -163,11 +163,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     console.log('FILTER:', value);
   }
 
-  /**
-   *
-   * MAP COMPONENT
-   */
-
+  /* COMMENTED OUT - eco-map not in use, pending team decision on removal
   center: [number, number] = [45.2671, 19.8335];
   zoom: number = 8;
   selectedMarker: MapMarker | null = null;
@@ -444,4 +440,5 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   onMapClick(event: any): void {
     console.log('Map clicked at:', event.latlng);
   }
+  */
 }

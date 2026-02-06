@@ -28,4 +28,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npx ng build ngx-eco-theme
-    - run: npx run test:ci
+    - name: Test ngx-eco-theme
+      run: |
+        cd projects/ngx-eco-theme
+        npm run test:ci

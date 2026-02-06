@@ -15,7 +15,7 @@ export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
 export * from './lib/modal/modal.component';
 export * from './lib/date-picker/date-picker.component';
-export * from './lib/map/map.component';
+// export * from './lib/map/map.component'; // COMMENTED OUT
 export * from './lib/gis/base-layer-button/base-layer-button.component';
 export * from './lib/gis/base-layer-selector/base-layer-selector.component';
 export * from './lib/gis/layers-button/layers-button.component';
@@ -28,6 +28,10 @@ export * from './lib/gis/download-button/download-button.component';
 export * from './lib/gis/layers-selector/layers-selector.component';
 export * from './lib/gis/legend-selector/legend-selector.component';
 export * from './lib/gis/map-status-bar/map-status-bar.component';
+
+// GIS - Hover Tooltip
+export * from './lib/gis/hover-tooltip/hover-tooltip.component';
+export * from './lib/gis/hover-tooltip/hover-tooltip.model';
 
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';

@@ -1,0 +1,102 @@
+@use '../../../assets/styles/variables' as *;
+
+.hover-tooltip {
+  position: fixed;
+  z-index: 2000;
+  max-width: 250px;
+  pointer-events: none;
+
+  &.above {
+    transform: translateX(-50%) translateY(-100%);
+    padding-bottom: 12px;
+
+    .tooltip-arrow {
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid $white;
+    }
+  }
+
+  &.below {
+    transform: translateX(-50%);
+    padding-top: 12px;
+
+    .tooltip-arrow {
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $white;
+    }
+  }
+}
+
+.tooltip-content {
+  background: $white;
+  border-radius: 8px;
+  border: 0.67px solid $gis-border-color;
+  box-shadow: $gis-box-shadow-lg;
+  padding: 8px;
+  box-sizing: border-box;
+  text-align: justify;
+}
+
+.feature-section {
+  &:not(:last-child) {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid $gis-border-color;
+  }
+}
+
+.layer-name {
+  font-family: $font-family-inter;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gis-text-title;
+  margin-bottom: 6px;
+}
+
+.feature-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.feature-label {
+  font-family: $font-family-inter;
+  font-size: 11px;
+  font-weight: 400;
+  color: $gis-text-secondary;
+  margin-bottom: 1px;
+}
+
+.feature-value {
+  font-family: $font-family-inter;
+  font-size: 12px;
+  font-weight: 400;
+  color: $gis-text-title;
+  word-break: break-word;
+  text-align: justify;
+}
+
+.feature-reg-number {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
