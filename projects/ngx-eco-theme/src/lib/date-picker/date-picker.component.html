@@ -1,0 +1,60 @@
+<div class="date-picker-wrapper">
+  @if (mode() === 'single') {
+    <!-- Single Date Picker -->
+    <mat-form-field class="date-picker-field" appearance="outline">
+      <mat-label>{{ labelText() }}</mat-label>
+      <input
+        matInput
+        [matDatepicker]="singlePicker"
+        [formControl]="dateControl"
+        [min]="minDate()"
+        [max]="maxDate()"
+        readonly
+      />
+      <span matIconSuffix class="suffix-icons">
+        @if (showClearButton() && hasValue()) {
+          <button
+            mat-icon-button
+            type="button"
+            class="clear-button"
+            [attr.aria-label]="i18n.datePicker.clearDateLabel"
+            (click)="clearDate(); $event.stopPropagation()"
+          >
+            <mat-icon class="clear-icon">close</mat-icon>
+          </button>
+        }
+        <mat-datepicker-toggle [for]="singlePicker" class="calendar-toggle"></mat-datepicker-toggle>
+      </span>
+      <mat-datepicker #singlePicker></mat-datepicker>
+    </mat-form-field>
+  } @else {
+    <!-- Date Range Picker -->
+    <mat-form-field class="date-picker-field" appearance="outline">
+      <mat-label>{{ labelText() }}</mat-label>
+      <mat-date-range-input
+        [formGroup]="rangeGroup"
+        [rangePicker]="rangePicker"
+        [min]="minDate()"
+        [max]="maxDate()"
+      >
+        <input matStartDate formControlName="start" [placeholder]="startLabelText()" readonly />
+        <input matEndDate formControlName="end" [placeholder]="endLabelText()" readonly />
+      </mat-date-range-input>
+      <span matIconSuffix class="suffix-icons">
+        @if (showClearButton() && hasValue()) {
+          <button
+            mat-icon-button
+            type="button"
+            class="clear-button"
+            [attr.aria-label]="i18n.datePicker.clearDateLabel"
+            (click)="clearDate(); $event.stopPropagation()"
+          >
+            <mat-icon class="clear-icon">close</mat-icon>
+          </button>
+        }
+        <mat-datepicker-toggle [for]="rangePicker" class="calendar-toggle"></mat-datepicker-toggle>
+      </span>
+      <mat-date-range-picker #rangePicker></mat-date-range-picker>
+    </mat-form-field>
+  }
+</div>

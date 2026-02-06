@@ -21,6 +21,9 @@ export interface EcoThemeI18n {
   };
   tableFilter: {
     clearFilter: string;
+    clear: string;
+    yes: string;
+    no: string;
   };
   tableSerach: {
     search: string;
@@ -35,6 +38,32 @@ export interface EcoThemeI18n {
     profile: string;
     myProfile: string;
     logOut: string;
+  };
+  datePicker: {
+    selectDate: string;
+    selectPeriod: string;
+    fromDate: string;
+    toDate: string;
+    switchToMultiYearViewLabel: string;
+    nextMonthLabel: string;
+    nextYearLabel: string;
+    nextMultiYearLabel: string;
+    prevMonthLabel: string;
+    prevYearLabel: string;
+    prevMultiYearLabel: string;
+    calendarLabel: string;
+    openCalendarLabel: string;
+    closeCalendarLabel: string;
+    clearDateLabel: string;
+  };
+  map: {
+    search: string;
+    layers: {
+      title: string;
+      street: string;
+      satellite: string;
+      terrain: string;
+    };
   };
 }
 
@@ -61,6 +90,9 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   },
   tableFilter: {
     clearFilter: 'Поништи филтер',
+    clear: 'Поништи',
+    yes: 'Да',
+    no: 'Не',
   },
   tableSerach: {
     search: 'Претрага',
@@ -75,5 +107,31 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     profile: 'Профил',
     myProfile: 'Мој профил',
     logOut: 'Одјави се',
+  },
+  datePicker: {
+    selectDate: 'Изаберите датум',
+    selectPeriod: 'Изаберите период',
+    fromDate: 'Од датума',
+    toDate: 'До датума',
+    switchToMultiYearViewLabel: 'Изабери годину',
+    nextMonthLabel: 'Следећи месец',
+    nextYearLabel: 'Следећа година',
+    nextMultiYearLabel: 'Следећих 24 године',
+    prevMonthLabel: 'Претходни месец',
+    prevYearLabel: 'Претходна година',
+    prevMultiYearLabel: 'Претходних 24 године',
+    calendarLabel: 'Календар',
+    openCalendarLabel: 'Отвори календар',
+    closeCalendarLabel: 'Затвори календар',
+    clearDateLabel: 'Обриши датум',
+  },
+  map: {
+    search: 'Претрага',
+    layers: {
+      title: 'Слојеви',
+      street: 'Карта',
+      satellite: 'Сателит',
+      terrain: 'Терен',
+    },
   },
 };

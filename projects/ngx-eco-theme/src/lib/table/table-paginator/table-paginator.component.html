@@ -1,8 +1,9 @@
 <div class="paginator-container">
   @if (totalPages() > 0) {
     <div class="custom-paginator-controls gap-8">
-      <div class="range-label">
-        <p>{{ rangeLabel() }}</p>
+      <div class="last-update-text">
+        {{ latUpdateTitle }}:
+        <p class="m-l-5">{{ latUpdate() }}</p>
       </div>
 
       <div class="pagination-buttons gap-6">
@@ -80,9 +81,10 @@
         </div>
       </div>
 
-      <div class="last-update-text m-l-20">
-        {{ latUpdateTitle }}:
-        <p class="m-l-5">{{ latUpdate() }}</p>
+      <div class="generate-button">
+        @if (generateButtonShow()) {
+          <eco-button buttonClass="primary" icon="starts">Генериши извештај</eco-button>
+        }
       </div>
     </div>
   }

@@ -13,14 +13,6 @@
     align-items: center;
     justify-content: space-between;
 
-    .range-label {
-      color: $paginator-text-color;
-
-      p {
-        font-size: var(--mat-sys-body-medium-size);
-      }
-    }
-
     button.mat-mdc-mini-fab {
       width: 32px;
       height: 32px;

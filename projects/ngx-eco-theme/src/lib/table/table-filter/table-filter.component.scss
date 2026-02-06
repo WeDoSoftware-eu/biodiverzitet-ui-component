@@ -2,15 +2,48 @@
 
 .form-fields {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+
+  .left-fields {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0; // Prevent tristate from shrinking
+  }
+
+  .right-fields {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap; // Allow wrapping within right fields
+    gap: 10px;
+    min-width: 0; // Allow shrinking below content size
+
+    // Remove justify-content: flex-end on small screens
+    @media (max-width: 1200px) {
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    // Keep it on larger screens
+    @media (min-width: 1201px) {
+      justify-content: flex-end;
+    }
+  }
 
   .form-field-group {
-    margin: 0 5px;
+    margin: 0;
+    flex-shrink: 1; // Allow fields to shrink if needed
+
+    &:has(.tristate-field) {
+      order: -1;
+      flex-shrink: 0;
+    }
+
+    // Make sure form fields don't grow unnecessarily
+    mat-form-field {
+      min-width: 150px;
+      max-width: 200px;
+    }
   }
-}
-.filter-container {
-  display: flex;
-  align-items: anchor-center;
-}
-.mat-mdc-form-field {
-  width: 120px !important;
 }

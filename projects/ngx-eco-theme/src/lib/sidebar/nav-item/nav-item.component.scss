@@ -53,3 +53,35 @@
 .menu-icon eco-icon {
   font-size: $sidebar-expand-icon;
 }
+
+.flatMenu {
+  padding-top: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  .hide-menu {
+    font-weight: $text-bold;
+  }
+
+  &:hover {
+    background-color: rgba($primary, 0.08);
+
+    .hide-menu {
+      color: $primary;
+    }
+  }
+
+  &.active-flat-menu {
+    background-color: rgba($primary, 0.12);
+
+    .hide-menu {
+      color: $primary;
+    }
+
+    eco-icon {
+      color: $primary;
+    }
+  }
+}

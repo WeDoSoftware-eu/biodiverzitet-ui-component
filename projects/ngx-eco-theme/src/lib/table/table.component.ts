@@ -1,4 +1,4 @@
-import { Component, input, computed, inject } from '@angular/core';
+import { Component, input, computed, inject, signal, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +15,14 @@ import {
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { ChipComponent } from '../chip/chip.component';
 import { IconComponent } from '../icon/icon.component';
+
+interface WithId {
+  id: string | number;
+}
+
+function hasId(obj: unknown): obj is WithId {
+  return typeof obj === 'object' && obj !== null && 'id' in obj;
+}
 
 @Component({
   selector: 'eco-table',
@@ -34,20 +42,37 @@ import { IconComponent } from '../icon/icon.component';
 export class TableComponent<T> {
   private i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
 
+  selectRowAction = output<{ _original: T }>();
+
   config = input.required<TableConfig<T>>();
   data = input<T[]>([]);
+
+  selectedRow = signal<{ _original: T } | null>(null);
+  selectRowEvent = input<boolean>(false);
 
   readonly displayedColumns = computed(() => this.config().columns.map(col => col.key));
 
   readonly dataSource = computed(() => new MatTableDataSource<T>(this.data() || []));
 
+  // Create a computed Set of selected row
+  readonly selectedRowId = computed(() => {
+    const selected = this.selectedRow();
+    if (!selected) return null;
+
+    const original = selected._original;
+    return hasId(original) ? original.id : null;
+  });
   readonly processedData = computed((): ProcessedRow<T>[] => {
     const rows: T[] = this.data() || [];
     const columns = this.config().columns as TableColumn<T>[];
+    const selectedId = this.selectedRowId();
 
     return rows.map((row: T) => {
+      const rowId = hasId(row) ? row.id : null;
+
       const processedRow: ProcessedRow<T> = {
         _original: row,
+        _isSelected: selectedId !== null && rowId === selectedId,
       } as ProcessedRow<T>;
 
       columns.forEach(column => {
@@ -63,7 +88,13 @@ export class TableComponent<T> {
                   icon: column.badgeConfig?.getIcon ? column.badgeConfig.getIcon(row) : value,
                 }
               : null,
-
+          icon:
+            column.type === 'icon'
+              ? {
+                  class: column.iconConfig?.getClass ? column.iconConfig.getClass(row) : '',
+                  icon: column.iconConfig?.getIcon ? column.iconConfig.getIcon(row) : value,
+                }
+              : null,
           actions:
             column.type === 'actions' && column.actions
               ? column.actions.map(
@@ -99,6 +130,11 @@ export class TableComponent<T> {
   onActionClick(row: { _original: T }, action: TableAction<T>, event: Event): void {
     event.stopPropagation();
     action.onClick(row._original);
+  }
+
+  rowClick(row: { _original: T }): void {
+    this.selectedRow.set(row);
+    this.selectRowAction.emit(row);
   }
 
   get emptyMessage(): string {
