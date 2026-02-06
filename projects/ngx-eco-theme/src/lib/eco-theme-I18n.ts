@@ -21,6 +21,7 @@ export interface EcoThemeI18n {
   };
   tableFilter: {
     clearFilter: string;
+    clear: string;
     yes: string;
     no: string;
   };
@@ -89,6 +90,7 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   },
   tableFilter: {
     clearFilter: 'Поништи филтер',
+    clear: 'Поништи',
     yes: 'Да',
     no: 'Не',
   },

@@ -28,15 +28,28 @@ declare module 'leaflet' {
 /* =======================
    Interfaces
 ======================= */
-export type MarkerState = 'active' | 'closed' | 'new';
+export type MarkerState = 'closed' | 'new' | 'active' | 'sanitary' | 'unsanitary' | 'illegal';
 
 export interface MapMarker {
-  id: string | number;
+  id: number;
   lat: number;
   lng: number;
   title: string;
-  description?: string;
-  state?: MarkerState;
+  state: 'closed' | 'new' | 'active' | 'sanitary' | 'unsanitary' | 'illegal';
+  regions: number;
+  regionLabel: string;
+  districts: number;
+  district: string;
+  reportYear: number;
+  wasteType: number;
+  wasteTypeLabel: string;
+  estimatedAreaM2: number;
+  wasteAmountTons: number;
+  dumpsiteArea: number;
+  dumpsiteSizeLabel: string;
+  dumpsiteType: number;
+  dumpsiteStatus: number;
+  levelOfOrganisation: 1 | 2 | 3;
   icon?: L.Icon;
 }
 
@@ -85,6 +98,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   height = input<string>('600px');
   width = input<string>('100%');
 
+  filterEvent = input<Record<string, unknown> | undefined>(undefined);
   showLocateButton = input<boolean>(true);
   showZoomControls = input<boolean>(true);
   showFullscreenButton = input<boolean>(true);
@@ -141,6 +155,15 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   activeLayer: MapLayer = this.baseLayers[0];
 
+  private readonly filterableKeys: (keyof MapMarker)[] = [
+    'regions',
+    'districts',
+    'wasteType',
+    'dumpsiteArea',
+    'dumpsiteType',
+    'dumpsiteStatus',
+  ];
+
   constructor() {
     effect(() => {
       this.filteredMarkers = [...this.markers()];
@@ -153,6 +176,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.mapInitialized) {
         this.updatePolygons();
       }
+    });
+
+    effect(() => {
+      this.markers();
+      this.filterEvent();
+      this.filterMarkersEvent();
     });
   }
 
@@ -266,7 +295,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initializeStateIcons(): void {
-    const states: MarkerState[] = ['new', 'active', 'closed'];
+    const states: MarkerState[] = ['new', 'active', 'closed', 'sanitary', 'unsanitary', 'illegal'];
 
     states.forEach(state => {
       const icon = L.icon({
@@ -397,18 +426,44 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /* =======================
-     Search
+     Search & Filter
   ======================= */
 
   onSearchChange(): void {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredMarkers = query
-      ? this.markers().filter(
-          m => m.title.toLowerCase().includes(query) || m.description?.toLowerCase().includes(query)
-        )
-      : [...this.markers()];
+    this.filterMarkersEvent();
+  }
 
-    this.updateMarkers();
+  filterMarkersEvent(): void {
+    const filters = this.filterEvent();
+    const query = this.searchQuery?.toLowerCase();
+
+    const activeFilters: [keyof MapMarker, unknown][] = [];
+    if (filters) {
+      for (const key of this.filterableKeys) {
+        const value = filters[key];
+        if (value != null) {
+          activeFilters.push([key, value]);
+        }
+      }
+    }
+
+    const hasFilters = activeFilters.length > 0;
+    const hasSearch = !!query;
+
+    if (!hasFilters && !hasSearch) {
+      this.filteredMarkers = [...this.markers()];
+    } else {
+      this.filteredMarkers = this.markers().filter(marker => {
+        for (const [key, value] of activeFilters) {
+          if (marker[key] !== value) return false;
+        }
+        return !hasSearch || marker.title.toLowerCase().includes(query);
+      });
+    }
+
+    if (this.mapInitialized) {
+      this.updateMarkers();
+    }
   }
 
   /* =======================
