@@ -73,6 +73,7 @@
                         [multiple]="false"
                         [formControlName]="f.key"
                       >
+                        <mat-option [value]="null">-- {{ i18n.tableFilter.clear }} --</mat-option>
                         @for (o of f.options ?? []; track o.value) {
                           <mat-option [value]="o.value">{{ o.label }}</mat-option>
                         }
