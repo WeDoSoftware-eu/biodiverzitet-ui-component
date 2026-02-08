@@ -1,6 +1,7 @@
 <div class="base-layer-button">
   <button
     class="control-button"
+    [class.active]="isActive()"
     (click)="onClick()"
     aria-label="Osnovni slojevi mape"
     title="Podloge"

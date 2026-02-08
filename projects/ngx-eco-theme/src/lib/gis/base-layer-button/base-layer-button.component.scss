@@ -36,6 +36,14 @@
       box-shadow: $gis-focus-shadow;
     }
 
+    &.active {
+      border: 0.8px solid $primary;
+
+      .icon {
+        color: $primary;
+      }
+    }
+
     .icon {
       width: 24px;
       height: 24px;

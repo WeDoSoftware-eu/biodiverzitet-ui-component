@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './layers-button.component.html',
-  styleUrls: ['./layers-button.component.scss'],
+  styleUrl: './layers-button.component.scss',
 })
 export class LayersButtonComponent {
   isActive = input<boolean>(false);
