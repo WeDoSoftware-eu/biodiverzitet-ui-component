@@ -10,6 +10,7 @@
   .mdc-button__label {
     display: flex;
     gap: 2px;
+    text-wrap-mode: nowrap;
   }
 }
 .mat-button-toggle-group {

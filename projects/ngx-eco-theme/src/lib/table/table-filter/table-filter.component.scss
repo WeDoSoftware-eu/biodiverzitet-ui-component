@@ -35,15 +35,13 @@
     margin: 0;
     flex-shrink: 1; // Allow fields to shrink if needed
 
+    .tristate-field {
+      width: 300px !important;
+    }
+
     &:has(.tristate-field) {
       order: -1;
       flex-shrink: 0;
-    }
-
-    // Make sure form fields don't grow unnecessarily
-    mat-form-field {
-      min-width: 150px;
-      max-width: 200px;
     }
   }
 }

@@ -72,6 +72,7 @@
                         [placeholder]="f.label"
                         [multiple]="false"
                         [formControlName]="f.key"
+                        panelClass="filter-select"
                       >
                         @if ((f.options?.length ?? 0) > 0) {
                           <mat-option [value]="null">-- {{ i18n.tableFilter.clear }} --</mat-option>
@@ -89,6 +90,7 @@
                         [placeholder]="f.label"
                         [multiple]="true"
                         [formControlName]="f.key"
+                        panelClass="filter-select"
                       >
                         @for (o of f.options ?? []; track o.value) {
                           <mat-option [value]="o.value">{{ o.label }}</mat-option>
