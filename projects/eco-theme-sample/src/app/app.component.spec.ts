@@ -1,10 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BACK_ROUTES } from '../../../ngx-eco-theme/src/public-api';
+import { provideRouter } from '@angular/router';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [
+        { provide: BACK_ROUTES, useValue: [] },
+        provideRouter([]),
+        provideNoopAnimations(),
+      ],
     }).compileComponents();
   });
 

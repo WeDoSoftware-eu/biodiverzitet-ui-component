@@ -41,3 +41,11 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Claude Code / AI Assistant files
+CLAUDE.md
+.claude/
+.serena/
+.planning/
+tmpclaude-*-cwd
+nul

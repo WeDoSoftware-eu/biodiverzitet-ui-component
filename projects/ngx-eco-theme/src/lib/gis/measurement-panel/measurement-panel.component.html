@@ -1,0 +1,197 @@
+<div class="measurement-panel">
+  <div class="header">
+    <span class="title">{{ title() }}</span>
+    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 1L13 13M1 13L13 1"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <div class="measurement-content">
+    <div class="tab-bar">
+      @for (tab of tabs; track tab.type) {
+        <button
+          class="tab-button"
+          [class.active]="activeTab() === tab.type"
+          (click)="onTabChange(tab.type)"
+        >
+          <span class="tab-icon">
+            @switch (tab.type) {
+              @case ('point') {
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                  <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+                </svg>
+              }
+              @case ('line') {
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="2"
+                    y1="14"
+                    x2="14"
+                    y2="2"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              }
+              @case ('polygon') {
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polygon
+                    points="8,1 15,6 12,15 4,15 1,6"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              }
+            }
+          </span>
+          <span class="tab-label">{{ tab.label }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="measurement-list">
+      @for (item of filteredMeasurements; track trackByItemId($index, item)) {
+        <div class="measurement-item">
+          <span class="measurement-icon">
+            @switch (item.type) {
+              @case ('point') {
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                  <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+                </svg>
+              }
+              @case ('line') {
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="2"
+                    y1="14"
+                    x2="14"
+                    y2="2"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              }
+              @case ('polygon') {
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polygon
+                    points="8,1 15,6 12,15 4,15 1,6"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              }
+            }
+          </span>
+          <span class="measurement-label">{{ item.label }}</span>
+          <span class="measurement-value">{{ item.value }}</span>
+          <button class="delete-button" (click)="onDelete(item.id)" aria-label="Обриши">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L13 13M1 13L13 1"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      }
+
+      @if (filteredMeasurements.length === 0 && !isDrawing()) {
+        <div class="no-items">Нема мерења</div>
+      }
+
+      @if (isDrawing()) {
+        <div class="drawing-indicator">
+          <span class="drawing-dot"></span>
+          Цртање у току...
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    @if (isDrawing()) {
+      <button class="action-button stop-button" (click)="onStopDrawing()">Заустави</button>
+    } @else {
+      <button class="action-button add-button" (click)="onAddNew()">+ Додај ново</button>
+    }
+  </div>
+</div>

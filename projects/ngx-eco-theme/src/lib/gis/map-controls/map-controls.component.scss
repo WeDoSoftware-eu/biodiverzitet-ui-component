@@ -1,0 +1,69 @@
+@use '../../../assets/styles/variables' as *;
+
+.map-controls-container {
+  width: 57px;
+  background: $white;
+  border-radius: 10px;
+  border: 0.67px solid $gis-border-color;
+  box-shadow: $gis-box-shadow-lg;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.control-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  border-radius: 8px;
+  border: $gis-border-light;
+  cursor: pointer;
+  transition:
+    border-color 0.5s ease,
+    color 0.5s ease,
+    background 0.2s ease;
+  color: $gis-icon-color;
+
+  &:hover {
+    background: $gis-hover-bg;
+  }
+
+  &:active {
+    background: $gis-active-bg;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: $gis-focus-shadow;
+  }
+
+  &.clicked {
+    border: 0.8px solid $primary;
+    color: $primary;
+    transition:
+      border-color 0s,
+      color 0s;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.divider {
+  width: 40px;
+  height: 0.67px;
+  background: $gis-border-color;
+  margin: 12px 0;
+}

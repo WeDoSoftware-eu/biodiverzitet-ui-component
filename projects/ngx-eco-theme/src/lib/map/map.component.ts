@@ -53,7 +53,7 @@ export interface MapMarker {
   icon?: L.Icon;
 }
 
-export interface MapLayer {
+export interface LeafletMapLayer {
   name: string;
   url: string;
   attribution?: string;
@@ -129,7 +129,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   showLayersPanel = false;
 
   mapAttribution = '&copy; Google Maps';
-  baseLayers: MapLayer[] = [
+  baseLayers: LeafletMapLayer[] = [
     {
       name: this.i18n.map.layers.street,
       url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
@@ -153,7 +153,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     },
   ];
 
-  activeLayer: MapLayer = this.baseLayers[0];
+  activeLayer: LeafletMapLayer = this.baseLayers[0];
 
   private readonly filterableKeys: (keyof MapMarker)[] = [
     'regions',
@@ -470,7 +470,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
      Layers
   ======================= */
 
-  switchLayer(layer: MapLayer): void {
+  switchLayer(layer: LeafletMapLayer): void {
     this.activeLayer = layer;
     this.map.removeLayer(this.currentTileLayer);
 
