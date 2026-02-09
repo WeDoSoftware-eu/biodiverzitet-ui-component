@@ -35,6 +35,10 @@
     margin: 0;
     flex-shrink: 1; // Allow fields to shrink if needed
 
+    .tristate-field {
+      width: 300px !important;
+    }
+
     &:has(.tristate-field) {
       order: -1;
       flex-shrink: 0;
