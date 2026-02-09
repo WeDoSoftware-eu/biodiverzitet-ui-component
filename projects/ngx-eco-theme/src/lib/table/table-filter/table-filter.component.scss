@@ -39,11 +39,5 @@
       order: -1;
       flex-shrink: 0;
     }
-
-    // Make sure form fields don't grow unnecessarily
-    mat-form-field {
-      min-width: 150px;
-      max-width: 200px;
-    }
   }
 }

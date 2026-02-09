@@ -1,5 +1,5 @@
 <mat-drawer-container class="layout-container" [dir]="'ltr'">
-  <mat-drawer mode="side" opened class="side-container rounded-0">
+  <mat-drawer [disableClose]="true" mode="side" opened class="side-container rounded-0">
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
     <eco-button icon="person" buttonClass="secondary" routerLink="/admin">
       <a>{{ i18n.sideBar.adminPanel }}</a>
