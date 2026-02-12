@@ -28,9 +28,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #### Use linking to consume library by:
 - Calling build for particular project.
 - Calling link script for particular project. E.g. "<code>cd ../../dist/ngx-eco-theme && npm link</code>".
+- Call link function in consuming app. E.g. "<code>npm link ngx-eco-theme</code>".
 - Optionally, calling pack script for particular project and installing lib from generated file. Generated tarballs should be outputted in "bin" folder, that is ignored by git.
-- Created script with watch: npm run build:dev
-- Calling link function in consuming app. E.g. "<code>npm link ngx-eco-theme</code>".
 
 #### Notes:
 - you may need to delete .angular file in order for changes to take effect.
@@ -45,3 +44,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 #### Component development
 You can use sample UI app [eco-theme-sample] for quick visualization of component during development.
+
+### Publishing
+Library is configured for publishing new versions on each release. This is done by hand on GitHub [here](https://github.com/WeDoSoftware-eu/biodiverzitet-ui-component/releases/new).
+
+Steps to publish new version are:
+- bump package version by calling ```npm version patch```,
+- go to GitHub repo releases page,
+- create new tag matching lib version (that got bumped),
+- choose branch (usually dev),
+- click "generate release notes" to populate changelog automatically,
+- mark lib as "pre-relase" (until v1),
+- click publish
+
+Double check if pipeline passed and new release is available afterwards.
