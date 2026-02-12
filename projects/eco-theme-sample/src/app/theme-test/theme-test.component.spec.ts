@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ThemeTestComponent } from './theme-test.component';
-import { BACK_ROUTES } from '../header/back-route.token';
+import { BACK_ROUTES } from '../../../../ngx-eco-theme/src/lib/header/back-route.token';
 import { provideRouter } from '@angular/router';
 
 describe('ThemeTestComponent', () => {

@@ -3,7 +3,6 @@
  */
 
 /* COMPONENTS */
-export * from './lib/theme-test/theme-test.component';
 export * from './lib/header/header.component';
 export * from './lib/layout/layout.component';
 export * from './lib/table/table.component';
