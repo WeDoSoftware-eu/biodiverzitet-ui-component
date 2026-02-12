@@ -18,6 +18,7 @@ Configuration for exporting icons is as follows:
     - Web font and CSS -> true
   - CSS
     - Class -> "icon"
+    - define property per glyph -> true
     - Define class per glyph -> true
       - prefix -> "eco-icon-"
   - SVG
@@ -27,3 +28,7 @@ Configuration for exporting icons is as follows:
 After generating new icon font, update [EcoIcon](/projects/ngx-eco-theme/src/lib/icon/icon.component.ts) with new icon names. And format them in order.
 
 To order icon names in VS Code (Windows), select all names -> `Ctrl + Shift + P` -> `Sort lines ascending`.
+
+## Known issues
+
+Icon for meter squared is broken. We should use HTML `<code>m<sup>2<sup></code>` (produces <code>m<sup>2<sup></code>) instead.
