@@ -86,6 +86,10 @@ export const ECO_ICONS = [
   'change-password',
   'cancel-circle',
   'correct-circle',
+  'expand_circle_down',
+  'do_not_disturb_on',
+  'bar_chart',
+  'analytics',
 ] as const;
 
 export type EcoIcon = (typeof ECO_ICONS)[number];
