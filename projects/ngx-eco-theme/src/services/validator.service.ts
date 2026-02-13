@@ -12,4 +12,8 @@ export class ValidatorService {
   public email() {
     return [Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/)];
   }
+
+  public phoneNumber() {
+    return [Validators.pattern(/^[+]?[\d\s\-/()]*$/)];
+  }
 }
