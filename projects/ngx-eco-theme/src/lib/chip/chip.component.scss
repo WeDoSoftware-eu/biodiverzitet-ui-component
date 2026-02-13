@@ -59,4 +59,20 @@ mat-chip {
       color: $chip-closed-badge-color;
     }
   }
+  &.sanitary {
+    background-color: $chip-sanitary-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-sanitary-badge-color};
+
+    eco-icon {
+      color: $chip-sanitary-badge-color;
+    }
+  }
+  &.unsanitary {
+    background-color: $chip-unsanitary-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-unsanitary-badge-color};
+
+    eco-icon {
+      color: $chip-unsanitary-badge-color;
+    }
+  }
 }

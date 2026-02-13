@@ -4,11 +4,13 @@
       <h2 class="mat-headline-medium">{{ data.title }}</h2>
       <p class="mat-body-small modal-subtitle">{{ data.subtitle }}</p>
     </div>
-    <div class="chip-container m-l-8">
+    <div class="chip-container m-l-4">
       @if (data.chipHeader) {
         <div class="d-flex">
           @for (chip of data.chipHeader; track chip.text) {
-            <eco-chip [status]="chip.status" [icon]="chip.icon">{{ chip.text }}</eco-chip>
+            <eco-chip class="m-l-4" [status]="chip.status" [icon]="chip.icon">{{
+              chip.text
+            }}</eco-chip>
           }
         </div>
       }
