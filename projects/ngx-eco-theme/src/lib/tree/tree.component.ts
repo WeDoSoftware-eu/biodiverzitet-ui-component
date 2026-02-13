@@ -25,7 +25,7 @@ export class TreeComponent<T extends TreeItem> implements AfterViewInit {
   renderingTimeoutMs = 200;
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.hasViewInitialized.set(true), 200);
+    setTimeout(() => this.hasViewInitialized.set(true), this.renderingTimeoutMs);
   }
 
   childrenAccessor = (node: TreeItem) => node.children ?? [];
