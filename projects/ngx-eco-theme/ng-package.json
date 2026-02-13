@@ -12,6 +12,11 @@
       "output": "styles/icons"
     },
     {
+      "input": "src/assets/icons/fonts",
+      "glob": "*",
+      "output": "styles/icons/fonts"
+    },
+    {
       "input": "src/assets/icons/svg",
       "glob": "**/*.svg",
       "output": "styles/icons-svg"
