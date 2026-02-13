@@ -12,5 +12,5 @@ import { EcoIcon, IconComponent } from '../icon/icon.component';
 })
 export class ChipComponent {
   icon = input<EcoIcon>();
-  status = input.required<'active' | 'inactive' | 'completed' | 'in-progress'>();
+  status = input.required<'active' | 'inactive' | 'completed' | 'in-progress' | 'new' | 'closed'>();
 }

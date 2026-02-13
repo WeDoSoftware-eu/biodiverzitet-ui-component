@@ -15,6 +15,7 @@ export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
 export * from './lib/modal/modal.component';
 export * from './lib/date-picker/date-picker.component';
+export * from './lib/file-upload/file-upload.component';
 // export * from './lib/map/map.component'; // COMMENTED OUT
 export * from './lib/gis/base-layer-button/base-layer-button.component';
 export * from './lib/gis/base-layer-selector/base-layer-selector.component';
