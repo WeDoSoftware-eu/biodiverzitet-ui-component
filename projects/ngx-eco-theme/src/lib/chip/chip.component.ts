@@ -3,6 +3,8 @@ import { Component, input } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { EcoIcon, IconComponent } from '../icon/icon.component';
 
+export type ChipStatus = 'active' | 'inactive' | 'completed' | 'in-progress' | 'new' | 'closed';
+
 @Component({
   selector: 'eco-chip',
   standalone: true,
@@ -12,5 +14,5 @@ import { EcoIcon, IconComponent } from '../icon/icon.component';
 })
 export class ChipComponent {
   icon = input<EcoIcon>();
-  status = input.required<'active' | 'inactive' | 'completed' | 'in-progress' | 'new' | 'closed'>();
+  status = input.required<ChipStatus>();
 }
