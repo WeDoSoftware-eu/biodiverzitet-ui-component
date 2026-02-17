@@ -1,0 +1,44 @@
+<div class="utm-legend">
+  <div class="header">
+    <span class="title">{{ title() }}</span>
+    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 1L13 13M1 13L13 1"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <div class="legend-list">
+    @for (item of items(); track item.name) {
+      <div class="legend-item">
+        <span class="legend-symbol">
+          @if (item.isOverlap) {
+            <span class="symbol-overlap"></span>
+          } @else {
+            <span
+              class="symbol-fill"
+              [style.background-color]="item.color"
+              [style.opacity]="'0.6'"
+            ></span>
+          }
+        </span>
+        <span class="legend-name">{{ item.name }}</span>
+      </div>
+    }
+
+    @if (items().length === 0) {
+      <div class="no-items">Нема активних филтера</div>
+    }
+  </div>
+</div>
