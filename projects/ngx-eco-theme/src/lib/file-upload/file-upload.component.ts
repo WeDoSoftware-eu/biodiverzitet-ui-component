@@ -77,6 +77,10 @@ export class FileUploadComponent implements OnDestroy {
       if (!this.allowedTypes.includes(file.type)) continue;
       if (file.size > this.maxSizeBytes) continue;
 
+      /**
+       * TODO: Error message
+       */
+
       this.files.push(file);
       this.previews.push({
         file,
