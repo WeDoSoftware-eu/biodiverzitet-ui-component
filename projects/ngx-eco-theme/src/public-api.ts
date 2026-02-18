@@ -3,7 +3,6 @@
  */
 
 /* COMPONENTS */
-export * from './lib/theme-test/theme-test.component';
 export * from './lib/header/header.component';
 export * from './lib/layout/layout.component';
 export * from './lib/table/table.component';
@@ -17,6 +16,7 @@ export * from './lib/modal/modal.component';
 export * from './lib/date-picker/date-picker.component';
 export * from './lib/file-upload/file-upload.component';
 // export * from './lib/map/map.component'; // COMMENTED OUT
+export * from './lib/tree/tree.component';
 export * from './lib/gis/base-layer-button/base-layer-button.component';
 export * from './lib/gis/base-layer-selector/base-layer-selector.component';
 export * from './lib/gis/layers-button/layers-button.component';
@@ -38,6 +38,7 @@ export * from './lib/gis/hover-tooltip/hover-tooltip.model';
 /* MODEL */
 export * from './lib/sidebar/nav-item/nav-item.model';
 export * from './lib/table/table.model';
+export * from './lib/tree/tree-item.model';
 export * from './lib/gis/layers-selector/layer.model';
 export * from './lib/gis/legend-selector/legend.model';
 export * from './lib/gis/map-status-bar/map-status-bar.model';

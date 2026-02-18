@@ -1,22 +1,24 @@
-import { Component, signal, OnInit, OnDestroy } from '@angular/core';
-
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { TableComponent } from '../table/table.component';
-import { TablePaginatorComponent } from '../table/table-paginator/table-paginator.component';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
-import { FilterEvent, TableConfig } from '../table/table.model';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 import { PageEvent } from '@angular/material/paginator';
-import { ChipComponent } from '../chip/chip.component';
-import { ECO_ICONS, IconComponent } from '../icon/icon.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {
+  BACK_ROUTES,
+  ChipComponent,
+  ECO_ICONS,
+  FilterEvent,
   FilterFieldConfig,
+  HeaderComponent,
+  IconComponent,
+  TableComponent,
+  TableConfig,
   TableFilterComponent,
-} from '../table/table-filter/table-filter.component';
-import { HeaderComponent } from '../header/header.component';
-import { FileUploadComponent } from '../file-upload/file-upload.component';
+  TablePaginatorComponent,
+} from 'ngx-eco-theme';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { FileUploadComponent } from '../../../../ngx-eco-theme/src/public-api';
 
 interface MyItem {
   id: number;
@@ -40,6 +42,7 @@ interface MyItem {
     HeaderComponent,
     FileUploadComponent,
   ],
+  providers: [{ provide: BACK_ROUTES, useValue: [] }],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
 })
