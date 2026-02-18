@@ -1,0 +1,113 @@
+@use '../../../assets/styles/variables' as *;
+
+.utm-legend {
+  width: 400px;
+  background: $white;
+  border-radius: 8px;
+  border: 0.67px solid $gis-border-color;
+  box-shadow: $gis-box-shadow-lg;
+  padding: 12px;
+  box-sizing: border-box;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $gis-border-color;
+
+    .title {
+      font-family: $font-family-inter;
+      font-size: 14px;
+      font-weight: 600;
+      color: $gis-text-title;
+    }
+
+    .close-button {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: $gis-close-button-bg;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.2s ease;
+      color: $gis-text-secondary;
+
+      &:hover {
+        background: $gis-close-button-hover;
+      }
+
+      svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  .legend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 8px;
+      border-radius: 6px;
+
+      .legend-symbol {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        min-width: 28px;
+        height: 20px;
+
+        .symbol-fill {
+          width: 20px;
+          height: 14px;
+          border-radius: 2px;
+          border: 1px solid transparent;
+        }
+
+        .symbol-overlap {
+          width: 20px;
+          height: 14px;
+          border-radius: 2px;
+          background: repeating-linear-gradient(
+            -45deg,
+            $gis-overlap-color,
+            $gis-overlap-color 2px,
+            rgba($gis-overlap-color, 0.3) 2px,
+            rgba($gis-overlap-color, 0.3) 5px
+          );
+        }
+      }
+
+      .legend-name {
+        font-family: $font-family-inter;
+        font-size: 13px;
+        font-weight: 400;
+        color: $gis-text-title;
+        flex: 1;
+        text-align: left;
+      }
+    }
+
+    .no-items {
+      font-family: $font-family-inter;
+      font-size: 13px;
+      color: $gis-text-secondary;
+      text-align: center;
+      padding: 20px;
+    }
+  }
+}
