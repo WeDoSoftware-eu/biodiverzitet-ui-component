@@ -1,7 +1,20 @@
 <div class="modal-header">
-  <div class="title">
-    <h2 class="mat-headline-medium">{{ data.title }}</h2>
-    <p class="mat-body-small modal-subtitle">{{ data.subtitle }}</p>
+  <div class="title d-flex">
+    <div class="text-container">
+      <h2 class="mat-headline-medium">{{ data.title }}</h2>
+      <p class="mat-body-small modal-subtitle">{{ data.subtitle }}</p>
+    </div>
+    <div class="chip-container m-l-4">
+      @if (data.chipHeader) {
+        <div class="d-flex">
+          @for (chip of data.chipHeader; track chip.text) {
+            <eco-chip class="m-l-4" [status]="chip.status" [icon]="chip.icon">{{
+              chip.text
+            }}</eco-chip>
+          }
+        </div>
+      }
+    </div>
   </div>
   <button mat-icon-button mat-dialog-close class="close-button">
     <eco-icon icon="cancel"></eco-icon>

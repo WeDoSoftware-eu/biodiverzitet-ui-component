@@ -2,8 +2,10 @@
   @if (totalPages() > 0) {
     <div class="custom-paginator-controls gap-8">
       <div class="last-update-text">
-        {{ latUpdateTitle }}:
-        <p class="m-l-5">{{ latUpdate() }}</p>
+        @if (showLastUpdate()) {
+          {{ latUpdateTitle }}:
+          <p class="m-l-5">{{ latUpdate() }}</p>
+        }
       </div>
 
       <div class="pagination-buttons gap-6">

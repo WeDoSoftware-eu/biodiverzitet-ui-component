@@ -16,16 +16,21 @@
     }
   }
   .title {
-    display: grid;
-    place-items: flex-start;
-    padding: 10px 0;
+    align-items: center;
 
-    h2 {
-      margin: 0;
-    }
-    .modal-subtitle {
-      color: var(--mat-sys-on-surface-variant);
-      font-size: 14px;
+    .text-container {
+      display: grid;
+      place-items: flex-start;
+      padding: 10px 0;
+      text-align: start;
+
+      h2 {
+        margin: 0;
+      }
+      .modal-subtitle {
+        color: var(--mat-sys-on-surface-variant);
+        font-size: 14px;
+      }
     }
   }
 }

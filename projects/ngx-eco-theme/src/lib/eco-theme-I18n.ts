@@ -65,6 +65,11 @@ export interface EcoThemeI18n {
       terrain: string;
     };
   };
+  fileUpload: {
+    maxFileSize: string;
+    click: string;
+    forAddOrDrag: string;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -133,5 +138,10 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
       satellite: 'Сателит',
       terrain: 'Терен',
     },
+  },
+  fileUpload: {
+    maxFileSize: 'Максимална величина фајла',
+    click: 'Кликни',
+    forAddOrDrag: 'за додавање или превуци',
   },
 };

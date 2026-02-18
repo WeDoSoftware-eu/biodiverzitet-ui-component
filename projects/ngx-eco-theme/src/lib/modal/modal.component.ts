@@ -12,9 +12,10 @@ import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 import { MODAL_DATA, MODAL_MODE, MODAL_STORE } from './modal.token';
-import { IconComponent } from '../icon/icon.component';
+import { EcoIcon, IconComponent } from '../icon/icon.component';
 import { ButtonComponent } from '../button/button.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
+import { ChipComponent, ChipStatus } from '../chip/chip.component';
 
 export type ModalMode = 'add' | 'edit' | 'view';
 
@@ -25,6 +26,7 @@ export interface ModalData<T extends ModalFormComponent> {
   mode: ModalMode;
   payload?: unknown;
   data: T;
+  chipHeader?: ChipHeader[];
   store: unknown;
 }
 
@@ -33,10 +35,23 @@ export interface ModalFormComponent {
   onSubmit(): unknown;
 }
 
+export interface ChipHeader {
+  status: ChipStatus;
+  text: string;
+  icon: EcoIcon;
+}
+
 @Component({
   selector: 'eco-modal',
   standalone: true,
-  imports: [MatButtonModule, CommonModule, MatDialogModule, IconComponent, ButtonComponent],
+  imports: [
+    MatButtonModule,
+    CommonModule,
+    MatDialogModule,
+    IconComponent,
+    ButtonComponent,
+    ChipComponent,
+  ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })

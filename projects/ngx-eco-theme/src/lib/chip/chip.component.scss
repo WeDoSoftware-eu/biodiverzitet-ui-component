@@ -41,4 +41,38 @@ mat-chip {
       color: $chip-in-progress-badge-color;
     }
   }
+
+  &.new {
+    background-color: $chip-new-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-new-badge-color};
+
+    eco-icon {
+      color: $chip-new-badge-color;
+    }
+  }
+
+  &.closed {
+    background-color: $chip-closed-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-closed-badge-color};
+
+    eco-icon {
+      color: $chip-closed-badge-color;
+    }
+  }
+  &.sanitary {
+    background-color: $chip-sanitary-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-sanitary-badge-color};
+
+    eco-icon {
+      color: $chip-sanitary-badge-color;
+    }
+  }
+  &.unsanitary {
+    background-color: $chip-unsanitary-badge-bg;
+    --mdc-chip-label-text-color: #{$chip-unsanitary-badge-color};
+
+    eco-icon {
+      color: $chip-unsanitary-badge-color;
+    }
+  }
 }

@@ -1,0 +1,54 @@
+<div class="upload-container">
+  <label for="fileUploadInput">{{ title() }}</label>
+  @if (!hideSbtitle()) {
+    <p class="subtitle m-0">{{ subtitle() }}</p>
+  }
+
+  <div class="upload-area">
+    @if (previews.length) {
+      <div class="preview-list">
+        @for (preview of previews; track preview.name + $index) {
+          <div class="preview-item">
+            <div class="preview-image-wrapper">
+              <img [src]="preview.url" [alt]="preview.name" />
+              <button
+                class="remove-button rounded-full"
+                (click)="removeFile($index)"
+                aria-label="Уклони фајл"
+              >
+                <eco-icon icon="cancel"></eco-icon>
+              </button>
+            </div>
+            <span class="preview-name">{{ preview.name }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    <button
+      type="button"
+      class="dropzone"
+      [class.dragover]="isDragOver"
+      (dragover)="onDragOver($event)"
+      (dragleave)="isDragOver = false"
+      (drop)="onDrop($event)"
+      (click)="fileInput.click()"
+    >
+      <eco-icon class="upload-icon" icon="upload-file"></eco-icon>
+      <p>
+        <strong>{{ i18n.fileUpload.click }}</strong> {{ i18n.fileUpload.forAddOrDrag }}
+      </p>
+      <span class="hint">{{ i18n.fileUpload.maxFileSize }} {{ maxFileSize() }} MB</span>
+    </button>
+  </div>
+
+  <input
+    #fileInput
+    type="file"
+    id="fileUploadInput"
+    hidden
+    accept=".jpg,.jpeg,.png"
+    multiple
+    (change)="onFileSelected($event)"
+  />
+</div>
