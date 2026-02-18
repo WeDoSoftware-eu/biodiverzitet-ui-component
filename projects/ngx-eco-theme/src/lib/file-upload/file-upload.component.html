@@ -25,24 +25,21 @@
       </div>
     }
 
-    <div
+    <button
+      type="button"
       class="dropzone"
       [class.dragover]="isDragOver"
-      role="button"
-      tabindex="0"
       (dragover)="onDragOver($event)"
       (dragleave)="isDragOver = false"
       (drop)="onDrop($event)"
       (click)="fileInput.click()"
-      (keydown.enter)="fileInput.click()"
-      (keydown.space)="fileInput.click(); $event.preventDefault()"
     >
       <eco-icon class="upload-icon" icon="upload-file"></eco-icon>
       <p>
         <strong>{{ i18n.fileUpload.click }}</strong> {{ i18n.fileUpload.forAddOrDrag }}
       </p>
       <span class="hint">{{ i18n.fileUpload.maxFileSize }} {{ maxFileSize() }} MB</span>
-    </div>
+    </button>
   </div>
 
   <input
