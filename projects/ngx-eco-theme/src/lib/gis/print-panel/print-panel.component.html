@@ -1,0 +1,83 @@
+<div class="print-panel">
+  <div class="header">
+    <span class="title">{{ title() }}</span>
+    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 1L13 13M1 13L13 1"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <div class="print-content">
+    <div class="option-group">
+      <label class="option-label">Величина папира</label>
+      <div class="toggle-group">
+        @for (size of paperSizes; track size) {
+          <button
+            class="toggle-button"
+            [class.active]="selectedPaperSize() === size"
+            (click)="onPaperSizeChange(size)"
+          >
+            {{ size }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="option-group">
+      <label class="option-label">Оријентација</label>
+      <div class="toggle-group">
+        @for (opt of orientations; track opt.value) {
+          <button
+            class="toggle-button"
+            [class.active]="selectedOrientation() === opt.value"
+            (click)="onOrientationChange(opt.value)"
+          >
+            {{ opt.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="option-group">
+      <label class="option-label">Размера</label>
+      <select
+        class="panel-select"
+        [value]="selectedScale()"
+        (change)="onScaleChange($any($event.target).value)"
+      >
+        @for (scale of scales; track scale) {
+          <option [value]="scale">{{ scale }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="option-group">
+      <label class="option-label">Резолуција (DPI)</label>
+      <select
+        class="panel-select"
+        [value]="selectedDpi()"
+        (change)="onDpiChange(+$any($event.target).value)"
+      >
+        @for (dpi of dpiOptions; track dpi) {
+          <option [value]="dpi">{{ dpi }} DPI</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <button class="action-button print-button" (click)="onPrint()">Штампај</button>
+  </div>
+</div>

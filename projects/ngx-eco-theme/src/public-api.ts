@@ -27,6 +27,7 @@ export * from './lib/gis/measurement-panel/measurement-panel.component';
 export * from './lib/gis/search/search.component';
 export * from './lib/gis/legend-button/legend-button.component';
 export * from './lib/gis/download-button/download-button.component';
+export * from './lib/gis/print-panel/print-panel.component';
 export * from './lib/gis/layers-selector/layers-selector.component';
 export * from './lib/gis/utm-layers-selector/utm-layers-selector.component';
 export * from './lib/gis/utm-legend/utm-legend.component';
@@ -45,6 +46,7 @@ export * from './lib/gis/layers-selector/layer.model';
 export * from './lib/gis/legend-selector/legend.model';
 export * from './lib/gis/map-status-bar/map-status-bar.model';
 export * from './lib/gis/measurement-panel/measurement.model';
+export * from './lib/gis/print-panel/print-panel.model';
 export * from './lib/gis/utm-legend/utm-legend.model';
 
 /* TOKEN */
