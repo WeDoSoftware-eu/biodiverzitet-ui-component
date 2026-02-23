@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { debounceTime } from 'rxjs';
@@ -46,6 +47,7 @@ export interface TriStateValue {
     MatSelectModule,
     MatDatepickerModule,
     MatCheckboxModule,
+    MatInputModule,
   ],
   templateUrl: './table-filter.component.html',
   styleUrl: './table-filter.component.scss',
