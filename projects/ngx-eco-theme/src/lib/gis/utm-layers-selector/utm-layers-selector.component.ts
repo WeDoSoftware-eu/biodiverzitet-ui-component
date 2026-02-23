@@ -37,9 +37,7 @@ export class UtmLayersSelectorComponent {
       }
       return {
         ...group,
-        layers: group.layers.filter(layer =>
-          layer.name.toLowerCase().includes(search),
-        ),
+        layers: group.layers.filter(layer => layer.name.toLowerCase().includes(search)),
       };
     });
   });

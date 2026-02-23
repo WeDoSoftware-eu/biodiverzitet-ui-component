@@ -112,6 +112,13 @@
                     </mat-form-field>
                   }
 
+                  @case ('month-year') {
+                    <eco-date-picker-month-year
+                      [placeholder]="f.label"
+                      [control]="getControl(f.key)"
+                    />
+                  }
+
                   @case ('checkbox') {
                     <label class="checkbox">
                       <input type="checkbox" [formControlName]="f.key" />
