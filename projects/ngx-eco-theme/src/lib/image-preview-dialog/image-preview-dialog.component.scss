@@ -1,0 +1,23 @@
+.lightbox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+  }
+
+  img {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+}
