@@ -1,0 +1,64 @@
+@use '../../assets/styles/variables' as *;
+
+$progress-fill-color: rgba(165, 39, 20, 1);
+$progress-fill-bg: rgba(89, 89, 89, 0.2);
+
+:host {
+  background: $white;
+  border: 1px solid #f2f2f2;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.card-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: $card-title;
+}
+
+.progress-circle {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .progress-bg {
+    fill: none;
+    stroke: $progress-fill-bg;
+    stroke-width: 6;
+  }
+
+  .progress-fill {
+    fill: none;
+    stroke: $progress-fill-color;
+    stroke-width: 6;
+    stroke-linecap: square;
+    stroke-dasharray: 251.2;
+  }
+
+  .progress-text {
+    position: absolute;
+    font-size: 20px;
+    font-weight: $text-semi-bold;
+    color: $text-color;
+  }
+}
