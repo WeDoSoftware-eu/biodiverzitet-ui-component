@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { FormControl } from '@angular/forms';
 
 import { DatePickerMonthYearComponent } from './date-picker-month-year.component';
 
@@ -15,6 +16,9 @@ describe('DatePickerMonthYearComponent', () => {
 
     fixture = TestBed.createComponent(DatePickerMonthYearComponent);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('control', new FormControl());
+
     fixture.detectChanges();
   });
 
