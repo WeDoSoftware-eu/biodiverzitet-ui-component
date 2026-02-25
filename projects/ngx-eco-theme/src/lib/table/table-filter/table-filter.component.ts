@@ -5,13 +5,21 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule, MatDatepicker } from '@angular/material/datepicker';
 import { debounceTime } from 'rxjs';
 import { TableFilterStoreService } from './table-filter-store';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DatePickerMonthYearComponent } from './date-picker-month-year/date-picker-month-year.component';
 
-export type FilterFieldType = 'text' | 'select' | 'multiselect' | 'checkbox' | 'date' | 'tristate';
+export type FilterFieldType =
+  | 'text'
+  | 'select'
+  | 'multiselect'
+  | 'checkbox'
+  | 'date'
+  | 'tristate'
+  | 'month-year';
 
 export interface FilterOption {
   value: string | number | boolean;
@@ -48,6 +56,7 @@ export interface TriStateValue {
     MatDatepickerModule,
     MatCheckboxModule,
     MatInputModule,
+    DatePickerMonthYearComponent,
   ],
   templateUrl: './table-filter.component.html',
   styleUrl: './table-filter.component.scss',
@@ -116,6 +125,10 @@ export class TableFilterComponent {
 
     return states;
   });
+
+  getControl(key: string): FormControl {
+    return this.form().get(key) as FormControl;
+  }
 
   constructor() {
     effect(
@@ -188,5 +201,13 @@ export class TableFilterComponent {
     }
 
     control.setValue(newValue);
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>, formKey: string) {
+    const ctrlValue: Date = this.form().get(formKey)?.value ?? new Date();
+    ctrlValue.setMonth(normalizedMonthAndYear.getMonth());
+    ctrlValue.setFullYear(normalizedMonthAndYear.getFullYear());
+    this.form().get(formKey)?.setValue(new Date(ctrlValue));
+    datepicker.close();
   }
 }
