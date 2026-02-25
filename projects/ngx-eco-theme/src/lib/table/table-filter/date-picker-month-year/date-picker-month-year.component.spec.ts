@@ -3,6 +3,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormControl } from '@angular/forms';
 
 import { DatePickerMonthYearComponent } from './date-picker-month-year.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DatePickerMonthYearComponent', () => {
   let component: DatePickerMonthYearComponent;
@@ -10,7 +11,7 @@ describe('DatePickerMonthYearComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DatePickerMonthYearComponent],
+      imports: [DatePickerMonthYearComponent, NoopAnimationsModule],
       providers: [provideNativeDateAdapter()],
     }).compileComponents();
 
