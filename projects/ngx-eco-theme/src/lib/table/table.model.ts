@@ -1,8 +1,9 @@
+import { Signal } from '@angular/core';
 import { EcoIcon } from '../icon/icon.component';
 
 export interface TableColumn<T> {
   key: string;
-  label: string;
+  label: Signal<string>;
   type?: 'text' | 'badge' | 'date' | 'actions' | 'number' | 'enum' | 'icon';
   width?: string;
   align?: 'left' | 'center' | 'right';
@@ -23,7 +24,7 @@ export interface TableColumn<T> {
 
 export interface TableAction<T> {
   icon: EcoIcon;
-  tooltip?: string;
+  tooltip?: Signal<string>;
   color?: string;
   show?: (row: T) => boolean;
   onClick: (row: T) => void;
@@ -32,7 +33,7 @@ export interface TableAction<T> {
 export interface TableConfig<T> {
   columns: TableColumn<T>[];
   loading?: boolean;
-  emptyMessage?: string;
+  emptyMessage?: Signal<string>;
 }
 
 export interface FilterEvent {

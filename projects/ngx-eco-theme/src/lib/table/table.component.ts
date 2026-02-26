@@ -138,7 +138,9 @@ export class TableComponent<T> {
   }
 
   get emptyMessage(): string {
-    return this.config().emptyMessage || `${this.i18n.table.noData()}`;
+    return this.config().emptyMessage
+      ? this.config().emptyMessage!()
+      : `${this.i18n.table.noData()}`;
   }
 
   get isLoading(): boolean {
