@@ -1,74 +1,74 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, signal, Signal } from '@angular/core';
 
 export interface EcoThemeI18n {
   paginator: {
-    itemsLabel: string;
-    ofLabel: string;
-    displayedLabel: string;
-    noData: string;
-    lastUpdateTitle: string;
-    firstPage: string;
-    previousPage: string;
-    nextPage: string;
-    lastPage: string;
-    page: string;
-    goTo: string;
-    side: string;
+    itemsLabel: Signal<string>;
+    ofLabel: Signal<string>;
+    displayedLabel: Signal<string>;
+    noData: Signal<string>;
+    lastUpdateTitle: Signal<string>;
+    firstPage: Signal<string>;
+    previousPage: Signal<string>;
+    nextPage: Signal<string>;
+    lastPage: Signal<string>;
+    page: Signal<string>;
+    goTo: Signal<string>;
+    side: Signal<string>;
   };
   table: {
-    noData: string;
-    loading: string;
+    noData: Signal<string>;
+    loading: Signal<string>;
   };
   tableFilter: {
-    clearFilter: string;
-    clear: string;
-    yes: string;
-    no: string;
+    clearFilter: Signal<string>;
+    clear: Signal<string>;
+    yes: Signal<string>;
+    no: Signal<string>;
   };
   tableSerach: {
-    search: string;
+    search: Signal<string>;
   };
   sideBar: {
-    adminPanel: string;
+    adminPanel: Signal<string>;
   };
   modal: {
-    save: string;
+    save: Signal<string>;
   };
   header: {
-    profile: string;
-    myProfile: string;
-    logOut: string;
+    profile: Signal<string>;
+    myProfile: Signal<string>;
+    logOut: Signal<string>;
   };
   datePicker: {
-    selectDate: string;
-    selectPeriod: string;
-    fromDate: string;
-    toDate: string;
-    switchToMultiYearViewLabel: string;
-    nextMonthLabel: string;
-    nextYearLabel: string;
-    nextMultiYearLabel: string;
-    prevMonthLabel: string;
-    prevYearLabel: string;
-    prevMultiYearLabel: string;
-    calendarLabel: string;
-    openCalendarLabel: string;
-    closeCalendarLabel: string;
-    clearDateLabel: string;
+    selectDate: Signal<string>;
+    selectPeriod: Signal<string>;
+    fromDate: Signal<string>;
+    toDate: Signal<string>;
+    switchToMultiYearViewLabel: Signal<string>;
+    nextMonthLabel: Signal<string>;
+    nextYearLabel: Signal<string>;
+    nextMultiYearLabel: Signal<string>;
+    prevMonthLabel: Signal<string>;
+    prevYearLabel: Signal<string>;
+    prevMultiYearLabel: Signal<string>;
+    calendarLabel: Signal<string>;
+    openCalendarLabel: Signal<string>;
+    closeCalendarLabel: Signal<string>;
+    clearDateLabel: Signal<string>;
   };
   map: {
-    search: string;
+    search: Signal<string>;
     layers: {
-      title: string;
-      street: string;
-      satellite: string;
-      terrain: string;
+      title: Signal<string>;
+      street: Signal<string>;
+      satellite: Signal<string>;
+      terrain: Signal<string>;
     };
   };
   fileUpload: {
-    maxFileSize: string;
-    click: string;
-    forAddOrDrag: string;
+    maxFileSize: Signal<string>;
+    click: Signal<string>;
+    forAddOrDrag: Signal<string>;
   };
 }
 
@@ -76,72 +76,72 @@ export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N')
 
 export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   paginator: {
-    itemsLabel: 'ставки',
-    ofLabel: 'од',
-    displayedLabel: 'Приказано',
-    noData: 'Нема података',
-    lastUpdateTitle: 'Последње ажурирање',
-    firstPage: 'Прва страна',
-    previousPage: 'Претходна страна',
-    nextPage: 'Следећа страна',
-    lastPage: 'Последња страна',
-    page: 'Страна: ',
-    goTo: 'Иди на',
-    side: 'страну',
+    itemsLabel: signal('ставки'),
+    ofLabel: signal('од'),
+    displayedLabel: signal('Приказано'),
+    noData: signal('Нема података'),
+    lastUpdateTitle: signal('Последње ажурирање'),
+    firstPage: signal('Прва страна'),
+    previousPage: signal('Претходна страна'),
+    nextPage: signal('Следећа страна'),
+    lastPage: signal('Последња страна'),
+    page: signal('Страна: signal('),
+    goTo: signal('Иди на'),
+    side: signal('страну'),
   },
   table: {
-    noData: 'Нема података за приказ',
-    loading: 'Учитавање...',
+    noData: signal('Нема података за приказ'),
+    loading: signal('Учитавање...'),
   },
   tableFilter: {
-    clearFilter: 'Поништи филтер',
-    clear: 'Поништи',
-    yes: 'Да',
-    no: 'Не',
+    clearFilter: signal('Поништи филтер'),
+    clear: signal('Поништи'),
+    yes: signal('Да'),
+    no: signal('Не'),
   },
   tableSerach: {
-    search: 'Претрага',
+    search: signal('Претрага'),
   },
   sideBar: {
-    adminPanel: 'Админ панел',
+    adminPanel: signal('Админ панел'),
   },
   modal: {
-    save: 'Сачувај',
+    save: signal('Сачувај'),
   },
   header: {
-    profile: 'Профил',
-    myProfile: 'Мој профил',
-    logOut: 'Одјави се',
+    profile: signal('Профил'),
+    myProfile: signal('Мој профил'),
+    logOut: signal('Одјави се'),
   },
   datePicker: {
-    selectDate: 'Изаберите датум',
-    selectPeriod: 'Изаберите период',
-    fromDate: 'Од датума',
-    toDate: 'До датума',
-    switchToMultiYearViewLabel: 'Изабери годину',
-    nextMonthLabel: 'Следећи месец',
-    nextYearLabel: 'Следећа година',
-    nextMultiYearLabel: 'Следећих 24 године',
-    prevMonthLabel: 'Претходни месец',
-    prevYearLabel: 'Претходна година',
-    prevMultiYearLabel: 'Претходних 24 године',
-    calendarLabel: 'Календар',
-    openCalendarLabel: 'Отвори календар',
-    closeCalendarLabel: 'Затвори календар',
-    clearDateLabel: 'Обриши датум',
+    selectDate: signal('Изаберите датум'),
+    selectPeriod: signal('Изаберите период'),
+    fromDate: signal('Од датума'),
+    toDate: signal('До датума'),
+    switchToMultiYearViewLabel: signal('Изабери годину'),
+    nextMonthLabel: signal('Следећи месец'),
+    nextYearLabel: signal('Следећа година'),
+    nextMultiYearLabel: signal('Следећих 24 године'),
+    prevMonthLabel: signal('Претходни месец'),
+    prevYearLabel: signal('Претходна година'),
+    prevMultiYearLabel: signal('Претходних 24 године'),
+    calendarLabel: signal('Календар'),
+    openCalendarLabel: signal('Отвори календар'),
+    closeCalendarLabel: signal('Затвори календар'),
+    clearDateLabel: signal('Обриши датум'),
   },
   map: {
-    search: 'Претрага',
+    search: signal('Претрага'),
     layers: {
-      title: 'Слојеви',
-      street: 'Карта',
-      satellite: 'Сателит',
-      terrain: 'Терен',
+      title: signal('Слојеви'),
+      street: signal('Карта'),
+      satellite: signal('Сателит'),
+      terrain: signal('Терен'),
     },
   },
   fileUpload: {
-    maxFileSize: 'Максимална величина фајла',
-    click: 'Кликни',
-    forAddOrDrag: 'за додавање или превуци',
+    maxFileSize: signal('Максимална величина фајла'),
+    click: signal('Кликни'),
+    forAddOrDrag: signal('за додавање или превуци'),
   },
 };

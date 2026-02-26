@@ -1,23 +1,24 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
-  input,
-  output,
-  model,
-  effect,
-  inject,
   computed,
   DestroyRef,
+  effect,
+  inject,
+  input,
+  model,
+  output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CommonModule } from '@angular/common';
-import { MatDatepickerModule, MatDatepickerIntl } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
+
 export interface DateRange {
   start: Date | null;
   end: Date | null;
@@ -53,6 +54,11 @@ export class DatePickerComponent {
   maxDate = input<Date | null>(null);
   disabled = input<boolean>(false);
   showClearButton = input<boolean>(true);
+  /**
+   * Flag indicating need for updating date picker internationalization.
+   * @example After display language changes.
+   */
+  updateI18n = input<boolean>();
 
   selectedDate = model<Date | null>(null);
 
@@ -72,17 +78,17 @@ export class DatePickerComponent {
     if (customLabel) return customLabel;
 
     const mode = this.mode();
-    return mode === 'single' ? this.i18n.datePicker.selectDate : this.i18n.datePicker.selectPeriod;
+    return mode === 'single' ? this.i18n.datePicker.selectDate() : this.i18n.datePicker.selectPeriod();
   });
 
   startLabelText = computed(() => {
     const customLabel = this.startLabel();
-    return customLabel || this.i18n.datePicker.fromDate;
+    return customLabel || this.i18n.datePicker.fromDate();
   });
 
   endLabelText = computed(() => {
     const customLabel = this.endLabel();
-    return customLabel || this.i18n.datePicker.toDate;
+    return customLabel || this.i18n.datePicker.toDate();
   });
 
   hasValue = computed(() => {
@@ -127,6 +133,12 @@ export class DatePickerComponent {
       }
     });
 
+    effect(() => {
+      if (this.updateI18n()) {
+        this.updateDatepickerIntl();
+      }
+    });
+
     this.dateControl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((value: Date | null) => {
@@ -163,16 +175,16 @@ export class DatePickerComponent {
 
   private updateDatepickerIntl(): void {
     this.datepickerIntl.switchToMultiYearViewLabel =
-      this.i18n.datePicker.switchToMultiYearViewLabel;
-    this.datepickerIntl.nextMonthLabel = this.i18n.datePicker.nextMonthLabel;
-    this.datepickerIntl.nextYearLabel = this.i18n.datePicker.nextYearLabel;
-    this.datepickerIntl.nextMultiYearLabel = this.i18n.datePicker.nextMultiYearLabel;
-    this.datepickerIntl.prevMonthLabel = this.i18n.datePicker.prevMonthLabel;
-    this.datepickerIntl.prevYearLabel = this.i18n.datePicker.prevYearLabel;
-    this.datepickerIntl.prevMultiYearLabel = this.i18n.datePicker.prevMultiYearLabel;
-    this.datepickerIntl.calendarLabel = this.i18n.datePicker.calendarLabel;
-    this.datepickerIntl.openCalendarLabel = this.i18n.datePicker.openCalendarLabel;
-    this.datepickerIntl.closeCalendarLabel = this.i18n.datePicker.closeCalendarLabel;
+      this.i18n.datePicker.switchToMultiYearViewLabel();
+    this.datepickerIntl.nextMonthLabel = this.i18n.datePicker.nextMonthLabel();
+    this.datepickerIntl.nextYearLabel = this.i18n.datePicker.nextYearLabel();
+    this.datepickerIntl.nextMultiYearLabel = this.i18n.datePicker.nextMultiYearLabel();
+    this.datepickerIntl.prevMonthLabel = this.i18n.datePicker.prevMonthLabel();
+    this.datepickerIntl.prevYearLabel = this.i18n.datePicker.prevYearLabel();
+    this.datepickerIntl.prevMultiYearLabel = this.i18n.datePicker.prevMultiYearLabel();
+    this.datepickerIntl.calendarLabel = this.i18n.datePicker.calendarLabel();
+    this.datepickerIntl.openCalendarLabel = this.i18n.datePicker.openCalendarLabel();
+    this.datepickerIntl.closeCalendarLabel = this.i18n.datePicker.closeCalendarLabel();
     this.datepickerIntl.changes.next();
   }
 }

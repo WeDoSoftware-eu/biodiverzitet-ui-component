@@ -45,13 +45,13 @@ export class HeaderComponent implements OnInit {
   profileLinks: profileItems[] = [
     {
       id: 1,
-      title: this.i18n.header.myProfile,
+      title: this.i18n.header.myProfile(),
       link: '/my-profile',
       icon: 'person',
     },
     {
       id: 2,
-      title: this.i18n.header.logOut,
+      title: this.i18n.header.logOut(),
       action: () => this.onLogout(),
       icon: 'logout',
     },
