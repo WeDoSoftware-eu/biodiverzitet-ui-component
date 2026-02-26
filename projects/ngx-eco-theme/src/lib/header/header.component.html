@@ -36,8 +36,8 @@
   <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
     <div class="profile-content">
       <div class="profile-info-inline">
-        <span class="profile-name">{{ authUser?.fullName() }}</span>
-        <span class="profile-role">{{ i18n.header.profile }}</span>
+        <span class="profile-name">{{ authUser?.fullName | async}}</span>
+        <span class="profile-role">{{ i18n.header.profile | async}}</span>
       </div>
       <eco-icon icon="arrow-down" class="arrow-icon m-l-10"></eco-icon>
     </div>
@@ -52,8 +52,8 @@
     <div>
       <div class="d-flex text-left p-b-24 m-t-16">
         <div>
-          <h6 class="mat-body-medium">{{ authUser?.fullName() }}</h6>
-          <span class="mat-body-medium">{{ authUser?.email() }}</span>
+          <h6 class="mat-body-medium">{{ authUser?.fullName | async}}</h6>
+          <span class="mat-body-medium">{{ authUser?.email | async }}</span>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
         <a [routerLink]="profile.link || null" (click)="handleProfileClick(profile, $event)">
           <div class="menu-item d-flex align-items-center p-x-12 p-y-4 rounded-10">
             <eco-icon class="mat-headline-medium m-r-16 m-b-0" [icon]="profile.icon"></eco-icon>
-            <h5 class="mat-body-medium m-0">{{ profile.title }}</h5>
+            <h5 class="mat-body-medium m-0">{{ profile.title | async}}</h5>
           </div>
         </a>
       }

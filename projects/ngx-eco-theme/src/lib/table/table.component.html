@@ -15,7 +15,7 @@
             [style.width]="column.width"
             [style.text-align]="column.align || 'left'"
           >
-            {{ column.label }}
+            {{ column.label | async}}
           </th>
 
           <td
@@ -85,7 +85,7 @@
         <td class="mat-cell" [attr.colspan]="displayedColumns().length">
           <div class="no-data-message">
             <eco-icon icon="data"></eco-icon>
-            <p>{{ emptyMessage }}</p>
+            <p>{{ emptyMessage | async}}</p>
           </div>
         </td>
       </tr>
