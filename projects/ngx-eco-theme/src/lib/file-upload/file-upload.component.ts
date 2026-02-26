@@ -2,6 +2,7 @@ import { Component, input, output, OnDestroy, inject, OnInit } from '@angular/co
 import { IconComponent } from '../icon/icon.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { FormControl } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
 
 interface FilePreview {
   file?: File;
@@ -22,7 +23,7 @@ export interface ExistingPhoto {
 @Component({
   selector: 'eco-file-upload',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, AsyncPipe],
   templateUrl: './file-upload.component.html',
   styleUrl: './file-upload.component.scss',
 })

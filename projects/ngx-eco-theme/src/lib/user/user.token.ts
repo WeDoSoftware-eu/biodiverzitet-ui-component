@@ -1,8 +1,9 @@
-import { InjectionToken, Signal } from '@angular/core';
+import { InjectionToken } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface AuthUser {
-  fullName: Signal<string>;
-  email: Signal<string>;
+  fullName: Observable<string>;
+  email: Observable<string>;
   logout: () => Promise<void>;
 }
 

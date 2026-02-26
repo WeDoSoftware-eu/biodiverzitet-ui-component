@@ -2,7 +2,7 @@
   <mat-drawer [disableClose]="true" mode="side" opened class="side-container rounded-0">
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
     <eco-button icon="person" buttonClass="secondary" routerLink="/admin">
-      <a>{{ i18n.sideBar.adminPanel() }}</a>
+      <a>{{ i18n.sideBar.adminPanel | async }}</a>
     </eco-button>
   </mat-drawer>
   <mat-drawer-content class="content-container">

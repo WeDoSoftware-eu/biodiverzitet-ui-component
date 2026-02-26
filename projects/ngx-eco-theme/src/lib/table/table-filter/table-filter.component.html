@@ -17,8 +17,8 @@
                     panelClass="tri-state-panel"
                   >
                     <div class="filter-header">
-                      <span class="header-label">{{ i18n.tableFilter.yes() }}</span>
-                      <span class="header-label">{{ i18n.tableFilter.no() }}</span>
+                      <span class="header-label">{{ i18n.tableFilter.yes | async }}</span>
+                      <span class="header-label">{{ i18n.tableFilter.no | async}}</span>
                     </div>
 
                     @for (option of f.triStateOptions ?? []; track option.value) {
@@ -75,7 +75,7 @@
                         panelClass="filter-select"
                       >
                         @if ((f.options?.length ?? 0) > 0) {
-                          <mat-option [value]="null">-- {{ i18n.tableFilter.clear() }} --</mat-option>
+                          <mat-option [value]="null">-- {{ i18n.tableFilter.clear | async }} --</mat-option>
                         }
                         @for (o of f.options ?? []; track o.value) {
                           <mat-option [value]="o.value">{{ o.label }}</mat-option>

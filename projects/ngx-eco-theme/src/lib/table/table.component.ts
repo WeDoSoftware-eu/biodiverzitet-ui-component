@@ -15,6 +15,7 @@ import {
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { ChipComponent } from '../chip/chip.component';
 import { IconComponent } from '../icon/icon.component';
+import { Observable } from 'rxjs';
 
 interface WithId {
   id: string | number;
@@ -137,10 +138,8 @@ export class TableComponent<T> {
     this.selectRowAction.emit(row);
   }
 
-  get emptyMessage(): string {
-    return this.config().emptyMessage
-      ? this.config().emptyMessage!()
-      : `${this.i18n.table.noData()}`;
+  get emptyMessage(): Observable<string> {
+    return this.config().emptyMessage ?? this.i18n.table.noData;
   }
 
   get isLoading(): boolean {
