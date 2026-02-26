@@ -1,0 +1,43 @@
+@use '../../assets/styles/variables' as *;
+
+:host {
+  background: $white;
+  border: 1px solid #f2f2f2;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: $card-title;
+}
+
+.card-value {
+  font-size: 48px;
+  font-weight: $text-semi-bold;
+  color: $text-color;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  font-size: 12px;
+  color: $paginator-text-color;
+}
+
+.icon {
+  width: 24px;
+  height: 16px;
+  object-fit: contain;
+}
