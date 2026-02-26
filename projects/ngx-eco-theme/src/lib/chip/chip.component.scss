@@ -75,4 +75,29 @@ mat-chip {
       color: $chip-unsanitary-badge-color;
     }
   }
+  &.neutral {
+    background-color: transparent;
+    --mdc-chip-label-text-color: #{$text-color};
+    border: 1px solid black;
+
+    eco-icon {
+      color: black;
+    }
+  }
+  &.warning {
+    background-color: $chip-warning-badge-bg;
+    --mdc-chip-label-text-color: #{$error};
+
+    eco-icon {
+      color: $error;
+    }
+  }
+  &.info {
+    background-color: $chip-info-badge-bg;
+    --mdc-chip-label-text-color: #{$white};
+
+    eco-icon {
+      color: $white;
+    }
+  }
 }

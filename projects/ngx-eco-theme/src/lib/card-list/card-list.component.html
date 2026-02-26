@@ -1,0 +1,102 @@
+<div class="card-list-container">
+  @if (isLoading) {
+    <div class="loading-overlay">
+      <mat-spinner diameter="48" />
+    </div>
+  }
+
+  @if (!isLoading && processedCards().length === 0) {
+    <div class="empty-state">
+      <eco-icon icon="data" />
+      <p>{{ emptyMessage }}</p>
+    </div>
+  }
+
+  <div class="cards-wrapper" [class.loading]="isLoading">
+    @for (card of processedCards(); track card._original) {
+      <button
+        type="button"
+        class="card"
+        [class.card--clickable]="config().selectable"
+        [class.card--selected]="card._isSelected"
+        [class.card--severity-warning]="card.severity === 'warning'"
+        [attr.aria-pressed]="config().selectable ? card._isSelected : null"
+        [attr.aria-label]="card.title"
+        [attr.aria-disabled]="!config().selectable || null"
+        (click)="rowClick(card)"
+      >
+        <ng-container *ngTemplateOutlet="cardContent; context: { card }" />
+      </button>
+    }
+  </div>
+
+  <!-- Shared card inner content -->
+  <ng-template #cardContent let-card="card">
+    <!-- LEFT: Severity icon -->
+    @if (card.severityIcon) {
+      <span class="card-severity rounded-8" [attr.data-severity]="card.severity" aria-hidden="true">
+        <eco-icon [icon]="card.severityIcon" />
+      </span>
+    }
+
+    <!-- BODY -->
+    <span class="card-body">
+      <!-- Header: title + badges -->
+      <span class="card-header">
+        <span class="card-title">{{ card.title }}</span>
+
+        @for (badge of card.badges; track badge.value) {
+          @if (badge.visible) {
+            <eco-chip [status]="badge.cssClass" [icon]="badge.icon">
+              {{ badge.value }}
+            </eco-chip>
+          }
+        }
+      </span>
+
+      <!-- Description -->
+      @if (card.description) {
+        <span class="card-description">{{ card.description }}</span>
+      }
+
+      <!-- Footer metadata -->
+      @if (card.meta.length > 0) {
+        <span class="card-meta">
+          @for (item of card.meta; track $index) {
+            @if (item.visible) {
+              <span class="card-meta-item">
+                @if (item.icon) {
+                  <eco-icon [icon]="item.icon" class="meta-icon" aria-hidden="true" />
+                }
+                @if (item.label) {
+                  <span class="meta-label">{{ item.label }}</span>
+                }
+                <span class="meta-value">{{ item.value }}</span>
+              </span>
+            }
+          }
+        </span>
+      }
+    </span>
+
+    <!-- RIGHT: Actions -->
+    @if (card.actions.length > 0) {
+      <span class="card-actions">
+        @for (action of card.actions; track action.icon) {
+          @if (action.visible) {
+            <button
+              type="button"
+              mat-icon-button
+              [matTooltip]="action.tooltip || ''"
+              [attr.aria-label]="action.tooltip || action.icon"
+              (click)="onActionClick(card, action, $event)"
+              class="button-action"
+            >
+              <eco-icon [icon]="action.icon" />
+            </button>
+          }
+        }
+      </span>
+    }
+  </ng-template>
+</div>

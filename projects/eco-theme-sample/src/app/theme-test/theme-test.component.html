@@ -119,7 +119,10 @@
   <eco-chip status="active">Active</eco-chip> <br />
   <eco-chip status="completed">Completed</eco-chip> <br />
   <eco-chip status="in-progress">In progress</eco-chip> <br />
-  <eco-chip status="inactive">Inactive</eco-chip>
+  <eco-chip status="new">New</eco-chip>
+  <eco-chip status="closed">Closed</eco-chip>
+  <eco-chip status="sanitary">Sanitary</eco-chip>
+  <eco-chip status="unsanitary">Unsanitary</eco-chip>
 </section>
 <mat-divider></mat-divider>
 <section>
@@ -143,5 +146,15 @@
     </div>
   }
 </div>
+<mat-divider></mat-divider>
 
 <eco-file-upload></eco-file-upload>
+
+<mat-divider></mat-divider>
+
+<eco-card-list
+  [config]="cardConfig"
+  [data]="mockData()"
+  [selectRowEvent]="true"
+  (selectRowAction)="onSelect($event)"
+/>
