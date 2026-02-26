@@ -12,7 +12,7 @@
     @if (item()?.iconName) {
       <eco-icon class="m-r-12" [icon]="item()?.iconName!"></eco-icon>
     }
-    <span class="hide-menu" [class.parentMenu]="item()?.children">{{ item()?.displayName }}</span>
+    <span class="hide-menu" [class.parentMenu]="item()?.children">{{ item()?.displayName | async}}</span>
   </div>
 
   @if (item()?.children) {

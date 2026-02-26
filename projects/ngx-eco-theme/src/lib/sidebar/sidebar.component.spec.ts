@@ -1,15 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
+import { of } from 'rxjs';
+import { NavItem } from './nav-item/nav-item.model';
 import { SidebarComponent } from './sidebar.component';
 import { SIDEBAR_ITEMS } from './sidebar.token';
-import { NavItem } from './nav-item/nav-item.model';
-import { provideRouter } from '@angular/router';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
   let fixture: ComponentFixture<SidebarComponent>;
-  const navItems: NavItem[] = [{ displayName: 'Link 1' }];
+  const navItems: NavItem[] = [{ displayName: of('Link 1') }];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

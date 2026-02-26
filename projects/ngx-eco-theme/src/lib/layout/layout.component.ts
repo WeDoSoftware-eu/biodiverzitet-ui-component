@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ButtonComponent } from '../button/button.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'eco-layout',
@@ -18,6 +19,7 @@ import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
     MatSidenavModule,
     SidebarComponent,
     ButtonComponent,
+    AsyncPipe
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

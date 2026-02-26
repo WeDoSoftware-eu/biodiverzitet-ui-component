@@ -3,7 +3,7 @@
     <div class="custom-paginator-controls gap-8">
       <div class="last-update-text">
         @if (showLastUpdate()) {
-          {{ latUpdateTitle }}:
+          {{ lastUpdateTitle() }}:
           <p class="m-l-5">{{ latUpdate() }}</p>
         }
       </div>
@@ -13,7 +13,7 @@
           class="rounded-2"
           mat-mini-fab
           (click)="changePage('first')"
-          [matTooltip]="i18n.paginator.firstPage"
+          [matTooltip]="i18n.paginator.firstPage | async"
           [disabled]="pageIndex() === 0"
           aria-label="First page"
         >
@@ -24,7 +24,7 @@
           class="rounded-2"
           mat-mini-fab
           (click)="changePage(-1)"
-          [matTooltip]="i18n.paginator.previousPage"
+          [matTooltip]="i18n.paginator.previousPage | async"
           [disabled]="pageIndex() === 0"
           aria-label="Previous page"
         >
@@ -39,7 +39,7 @@
               class="rounded-2"
               mat-mini-fab
               [class.active-page]="page === pageIndex() + 1"
-              [matTooltip]="i18n.paginator.page + page"
+              [matTooltip]="(i18n.paginator.page | async)! + page"
               (click)="goToPage(page)"
             >
               {{ page }}
@@ -51,7 +51,7 @@
           class="rounded-2"
           mat-mini-fab
           (click)="changePage(1)"
-          [matTooltip]="i18n.paginator.nextPage"
+          [matTooltip]="i18n.paginator.nextPage | async"
           [disabled]="pageIndex() === totalPages() - 1"
           aria-label="Next page"
         >
@@ -62,7 +62,7 @@
           class="rounded-2"
           mat-mini-fab
           (click)="changePage('last')"
-          [matTooltip]="i18n.paginator.lastPage"
+          [matTooltip]="i18n.paginator.lastPage | async"
           [disabled]="pageIndex() === totalPages() - 1"
           aria-label="Last page"
         >
@@ -70,7 +70,7 @@
         </button>
 
         <div class="goto-page-container gap-6 m-l-20">
-          <p class="mat-body-medium">{{ i18n.paginator.goTo }}</p>
+          <p class="mat-body-medium">{{ i18n.paginator.goTo | async }}</p>
           <input
             class="rounded-2"
             type="number"
@@ -79,7 +79,7 @@
             [max]="totalPages()"
             (ngModelChange)="goToPage(pageInput)"
           />
-          <p class="mat-body-medium">{{ i18n.paginator.side }}</p>
+          <p class="mat-body-medium">{{ i18n.paginator.side | async }}</p>
         </div>
       </div>
 

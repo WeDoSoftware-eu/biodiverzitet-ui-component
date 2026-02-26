@@ -7,14 +7,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EcoIcon, IconComponent } from '../icon/icon.component';
 import { AUTH_USER_TOKEN } from '../user/user.token';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
-import { Location } from '@angular/common';
-import { filter } from 'rxjs';
+import { AsyncPipe, Location } from '@angular/common';
+import { filter, Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BACK_ROUTES } from './back-route.token';
 
 interface profileItems {
   id: number;
-  title: string;
+  title: Observable<string>;
   link?: string;
   icon: EcoIcon;
   action?: () => void | Promise<void>;
@@ -23,7 +23,7 @@ interface profileItems {
 @Component({
   selector: 'eco-header',
   standalone: true,
-  imports: [MatDividerModule, RouterModule, MatMenuModule, MatToolbarModule, IconComponent],
+  imports: [MatDividerModule, RouterModule, MatMenuModule, MatToolbarModule, IconComponent, AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
