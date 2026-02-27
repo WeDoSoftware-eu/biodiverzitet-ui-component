@@ -8,6 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { debounceInteraction } from '../../../decorators/debounce.decorator';
 import { IconComponent } from '../../icon/icon.component';
 import { ButtonComponent } from '../../button/button.component';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'eco-table-paginator',
@@ -34,7 +35,7 @@ export class TablePaginatorComponent {
   goToPageShow = input<boolean>(true);
   showLastUpdate = input<boolean>(true);
 
-  latUpdateTitle = this.i18n.paginator.lastUpdateTitle;
+  lastUpdateTitle = toSignal(this.i18n.paginator.lastUpdateTitle);
   latUpdate = input<string>('');
 
   pageChange = output<PageEvent>();

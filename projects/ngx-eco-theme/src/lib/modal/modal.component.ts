@@ -1,27 +1,28 @@
+import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   inject,
   Injector,
   Type,
-  AfterViewInit,
   ViewChild,
-  ViewContainerRef,
+  ViewContainerRef
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
-import { MODAL_DATA, MODAL_MODE, MODAL_STORE } from './modal.token';
-import { EcoIcon, IconComponent } from '../icon/icon.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { ButtonComponent } from '../button/button.component';
-import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { ChipComponent, ChipStatus } from '../chip/chip.component';
+import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
+import { EcoIcon, IconComponent } from '../icon/icon.component';
+import { MODAL_DATA, MODAL_MODE, MODAL_STORE } from './modal.token';
 
 export type ModalMode = 'add' | 'edit' | 'view';
 
 export interface ModalData<T extends ModalFormComponent> {
-  title: string;
-  subtitle: string;
+  title: Observable<string>;
+  subtitle: Observable<string>;
   component: Type<T>;
   mode: ModalMode;
   payload?: unknown;
@@ -37,7 +38,7 @@ export interface ModalFormComponent {
 
 export interface ChipHeader {
   status: ChipStatus;
-  text: string;
+  text: Observable<string>;
   icon: EcoIcon;
 }
 

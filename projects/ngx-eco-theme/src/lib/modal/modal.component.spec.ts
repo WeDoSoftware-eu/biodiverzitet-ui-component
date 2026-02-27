@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { of } from 'rxjs';
 import { ModalComponent, ModalData, ModalFormComponent } from './modal.component';
 
 @Component({
@@ -23,8 +24,8 @@ describe('ModalComponent', () => {
 
   beforeEach(async () => {
     data = {
-      title: '',
-      subtitle: '',
+      title: of(''),
+      subtitle: of(''),
       store: {},
       mode: 'view',
       data: jasmine.createSpyObj('data', ['formGroup', 'onSubmit']),

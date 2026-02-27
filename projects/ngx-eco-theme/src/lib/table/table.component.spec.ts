@@ -1,8 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TableComponent } from './table.component';
-import { FormsModule } from '@angular/forms';
 import { ComponentRef } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { TableComponent } from './table.component';
 import { TableConfig } from './table.model';
+import { of } from 'rxjs';
 
 interface TestModel {
   id: number;
@@ -26,15 +27,15 @@ describe('TableComponent', () => {
 
     config = {
       loading: false,
-      emptyMessage: 'no data',
+      emptyMessage: of('no data'),
       columns: [
         {
           key: 'id',
-          label: 'ID',
+          label: of('ID'),
         },
         {
           key: 'name',
-          label: 'Name',
+          label: of('Name'),
         },
       ],
     };

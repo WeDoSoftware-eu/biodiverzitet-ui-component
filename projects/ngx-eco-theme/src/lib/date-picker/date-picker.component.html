@@ -8,7 +8,7 @@
         [formControl]="dateControl"
         [min]="minDate()"
         [max]="maxDate()"
-        [placeholder]="labelText()"
+        [placeholder]="labelText() ?? ''"
         readonly
       />
       <span matIconSuffix class="suffix-icons">
@@ -17,7 +17,7 @@
             mat-icon-button
             type="button"
             class="clear-button"
-            [attr.aria-label]="i18n.datePicker.clearDateLabel"
+            [attr.aria-label]="i18n.datePicker.clearDateLabel | async"
             (click)="clearDate(); $event.stopPropagation()"
           >
             <mat-icon class="clear-icon">close</mat-icon>
@@ -45,7 +45,7 @@
             mat-icon-button
             type="button"
             class="clear-button"
-            [attr.aria-label]="i18n.datePicker.clearDateLabel"
+            [attr.aria-label]="i18n.datePicker.clearDateLabel | async"
             (click)="clearDate(); $event.stopPropagation()"
           >
             <mat-icon class="clear-icon">close</mat-icon>

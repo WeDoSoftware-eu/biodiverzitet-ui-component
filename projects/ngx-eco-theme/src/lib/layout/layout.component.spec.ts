@@ -6,9 +6,11 @@ import { SIDEBAR_ITEMS } from '../sidebar/sidebar.token';
 import { LayoutComponent } from './layout.component';
 import { provideRouter } from '@angular/router';
 import { BACK_ROUTES } from '../header/back-route.token';
+import { signal } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 describe('LayoutComponent', () => {
-  const navItems: NavItem[] = [{ displayName: 'Link 1' }];
+  const navItems: NavItem[] = [{ displayName: new BehaviorSubject('Link 1') }];
 
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;

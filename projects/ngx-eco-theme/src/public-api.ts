@@ -19,6 +19,8 @@ export * from './lib/file-upload/file-upload.component';
 export * from './lib/tree/tree.component';
 export * from './lib/image-preview-dialog/image-preview-dialog.component';
 export * from './lib/card-list/card-list.component';
+export * from './lib/stat-card/stat-card.component';
+export * from './lib/progress-circle-card/progress-circle-card.component';
 export * from './lib/gis/base-layer-button/base-layer-button.component';
 export * from './lib/gis/base-layer-selector/base-layer-selector.component';
 export * from './lib/gis/layers-button/layers-button.component';
