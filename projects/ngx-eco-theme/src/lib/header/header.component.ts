@@ -23,7 +23,14 @@ interface profileItems {
 @Component({
   selector: 'eco-header',
   standalone: true,
-  imports: [MatDividerModule, RouterModule, MatMenuModule, MatToolbarModule, IconComponent, AsyncPipe],
+  imports: [
+    MatDividerModule,
+    RouterModule,
+    MatMenuModule,
+    MatToolbarModule,
+    IconComponent,
+    AsyncPipe,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

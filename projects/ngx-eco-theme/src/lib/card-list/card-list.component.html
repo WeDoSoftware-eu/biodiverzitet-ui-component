@@ -8,7 +8,7 @@
   @if (!isLoading && processedCards().length === 0) {
     <div class="empty-state">
       <eco-icon icon="data" />
-      <p>{{ emptyMessage }}</p>
+      <p>{{ emptyMessage | async }}</p>
     </div>
   }
 

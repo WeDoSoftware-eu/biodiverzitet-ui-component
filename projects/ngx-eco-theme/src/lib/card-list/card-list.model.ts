@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { EcoIcon } from '../icon/icon.component';
 
 export type CardSeverity = 'warning' | 'blocked';
@@ -25,10 +26,10 @@ export interface CardAction<T> {
 
 export interface CardListConfig<T> {
   /** Resolves the card title */
-  getTitle: (row: T) => string;
+  getTitle: (row: T) => Observable<string>;
 
   /** Resolves the main description text */
-  getDescription?: (row: T) => string | null;
+  getDescription?: (row: T) => Observable<string> | null;
 
   /** Left-side severity icon */
   getSeverity?: (row: T) => CardSeverity;
@@ -46,7 +47,7 @@ export interface CardListConfig<T> {
   selectable?: boolean;
 
   loading?: boolean;
-  emptyMessage?: string;
+  emptyMessage?: Observable<string>;
 }
 
 export interface ProcessedCardBadge {
@@ -69,8 +70,8 @@ export interface ProcessedCardAction<T> extends CardAction<T> {
 export interface ProcessedCard<T> {
   _original: T;
   _isSelected: boolean;
-  title: string;
-  description: string | null;
+  title: Observable<string>;
+  description: Observable<string> | null;
   severity: CardSeverity | 'none';
   severityIcon: EcoIcon | null;
   badges: ProcessedCardBadge[];
