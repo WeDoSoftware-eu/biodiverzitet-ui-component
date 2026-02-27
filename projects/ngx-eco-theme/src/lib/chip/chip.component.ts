@@ -11,7 +11,10 @@ export type ChipStatus =
   | 'new'
   | 'closed'
   | 'sanitary'
-  | 'unsanitary';
+  | 'unsanitary'
+  | 'neutral'
+  | 'black'
+  | 'grey';
 
 @Component({
   selector: 'eco-chip',
