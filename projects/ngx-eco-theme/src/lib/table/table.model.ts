@@ -13,7 +13,7 @@ export interface TableColumn<T> {
   badgeConfig?: {
     getValue: (row: T) => string;
     getClass: (row: T) => string;
-    getIcon: (row: T) => EcoIcon;
+    getIcon?: (row: T) => EcoIcon;
   };
   iconConfig?: {
     getClass: (row: T) => 'error' | 'success';

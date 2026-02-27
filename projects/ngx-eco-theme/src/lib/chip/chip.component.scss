@@ -100,4 +100,21 @@ mat-chip {
       color: $white;
     }
   }
+
+  &.black {
+    background-color: black;
+    --mdc-chip-label-text-color: #{$white};
+
+    eco-icon {
+      color: $white;
+    }
+  }
+  &.grey {
+    background-color: $chip-grey-badge-bg;
+    --mdc-chip-label-text-color: #{$text-color};
+
+    eco-icon {
+      color: $text-color;
+    }
+  }
 }
