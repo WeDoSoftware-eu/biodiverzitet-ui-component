@@ -32,6 +32,7 @@ export class TablePaginatorComponent {
   pageSize = input<number>(10);
   pageIndex = input<number>(0);
   generateButtonShow = input<boolean>(false);
+  goToPageShow = input<boolean>(true);
   showLastUpdate = input<boolean>(true);
 
   lastUpdateTitle = toSignal(this.i18n.paginator.lastUpdateTitle);

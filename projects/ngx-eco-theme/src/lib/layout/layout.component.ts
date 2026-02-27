@@ -19,7 +19,7 @@ import { AsyncPipe } from '@angular/common';
     MatSidenavModule,
     SidebarComponent,
     ButtonComponent,
-    AsyncPipe
+    AsyncPipe,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

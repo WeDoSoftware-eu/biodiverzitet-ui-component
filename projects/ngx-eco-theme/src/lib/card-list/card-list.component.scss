@@ -1,0 +1,192 @@
+@use '../../assets/styles/variables' as *;
+
+.card-list-container {
+  position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &.loading {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--mat-sys-on-surface-variant);
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.card {
+  // Button reset
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: default;
+
+  // Layout
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 20px;
+  background: $white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  transition:
+    box-shadow 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+
+  // Left severity accent bar
+  border-left-width: 4px;
+  border-left-color: transparent;
+
+  // Focus only when card is clicable
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:not(&--clickable) {
+    cursor: default;
+    pointer-events: none;
+
+    .card-actions {
+      pointer-events: auto;
+    }
+  }
+
+  &--clickable {
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--mat-sys-primary, $primary);
+      outline-offset: 2px;
+    }
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  &--selected {
+    background: var(--mat-sys-secondary-container, #e8f0fe);
+    border-color: var(--mat-sys-primary, $primary);
+  }
+}
+
+// Severity icon
+
+.card-severity {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  padding: 6px 10px;
+
+  &[data-severity='warning'] {
+    color: $error;
+    background-color: $chip-warning-badge-bg;
+  }
+  &[data-severity='blocked'] {
+    color: black;
+  }
+}
+
+// Body
+
+.card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $text-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-description {
+  margin: 0;
+  font-size: 13px;
+  color: $text-color;
+  line-height: 1.5;
+}
+
+// Meta footer
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--mat-sys-on-surface-variant, #49454f);
+}
+
+.meta-icon {
+  font-size: 18px;
+}
+
+.meta-label {
+  font-weight: 500;
+}
+
+// Actions
+
+.card-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  align-self: center;
+}

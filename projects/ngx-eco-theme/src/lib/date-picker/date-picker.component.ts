@@ -86,7 +86,7 @@ export class DatePickerComponent {
     selectPeriod: toSignal(this.i18n.datePicker.selectPeriod),
     switchToMultiYearViewLabel: toSignal(this.i18n.datePicker.switchToMultiYearViewLabel),
     toDate: toSignal(this.i18n.datePicker.toDate),
-  }
+  };
 
   labelText = computed(() => {
     const customLabel = this.label();
@@ -183,8 +183,7 @@ export class DatePickerComponent {
   }
 
   private updateDatepickerIntl(): void {
-    this.datepickerIntl.switchToMultiYearViewLabel =
-      this.intlModel.switchToMultiYearViewLabel()!;
+    this.datepickerIntl.switchToMultiYearViewLabel = this.intlModel.switchToMultiYearViewLabel()!;
     this.datepickerIntl.nextMonthLabel = this.intlModel.nextMonthLabel()!;
     this.datepickerIntl.nextYearLabel = this.intlModel.nextYearLabel()!;
     this.datepickerIntl.nextMultiYearLabel = this.intlModel.nextMultiYearLabel()!;

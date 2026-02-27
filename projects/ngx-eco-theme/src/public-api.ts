@@ -18,6 +18,7 @@ export * from './lib/file-upload/file-upload.component';
 // export * from './lib/map/map.component'; // COMMENTED OUT
 export * from './lib/tree/tree.component';
 export * from './lib/image-preview-dialog/image-preview-dialog.component';
+export * from './lib/card-list/card-list.component';
 export * from './lib/stat-card/stat-card.component';
 export * from './lib/progress-circle-card/progress-circle-card.component';
 export * from './lib/gis/base-layer-button/base-layer-button.component';
@@ -44,6 +45,7 @@ export * from './lib/gis/hover-tooltip/hover-tooltip.model';
 export * from './lib/sidebar/nav-item/nav-item.model';
 export * from './lib/table/table.model';
 export * from './lib/tree/tree-item.model';
+export * from './lib/card-list/card-list.model';
 export * from './lib/gis/layers-selector/layer.model';
 export * from './lib/gis/legend-selector/legend.model';
 export * from './lib/gis/map-status-bar/map-status-bar.model';

@@ -18,12 +18,29 @@ import {
   TablePaginatorComponent,
 } from 'ngx-eco-theme';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { FileUploadComponent } from '../../../../ngx-eco-theme/src/public-api';
+import {
+  CardListComponent,
+  CardListConfig,
+  CardSeverity,
+  FileUploadComponent,
+} from '../../../../ngx-eco-theme/src/public-api';
 
 interface MyItem {
   id: number;
   name: string;
   status: 'active' | 'inactive';
+}
+export interface Alert {
+  id: number;
+  name: string;
+  severity: 'warning';
+  type: 'THRESHOLD' | 'PREDICTIVE' | 'SURFACE_CHANGE';
+  description: string;
+  date: string;
+  lat: number;
+  lng: number;
+  estimatedArea?: number;
+  canDelete?: boolean;
 }
 
 @Component({
@@ -41,6 +58,7 @@ interface MyItem {
     TableFilterComponent,
     HeaderComponent,
     FileUploadComponent,
+    CardListComponent,
   ],
   providers: [{ provide: BACK_ROUTES, useValue: [] }],
   templateUrl: './theme-test.component.html',
@@ -164,5 +182,126 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
 
   onFilter(value: unknown) {
     console.log('FILTER:', value);
+  }
+
+  // ── Mockup podaci ────────────────────────────────────────────────────────────
+  mockData = signal<Alert[]>([
+    {
+      id: 1,
+      name: 'Deponija Rakovica - Sektor B',
+      severity: 'warning',
+      type: 'THRESHOLD',
+      description: 'Prag povećanja površine > 100%. Površina deponije povećana za 460 m2.',
+      date: 'jun 2025.',
+      lat: 44.7625,
+      lng: 20.4217,
+      estimatedArea: 860,
+      canDelete: true,
+    },
+    {
+      id: 2,
+      name: 'Nova Deponija Zvezdara',
+      severity: 'warning',
+      type: 'PREDICTIVE',
+      description: 'Predikcija ukazuje na visoku verovatnoću od 80% širenja deponije.',
+      date: 'jun 2025.',
+      lat: 44.7866,
+      lng: 20.5089,
+      canDelete: false,
+    },
+    {
+      id: 3,
+      name: 'Deponija Barajevo',
+      severity: 'warning',
+      type: 'PREDICTIVE',
+      description: 'Predikcija ukazuje na srednju verovatnoću od 65% širenja deponije.',
+      date: 'jun 2025.',
+      lat: 44.555,
+      lng: 20.3667,
+      canDelete: true,
+    },
+    {
+      id: 4,
+      name: 'Deponija Voždovac - Istočni deo',
+      severity: 'warning',
+      type: 'SURFACE_CHANGE',
+      description: 'Prag smanjene površine < 50%. Površina deponije smanjena za 100 m2.',
+      date: 'jun 2025.',
+      lat: 44.765,
+      lng: 20.51,
+      estimatedArea: 400,
+      canDelete: true,
+    },
+  ]);
+
+  // ── Konfiguracija kartice ────────────────────────────────────────────────────
+  cardConfig: CardListConfig<Alert> = {
+    selectable: true,
+
+    getSeverity: (row): CardSeverity => {
+      const map: Record<string, CardSeverity> = {
+        warning: 'warning',
+      };
+      return map[row.severity] ?? 'warning';
+    },
+
+    getTitle: row => row.name,
+
+    getDescription: row => row.description,
+
+    badges: [
+      {
+        // Tip alarma
+        getValue: row => {
+          const labels: Record<string, string> = {
+            THRESHOLD: 'Prag povećanja površine',
+            PREDICTIVE: 'Prediktivni alarm',
+            SURFACE_CHANGE: 'Smanjenje površine',
+          };
+          return labels[row.type] ?? row.type;
+        },
+        getClass: () => 'neutral',
+      },
+      {
+        // Severity chip
+        getValue: row => 'Висок',
+        getClass: row => ({ warning: 'warning' })[row.severity] ?? 'neutral',
+      },
+    ],
+
+    meta: [
+      {
+        icon: 'calendar',
+        getValue: row => row.date,
+      },
+      {
+        icon: 'gps',
+        getValue: row => `${row.lat}, ${row.lng}`,
+      },
+      {
+        label: 'Procenjena površina',
+        show: row => !!row.canDelete,
+        getValue: row => (row.estimatedArea ? `${row.estimatedArea} m2` : null),
+      },
+    ],
+
+    actions: [
+      {
+        icon: 'eye',
+        tooltip: 'Pregled',
+        onClick: (row: any) => console.log('Pregled:', row),
+      },
+      {
+        icon: 'delete',
+        tooltip: 'Obriši',
+        show: row => !!row.canDelete,
+        onClick: row => console.log('Obriši:', row),
+      },
+    ],
+  };
+
+  // ── Selekcija ────────────────────────────────────────────────────────────────
+  onSelect(event: { _original: Alert }): void {
+    console.log('Selektovano:', event._original);
   }
 }

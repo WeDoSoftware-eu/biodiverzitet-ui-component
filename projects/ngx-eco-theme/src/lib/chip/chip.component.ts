@@ -12,6 +12,8 @@ export type ChipStatus =
   | 'closed'
   | 'sanitary'
   | 'unsanitary'
+  | 'warning'
+  | 'info'
   | 'neutral'
   | 'black'
   | 'grey';

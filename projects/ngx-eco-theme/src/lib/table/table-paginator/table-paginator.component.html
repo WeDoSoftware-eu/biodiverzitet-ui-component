@@ -69,18 +69,20 @@
           <eco-icon class="icon-16" icon="last-page"></eco-icon>
         </button>
 
-        <div class="goto-page-container gap-6 m-l-20">
-          <p class="mat-body-medium">{{ i18n.paginator.goTo | async }}</p>
-          <input
-            class="rounded-2"
-            type="number"
-            [(ngModel)]="pageInput"
-            min="1"
-            [max]="totalPages()"
-            (ngModelChange)="goToPage(pageInput)"
-          />
-          <p class="mat-body-medium">{{ i18n.paginator.side | async }}</p>
-        </div>
+        @if (goToPageShow()) {
+          <div class="goto-page-container gap-6 m-l-20">
+            <p class="mat-body-medium">{{ i18n.paginator.goTo | async }}</p>
+            <input
+              class="rounded-2"
+              type="number"
+              [(ngModel)]="pageInput"
+              min="1"
+              [max]="totalPages()"
+              (ngModelChange)="goToPage(pageInput)"
+            />
+            <p class="mat-body-medium">{{ i18n.paginator.side | async }}</p>
+          </div>
+        }
       </div>
 
       <div class="generate-button">
