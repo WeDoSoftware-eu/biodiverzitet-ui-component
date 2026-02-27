@@ -43,12 +43,12 @@
     <span class="card-body">
       <!-- Header: title + badges -->
       <span class="card-header">
-        <span class="card-title">{{ card.title }}</span>
+        <span class="card-title">{{ card.title | async }}</span>
 
         @for (badge of card.badges; track badge.value) {
           @if (badge.visible) {
             <eco-chip [status]="badge.cssClass" [icon]="badge.icon">
-              {{ badge.value }}
+              {{ badge.value | async }}
             </eco-chip>
           }
         }
@@ -56,7 +56,7 @@
 
       <!-- Description -->
       @if (card.description) {
-        <span class="card-description">{{ card.description }}</span>
+        <span class="card-description">{{ card.description | async }}</span>
       }
 
       <!-- Footer metadata -->

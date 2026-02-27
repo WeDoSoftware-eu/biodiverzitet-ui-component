@@ -11,7 +11,7 @@ export interface CardMetaItem<T> {
 }
 
 export interface CardBadge<T> {
-  getValue: (row: T) => string;
+  getValue: (row: T) => Observable<string>;
   getClass: (row: T) => string;
   getIcon?: (row: T) => EcoIcon;
   show?: (row: T) => boolean;
@@ -51,7 +51,7 @@ export interface CardListConfig<T> {
 }
 
 export interface ProcessedCardBadge {
-  value: string;
+  value: Observable<string>;
   cssClass: string;
   icon?: EcoIcon;
   visible: boolean;
