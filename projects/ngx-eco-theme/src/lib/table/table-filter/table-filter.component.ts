@@ -11,6 +11,7 @@ import { TableFilterStoreService } from './table-filter-store';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DatePickerMonthYearComponent } from './date-picker-month-year/date-picker-month-year.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export type FilterFieldType =
   | 'text'
@@ -57,6 +58,7 @@ export interface TriStateValue {
     MatCheckboxModule,
     MatInputModule,
     DatePickerMonthYearComponent,
+    MatTooltipModule,
   ],
   templateUrl: './table-filter.component.html',
   styleUrl: './table-filter.component.scss',

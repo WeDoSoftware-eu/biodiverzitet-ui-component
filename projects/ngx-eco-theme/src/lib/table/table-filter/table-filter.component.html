@@ -10,6 +10,7 @@
                   subscriptSizing="dynamic"
                   appearance="outline"
                   class="tristate-field"
+                  [matTooltip]="triStateLabels()[f.key]"
                 >
                   <mat-select
                     [value]="null"
@@ -61,13 +62,21 @@
               <div class="form-field-group p-0">
                 @switch (f.type) {
                   @case ('text') {
-                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                      <input matInput [placeholder]="f.label" [formControlName]="f.key" />
+                    <mat-form-field
+                      [matTooltip]="f.label"
+                      subscriptSizing="dynamic"
+                      appearance="outline"
+                    >
+                      <input matInput [placeholder]="f.label" [formControlName]="f.label" />
                     </mat-form-field>
                   }
 
                   @case ('select') {
-                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                    <mat-form-field
+                      [matTooltip]="f.label"
+                      subscriptSizing="dynamic"
+                      appearance="outline"
+                    >
                       <mat-select
                         [placeholder]="f.label"
                         [multiple]="false"
@@ -87,7 +96,11 @@
                   }
 
                   @case ('multiselect') {
-                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                    <mat-form-field
+                      [matTooltip]="f.label"
+                      subscriptSizing="dynamic"
+                      appearance="outline"
+                    >
                       <mat-select
                         [placeholder]="f.label"
                         [multiple]="true"
@@ -102,7 +115,11 @@
                   }
 
                   @case ('date') {
-                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                    <mat-form-field
+                      [matTooltip]="f.label"
+                      subscriptSizing="dynamic"
+                      appearance="outline"
+                    >
                       <input
                         matInput
                         [placeholder]="f.label"
@@ -116,6 +133,7 @@
 
                   @case ('month-year') {
                     <eco-date-picker-month-year
+                      [matTooltip]="f.label"
                       [placeholder]="f.label"
                       [control]="getControl(f.key)"
                     />
