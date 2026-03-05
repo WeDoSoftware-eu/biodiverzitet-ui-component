@@ -1,0 +1,31 @@
+<div
+  class="file-drop-zone"
+  role="button"
+  tabindex="0"
+  [class.drag-over]="isDragOver()"
+  (click)="fileInput.click()"
+  (keydown.enter)="fileInput.click()"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+>
+  <eco-icon class="upload-icon" icon="upload-file"></eco-icon>
+  <p class="upload-text">
+    <strong>{{ i18n.documentUpload.clickToUpload | async }}</strong>
+    {{ i18n.documentUpload.orDragFile | async }}
+  </p>
+  <p class="upload-hint">{{ i18n.documentUpload.maxFileSize | async }} {{ maxFileSizeMb() }} MB</p>
+</div>
+<input #fileInput type="file" multiple hidden (change)="onFileSelected($event)" />
+@if (fileError()) {
+  <p class="file-error">{{ i18n.documentUpload.fileTooLarge | async }}</p>
+}
+@for (file of files(); track $index) {
+  <div class="selected-file">
+    <eco-icon icon="file-paper"></eco-icon>
+    <span>{{ file.name }}</span>
+    <button type="button" class="remove-file-btn" (click)="removeFile($index)">
+      <eco-icon icon="cancel"></eco-icon>
+    </button>
+  </div>
+}
