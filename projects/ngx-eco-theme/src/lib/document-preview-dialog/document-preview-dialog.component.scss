@@ -1,0 +1,93 @@
+@use '../../assets/styles/variables' as *;
+
+.preview-dialog {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  max-width: 1000px;
+  height: 85vh;
+
+  .preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid $borderBottm;
+    flex-shrink: 0;
+  }
+
+  .preview-title {
+    font-size: 15px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    color: $card-title;
+    flex-shrink: 0;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  .preview-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .preview-unsupported {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: $card-title;
+
+    eco-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  .download-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $primary;
+    text-decoration: none;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
