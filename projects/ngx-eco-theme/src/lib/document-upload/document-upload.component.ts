@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, model, signal } from '@angular/core';
+import { Component, inject, input, model, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
@@ -17,11 +17,11 @@ export class DocumentUploadComponent {
     : DEFAULT_ECO_THEME_I18N;
 
   files = model<File[]>([]);
-  maxFileSize = input<number>(3 * 1024 * 1024);
+  /** @default 3 */
+  maxFileSizeMb = input<number>(3);
 
   isDragOver = signal(false);
   fileError = signal<string | null>(null);
-  readonly maxFileSizeMb = computed(() => this.maxFileSize() / (1024 * 1024));
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -61,7 +61,7 @@ export class DocumentUploadComponent {
     this.fileError.set(null);
     const valid: File[] = [];
     for (const file of newFiles) {
-      if (file.size > this.maxFileSize()) {
+      if (file.size > this.maxFileSizeMb() * 1024 * 1024) {
         this.fileError.set('fileTooLarge');
         continue;
       }
