@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/WeDoSoftware-eu/biodiverzitet-ui-component.git"
   },
-  "version": "0.0.20",
+  "version": "0.0.21",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
