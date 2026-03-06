@@ -1,21 +1,21 @@
 <div class="preview-dialog">
-  <div class="preview-dialog__header">
-    <span class="preview-dialog__title">{{ data.name }}</span>
-    <button class="preview-dialog__close-btn" type="button" (click)="close()">
+  <div class="preview-header">
+    <span class="preview-title">{{ data.name }}</span>
+    <button class="close-btn" type="button" (click)="close()">
       <eco-icon icon="cancel"></eco-icon>
     </button>
   </div>
 
-  <div class="preview-dialog__content">
+  <div class="preview-content">
     @if (isPdf) {
-      <iframe [src]="safePdfUrl" class="preview-dialog__iframe"></iframe>
+      <iframe [src]="safePdfUrl"></iframe>
     } @else if (isImage) {
-      <img [src]="safeImageUrl" [alt]="data.name" class="preview-dialog__image" />
+      <img [src]="safeImageUrl" [alt]="data.name" />
     } @else {
-      <div class="preview-dialog__unsupported">
+      <div class="preview-unsupported">
         <eco-icon icon="file-paper"></eco-icon>
         <p>{{ i18n.documentPreview.unsupportedPreview | async }}</p>
-        <a [href]="data.url" [download]="data.name" class="preview-dialog__download-link">
+        <a [href]="data.url" [download]="data.name" class="download-link">
           <eco-icon icon="export"></eco-icon>
           {{ i18n.documentPreview.downloadFile | async }}
         </a>
