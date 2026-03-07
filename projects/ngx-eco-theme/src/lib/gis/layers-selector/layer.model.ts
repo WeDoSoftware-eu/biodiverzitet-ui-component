@@ -4,6 +4,8 @@ export interface MapLayer {
   visible: boolean;
   type?: 'wms' | 'wfs' | 'vector';
   opacity?: number;
+  color?: string;
+  isColorCustomizable?: boolean;
 }
 
 export interface MapLayerGroup {

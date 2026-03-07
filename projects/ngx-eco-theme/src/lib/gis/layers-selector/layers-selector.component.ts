@@ -21,6 +21,7 @@ export class LayersSelectorComponent {
 
   // Outputs
   layerToggle = output<MapLayer>();
+  colorChange = output<{ layerId: string; color: string }>();
   closeSelector = output<void>();
 
   onLayerToggle(layer: MapLayer): void {
@@ -32,6 +33,55 @@ export class LayersSelectorComponent {
 
   onClose(): void {
     this.closeSelector.emit();
+  }
+
+  onColorChange(layerId: string, color: string): void {
+    this.colorChange.emit({ layerId, color });
+  }
+
+  shouldShowColorPicker(layer: MapLayer): boolean {
+    return layer.isColorCustomizable === true || !!layer.color;
+  }
+
+  getLayerDisplayColor(layer: MapLayer): string {
+    return layer.color ?? '#808080';
+  }
+
+  getLayerPickerValue(layer: MapLayer): string {
+    return this.toHexColor(layer.color);
+  }
+
+  getColorPickerId(layerId: string): string {
+    return `layer-color-${layerId}`;
+  }
+
+  private toHexColor(color: string | undefined): string {
+    if (!color) return '#808080';
+
+    const normalized = color.trim();
+    if (normalized.startsWith('#')) {
+      if (normalized.length === 4) {
+        const r = normalized[1];
+        const g = normalized[2];
+        const b = normalized[3];
+        return `#${r}${r}${g}${g}${b}${b}`.toLowerCase();
+      }
+      return normalized.slice(0, 7).toLowerCase();
+    }
+
+    const rgbMatch = normalized.match(/rgba?\(([^)]+)\)/i);
+    if (!rgbMatch) return '#808080';
+
+    const rgbValues = rgbMatch[1]
+      .split(',')
+      .slice(0, 3)
+      .map(value => Number.parseInt(value.trim(), 10));
+
+    if (rgbValues.length !== 3 || rgbValues.some(value => Number.isNaN(value))) {
+      return '#808080';
+    }
+
+    return `#${rgbValues.map(value => value.toString(16).padStart(2, '0')).join('')}`;
   }
 
   trackByLayerId(index: number, layer: MapLayer): string {
