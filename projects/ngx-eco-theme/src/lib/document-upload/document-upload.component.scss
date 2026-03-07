@@ -1,0 +1,91 @@
+@use '../../assets/styles/variables' as *;
+
+.file-drop-zone {
+  width: 100%;
+  border: 2px dashed $muted-color;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+  box-sizing: border-box;
+
+  &:hover,
+  &.drag-over {
+    border-color: $primary;
+    background-color: rgba(25, 160, 140, 0.04);
+  }
+
+  .upload-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: $primary;
+    margin-bottom: 8px;
+  }
+
+  .upload-text {
+    font-size: 14px;
+    color: $text-color;
+    margin: 0;
+
+    strong {
+      color: $primary;
+    }
+  }
+
+  .upload-hint {
+    font-size: 12px;
+    color: $card-title;
+    margin: 4px 0 0;
+  }
+}
+
+.file-error {
+  color: $error;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+
+.selected-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: $table-search-input-bg;
+  border-radius: $border-radius-sm;
+  font-size: 14px;
+  color: $text-color;
+
+  eco-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: $card-title;
+  }
+
+  span {
+    flex: 1;
+  }
+
+  .remove-file-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    eco-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

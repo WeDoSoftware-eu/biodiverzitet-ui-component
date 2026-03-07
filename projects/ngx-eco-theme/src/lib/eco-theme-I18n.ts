@@ -71,6 +71,16 @@ export interface EcoThemeI18n {
     click: Observable<string>;
     forAddOrDrag: Observable<string>;
   };
+  documentUpload: {
+    clickToUpload: Observable<string>;
+    orDragFile: Observable<string>;
+    maxFileSize: Observable<string>;
+    fileTooLarge: Observable<string>;
+  };
+  documentPreview: {
+    unsupportedPreview: Observable<string>;
+    downloadFile: Observable<string>;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -144,5 +154,15 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     maxFileSize: of('Максимална величина фајла'),
     click: of('Кликни'),
     forAddOrDrag: of('за додавање или превуци'),
+  },
+  documentUpload: {
+    clickToUpload: of('Кликни за отпремање'),
+    orDragFile: of('или превуци фајл'),
+    maxFileSize: of('Максимална величина фајла:'),
+    fileTooLarge: of('Фајл је превелик'),
+  },
+  documentPreview: {
+    unsupportedPreview: of('Детаљан приказ није доступан за овај тип фајла.'),
+    downloadFile: of('Преузми фајл'),
   },
 };
