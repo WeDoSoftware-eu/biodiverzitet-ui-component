@@ -47,11 +47,11 @@ describe('CardListComponent', () => {
     expect(cards[0]._isSelected).toBeFalse();
   });
 
-  it('should set default severity to warning when getSeverity not provided', () => {
+  it('should set default severity to none when getSeverity not provided', () => {
     fixture.componentRef.setInput('data', [{ id: 1, name: 'Test' }]);
     fixture.detectChanges();
 
-    expect(component.processedCards()[0].severity).toBe('warning');
+    expect(component.processedCards()[0].severity).toBe('none');
   });
 
   it('should use getSeverity from config when provided', () => {
