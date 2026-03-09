@@ -60,7 +60,7 @@ export class CardListComponent<T> {
 
     return rows.map((row): ProcessedCard<T> => {
       const rowId = hasId(row) ? row.id : null;
-      const severity = cfg.getSeverity ? cfg.getSeverity(row) : 'warning';
+      const severity = cfg.getSeverity ? cfg.getSeverity(row) : 'none';
 
       return {
         _original: row,
@@ -69,7 +69,7 @@ export class CardListComponent<T> {
         title: cfg.getTitle(row),
         description: cfg.getDescription ? cfg.getDescription(row) : null,
         severity,
-        severityIcon: SEVERITY_ICON_MAP[severity] ?? null,
+        severityIcon: severity !== 'none' ? SEVERITY_ICON_MAP[severity] : null,
 
         badges: (cfg.badges ?? []).map(b => ({
           value: b.getValue(row),
