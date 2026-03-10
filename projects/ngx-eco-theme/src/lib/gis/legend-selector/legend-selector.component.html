@@ -1,6 +1,32 @@
 <div class="legend-selector">
   <div class="header">
-    <span class="title">{{ title() }}</span>
+    <div class="title-row">
+      <span class="title">{{ title() }}</span>
+
+      @if (showModeToggle()) {
+        <div class="mode-toggle" role="group" aria-label="Режим приказа легенде">
+          <button
+            type="button"
+            class="mode-button"
+            [class.active]="mode() === 'basic'"
+            [attr.aria-pressed]="mode() === 'basic'"
+            (click)="onModeSelect('basic')"
+          >
+            {{ modeBasicLabel() }}
+          </button>
+          <button
+            type="button"
+            class="mode-button"
+            [class.active]="mode() === 'advanced'"
+            [attr.aria-pressed]="mode() === 'advanced'"
+            (click)="onModeSelect('advanced')"
+          >
+            {{ modeAdvancedLabel() }}
+          </button>
+        </div>
+      }
+    </div>
+
     <button class="close-button" (click)="onClose()" aria-label="Затвори">
       <svg
         width="14"
@@ -88,7 +114,7 @@
                   y="0"
                   width="24"
                   height="24"
-                  fill="#4CAF50"
+                  [attr.fill]="item.colorValue || item.color || '#4CAF50'"
                   mask="url(#legendTreeCutout)"
                 />
                 <path
@@ -142,6 +168,15 @@
           }
         </span>
         <span class="legend-name">{{ item.name }}</span>
+        @if (isColorEditable(item)) {
+          <input
+            class="color-input"
+            type="color"
+            [value]="getColorValue(item)"
+            [attr.aria-label]="'Промени боју за ' + item.name"
+            (input)="onColorChange(item, $event)"
+          />
+        }
       </div>
     }
 
