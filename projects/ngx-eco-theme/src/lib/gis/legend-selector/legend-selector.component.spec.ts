@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComponentRef } from '@angular/core';
 import { LegendSelectorComponent } from './legend-selector.component';
-import { LegendItem } from './legend.model';
+import { LegendDisplayMode, LegendItem } from './legend.model';
 
 describe('LegendSelectorComponent', () => {
   let component: LegendSelectorComponent;
@@ -118,7 +118,7 @@ describe('LegendSelectorComponent', () => {
     componentRef.setInput('showModeToggle', true);
     fixture.detectChanges();
 
-    let emittedMode: string | null = null;
+    let emittedMode: LegendDisplayMode = 'basic';
     component.modeChange.subscribe(mode => {
       emittedMode = mode;
     });
