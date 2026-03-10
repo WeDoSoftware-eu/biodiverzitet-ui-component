@@ -91,7 +91,6 @@ export const ECO_ICONS = [
   'zoom-out',
   'chart',
   'exclamation-mark-circle',
-  'chart',
   'eye-invisible',
   'folder-open',
   'pdf',
