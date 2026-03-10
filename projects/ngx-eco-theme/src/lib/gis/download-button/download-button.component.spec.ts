@@ -48,7 +48,7 @@ describe('DownloadButtonComponent', () => {
 
   it('should render the button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('button');
-    expect(button.getAttribute('aria-label')).toBe('Download');
+    expect(button.getAttribute('aria-label')).toBe('Stampa');
   });
 
   it('should render the SVG icon inside the button', () => {
