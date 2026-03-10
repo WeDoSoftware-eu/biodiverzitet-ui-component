@@ -89,6 +89,16 @@ export const ECO_ICONS = [
   'warrning',
   'zoom-in',
   'zoom-out',
+  'chart',
+  'exclamation-mark-circle',
+  'chart',
+  'eye-invisible',
+  'folder-open',
+  'pdf',
+  'plus',
+  'plus-circle',
+  'warning-yellow',
+  'word',
 ] as const;
 
 export type EcoIcon = (typeof ECO_ICONS)[number];
