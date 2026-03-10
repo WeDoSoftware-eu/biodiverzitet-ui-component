@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComponentRef } from '@angular/core';
 import { LegendSelectorComponent } from './legend-selector.component';
-import { LegendItem } from './legend.model';
+import { LegendDisplayMode, LegendItem } from './legend.model';
 
 describe('LegendSelectorComponent', () => {
   let component: LegendSelectorComponent;
@@ -9,7 +9,16 @@ describe('LegendSelectorComponent', () => {
   let fixture: ComponentFixture<LegendSelectorComponent>;
 
   const mockItems: LegendItem[] = [
-    { id: '1', name: 'Forest', type: 'fill', color: '#228B22', strokeColor: '#006400' },
+    {
+      id: '1',
+      name: 'Forest',
+      type: 'fill',
+      color: '#228B22',
+      strokeColor: '#006400',
+      colorEditable: true,
+      colorKey: 'zone1',
+      colorValue: '#228b22',
+    },
     { id: '2', name: 'River', type: 'line', color: '#0000FF', strokeWidth: 3 },
   ];
 
@@ -94,5 +103,49 @@ describe('LegendSelectorComponent', () => {
   it('should trackByItemId return item id', () => {
     const item: LegendItem = { id: 'test-id', name: 'Test', type: 'fill' };
     expect(component.trackByItemId(0, item)).toBe('test-id');
+  });
+
+  it('should render mode toggle when enabled', () => {
+    componentRef.setInput('showModeToggle', true);
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const modeButtons = compiled.querySelectorAll('.mode-button');
+    expect(modeButtons.length).toBe(2);
+  });
+
+  it('should emit modeChange on mode toggle click', () => {
+    componentRef.setInput('showModeToggle', true);
+    fixture.detectChanges();
+
+    let emittedMode: LegendDisplayMode = 'basic';
+    component.modeChange.subscribe(mode => {
+      emittedMode = mode;
+    });
+
+    const buttons = fixture.nativeElement.querySelectorAll('.mode-button');
+    (buttons[1] as HTMLButtonElement).click();
+
+    expect(emittedMode).toBe('advanced');
+  });
+
+  it('should emit itemColorChange in advanced mode', () => {
+    componentRef.setInput('items', [mockItems[0]]);
+    componentRef.setInput('mode', 'advanced');
+    fixture.detectChanges();
+
+    let emittedKey = '';
+    let emittedColor = '';
+    component.itemColorChange.subscribe(event => {
+      emittedKey = event.key;
+      emittedColor = event.color;
+    });
+
+    const colorInput = fixture.nativeElement.querySelector('.color-input') as HTMLInputElement;
+    colorInput.value = '#112233';
+    colorInput.dispatchEvent(new Event('input'));
+
+    expect(emittedKey).toBe('zone1');
+    expect(emittedColor).toBe('#112233');
   });
 });
