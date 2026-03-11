@@ -129,7 +129,6 @@ export class TablePaginatorComponent {
   }
 
   onGenerateButtonClick() {
-    console.log('OVDE');
     this.generateButtonClicked.emit();
   }
 }
