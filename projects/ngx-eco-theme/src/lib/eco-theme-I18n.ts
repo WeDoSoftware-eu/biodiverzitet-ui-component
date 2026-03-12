@@ -15,6 +15,7 @@ export interface EcoThemeI18n {
     page: Observable<string>;
     goTo: Observable<string>;
     side: Observable<string>;
+    generateReport: Observable<string>;
   };
   table: {
     noData: Observable<string>;
@@ -99,6 +100,7 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     page: of('Страна: of('),
     goTo: of('Иди на'),
     side: of('страну'),
+    generateReport: of('Генериши извештај'),
   },
   table: {
     noData: of('Нема података за приказ'),

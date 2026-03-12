@@ -112,19 +112,15 @@
     </div>
   </div>
 </section>
-<h2>End</h2>
 <mat-divider></mat-divider>
+
 <section>
-  <div class="example-label">Chip Example</div>
-  <eco-chip status="active">Active</eco-chip> <br />
-  <eco-chip status="completed">Completed</eco-chip> <br />
-  <eco-chip status="in-progress">In progress</eco-chip> <br />
-  <eco-chip status="new">New</eco-chip>
-  <eco-chip status="closed">Closed</eco-chip>
-  <eco-chip status="sanitary">Sanitary</eco-chip>
-  <eco-chip status="unsanitary">Unsanitary</eco-chip>
+  @for (status of chipStatuses; track $index) {
+    <eco-chip [status]="status">{{status}}</eco-chip>
+  }
 </section>
 <mat-divider></mat-divider>
+
 <section>
   <eco-table-filter id="users" [fields]="filters" (changed)="onFilter($event)"> </eco-table-filter>
   <div class="example-label">Table Example</div>

@@ -34,11 +34,12 @@ export class TablePaginatorComponent {
   generateButtonShow = input<boolean>(false);
   goToPageShow = input<boolean>(true);
   showLastUpdate = input<boolean>(true);
-
-  lastUpdateTitle = toSignal(this.i18n.paginator.lastUpdateTitle);
   latUpdate = input<string>('');
 
+  lastUpdateTitle = toSignal(this.i18n.paginator.lastUpdateTitle);
+
   pageChange = output<PageEvent>();
+  generateButtonClicked = output();
   pageInput: number | null = null;
 
   totalPages = computed(() => Math.ceil(this.totalItems() / this.pageSize()));
@@ -125,5 +126,9 @@ export class TablePaginatorComponent {
         length: this.totalItems(),
       });
     }
+  }
+
+  onGenerateButtonClick() {
+    this.generateButtonClicked.emit();
   }
 }
