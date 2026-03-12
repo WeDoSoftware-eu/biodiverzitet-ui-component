@@ -4,20 +4,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {
-  BACK_ROUTES,
-  ChipComponent,
-  ECO_ICONS,
-  FilterEvent,
-  FilterFieldConfig,
-  HeaderComponent,
-  IconComponent,
-  TableComponent,
-  TableConfig,
-  TableFilterComponent,
-  TablePaginatorComponent,
-} from 'ngx-eco-theme';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { BACK_ROUTES, ButtonComponent, ChipComponent, ChipStatus, ECO_ICONS, FilterEvent, FilterFieldConfig, HeaderComponent, IconComponent, TableComponent, TableConfig, TableFilterComponent, TablePaginatorComponent } from 'ngx-eco-theme';
+import { Subject, debounceTime, of, takeUntil } from 'rxjs';
 import {
   CardListComponent,
   CardListConfig,
@@ -33,7 +21,7 @@ interface MyItem {
 export interface Alert {
   id: number;
   name: string;
-  severity: 'warning';
+  severity: 'low' | 'medium' | 'high';
   type: 'THRESHOLD' | 'PREDICTIVE' | 'SURFACE_CHANGE';
   description: string;
   date: string;
@@ -59,7 +47,8 @@ export interface Alert {
     HeaderComponent,
     FileUploadComponent,
     CardListComponent,
-  ],
+    ButtonComponent
+],
   providers: [{ provide: BACK_ROUTES, useValue: [] }],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -72,6 +61,10 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   currentPageIndex = signal(0);
   currentPageSize = signal(10);
   currentSearchText = signal('');
+
+  alert = alert;
+  chipStatuses: ChipStatus[] = ['active', 'inactive', 'completed', 'in-progress', 'new', 'closed', 'sanitary', 'unsanitary', 'warning', 'info', 'neutral', 'black', 'grey'];
+  isDisabled = signal(true);
 
   private queryParams$$ = new Subject<FilterEvent>();
   private destroy$$ = new Subject<void>();
@@ -109,11 +102,11 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   constructor() {
     this.tableConfig.set({
       columns: [
-        { key: 'id', label: 'ID' },
-        { key: 'name', label: 'Ime' },
+        { key: 'id', label: of('ID') },
+        { key: 'name', label: of('Ime') },
         {
           key: 'status',
-          label: 'Status',
+          label: of('Status'),
           type: 'badge',
           align: 'center',
           badgeConfig: {
@@ -124,7 +117,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
         },
         {
           key: 'actions',
-          label: 'Akcije',
+          label: of('Akcije'),
           type: 'actions',
           width: '10%',
           align: 'center',
@@ -132,7 +125,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
         },
       ],
       loading: false,
-      emptyMessage: 'Nema rezultata po zadatom upitu.',
+      emptyMessage: of('Nema rezultata po zadatom upitu.'),
     });
 
     this.queryParams$$.pipe(debounceTime(50), takeUntil(this.destroy$$)).subscribe(event => {
@@ -189,7 +182,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     {
       id: 1,
       name: 'Deponija Rakovica - Sektor B',
-      severity: 'warning',
+      severity: 'low',
       type: 'THRESHOLD',
       description: 'Prag povećanja površine > 100%. Površina deponije povećana za 460 m2.',
       date: 'jun 2025.',
@@ -201,7 +194,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     {
       id: 2,
       name: 'Nova Deponija Zvezdara',
-      severity: 'warning',
+      severity: 'medium',
       type: 'PREDICTIVE',
       description: 'Predikcija ukazuje na visoku verovatnoću od 80% širenja deponije.',
       date: 'jun 2025.',
@@ -212,7 +205,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     {
       id: 3,
       name: 'Deponija Barajevo',
-      severity: 'warning',
+      severity: 'high',
       type: 'PREDICTIVE',
       description: 'Predikcija ukazuje na srednju verovatnoću od 65% širenja deponije.',
       date: 'jun 2025.',
@@ -223,7 +216,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     {
       id: 4,
       name: 'Deponija Voždovac - Istočni deo',
-      severity: 'warning',
+      severity: 'low',
       type: 'SURFACE_CHANGE',
       description: 'Prag smanjene površine < 50%. Površina deponije smanjena za 100 m2.',
       date: 'jun 2025.',
@@ -245,9 +238,9 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
       return map[row.severity] ?? 'warning';
     },
 
-    getTitle: row => row.name,
+    getTitle: row => of(row.name),
 
-    getDescription: row => row.description,
+    getDescription: row => of(row.description),
 
     badges: [
       {
@@ -258,14 +251,25 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
             PREDICTIVE: 'Prediktivni alarm',
             SURFACE_CHANGE: 'Smanjenje površine',
           };
-          return labels[row.type] ?? row.type;
+          return of(labels[row.type] ?? row.type);
         },
         getClass: () => 'neutral',
       },
       {
         // Severity chip
-        getValue: row => 'Висок',
-        getClass: row => ({ warning: 'warning' })[row.severity] ?? 'neutral',
+        getValue: row => of(row.severity),
+        getClass: row => {
+          switch (row.severity) {
+            case 'low':
+              return 'sanitary';
+            case 'medium':
+              return 'unsanitary';
+            case 'high':
+              return 'warning';
+            default:
+              return 'neutral';
+          }
+        },
       },
     ],
 

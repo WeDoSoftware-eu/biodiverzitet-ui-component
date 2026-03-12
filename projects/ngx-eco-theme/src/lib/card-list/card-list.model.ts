@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs';
 import { EcoIcon } from '../icon/icon.component';
+import { ChipStatus } from '../../public-api';
 
 export type CardSeverity = 'warning' | 'blocked';
 
@@ -12,7 +13,7 @@ export interface CardMetaItem<T> {
 
 export interface CardBadge<T> {
   getValue: (row: T) => Observable<string>;
-  getClass: (row: T) => string;
+  getClass: (row: T) => ChipStatus;
   getIcon?: (row: T) => EcoIcon;
   show?: (row: T) => boolean;
 }
@@ -52,7 +53,7 @@ export interface CardListConfig<T> {
 
 export interface ProcessedCardBadge {
   value: Observable<string>;
-  cssClass: string;
+  cssClass: ChipStatus;
   icon?: EcoIcon;
   visible: boolean;
 }
