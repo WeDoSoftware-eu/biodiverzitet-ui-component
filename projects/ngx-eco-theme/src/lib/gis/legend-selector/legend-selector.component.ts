@@ -1,5 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../../icon/icon.component';
 import {
   LegendColorChangeEvent,
   LegendDisplayMode,
@@ -9,7 +10,7 @@ import {
 @Component({
   selector: 'eco-legend-selector',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './legend-selector.component.html',
   styleUrls: ['./legend-selector.component.scss'],
 })

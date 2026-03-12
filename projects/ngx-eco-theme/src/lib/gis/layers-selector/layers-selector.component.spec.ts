@@ -151,9 +151,10 @@ describe('LayersSelectorComponent', () => {
     fixture.detectChanges();
 
     const layerItem = fixture.nativeElement.querySelector(LAYER_ITEM);
-    const eyeIcon = layerItem.querySelector('.visibility-toggle svg');
+    const eyeIcon = layerItem.querySelector('.visibility-toggle eco-icon');
     expect(eyeIcon).toBeTruthy();
-    expect(eyeIcon.getAttribute('viewBox')).toBe('0 0 22 15');
+    const innerIcon = eyeIcon.querySelector('i');
+    expect(innerIcon?.classList.contains('eco-icon-eye')).toBeTrue();
   });
 
   it('should show eye-closed icon for hidden layers', () => {
@@ -161,9 +162,10 @@ describe('LayersSelectorComponent', () => {
     fixture.detectChanges();
 
     const layerItem = fixture.nativeElement.querySelector(LAYER_ITEM);
-    const eyeIcon = layerItem.querySelector('.visibility-toggle svg');
+    const eyeIcon = layerItem.querySelector('.visibility-toggle eco-icon');
     expect(eyeIcon).toBeTruthy();
-    expect(eyeIcon.getAttribute('viewBox')).toBe('0 0 24 24');
+    const innerIcon = eyeIcon.querySelector('i');
+    expect(innerIcon?.classList.contains('eco-icon-eye-invisible')).toBeTrue();
   });
 
   it('should emit layerToggle with toggled visibility when onLayerToggle is called', () => {

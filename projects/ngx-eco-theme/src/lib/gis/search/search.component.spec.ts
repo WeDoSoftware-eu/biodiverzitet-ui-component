@@ -40,12 +40,12 @@ describe('SearchComponent', () => {
     expect(input.getAttribute('type')).toBe('text');
   });
 
-  it('should render the search button with SVG icon', () => {
+  it('should render the search button with eco-icon', () => {
     const button = fixture.nativeElement.querySelector(SEARCH_BUTTON);
     expect(button).toBeTruthy();
 
-    const svg = button.querySelector('svg');
-    expect(svg).toBeTruthy();
+    const icon = button.querySelector('eco-icon');
+    expect(icon).toBeTruthy();
   });
 
   it('should display default placeholder in the input', () => {

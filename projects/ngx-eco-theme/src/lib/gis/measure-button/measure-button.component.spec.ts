@@ -51,9 +51,9 @@ describe('MeasureButtonComponent', () => {
     expect(button.getAttribute('aria-label')).toBe('Merenje distance');
   });
 
-  it('should render the SVG icon inside the button', () => {
-    const svg = fixture.nativeElement.querySelector('button .icon svg');
-    expect(svg).toBeTruthy();
+  it('should render the eco-icon inside the button', () => {
+    const icon = fixture.nativeElement.querySelector('button .icon eco-icon');
+    expect(icon).toBeTruthy();
   });
 
   it('should not have active class by default', () => {
