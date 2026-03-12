@@ -4,7 +4,9 @@ mat-chip {
   --mdc-chip-outline-color: transparent;
   --mdc-chip-outline-width: 0;
   font-size: var(--mat-sys-label-small-size);
-  text-transform: capitalize;
+  &::first-letter {
+    text-transform: uppercase;
+  }
 
   &.active {
     background-color: $chip-active-badge-bg;
