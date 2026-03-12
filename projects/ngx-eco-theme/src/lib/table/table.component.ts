@@ -49,6 +49,7 @@ export class TableComponent<T> {
   data = input<T[]>([]);
 
   selectedRow = signal<{ _original: T } | null>(null);
+  highlightRow = input<boolean>(false);
   selectRowEvent = input<boolean>(false);
 
   readonly displayedColumns = computed(() => this.config().columns.map(col => col.key));
@@ -134,7 +135,8 @@ export class TableComponent<T> {
   }
 
   rowClick(row: { _original: T }): void {
-    this.selectedRow.set(row);
+    if (this.highlightRow()) this.selectedRow.set(row);
+
     this.selectRowAction.emit(row);
   }
 

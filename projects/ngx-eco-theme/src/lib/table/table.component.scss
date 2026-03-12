@@ -64,6 +64,10 @@
 
       tr.mat-mdc-row:hover {
         background-color: $table-tr-hover;
+        cursor: default;
+      }
+
+      tr.select-row.mat-mdc-row:hover {
         cursor: pointer;
       }
 
