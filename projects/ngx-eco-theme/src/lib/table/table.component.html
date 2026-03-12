@@ -79,6 +79,7 @@
         *matRowDef="let row; columns: displayedColumns()"
         (click)="selectRowEvent() && !row._isSelected && rowClick(row)"
         [class.selected]="row._isSelected"
+        [class.select-row]="selectRowEvent()"
       ></tr>
 
       <tr class="mat-row no-data-row" *matNoDataRow>
