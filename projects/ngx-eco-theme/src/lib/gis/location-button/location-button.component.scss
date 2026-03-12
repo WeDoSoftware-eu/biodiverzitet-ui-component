@@ -51,17 +51,11 @@
   }
 
   .icon {
-    width: 24px;
-    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: $gis-icon-color;
+    font-size: 24px;
     transition: color 0.3s ease;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
   }
 }

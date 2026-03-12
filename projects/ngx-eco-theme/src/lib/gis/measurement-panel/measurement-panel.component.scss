@@ -42,9 +42,8 @@
         background: $gis-close-button-hover;
       }
 
-      svg {
-        width: 10px;
-        height: 10px;
+      eco-icon {
+        font-size: 10px;
       }
     }
   }
@@ -97,6 +96,10 @@
           justify-content: center;
           width: 16px;
           height: 16px;
+
+          eco-icon {
+            font-size: 16px;
+          }
         }
 
         .tab-label {
@@ -126,6 +129,10 @@
           min-width: 20px;
           height: 20px;
           color: $gis-text-secondary;
+
+          eco-icon {
+            font-size: 14px;
+          }
         }
 
         .measurement-label {
@@ -168,9 +175,8 @@
             color: #dc3545;
           }
 
-          svg {
-            width: 8px;
-            height: 8px;
+          eco-icon {
+            font-size: 8px;
           }
         }
       }
