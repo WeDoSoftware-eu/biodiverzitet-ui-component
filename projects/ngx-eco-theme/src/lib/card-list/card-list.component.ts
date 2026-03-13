@@ -106,7 +106,6 @@ export class CardListComponent<T> {
   }
 
   rowClick(card: ProcessedCard<T>): void {
-    console.log(card)
     if (!this.config().selectable && !this.config().clickable)
       return;
 
