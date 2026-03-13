@@ -120,11 +120,11 @@ describe('MeasurementPanelComponent', () => {
     expect(labels[2].textContent).toContain('Полигон');
   });
 
-  it('should render SVG icon inside each tab', () => {
+  it('should render eco-icon inside each tab', () => {
     const tabs = fixture.nativeElement.querySelectorAll(TAB_BUTTON);
     tabs.forEach((tab: Element) => {
-      const svg = tab.querySelector('.tab-icon svg');
-      expect(svg).toBeTruthy();
+      const icon = tab.querySelector('.tab-icon eco-icon');
+      expect(icon).toBeTruthy();
     });
   });
 
@@ -192,12 +192,12 @@ describe('MeasurementPanelComponent', () => {
     expect(value?.textContent).toContain('44.7866° N, 20.4489° E');
   });
 
-  it('should render measurement icon SVG for each item', () => {
+  it('should render measurement icon eco-icon for each item', () => {
     componentRef.setInput('measurements', [mockPointMeasurement]);
     fixture.detectChanges();
 
-    const svg = fixture.nativeElement.querySelector('.measurement-icon svg');
-    expect(svg).toBeTruthy();
+    const icon = fixture.nativeElement.querySelector('.measurement-icon eco-icon');
+    expect(icon).toBeTruthy();
   });
 
   it('should show correct items when activeTab changes', () => {

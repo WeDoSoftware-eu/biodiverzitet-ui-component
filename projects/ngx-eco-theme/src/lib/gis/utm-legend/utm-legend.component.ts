@@ -1,11 +1,12 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../../icon/icon.component';
 import { UtmLegendItem } from './utm-legend.model';
 
 @Component({
   selector: 'eco-utm-legend',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './utm-legend.component.html',
   styleUrls: ['./utm-legend.component.scss'],
 })

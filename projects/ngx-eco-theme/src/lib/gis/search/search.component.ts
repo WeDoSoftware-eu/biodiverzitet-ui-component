@@ -1,10 +1,11 @@
 import { Component, OnInit, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../../icon/icon.component';
 
 @Component({
   selector: 'eco-search',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })

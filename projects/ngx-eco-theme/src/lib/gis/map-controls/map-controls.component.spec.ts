@@ -36,10 +36,10 @@ describe('MapControlsComponent', () => {
     expect(divider).toBeTruthy();
   });
 
-  it('should render SVG icons inside all buttons', () => {
+  it('should render eco-icon inside all buttons', () => {
     const buttons = fixture.nativeElement.querySelectorAll('.control-btn');
     buttons.forEach((button: HTMLElement) => {
-      expect(button.querySelector('svg')).toBeTruthy();
+      expect(button.querySelector('eco-icon')).toBeTruthy();
     });
   });
 

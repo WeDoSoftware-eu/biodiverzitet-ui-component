@@ -1,10 +1,11 @@
 import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../../icon/icon.component';
 
 @Component({
   selector: 'eco-map-controls',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './map-controls.component.html',
   styleUrls: ['./map-controls.component.scss'],
 })

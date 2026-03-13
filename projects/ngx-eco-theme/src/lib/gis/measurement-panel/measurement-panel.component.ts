@@ -1,11 +1,12 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../../icon/icon.component';
 import { MeasurementItem, MeasurementType } from './measurement.model';
 
 @Component({
   selector: 'eco-measurement-panel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './measurement-panel.component.html',
   styleUrls: ['./measurement-panel.component.scss'],
 })

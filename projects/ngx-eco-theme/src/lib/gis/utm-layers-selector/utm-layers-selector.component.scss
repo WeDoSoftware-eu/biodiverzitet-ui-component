@@ -42,9 +42,8 @@
         background: $gis-close-button-hover;
       }
 
-      svg {
-        width: 10px;
-        height: 10px;
+      eco-icon {
+        font-size: 10px;
       }
     }
   }
@@ -84,6 +83,11 @@
           margin-top: 2px;
           color: $gis-text-secondary;
           transition: transform 0.2s ease;
+
+          eco-icon {
+            display: flex;
+            font-size: 16px;
+          }
 
           &.expanded {
             transform: rotate(90deg);
@@ -129,8 +133,7 @@
           color: $gis-icon-color;
 
           .eye-icon {
-            width: 18px;
-            height: 18px;
+            font-size: 18px;
           }
         }
       }
@@ -151,8 +154,7 @@
         }
 
         .search-icon {
-          width: 14px;
-          height: 14px;
+          font-size: 14px;
           min-width: 14px;
           color: $gis-text-secondary;
         }
@@ -187,6 +189,10 @@
 
           &:hover {
             background: $gis-close-button-hover;
+          }
+
+          eco-icon {
+            font-size: 8px;
           }
         }
       }
@@ -240,8 +246,7 @@
         color: $gis-icon-color;
 
         .eye-icon {
-          width: 18px;
-          height: 18px;
+          font-size: 18px;
         }
       }
     }

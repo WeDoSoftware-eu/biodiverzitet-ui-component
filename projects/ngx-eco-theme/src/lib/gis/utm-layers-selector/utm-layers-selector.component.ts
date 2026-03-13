@@ -1,12 +1,13 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { IconComponent } from '../../icon/icon.component';
 import { MapLayer, MapLayerGroup } from '../layers-selector/layer.model';
 
 @Component({
   selector: 'eco-utm-layers-selector',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule],
+  imports: [CommonModule, MatTooltipModule, IconComponent],
   templateUrl: './utm-layers-selector.component.html',
   styleUrls: ['./utm-layers-selector.component.scss'],
 })
