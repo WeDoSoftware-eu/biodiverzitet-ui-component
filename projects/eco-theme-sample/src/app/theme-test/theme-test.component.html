@@ -148,9 +148,15 @@
 
 <mat-divider></mat-divider>
 
-<eco-card-list
-  [config]="cardConfig"
-  [data]="mockData()"
-  [selectRowEvent]="true"
-  (selectRowAction)="onSelect($event)"
-/>
+<mat-slide-toggle [checked]="cardConfig.selectable" (toggleChange)="cardConfig.selectable = !cardConfig.selectable">Selectable</mat-slide-toggle>
+&nbsp;
+<mat-slide-toggle [checked]="cardConfig.clickable" (toggleChange)="cardConfig.clickable = !cardConfig.clickable">Clickable</mat-slide-toggle>
+
+<section>
+  <eco-card-list
+    [config]="cardConfig"
+    [data]="mockData()"
+    (selectRowAction)="onSelect($event)"
+  />
+</section>
+

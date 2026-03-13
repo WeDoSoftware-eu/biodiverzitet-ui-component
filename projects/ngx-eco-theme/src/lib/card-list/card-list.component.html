@@ -17,7 +17,7 @@
       <button
         type="button"
         class="card"
-        [class.card--clickable]="config().selectable"
+        [class.card--clickable]="config().selectable || config().clickable"
         [class.card--selected]="card._isSelected"
         [class.card--severity-warning]="card.severity === 'warning'"
         [attr.aria-pressed]="config().selectable ? card._isSelected : null"

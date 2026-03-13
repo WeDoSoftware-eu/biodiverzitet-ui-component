@@ -41,7 +41,6 @@ export class CardListComponent<T> {
 
   config = input.required<CardListConfig<T>>();
   data = input<T[]>([]);
-  selectRowEvent = input<boolean>(false);
 
   selectRowAction = output<{ _original: T }>();
 
@@ -107,9 +106,15 @@ export class CardListComponent<T> {
   }
 
   rowClick(card: ProcessedCard<T>): void {
-    if (!this.config().selectable) return;
+    console.log(card)
+    if (!this.config().selectable && !this.config().clickable)
+      return;
+
     const ref = { _original: card._original };
-    this.selectedRow.set(ref);
+
+    if (this.config().selectable)
+      this.selectedRow.set(ref);
+
     this.selectRowAction.emit(ref);
   }
 }

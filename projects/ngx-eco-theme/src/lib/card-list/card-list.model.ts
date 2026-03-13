@@ -47,6 +47,9 @@ export interface CardListConfig<T> {
   /** Show a selected highlight on click */
   selectable?: boolean;
 
+  /** Enable card click event and hover state  */
+  clickable?: boolean;
+
   loading?: boolean;
   emptyMessage?: Observable<string>;
 }

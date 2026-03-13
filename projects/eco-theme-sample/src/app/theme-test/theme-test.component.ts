@@ -228,8 +228,10 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   ]);
 
   // ── Konfiguracija kartice ────────────────────────────────────────────────────
+
   cardConfig: CardListConfig<Alert> = {
     selectable: true,
+    clickable: true,
 
     getSeverity: (row): CardSeverity => {
       const map: Record<string, CardSeverity> = {
