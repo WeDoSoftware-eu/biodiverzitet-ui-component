@@ -119,6 +119,7 @@
   }
   &[data-severity='blocked'] {
     color: black;
+    background-color: $chip-grey-badge-bg;
   }
 }
 
