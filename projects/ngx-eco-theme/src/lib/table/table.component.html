@@ -58,13 +58,23 @@
               <div class="actions-container gap-4">
                 @for (action of row[column.key].actions; track action.icon) {
                   @if (action.visible) {
-                    <button
-                      mat-icon-button
-                      [matTooltip]="action.tooltip || ''"
-                      (click)="onActionClick(row, action, $event)"
-                    >
-                      <eco-icon [icon]="action.icon"></eco-icon>
-                    </button>
+                    @if (action.label) {
+                      <button
+                        class="table-primary-btn"
+                        [matTooltip]="action.tooltip || ''"
+                        (click)="onActionClick(row, action, $event)"
+                      >
+                        {{ action.label | async }}
+                      </button>
+                    } @else {
+                      <button
+                        mat-icon-button
+                        [matTooltip]="action.tooltip || ''"
+                        (click)="onActionClick(row, action, $event)"
+                      >
+                        <eco-icon [icon]="action.icon"></eco-icon>
+                      </button>
+                    }
                   }
                 }
               </div>
