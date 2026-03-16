@@ -88,6 +88,26 @@
             color: $table-icon-color;
           }
         }
+
+        button.table-primary-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 12px;
+          border: none;
+          border-radius: $border-radius-sm;
+          background-color: $buttons-primary-bg;
+          color: $buttons-primary-color;
+          font-size: 14px;
+          font-weight: var(--mat-sys-headline-large-weight);
+          line-height: $line-height;
+          cursor: pointer;
+          white-space: nowrap;
+
+          &:hover {
+            color: $buttons-primary-color-hover;
+          }
+        }
       }
 
       // No data message
