@@ -23,7 +23,8 @@ export interface TableColumn<T> {
 }
 
 export interface TableAction<T> {
-  icon: EcoIcon;
+  icon?: EcoIcon;
+  label?: Observable<string>;
   tooltip?: Observable<string>;
   color?: string;
   show?: (row: T) => boolean;
