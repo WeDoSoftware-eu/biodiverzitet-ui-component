@@ -67,7 +67,7 @@
                       subscriptSizing="dynamic"
                       appearance="outline"
                     >
-                      <input matInput [placeholder]="f.label" [formControlName]="f.label" />
+                      <input matInput [placeholder]="f.label" [formControlName]="f.key" />
                     </mat-form-field>
                   }
 
@@ -96,45 +96,14 @@
                   }
 
                   @case ('multiselect') {
-                    <mat-form-field
+                    <eco-searchable-select
+                      [formControlName]="f.key"
+                      [options]="f.options ?? []"
+                      [placeholder]="f.label"
+                      [multiple]="true"
+                      [showSearch]="f.selectSearch ?? false"
                       [matTooltip]="f.label"
-                      subscriptSizing="dynamic"
-                      appearance="outline"
-                    >
-                      <mat-select
-                        [placeholder]="f.label"
-                        [multiple]="true"
-                        [formControlName]="f.key"
-                        panelClass="filter-select"
-                      >
-                        @if (f.selectSearch) {
-                          <mat-select-trigger>
-                            {{ selectedLabelsDisplay()[f.key] || f.label }}
-                          </mat-select-trigger>
-                        }
-
-                        @if (f.selectSearch) {
-                          <mat-option>
-                            <ngx-mat-select-search
-                              [formControl]="getSearchControl(f.key)"
-                              [placeholderLabel]="(i18n.tableFilter.search | async) ?? ''"
-                              [noEntriesFoundLabel]="
-                                (i18n.tableFilter.noResultsFound | async) ?? ''
-                              "
-                            />
-                          </mat-option>
-                        }
-
-                        @for (o of f.options ?? []; track o.value) {
-                          <mat-option
-                            [value]="o.value"
-                            [style.display]="isOptionVisible(f.key, o.label) ? '' : 'none'"
-                          >
-                            {{ o.label }}
-                          </mat-option>
-                        }
-                      </mat-select>
-                    </mat-form-field>
+                    />
                   }
 
                   @case ('date') {

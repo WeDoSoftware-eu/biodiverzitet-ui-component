@@ -24,8 +24,7 @@
     "@angular/cdk": "^18.2.14",
     "@angular/animations": "^18.2.14",
     "leaflet": "^1.9.4",
-    "leaflet.markercluster": "^1.5.3",
-    "ngx-mat-select-search": "^8.0.4"
+    "leaflet.markercluster": "^1.5.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"

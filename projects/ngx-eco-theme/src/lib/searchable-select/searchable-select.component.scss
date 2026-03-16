@@ -1,0 +1,75 @@
+@use '../../assets/styles/variables' as *;
+
+.searchable-select {
+  width: 100%;
+}
+
+.trigger-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.trigger-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trigger-placeholder {
+  flex: 1;
+  color: $text-color;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  position: sticky;
+  top: -8px;
+  z-index: 1;
+  background: $white;
+  border-bottom: 1px solid var(--mat-divider-color, $text-color);
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+
+.search-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: $text-color;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: $text-color;
+
+  &::placeholder {
+    color: $text-color;
+  }
+}
+
+.no-results {
+  font-style: italic;
+  opacity: 0.6;
+}
+mat-option {
+  background-color: $white;
+}
+.no-results-message {
+  padding: 12px 16px;
+  color: $text-color;
+  font-size: 14px;
+}

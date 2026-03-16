@@ -22,7 +22,7 @@ import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DatePickerMonthYearComponent } from './date-picker-month-year/date-picker-month-year.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { SearchableSelectComponent } from '../../searchable-select/searchable-select.component';
 
 export type FilterFieldType =
   | 'text'
@@ -71,7 +71,7 @@ export interface TriStateValue {
     MatInputModule,
     DatePickerMonthYearComponent,
     MatTooltipModule,
-    NgxMatSelectSearchModule,
+    SearchableSelectComponent,
   ],
   templateUrl: './table-filter.component.html',
   styleUrl: './table-filter.component.scss',
@@ -89,12 +89,6 @@ export class TableFilterComponent implements OnDestroy {
   form = signal<FormGroup>(new FormGroup({}));
   formReady = signal(false);
   formValue = signal<Record<string, unknown>>({});
-
-  // Search term per field key — used only for display none/block logic in the template
-  searchTerms = signal<Record<string, string>>({});
-
-  // Search FormControls per field key
-  searchControls = signal<Record<string, FormControl<string>>>({});
 
   triStateLabels = computed(() => {
     const values = this.formValue();
@@ -120,7 +114,6 @@ export class TableFilterComponent implements OnDestroy {
     return labels;
   });
 
-  // Computed signal for tristate checkbox checked states
   triStateCheckedStates = computed(() => {
     const values = this.formValue();
     const states: Record<string, boolean> = {};
@@ -137,7 +130,6 @@ export class TableFilterComponent implements OnDestroy {
         field.triStateOptions?.forEach(option => {
           const state = value[option.value];
           if (state !== undefined) {
-            // Create keys for both "yes" and "no" checkboxes
             states[`${field.key}:${option.value}:yes`] = state === true;
             states[`${field.key}:${option.value}:no`] = state === false;
           }
@@ -147,35 +139,8 @@ export class TableFilterComponent implements OnDestroy {
     return states;
   });
 
-  selectedLabelsDisplay = computed(() => {
-    const values = this.formValue();
-    const display: Record<string, string> = {};
-
-    this.fields()
-      .filter(f => f.type === 'multiselect' && f.selectSearch)
-      .forEach(f => {
-        const selected = (values[f.key] ?? []) as (string | number | boolean)[];
-        display[f.key] = selected.length
-          ? selected.map(v => f.options?.find(o => o.value === v)?.label ?? String(v)).join(', ')
-          : '';
-      });
-
-    return display;
-  });
-
-  // Returns whether an option matches the current search term for a given field
-  isOptionVisible(fieldKey: string, optionLabel: string): boolean {
-    const term = this.searchTerms()[fieldKey] ?? '';
-    if (!term) return true;
-    return optionLabel.toLowerCase().includes(term.toLowerCase());
-  }
-
   getControl(key: string): FormControl {
     return this.form().get(key) as FormControl;
-  }
-
-  getSearchControl(key: string): FormControl<string> {
-    return this.searchControls()[key];
   }
 
   constructor() {
@@ -209,32 +174,18 @@ export class TableFilterComponent implements OnDestroy {
     this.destroy$.next();
 
     const group: Record<string, FormControl> = {};
-    const newSearchControls: Record<string, FormControl<string>> = {};
 
     for (const f of fields) {
       if (f.type === 'tristate') {
         group[f.key] = new FormControl({});
       } else if (f.type === 'multiselect') {
         group[f.key] = new FormControl([]);
-
-        if (f.selectSearch) {
-          const searchCtrl = new FormControl<string>('', { nonNullable: true });
-
-          // Only update the searchTerms signal — do NOT manipulate the options list
-          searchCtrl.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(term => {
-            this.searchTerms.update(prev => ({ ...prev, [f.key]: term }));
-          });
-
-          newSearchControls[f.key] = searchCtrl;
-        }
       } else if (f.type === 'checkbox') {
         group[f.key] = new FormControl(false);
       } else {
         group[f.key] = new FormControl(null);
       }
     }
-
-    this.searchControls.set(newSearchControls);
 
     const fg = new FormGroup(group);
 
@@ -248,9 +199,6 @@ export class TableFilterComponent implements OnDestroy {
     this.formReady.set(true);
   }
 
-  /** TRI STATE SELECT */
-
-  // Handle tristate checkbox changes
   onTriStateChange(fieldKey: string, optionId: string | number, targetValue: boolean): void {
     const control = this.form().get(fieldKey);
     if (!control) return;
@@ -262,10 +210,8 @@ export class TableFilterComponent implements OnDestroy {
     const currentState = newValue[optionId];
 
     if (currentState === targetValue) {
-      // Clicking the same checkbox again — uncheck it (remove from filter)
       delete newValue[optionId];
     } else {
-      // Set to the new value (true or false)
       newValue[optionId] = targetValue;
     }
 
