@@ -85,6 +85,7 @@ export class TableFilterComponent implements OnDestroy {
 
   private store = inject(TableFilterStoreService);
   private destroy$ = new Subject<void>();
+  private formRebuild$ = new Subject<void>();
 
   form = signal<FormGroup>(new FormGroup({}));
   formReady = signal(false);
@@ -168,10 +169,11 @@ export class TableFilterComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.formRebuild$.complete();
   }
 
   private buildForm(fields: FilterFieldConfig[]) {
-    this.destroy$.next();
+    this.formRebuild$.next();
 
     const group: Record<string, FormControl> = {};
 
@@ -189,11 +191,13 @@ export class TableFilterComponent implements OnDestroy {
 
     const fg = new FormGroup(group);
 
-    fg.valueChanges.pipe(debounceTime(300), takeUntil(this.destroy$)).subscribe(value => {
-      this.formValue.set(value);
-      this.store.set(this.id(), value);
-      this.changed.emit(value);
-    });
+    fg.valueChanges
+      .pipe(debounceTime(300), takeUntil(this.formRebuild$), takeUntil(this.destroy$))
+      .subscribe(value => {
+        this.formValue.set(value);
+        this.store.set(this.id(), value);
+        this.changed.emit(value);
+      });
 
     this.form.set(fg);
     this.formReady.set(true);
