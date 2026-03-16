@@ -1,0 +1,48 @@
+<mat-form-field [appearance]="appearance()" subscriptSizing="dynamic" class="searchable-select">
+  <mat-select
+    [multiple]="multiple()"
+    [placeholder]="placeholder()"
+    [value]="currentValue"
+    [disabled]="isDisabled()"
+    (valueChange)="onSelectionChange($event)"
+    (closed)="onPanelClose()"
+    panelClass="filter-select"
+  >
+    <mat-select-trigger>
+      <span class="trigger-content">
+        @if (triggerLabel()) {
+          <span class="trigger-value">{{ triggerLabel() }}</span>
+        } @else {
+          <span class="trigger-placeholder">{{ placeholder() }}</span>
+        }
+      </span>
+    </mat-select-trigger>
+
+    @if (showSearch()) {
+      <div class="search-wrapper">
+        <eco-icon class="search-icon" icon="search"></eco-icon>
+        <input
+          class="search-input"
+          [formControl]="searchCtrl"
+          [placeholder]="i18n.tableFilter.search | async"
+          (mousedown)="$event.stopPropagation()"
+          (keydown)="onSearchKeydown($event)"
+          autocomplete="off"
+        />
+      </div>
+    }
+
+    <!-- All options always in DOM — hidden via display:none so Material never loses selected values -->
+    @for (o of options(); track o.value) {
+      <mat-option [value]="o.value" [style.display]="isOptionVisible(o.label) ? '' : 'none'">
+        {{ o.label }}
+      </mat-option>
+    }
+
+    @if (showSearch() && !hasVisibleOptions()) {
+      <div class="no-results-message">
+        {{ i18n.tableFilter.noResultsFound | async }}
+      </div>
+    }
+  </mat-select>
+</mat-form-field>

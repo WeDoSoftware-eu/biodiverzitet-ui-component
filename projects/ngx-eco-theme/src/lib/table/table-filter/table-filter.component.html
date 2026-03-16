@@ -67,7 +67,7 @@
                       subscriptSizing="dynamic"
                       appearance="outline"
                     >
-                      <input matInput [placeholder]="f.label" [formControlName]="f.label" />
+                      <input matInput [placeholder]="f.label" [formControlName]="f.key" />
                     </mat-form-field>
                   }
 
@@ -96,22 +96,14 @@
                   }
 
                   @case ('multiselect') {
-                    <mat-form-field
+                    <eco-searchable-select
+                      [formControlName]="f.key"
+                      [options]="f.options ?? []"
+                      [placeholder]="f.label"
+                      [multiple]="true"
+                      [showSearch]="f.selectSearch ?? false"
                       [matTooltip]="f.label"
-                      subscriptSizing="dynamic"
-                      appearance="outline"
-                    >
-                      <mat-select
-                        [placeholder]="f.label"
-                        [multiple]="true"
-                        [formControlName]="f.key"
-                        panelClass="filter-select"
-                      >
-                        @for (o of f.options ?? []; track o.value) {
-                          <mat-option [value]="o.value">{{ o.label }}</mat-option>
-                        }
-                      </mat-select>
-                    </mat-form-field>
+                    />
                   }
 
                   @case ('date') {

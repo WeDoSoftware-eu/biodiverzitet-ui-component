@@ -36,6 +36,7 @@ function hasId(obj: unknown): obj is WithId {
     MatProgressSpinnerModule,
     ChipComponent,
     IconComponent,
+    MatTooltipModule,
   ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
