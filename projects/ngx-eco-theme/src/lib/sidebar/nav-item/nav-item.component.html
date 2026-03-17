@@ -1,7 +1,7 @@
 <a
   [routerLink]="item()?.route"
-  [routerLinkActive]="item()?.children ? 'active-menu' : 'active-flat-menu'"
-  [routerLinkActiveOptions]="{ exact: true }"
+  [routerLinkActive]="item()?.children ? 'active-flat-menu' : 'active-menu'"
+  [routerLinkActiveOptions]="{ exact: false }"
   (click)="onItemSelected(item()!)"
   [class.expanded]="expanded()"
   [class.subMenu]="!item()?.children && depth() > 0"
