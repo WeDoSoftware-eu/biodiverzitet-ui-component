@@ -28,7 +28,6 @@
                         (click)="$event.stopPropagation()"
                         class="tri-state-option"
                       >
-                        <span class="option-label">{{ option.label }}</span>
                         <div class="checkbox-group">
                           <mat-checkbox
                             [checked]="
@@ -47,6 +46,7 @@
                           >
                           </mat-checkbox>
                         </div>
+                        <span class="option-label">{{ option.label }}</span>
                       </mat-option>
                     }
                   </mat-select>
