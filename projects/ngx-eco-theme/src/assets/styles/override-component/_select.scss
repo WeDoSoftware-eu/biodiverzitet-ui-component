@@ -86,3 +86,9 @@
     }
   }
 }
+
+.mat-mdc-option {
+  .mdc-list-item__primary-text {
+    text-align: start !important;
+  }
+}
