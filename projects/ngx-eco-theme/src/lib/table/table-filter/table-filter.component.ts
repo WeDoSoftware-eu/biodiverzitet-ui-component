@@ -170,6 +170,7 @@ export class TableFilterComponent implements OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
     this.formRebuild$.complete();
+    this.store.remove(this.id());
   }
 
   private buildForm(fields: FilterFieldConfig[]) {

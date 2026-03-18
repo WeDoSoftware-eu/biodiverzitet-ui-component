@@ -92,4 +92,8 @@ export class TableFilterStoreService {
     this.get(id).set(preserved);
     this.updateUrl(id, preserved);
   }
+
+  remove(id: string): void {
+    this.store.delete(id);
+  }
 }
