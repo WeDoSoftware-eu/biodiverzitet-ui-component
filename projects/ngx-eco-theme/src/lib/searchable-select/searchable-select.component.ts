@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Subject, takeUntil } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
+import { normalizeForSearch } from './sr-transliterate';
 
 export interface SelectOption {
   value: string | number | boolean;
@@ -69,14 +70,18 @@ export class SearchableSelectComponent implements ControlValueAccessor, OnDestro
   isOptionVisible(optionLabel: string): boolean {
     const term = this._searchTerm();
     if (!term) return true;
-    return String(optionLabel).toLowerCase().includes(term.toLowerCase());
+    console.log(
+      normalizeForSearch(optionLabel).includes(normalizeForSearch(term)),
+      term,
+      optionLabel
+    );
+    return normalizeForSearch(optionLabel).includes(normalizeForSearch(term));
   }
-
   // Returns whether any option is visible — used to show the no results message
   hasVisibleOptions = computed(() => {
     const term = this._searchTerm();
     if (!term) return true;
-    return this.options().some(o => String(o.label).toLowerCase().includes(term.toLowerCase()));
+    return this.options().some(o => normalizeForSearch(o.label).includes(normalizeForSearch(term)));
   });
 
   triggerLabel = computed(() => {
