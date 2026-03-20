@@ -70,11 +70,6 @@ export class SearchableSelectComponent implements ControlValueAccessor, OnDestro
   isOptionVisible(optionLabel: string): boolean {
     const term = this._searchTerm();
     if (!term) return true;
-    console.log(
-      normalizeForSearch(optionLabel).includes(normalizeForSearch(term)),
-      term,
-      optionLabel
-    );
     return normalizeForSearch(optionLabel).includes(normalizeForSearch(term));
   }
   // Returns whether any option is visible — used to show the no results message
