@@ -73,3 +73,6 @@ export * from './pipes/joinByProp.pipe';
 
 /* DIRECTIVES */
 export * from './lib/table/base-table.directive';
+
+/* UTILS */
+export * from './lib/searchable-select/sr-transliterate';
