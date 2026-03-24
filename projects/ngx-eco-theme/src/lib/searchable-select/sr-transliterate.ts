@@ -81,6 +81,17 @@ export function cyrToLat(text: string): string {
   return text.replace(CYR_REGEX, match => CYR_MAP.get(match) ?? match);
 }
 
+const DIACRITIC_MAP: [RegExp, string][] = [
+  [/[čć]/g, 'c'],
+  [/[š]/g, 's'],
+  [/[ž]/g, 'z'],
+  [/[đd]/g, 'd'],
+];
+
 export function normalizeForSearch(text: string): string {
-  return cyrToLat(text).toLowerCase();
+  let result = cyrToLat(text).toLowerCase();
+  for (const [regex, replacement] of DIACRITIC_MAP) {
+    result = result.replace(regex, replacement);
+  }
+  return result;
 }
