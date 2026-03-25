@@ -1,7 +1,11 @@
 <div class="search-container">
   <mat-form-field class="search-field" subscriptSizing="dynamic">
-    <mat-label>{{ i18n.tableSerach.search | async }}</mat-label>
-    <input matInput [(ngModel)]="searchText" (ngModelChange)="searchTextChange($event)" />
+    <input
+      matInput
+      [placeholder]="(i18n.tableSerach.search | async) ?? ''"
+      [(ngModel)]="searchText"
+      (ngModelChange)="searchTextChange($event)"
+    />
     <eco-icon icon="search" matSuffix></eco-icon>
   </mat-form-field>
 </div>
