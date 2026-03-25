@@ -11,6 +11,8 @@
 @use 'override-component/date-picker';
 
 @use 'helpers/index';
+
+$font: 'Roboto, sans-serif';
 // Note: Color palettes are generated from primary: #19A08C, secondary: #1CC79B, tertiary: #1CC79B, neutral: #FFFFFF
 // Values for tones 40 and 80 have been altered manually to match exact required color
 $_palettes: (
@@ -144,8 +146,8 @@ $_primary: map.merge(map.get($_palettes, primary), $_rest);
 $_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
 
 $eco-typography-config: (
-  brand-family: 'Roboto, sans-serif',
-  plain-family: 'Roboto, sans-serif',
+  brand-family: $font,
+  plain-family: $font,
 );
 
 $light-theme: mat.define-theme(
@@ -166,6 +168,12 @@ $light-theme: mat.define-theme(
 
 @include mat.typography-hierarchy($light-theme);
 
+* {
+  font-family: inherit;
+}
+body {
+  font-family: $font;
+}
 html.green_theme {
   --mat-sys-primary: rgb(25, 160, 140); //#19A08C
   --mat-sys-primary-fixed-dim: rgb(25, 160, 140, 0.15); //#19A08C

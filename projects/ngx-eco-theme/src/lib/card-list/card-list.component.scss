@@ -137,12 +137,12 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 4px;
 }
 
 .card-title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: $text-color;
   white-space: nowrap;
   overflow: hidden;
