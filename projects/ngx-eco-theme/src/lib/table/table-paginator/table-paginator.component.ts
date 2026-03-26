@@ -34,7 +34,7 @@ export class TablePaginatorComponent {
   generateButtonShow = input<boolean>(false);
   goToPageShow = input<boolean>(true);
   showLastUpdate = input<boolean>(true);
-  latUpdate = input<string>('');
+  lastUpdate = input<string>('');
 
   lastUpdateTitle = toSignal(this.i18n.paginator.lastUpdateTitle);
 
