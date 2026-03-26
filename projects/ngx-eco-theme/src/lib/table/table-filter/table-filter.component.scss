@@ -29,6 +29,13 @@
     @media (min-width: 1201px) {
       justify-content: flex-end;
     }
+
+    // Flex-start clss
+    &.right-fields-start {
+      @media (min-width: 1201px) {
+        justify-content: flex-start !important;
+      }
+    }
   }
 
   .form-field-group {

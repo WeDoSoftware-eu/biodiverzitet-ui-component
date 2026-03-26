@@ -12,6 +12,13 @@
 .mat-calendar {
   width: 256px !important;
   height: 284px !important;
+  background-color: $white !important;
+}
+
+.mat-calendar-body-selected {
+  .mat-calendar-body-cell-content {
+    border-radius: 4px !important;
+  }
 }
 
 .mat-calendar-header {
@@ -42,19 +49,22 @@
 
   &:not(.mat-calendar-body-disabled):hover {
     .mat-calendar-body-cell-content {
-      background: rgba(25, 160, 140, 0.15) !important;
-      border-radius: 50%;
+      background: $white !important;
+      border-radius: 4px !important;
+      border: 1px solid #d8d8d8 !important;
+      color: $text-color !important;
     }
   }
 }
 
 .mat-calendar-body-cell-content {
-  width: 30px !important;
-  height: 30px !important;
+  width: 38px !important;
+  height: 38px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border-radius: 50% !important;
+  border-radius: 4px !important;
+  padding: 2px;
   position: relative;
   z-index: 1;
   font-size: 13px;
@@ -110,7 +120,7 @@
     background: transparent !important;
     border: 2px solid var(--mat-sys-primary) !important;
     color: #333 !important;
-    border-radius: 50% !important;
+    border-radius: 4px !important;
     z-index: 2;
   }
 }
@@ -128,7 +138,7 @@
   .mat-calendar-body-cell-content {
     background: var(--mat-sys-primary) !important;
     color: $white !important;
-    border-radius: 50% !important;
+    border-radius: 4px !important;
     z-index: 2;
   }
 }

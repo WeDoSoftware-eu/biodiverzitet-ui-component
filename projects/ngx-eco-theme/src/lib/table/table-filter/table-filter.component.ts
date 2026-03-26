@@ -81,6 +81,7 @@ export class TableFilterComponent implements OnDestroy {
 
   id = input.required<string>();
   fields = input.required<FilterFieldConfig[]>();
+  flex = input<'end' | 'start'>('end'); // Right fields flex (flex-end or flex-start)
   changed = output<Record<string, unknown>>();
 
   private store = inject(TableFilterStoreService);

@@ -56,7 +56,7 @@
           }
         </div>
 
-        <div class="right-fields">
+        <div class="right-fields" [class.right-fields-start]="flex() === 'start'">
           @for (f of fields(); track f.key) {
             @if (f.type !== 'tristate') {
               <div class="form-field-group p-0">
