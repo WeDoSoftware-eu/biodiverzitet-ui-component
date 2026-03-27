@@ -313,7 +313,9 @@ html {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
 eco-table-paginator {
   margin-top: auto !important;
+}
+.mat-mdc-chip-focus-overlay {
+  display: none !important;
 }
