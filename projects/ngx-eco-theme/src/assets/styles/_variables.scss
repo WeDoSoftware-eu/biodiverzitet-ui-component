@@ -77,6 +77,7 @@ $header-notifications-button-size: 44px;
 //Sidebar
 $logo-text-size: 12px !important;
 $sidebar-expand-icon: 8px;
+$sidebar-bg-color: #eff3f4;
 
 //Table
 $table-tr-hover: #f9f9f9;
@@ -126,15 +127,25 @@ $buttons-tertiary-color: $text-button-colors;
 $buttons-tertiary-bg: $white;
 $buttons-tertiary-border: 1px solid #d8d8d8;
 //Snackbar
-$snackbar-success-bg: linear-gradient(263.31deg, #059856 -2.85%, #22cf81 118.36%);
 $snackbar-box-sadow:
   0 3px 5px -1px rgba(0, 0, 0, 0.2),
   0 6px 10px 0 rgba(0, 0, 0, 0.14),
   0 1px 18px 0 rgba(0, 0, 0, 0.12);
 $snackbar-padding: 8px 8px 8px 16px;
 $snackbar-border: 1px solid $white;
-$snackbar-icon: 28px;
-
+$snackbar-icon: 20px;
+$snackbar-success: #19a08c;
+$snackbar-warning: #ff9e30;
+$snackbar-info: #007ecc;
+$snackbar-error: #f44336;
+$snackbar-border-success: 2px solid $snackbar-success;
+$snackbar-border-warning: 2px solid $snackbar-warning;
+$snackbar-border-info: 2px solid $snackbar-info;
+$snackbar-border-error: 2px solid $snackbar-error;
+$snackbar-bg-success: #cefff8;
+$snackbar-bg-warning: #fee4c6;
+$snackbar-bg-info: #c1e3f8;
+$snackbar-bg-error: #ffe1df;
 //Typography
 $font-family: 'Roboto', sans-serif;
 $font-family-inter: 'Inter', sans-serif;

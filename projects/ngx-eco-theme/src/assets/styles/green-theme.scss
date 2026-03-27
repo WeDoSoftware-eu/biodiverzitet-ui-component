@@ -12,7 +12,9 @@
 
 @use 'helpers/index';
 
-$font: 'Roboto, sans-serif';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+$font: 'Roboto', sans-serif;
 // Note: Color palettes are generated from primary: #19A08C, secondary: #1CC79B, tertiary: #1CC79B, neutral: #FFFFFF
 // Values for tones 40 and 80 have been altered manually to match exact required color
 $_palettes: (
@@ -310,4 +312,8 @@ html {
 .mat-mdc-tab-body-content {
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+eco-table-paginator {
+  margin-top: auto !important;
 }

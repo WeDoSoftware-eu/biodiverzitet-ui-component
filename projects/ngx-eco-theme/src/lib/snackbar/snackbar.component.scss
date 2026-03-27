@@ -6,54 +6,61 @@
   justify-content: space-between;
   padding: $snackbar-padding;
   box-shadow: $snackbar-box-sadow;
-  border: $snackbar-border;
+  color: $text-color;
+  font-weight: 600;
 }
 
 .snackbar-content {
   display: flex;
   align-items: center;
-  place-content: space-between;
   flex: 1;
+  place-content: space-between;
 }
 
 /* Success variant */
 .snackbar-success {
-  background: $snackbar-success-bg;
-  color: $white;
+  background: $snackbar-bg-success;
+  color: teh;
+  border: $snackbar-border-success;
 
   .snackbar-icon {
-    color: $white;
+    color: $snackbar-success;
   }
 }
 
 /* Warning variant */
 .snackbar-warning {
-  background-color: $warning;
-  color: $text-color;
+  background-color: $snackbar-bg-warning;
+  border: $snackbar-border-warning;
 
   .snackbar-icon {
-    color: $text-color;
+    color: $snackbar-warning;
   }
 }
 
 /* Info  */
 .snackbar-info {
-  background-color: $accent;
-  color: $white;
+  background-color: $snackbar-bg-info;
+  border: $snackbar-border-info;
 
   .snackbar-icon {
-    color: $white;
+    color: $snackbar-info;
   }
 }
 /* Error */
 .snackbar-error {
-  background-color: $error;
-  color: $white;
+  background-color: $snackbar-bg-error;
+  border: $snackbar-border-error;
 
   .snackbar-icon {
-    color: $white;
+    color: $snackbar-error;
   }
 }
 eco-icon {
   font-size: $snackbar-icon;
+}
+.close-icon {
+  font-size: 14px;
+  color: $text-color;
+  cursor: pointer;
 }

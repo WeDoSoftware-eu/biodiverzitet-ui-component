@@ -8,14 +8,25 @@
     width: 260px;
     text-align: center;
 
-    eco-button {
+    .admin-panel-button {
       position: absolute;
       bottom: 20px;
       place-self: center;
+      background-color: $white;
       width: 90%;
+      border: none;
+      cursor: pointer;
+      text-align: start;
+      display: inline-flex;
+      eco-icon {
+        font-size: 18px;
+      }
       a {
         color: $text-color;
         text-decoration: none;
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: 2px;
       }
     }
   }
@@ -48,6 +59,8 @@
         .page-container {
           flex: 1;
           padding: 10px;
+          display: flex;
+          flex-direction: column;
           .top-container {
             display: flex;
             justify-content: space-between;
@@ -77,4 +90,7 @@
       }
     }
   }
+}
+::ng-deep .mat-drawer-inner-container {
+  background-color: $sidebar-bg-color;
 }

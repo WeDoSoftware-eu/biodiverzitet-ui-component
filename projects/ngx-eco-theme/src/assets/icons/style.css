@@ -1,426 +1,433 @@
 @font-face {
-    font-family: "EcoIcons";
-    src: url("fonts/EcoIcons.woff2") format("woff2"),
-        url("fonts/EcoIcons.ttf") format("truetype"),
-        url("fonts/EcoIcons.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+  font-family: 'EcoIconsGis';
+  src:
+    url('fonts/EcoIconsGis.woff2') format('woff2'),
+    url('fonts/EcoIconsGis.ttf') format('truetype'),
+    url('fonts/EcoIconsGis.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 @font-face {
-    font-family: "EcoIconsGis";
-    src: url("fonts/EcoIconsGis.woff2") format("woff2"),
-        url("fonts/EcoIconsGis.ttf") format("truetype"),
-        url("fonts/EcoIconsGis.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+  font-family: 'EcoIcons';
+  src:
+    url('fonts/EcoIcons.woff2') format('woff2'),
+    url('fonts/EcoIcons.ttf') format('truetype'),
+    url('fonts/EcoIcons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
-.icon, [class^="eco-icon-"], [class*=" eco-icon-"] {
-    /* Use !important to prevent extensions from overriding this font. */
-    font-family: "EcoIcons" !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+.icon,
+[class^='eco-icon-'],
+[class*=' eco-icon-'] {
+  /* Use !important to prevent extensions from overriding this font. */
+  font-family: 'EcoIcons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 :root {
-    --eco-icon-access-alarm: "\f006";
-    --eco-icon-add-people: "\f005";
-    --eco-icon-analytics: "\f004";
-    --eco-icon-arrow-down: "\f003";
-    --eco-icon-back: "\f002";
-    --eco-icon-bar-chart: "\f000";
-    --eco-icon-blocked: "\f04c";
-    --eco-icon-calendar: "\f04b";
-    --eco-icon-cancel: "\f04a";
-    --eco-icon-cancel-circle: "\f049";
-    --eco-icon-change-password: "\f048";
-    --eco-icon-chart: "\f056";
-    --eco-icon-circle: "\f047";
-    --eco-icon-codetables: "\f046";
-    --eco-icon-columns: "\f045";
-    --eco-icon-correct: "\f044";
-    --eco-icon-correct-circle: "\f043";
-    --eco-icon-cycle: "\f042";
-    --eco-icon-data: "\f041";
-    --eco-icon-declined: "\f040";
-    --eco-icon-delete: "\f03f";
-    --eco-icon-do-not-disturb-on: "\f03e";
-    --eco-icon-document: "\f04e";
-    --eco-icon-download: "\f054";
-    --eco-icon-edit: "\f03d";
-    --eco-icon-edit-outline: "\f03c";
-    --eco-icon-envelope: "\f03b";
-    --eco-icon-event: "\f03a";
-    --eco-icon-exclamation-mark-circle: "\f050";
-    --eco-icon-expand-circle-down: "\f039";
-    --eco-icon-export: "\f038";
-    --eco-icon-eye: "\f037";
-    --eco-icon-eye-invisible: "\f001";
-    --eco-icon-file: "\f036";
-    --eco-icon-file-paper: "\f035";
-    --eco-icon-first-page: "\f034";
-    --eco-icon-folder-open: "\f04d";
-    --eco-icon-full-screen: "\f033";
-    --eco-icon-gps: "\f032";
-    --eco-icon-guard: "\f031";
-    --eco-icon-hour: "\f030";
-    --eco-icon-hour-arrow: "\f02f";
-    --eco-icon-in-preparation: "\f02e";
-    --eco-icon-in-progress: "\f02d";
-    --eco-icon-key: "\f02c";
-    --eco-icon-last-page: "\f02b";
-    --eco-icon-layers: "\f02a";
-    --eco-icon-line-chart: "\f029";
-    --eco-icon-link: "\f028";
-    --eco-icon-logout: "\f027";
-    --eco-icon-m2: "\f026";
-    --eco-icon-next-page: "\f025";
-    --eco-icon-notifications: "\f024";
-    --eco-icon-overlay: "\f023";
-    --eco-icon-pdf: "\f053";
-    --eco-icon-person: "\f022";
-    --eco-icon-pin: "\f021";
-    --eco-icon-playlist-add: "\f020";
-    --eco-icon-plus: "\f051";
-    --eco-icon-plus-circle: "\f04f";
-    --eco-icon-previous-page: "\f01f";
-    --eco-icon-pulse: "\f01e";
-    --eco-icon-rounded-arrow-up: "\f01d";
-    --eco-icon-rounded-correct: "\f01c";
-    --eco-icon-rounded-info: "\f01b";
-    --eco-icon-ruler: "\f01a";
-    --eco-icon-search: "\f019";
-    --eco-icon-servers: "\f018";
-    --eco-icon-solving-cases: "\f017";
-    --eco-icon-starts: "\f016";
-    --eco-icon-storage: "\f015";
-    --eco-icon-task-complete: "\f014";
-    --eco-icon-text-snippet: "\f013";
-    --eco-icon-tree: "\f012";
-    --eco-icon-trending-up: "\f011";
-    --eco-icon-tune: "\f010";
-    --eco-icon-unknown-document: "\f00f";
-    --eco-icon-upload: "\f00e";
-    --eco-icon-upload-file: "\f00d";
-    --eco-icon-video-camera: "\f00c";
-    --eco-icon-view-agenda: "\f00b";
-    --eco-icon-warning-yellow: "\f055";
-    --eco-icon-warrning: "\f00a";
-    --eco-icon-warrning-sign: "\f009";
-    --eco-icon-word: "\f052";
-    --eco-icon-zoom-in: "\f008";
-    --eco-icon-zoom-out: "\f007";
-    --eco-icon-base-layers: "\f000";
-    --eco-icon-chevron-right: "\f001";
-    --eco-icon-home-view: "\f002";
-    --eco-icon-layers-overlay: "\f003";
-    --eco-icon-legend: "\f004";
-    --eco-icon-measurement-line: "\f005";
-    --eco-icon-measurement-point: "\f006";
-    --eco-icon-measurement-polygon: "\f007";
-    --eco-icon-printer: "\f008";
+  --eco-icon-access-alarm: '\f006';
+  --eco-icon-add-people: '\f005';
+  --eco-icon-analytics: '\f004';
+  --eco-icon-arrow-down: '\f003';
+  --eco-icon-back: '\f002';
+  --eco-icon-bar-chart: '\f000';
+  --eco-icon-blocked: '\f04c';
+  --eco-icon-calendar: '\f04b';
+  --eco-icon-cancel: '\f04a';
+  --eco-icon-cancel-circle: '\f049';
+  --eco-icon-change-password: '\f048';
+  --eco-icon-chart: '\f056';
+  --eco-icon-circle: '\f047';
+  --eco-icon-codetables: '\f046';
+  --eco-icon-columns: '\f045';
+  --eco-icon-correct: '\f044';
+  --eco-icon-correct-circle: '\f043';
+  --eco-icon-cycle: '\f042';
+  --eco-icon-data: '\f041';
+  --eco-icon-declined: '\f040';
+  --eco-icon-delete: '\f03f';
+  --eco-icon-do-not-disturb-on: '\f03e';
+  --eco-icon-document: '\f04e';
+  --eco-icon-download: '\f054';
+  --eco-icon-edit: '\f03d';
+  --eco-icon-edit-outline: '\f03c';
+  --eco-icon-envelope: '\f03b';
+  --eco-icon-error-sign: '\f058';
+  --eco-icon-event: '\f03a';
+  --eco-icon-exclamation-mark-circle: '\f050';
+  --eco-icon-expand-circle-down: '\f039';
+  --eco-icon-export: '\f038';
+  --eco-icon-eye: '\f037';
+  --eco-icon-eye-invisible: '\f001';
+  --eco-icon-file: '\f036';
+  --eco-icon-file-paper: '\f035';
+  --eco-icon-first-page: '\f034';
+  --eco-icon-folder-open: '\f04d';
+  --eco-icon-full-screen: '\f033';
+  --eco-icon-gps: '\f032';
+  --eco-icon-guard: '\f031';
+  --eco-icon-hour: '\f030';
+  --eco-icon-hour-arrow: '\f02f';
+  --eco-icon-in-preparation: '\f02e';
+  --eco-icon-in-progress: '\f02d';
+  --eco-icon-key: '\f02c';
+  --eco-icon-last-page: '\f02b';
+  --eco-icon-layers: '\f02a';
+  --eco-icon-line-chart: '\f029';
+  --eco-icon-link: '\f028';
+  --eco-icon-logout: '\f027';
+  --eco-icon-m2: '\f026';
+  --eco-icon-next-page: '\f025';
+  --eco-icon-notifications: '\f024';
+  --eco-icon-overlay: '\f023';
+  --eco-icon-pdf: '\f053';
+  --eco-icon-person: '\f022';
+  --eco-icon-pin: '\f021';
+  --eco-icon-playlist-add: '\f020';
+  --eco-icon-plus: '\f051';
+  --eco-icon-plus-circle: '\f04f';
+  --eco-icon-previous-page: '\f01f';
+  --eco-icon-pulse: '\f01e';
+  --eco-icon-question-mark-circle: '\f057';
+  --eco-icon-revert: '\f059';
+  --eco-icon-rounded-arrow-up: '\f01d';
+  --eco-icon-rounded-correct: '\f01c';
+  --eco-icon-rounded-info: '\f01b';
+  --eco-icon-ruler: '\f01a';
+  --eco-icon-search: '\f019';
+  --eco-icon-servers: '\f018';
+  --eco-icon-solving-cases: '\f017';
+  --eco-icon-starts: '\f016';
+  --eco-icon-storage: '\f015';
+  --eco-icon-task-complete: '\f014';
+  --eco-icon-text-snippet: '\f013';
+  --eco-icon-tree: '\f012';
+  --eco-icon-trending-up: '\f011';
+  --eco-icon-tune: '\f010';
+  --eco-icon-unknown-document: '\f00f';
+  --eco-icon-upload: '\f00e';
+  --eco-icon-upload-file: '\f00d';
+  --eco-icon-video-camera: '\f00c';
+  --eco-icon-view-agenda: '\f00b';
+  --eco-icon-warning-yellow: '\f055';
+  --eco-icon-warrning: '\f00a';
+  --eco-icon-warrning-sign: '\f009';
+  --eco-icon-word: '\f052';
+  --eco-icon-zoom-in: '\f008';
+  --eco-icon-zoom-out: '\f007';
 }
 .eco-icon-access-alarm:before {
-    content: var(--eco-icon-access-alarm);
+  content: var(--eco-icon-access-alarm);
 }
 .eco-icon-add-people:before {
-    content: var(--eco-icon-add-people);
+  content: var(--eco-icon-add-people);
 }
 .eco-icon-analytics:before {
-    content: var(--eco-icon-analytics);
+  content: var(--eco-icon-analytics);
 }
 .eco-icon-arrow-down:before {
-    content: var(--eco-icon-arrow-down);
+  content: var(--eco-icon-arrow-down);
 }
 .eco-icon-back:before {
-    content: var(--eco-icon-back);
+  content: var(--eco-icon-back);
 }
 .eco-icon-bar-chart:before {
-    content: var(--eco-icon-bar-chart);
+  content: var(--eco-icon-bar-chart);
 }
 .eco-icon-blocked:before {
-    content: var(--eco-icon-blocked);
+  content: var(--eco-icon-blocked);
 }
 .eco-icon-calendar:before {
-    content: var(--eco-icon-calendar);
+  content: var(--eco-icon-calendar);
 }
 .eco-icon-cancel:before {
-    content: var(--eco-icon-cancel);
+  content: var(--eco-icon-cancel);
 }
 .eco-icon-cancel-circle:before {
-    content: var(--eco-icon-cancel-circle);
+  content: var(--eco-icon-cancel-circle);
 }
 .eco-icon-change-password:before {
-    content: var(--eco-icon-change-password);
+  content: var(--eco-icon-change-password);
 }
 .eco-icon-chart:before {
-    content: var(--eco-icon-chart);
+  content: var(--eco-icon-chart);
 }
 .eco-icon-circle:before {
-    content: var(--eco-icon-circle);
+  content: var(--eco-icon-circle);
 }
 .eco-icon-codetables:before {
-    content: var(--eco-icon-codetables);
+  content: var(--eco-icon-codetables);
 }
 .eco-icon-columns:before {
-    content: var(--eco-icon-columns);
+  content: var(--eco-icon-columns);
 }
 .eco-icon-correct:before {
-    content: var(--eco-icon-correct);
+  content: var(--eco-icon-correct);
 }
 .eco-icon-correct-circle:before {
-    content: var(--eco-icon-correct-circle);
+  content: var(--eco-icon-correct-circle);
 }
 .eco-icon-cycle:before {
-    content: var(--eco-icon-cycle);
+  content: var(--eco-icon-cycle);
 }
 .eco-icon-data:before {
-    content: var(--eco-icon-data);
+  content: var(--eco-icon-data);
 }
 .eco-icon-declined:before {
-    content: var(--eco-icon-declined);
+  content: var(--eco-icon-declined);
 }
 .eco-icon-delete:before {
-    content: var(--eco-icon-delete);
+  content: var(--eco-icon-delete);
 }
 .eco-icon-do-not-disturb-on:before {
-    content: var(--eco-icon-do-not-disturb-on);
+  content: var(--eco-icon-do-not-disturb-on);
 }
 .eco-icon-document:before {
-    content: var(--eco-icon-document);
+  content: var(--eco-icon-document);
 }
 .eco-icon-download:before {
-    content: var(--eco-icon-download);
+  content: var(--eco-icon-download);
 }
 .eco-icon-edit:before {
-    content: var(--eco-icon-edit);
+  content: var(--eco-icon-edit);
 }
 .eco-icon-edit-outline:before {
-    content: var(--eco-icon-edit-outline);
+  content: var(--eco-icon-edit-outline);
 }
 .eco-icon-envelope:before {
-    content: var(--eco-icon-envelope);
+  content: var(--eco-icon-envelope);
+}
+.eco-icon-error-sign:before {
+  content: var(--eco-icon-error-sign);
 }
 .eco-icon-event:before {
-    content: var(--eco-icon-event);
+  content: var(--eco-icon-event);
 }
 .eco-icon-exclamation-mark-circle:before {
-    content: var(--eco-icon-exclamation-mark-circle);
+  content: var(--eco-icon-exclamation-mark-circle);
 }
 .eco-icon-expand-circle-down:before {
-    content: var(--eco-icon-expand-circle-down);
+  content: var(--eco-icon-expand-circle-down);
 }
 .eco-icon-export:before {
-    content: var(--eco-icon-export);
+  content: var(--eco-icon-export);
 }
 .eco-icon-eye:before {
-    content: var(--eco-icon-eye);
+  content: var(--eco-icon-eye);
 }
 .eco-icon-eye-invisible:before {
-    content: var(--eco-icon-eye-invisible);
+  content: var(--eco-icon-eye-invisible);
 }
 .eco-icon-file:before {
-    content: var(--eco-icon-file);
+  content: var(--eco-icon-file);
 }
 .eco-icon-file-paper:before {
-    content: var(--eco-icon-file-paper);
+  content: var(--eco-icon-file-paper);
 }
 .eco-icon-first-page:before {
-    content: var(--eco-icon-first-page);
+  content: var(--eco-icon-first-page);
 }
 .eco-icon-folder-open:before {
-    content: var(--eco-icon-folder-open);
+  content: var(--eco-icon-folder-open);
 }
 .eco-icon-full-screen:before {
-    content: var(--eco-icon-full-screen);
+  content: var(--eco-icon-full-screen);
 }
 .eco-icon-gps:before {
-    content: var(--eco-icon-gps);
+  content: var(--eco-icon-gps);
 }
 .eco-icon-guard:before {
-    content: var(--eco-icon-guard);
+  content: var(--eco-icon-guard);
 }
 .eco-icon-hour:before {
-    content: var(--eco-icon-hour);
+  content: var(--eco-icon-hour);
 }
 .eco-icon-hour-arrow:before {
-    content: var(--eco-icon-hour-arrow);
+  content: var(--eco-icon-hour-arrow);
 }
 .eco-icon-in-preparation:before {
-    content: var(--eco-icon-in-preparation);
+  content: var(--eco-icon-in-preparation);
 }
 .eco-icon-in-progress:before {
-    content: var(--eco-icon-in-progress);
+  content: var(--eco-icon-in-progress);
 }
 .eco-icon-key:before {
-    content: var(--eco-icon-key);
+  content: var(--eco-icon-key);
 }
 .eco-icon-last-page:before {
-    content: var(--eco-icon-last-page);
+  content: var(--eco-icon-last-page);
 }
 .eco-icon-layers:before {
-    content: var(--eco-icon-layers);
+  content: var(--eco-icon-layers);
 }
 .eco-icon-line-chart:before {
-    content: var(--eco-icon-line-chart);
+  content: var(--eco-icon-line-chart);
 }
 .eco-icon-link:before {
-    content: var(--eco-icon-link);
+  content: var(--eco-icon-link);
 }
 .eco-icon-logout:before {
-    content: var(--eco-icon-logout);
+  content: var(--eco-icon-logout);
 }
 .eco-icon-m2:before {
-    content: var(--eco-icon-m2);
+  content: var(--eco-icon-m2);
 }
 .eco-icon-next-page:before {
-    content: var(--eco-icon-next-page);
+  content: var(--eco-icon-next-page);
 }
 .eco-icon-notifications:before {
-    content: var(--eco-icon-notifications);
+  content: var(--eco-icon-notifications);
 }
 .eco-icon-overlay:before {
-    content: var(--eco-icon-overlay);
+  content: var(--eco-icon-overlay);
 }
 .eco-icon-pdf:before {
-    content: var(--eco-icon-pdf);
+  content: var(--eco-icon-pdf);
 }
 .eco-icon-person:before {
-    content: var(--eco-icon-person);
+  content: var(--eco-icon-person);
 }
 .eco-icon-pin:before {
-    content: var(--eco-icon-pin);
+  content: var(--eco-icon-pin);
 }
 .eco-icon-playlist-add:before {
-    content: var(--eco-icon-playlist-add);
+  content: var(--eco-icon-playlist-add);
 }
 .eco-icon-plus:before {
-    content: var(--eco-icon-plus);
+  content: var(--eco-icon-plus);
 }
 .eco-icon-plus-circle:before {
-    content: var(--eco-icon-plus-circle);
+  content: var(--eco-icon-plus-circle);
 }
 .eco-icon-previous-page:before {
-    content: var(--eco-icon-previous-page);
+  content: var(--eco-icon-previous-page);
 }
 .eco-icon-pulse:before {
-    content: var(--eco-icon-pulse);
+  content: var(--eco-icon-pulse);
+}
+.eco-icon-question-mark-circle:before {
+  content: var(--eco-icon-question-mark-circle);
+}
+.eco-icon-revert:before {
+  content: var(--eco-icon-revert);
 }
 .eco-icon-rounded-arrow-up:before {
-    content: var(--eco-icon-rounded-arrow-up);
+  content: var(--eco-icon-rounded-arrow-up);
 }
 .eco-icon-rounded-correct:before {
-    content: var(--eco-icon-rounded-correct);
+  content: var(--eco-icon-rounded-correct);
 }
 .eco-icon-rounded-info:before {
-    content: var(--eco-icon-rounded-info);
+  content: var(--eco-icon-rounded-info);
 }
 .eco-icon-ruler:before {
-    content: var(--eco-icon-ruler);
+  content: var(--eco-icon-ruler);
 }
 .eco-icon-search:before {
-    content: var(--eco-icon-search);
+  content: var(--eco-icon-search);
 }
 .eco-icon-servers:before {
-    content: var(--eco-icon-servers);
+  content: var(--eco-icon-servers);
 }
 .eco-icon-solving-cases:before {
-    content: var(--eco-icon-solving-cases);
+  content: var(--eco-icon-solving-cases);
 }
 .eco-icon-starts:before {
-    content: var(--eco-icon-starts);
+  content: var(--eco-icon-starts);
 }
 .eco-icon-storage:before {
-    content: var(--eco-icon-storage);
+  content: var(--eco-icon-storage);
 }
 .eco-icon-task-complete:before {
-    content: var(--eco-icon-task-complete);
+  content: var(--eco-icon-task-complete);
 }
 .eco-icon-text-snippet:before {
-    content: var(--eco-icon-text-snippet);
+  content: var(--eco-icon-text-snippet);
 }
 .eco-icon-tree:before {
-    content: var(--eco-icon-tree);
+  content: var(--eco-icon-tree);
 }
 .eco-icon-trending-up:before {
-    content: var(--eco-icon-trending-up);
+  content: var(--eco-icon-trending-up);
 }
 .eco-icon-tune:before {
-    content: var(--eco-icon-tune);
+  content: var(--eco-icon-tune);
 }
 .eco-icon-unknown-document:before {
-    content: var(--eco-icon-unknown-document);
+  content: var(--eco-icon-unknown-document);
 }
 .eco-icon-upload:before {
-    content: var(--eco-icon-upload);
+  content: var(--eco-icon-upload);
 }
 .eco-icon-upload-file:before {
-    content: var(--eco-icon-upload-file);
+  content: var(--eco-icon-upload-file);
 }
 .eco-icon-video-camera:before {
-    content: var(--eco-icon-video-camera);
+  content: var(--eco-icon-video-camera);
 }
 .eco-icon-view-agenda:before {
-    content: var(--eco-icon-view-agenda);
+  content: var(--eco-icon-view-agenda);
 }
 .eco-icon-warning-yellow:before {
-    content: var(--eco-icon-warning-yellow);
+  content: var(--eco-icon-warning-yellow);
 }
 .eco-icon-warrning:before {
-    content: var(--eco-icon-warrning);
+  content: var(--eco-icon-warrning);
 }
 .eco-icon-warrning-sign:before {
-    content: var(--eco-icon-warrning-sign);
+  content: var(--eco-icon-warrning-sign);
 }
 .eco-icon-word:before {
-    content: var(--eco-icon-word);
+  content: var(--eco-icon-word);
 }
 .eco-icon-zoom-in:before {
-    content: var(--eco-icon-zoom-in);
+  content: var(--eco-icon-zoom-in);
 }
 .eco-icon-zoom-out:before {
-    content: var(--eco-icon-zoom-out);
+  content: var(--eco-icon-zoom-out);
 }
 .eco-icon-base-layers:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-base-layers);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-base-layers);
 }
 .eco-icon-chevron-right:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-chevron-right);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-chevron-right);
 }
 .eco-icon-home-view:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-home-view);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-home-view);
 }
 .eco-icon-layers-overlay:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-layers-overlay);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-layers-overlay);
 }
 .eco-icon-legend:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-legend);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-legend);
 }
 .eco-icon-measurement-line:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-measurement-line);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-measurement-line);
 }
 .eco-icon-measurement-point:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-measurement-point);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-measurement-point);
 }
 .eco-icon-measurement-polygon:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-measurement-polygon);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-measurement-polygon);
 }
 .eco-icon-printer:before {
-    font-family: "EcoIconsGis" !important;
-    content: var(--eco-icon-printer);
+  font-family: 'EcoIconsGis' !important;
+  content: var(--eco-icon-printer);
 }
