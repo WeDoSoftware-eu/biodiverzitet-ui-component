@@ -55,7 +55,7 @@
   --eco-icon-data: '\f041';
   --eco-icon-declined: '\f040';
   --eco-icon-delete: '\f03f';
-  --eco-icon-do_not_disturb_on: '\f03e';
+  --eco-icon-do-not-disturb-on: '\f03e';
   --eco-icon-document: '\f04e';
   --eco-icon-download: '\f054';
   --eco-icon-edit: '\f03d';
@@ -188,8 +188,8 @@
 .eco-icon-delete:before {
   content: var(--eco-icon-delete);
 }
-.eco-icon-do_not_disturb_on:before {
-  content: var(--eco-icon-do_not_disturb_on);
+.eco-icon-do-not-disturb-on:before {
+  content: var(--eco-icon-do-not-disturb-on);
 }
 .eco-icon-document:before {
   content: var(--eco-icon-document);
