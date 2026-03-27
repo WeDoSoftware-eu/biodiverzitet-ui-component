@@ -88,25 +88,29 @@ mat-toolbar.topbar {
         flex-direction: column;
         text-align: left;
 
-        .profile-name {
-          font-size: var(--sys-body-large-size);
-          font-weight: $text-semi-bold;
-          line-height: $line-height;
-          color: $text-color;
+        .full-name-div {
+          align-items: center;
+
+          .profile-name {
+            font-size: var(--sys-body-large-size);
+            font-weight: 600 !important;
+            line-height: $line-height;
+            color: $text-color;
+          }
+
+          .arrow-icon {
+            margin-left: 10px;
+            font-size: var(--sys-arrow-size);
+            color: $text-color;
+          }
         }
 
         .profile-role {
           font-size: var(--sys-body-medium-size);
-          font-weight: $text-normal;
+          font-weight: 300 !important;
           line-height: $line-height;
           color: $text-color;
         }
-      }
-
-      .arrow-icon {
-        margin-left: 10px;
-        font-size: var(--sys-arrow-size);
-        color: $text-color;
       }
     }
   }

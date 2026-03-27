@@ -2,9 +2,10 @@
   <mat-drawer [disableClose]="true" mode="side" opened class="side-container rounded-0">
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
     @if (showAdminPortal()) {
-      <eco-button icon="person" buttonClass="secondary" routerLink="/admin">
+      <button class="admin-panel-button p-8 rounded-4" routerLink="/admin">
+        <eco-icon icon="person" class="m-r-8"></eco-icon>
         <a>{{ i18n.sideBar.adminPanel | async }}</a>
-      </eco-button>
+      </button>
     }
   </mat-drawer>
   <mat-drawer-content class="content-container">

@@ -36,10 +36,13 @@
   <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
     <div class="profile-content">
       <div class="profile-info-inline">
-        <span class="profile-name">{{ authUser?.fullName | async }}</span>
+        <div class="full-name-div d-flex">
+          <span class="profile-name">{{ authUser?.fullName | async }}</span>
+
+          <eco-icon icon="arrow-down" class="arrow-icon m-l-10"></eco-icon>
+        </div>
         <span class="profile-role">{{ i18n.header.profile | async }}</span>
       </div>
-      <eco-icon icon="arrow-down" class="arrow-icon m-l-10"></eco-icon>
     </div>
   </button>
 
@@ -47,10 +50,10 @@
   <mat-menu
     #profilemenu="matMenu"
     xPosition="before"
-    class="profile-menu-panel rounded-12 p-x-16 p-y-16"
+    class="profile-menu-panel rounded-12 p-x-16 p-y-16 p-t-8"
   >
     <div>
-      <div class="d-flex text-left p-b-24 m-t-16">
+      <div class="d-flex text-left p-y-8">
         <div>
           <h6 class="mat-body-medium">{{ authUser?.fullName | async }}</h6>
           <span class="mat-body-medium">{{ authUser?.email | async }}</span>

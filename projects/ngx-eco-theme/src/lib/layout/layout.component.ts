@@ -5,9 +5,9 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { ButtonComponent } from '../button/button.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { AsyncPipe } from '@angular/common';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'eco-layout',
@@ -18,7 +18,7 @@ import { AsyncPipe } from '@angular/common';
     HeaderComponent,
     MatSidenavModule,
     SidebarComponent,
-    ButtonComponent,
+    IconComponent,
     AsyncPipe,
   ],
   templateUrl: './layout.component.html',
