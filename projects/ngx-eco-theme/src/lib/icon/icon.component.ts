@@ -107,6 +107,9 @@ export const ECO_ICONS = [
   'word',
   'zoom-in',
   'zoom-out',
+  'error-sign',
+  'revert',
+  'question-mark-circle',
 ] as const;
 
 export type EcoIcon = (typeof ECO_ICONS)[number];
