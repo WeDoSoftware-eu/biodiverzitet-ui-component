@@ -22,25 +22,55 @@
   background-position: center;
   background-size: contain;
 }
+
 .mat-mdc-form-field.mat-form-field-appearance-fill {
   .mat-mdc-select-arrow-wrapper {
     transform: translateY(0px);
   }
+
+  .mdc-text-field--filled {
+    border-radius: 8px !important;
+    background-color: rgba(#eff3f4, 0.6) !important;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    .mdc-line-ripple::before,
+    .mdc-line-ripple::after {
+      border-bottom: none;
+    }
+  }
+
+  &.mat-form-field-disabled,
+  &[readonly] {
+    .mat-mdc-select-value-text,
+    .mat-mdc-select-placeholder {
+      color: rgba(#000000, 0.5) !important;
+    }
+  }
+
+  .mat-mdc-select-value-text {
+    color: rgba(#000000, 1) !important;
+  }
 }
+
 .filter-select {
   background-color: $white !important;
   max-height: 70vh !important;
 }
+
 .mat-mdc-select-placeholder {
   white-space: nowrap;
   overflow: visible !important;
+  color: #474747 !important;
 }
+
 .tri-state-panel {
   width: 300px !important;
   max-width: 300px !important;
   max-height: max-content !important;
   background-color: $white !important;
   border-color: $primary !important;
+
   .mat-mdc-option {
     .mdc-list-item__primary-text {
       display: flex;
