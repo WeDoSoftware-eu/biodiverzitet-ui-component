@@ -124,6 +124,15 @@
   --eco-icon-word: '\f052';
   --eco-icon-zoom-in: '\f008';
   --eco-icon-zoom-out: '\f007';
+  --eco-icon-base-layers: '\f000';
+  --eco-icon-chevron-right: '\f001';
+  --eco-icon-home-view: '\f002';
+  --eco-icon-layers-overlay: '\f003';
+  --eco-icon-legend: '\f004';
+  --eco-icon-measurement-line: '\f005';
+  --eco-icon-measurement-point: '\f006';
+  --eco-icon-measurement-polygon: '\f007';
+  --eco-icon-printer: '\f008';
 }
 .eco-icon-access-alarm:before {
   content: var(--eco-icon-access-alarm);
