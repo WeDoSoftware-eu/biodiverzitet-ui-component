@@ -34,7 +34,12 @@
 
     <!-- All options always in DOM — hidden via display:none so Material never loses selected values -->
     @for (o of options(); track o.value) {
-      <mat-option [value]="o.value" [style.display]="isOptionVisible(o.label) ? '' : 'none'">
+      <mat-option
+        [matTooltip]="o.description"
+        matTooltipPosition="left"
+        [value]="o.value"
+        [style.display]="isOptionVisible(o.label) ? '' : 'none'"
+      >
         {{ o.label }}
       </mat-option>
     }

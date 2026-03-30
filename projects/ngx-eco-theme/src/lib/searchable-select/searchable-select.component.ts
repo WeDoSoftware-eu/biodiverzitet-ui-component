@@ -19,6 +19,7 @@ import { normalizeForSearch } from './sr-transliterate';
 export interface SelectOption {
   value: string | number | boolean;
   label: string;
+  description?: string;
 }
 
 @Component({

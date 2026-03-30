@@ -36,6 +36,7 @@ export type FilterFieldType =
 export interface FilterOption {
   value: string | number | boolean;
   label: string;
+  description?: string;
 }
 
 export interface TriStateOption {
