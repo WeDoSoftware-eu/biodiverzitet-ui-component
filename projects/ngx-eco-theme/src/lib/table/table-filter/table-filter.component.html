@@ -89,7 +89,12 @@
                           >
                         }
                         @for (o of f.options ?? []; track o.value) {
-                          <mat-option [value]="o.value">{{ o.label }}</mat-option>
+                          <mat-option
+                            matTooltipPosition="left"
+                            [matTooltip]="o.description"
+                            [value]="o.value"
+                            >{{ o.label }}</mat-option
+                          >
                         }
                       </mat-select>
                     </mat-form-field>
@@ -102,7 +107,6 @@
                       [placeholder]="f.label"
                       [multiple]="true"
                       [showSearch]="f.selectSearch ?? false"
-                      [matTooltip]="f.label"
                     />
                   }
 
