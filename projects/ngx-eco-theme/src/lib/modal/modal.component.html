@@ -1,5 +1,14 @@
 <div class="modal-header">
   <div class="title d-flex">
+    @if (data.severity) {
+      <span
+        class="card-severity rounded-8 m-r-8"
+        [attr.data-severity]="data.severity"
+        aria-hidden="true"
+      >
+        <eco-icon [icon]="data.severity === 'warning' ? 'warrning' : 'delete'" />
+      </span>
+    }
     <div class="text-container">
       <h2 class="mat-headline-medium">{{ data.title | async }}</h2>
       <p class="mat-body-small modal-subtitle">{{ data.subtitle | async }}</p>

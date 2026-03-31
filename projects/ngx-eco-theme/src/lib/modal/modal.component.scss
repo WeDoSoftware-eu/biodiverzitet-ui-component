@@ -54,3 +54,22 @@ mat-dialog-content {
 mat-dialog-actions {
   padding: 16px 24px !important;
 }
+
+// Severity icon
+
+.card-severity {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  padding: 6px 10px;
+
+  &[data-severity='warning'] {
+    color: $error;
+    background-color: $chip-warning-badge-bg;
+  }
+  &[data-severity='blocked'] {
+    color: black;
+    background-color: $chip-grey-badge-bg;
+  }
+}

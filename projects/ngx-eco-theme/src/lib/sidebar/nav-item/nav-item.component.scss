@@ -33,6 +33,7 @@
   &.active-menu {
     .hide-menu {
       color: $primary;
+      font-weight: bold;
     }
   }
 }
@@ -75,6 +76,7 @@
 
   &.active-flat-menu {
     background-color: rgba($primary, 0.12);
+    font-weight: bold;
 
     .hide-menu {
       color: $primary;
