@@ -78,7 +78,6 @@ export class ModalComponent implements AfterViewInit {
   });
 
   ngAfterViewInit() {
-    console.log(this.data);
     const componentRef = this.container.createComponent(this.data.component, {
       injector: this.componentInjector,
     });
