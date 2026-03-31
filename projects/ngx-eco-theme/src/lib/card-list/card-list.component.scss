@@ -63,10 +63,6 @@
     border-color 150ms ease,
     background 150ms ease;
 
-  // Left severity accent bar
-  border-left-width: 4px;
-  border-left-color: transparent;
-
   // Focus only when card is clicable
   &:focus-visible {
     outline: none;
@@ -190,4 +186,11 @@
   align-items: center;
   gap: 4px;
   align-self: center;
+  .button-div {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .button-action {
+      font-size: 18px;
+    }
+  }
 }

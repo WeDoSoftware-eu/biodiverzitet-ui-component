@@ -84,16 +84,18 @@
       <span class="card-actions">
         @for (action of card.actions; track action.icon) {
           @if (action.visible) {
-            <button
-              type="button"
-              mat-icon-button
-              [matTooltip]="action.tooltip || ''"
-              [attr.aria-label]="action.tooltip || action.icon"
-              (click)="onActionClick(card, action, $event)"
-              class="button-action"
-            >
-              <eco-icon [icon]="action.icon" />
-            </button>
+            <div class="button-div rounded-8">
+              <button
+                type="button"
+                mat-icon-button
+                [matTooltip]="action.tooltip || ''"
+                [attr.aria-label]="action.tooltip || action.icon"
+                (click)="onActionClick(card, action, $event)"
+                class="button-action rounded-8"
+              >
+                <eco-icon [icon]="action.icon" />
+              </button>
+            </div>
           }
         }
       </span>

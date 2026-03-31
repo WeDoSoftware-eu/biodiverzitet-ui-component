@@ -17,6 +17,7 @@ import { ChipComponent, ChipStatus } from '../chip/chip.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
 import { EcoIcon, IconComponent } from '../icon/icon.component';
 import { MODAL_DATA, MODAL_MODE, MODAL_STORE } from './modal.token';
+import { CardSeverity } from '../card-list/card-list.model';
 
 export type ModalMode = 'add' | 'edit' | 'view';
 
@@ -28,6 +29,7 @@ export interface ModalData<T extends ModalFormComponent> {
   payload?: unknown;
   data: T;
   chipHeader?: ChipHeader[];
+  severity?: CardSeverity;
   store: unknown;
 }
 
@@ -76,6 +78,7 @@ export class ModalComponent implements AfterViewInit {
   });
 
   ngAfterViewInit() {
+    console.log(this.data);
     const componentRef = this.container.createComponent(this.data.component, {
       injector: this.componentInjector,
     });
