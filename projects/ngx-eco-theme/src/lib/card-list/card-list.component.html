@@ -56,7 +56,7 @@
 
       <!-- Description -->
       @if (card.description) {
-        <span class="card-description">{{ card.description | async }}</span>
+        <span class="card-description" [class.text-pre-wrap]="card.isMultilineDescription">{{ card.description | async }}</span>
       }
 
       <!-- Footer metadata -->
