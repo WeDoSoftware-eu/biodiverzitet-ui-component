@@ -4,13 +4,28 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { BACK_ROUTES, ButtonComponent, ChipComponent, ChipStatus, ECO_ICONS, FilterEvent, FilterFieldConfig, HeaderComponent, IconComponent, TableComponent, TableConfig, TableFilterComponent, TablePaginatorComponent } from 'ngx-eco-theme';
+import {
+  BACK_ROUTES,
+  ButtonComponent,
+  ChipComponent,
+  ChipStatus,
+  ECO_ICONS,
+  FilterEvent,
+  FilterFieldConfig,
+  HeaderComponent,
+  IconComponent,
+  TableComponent,
+  TableConfig,
+  TableFilterComponent,
+  TablePaginatorComponent,
+} from 'ngx-eco-theme';
 import { Subject, debounceTime, of, takeUntil } from 'rxjs';
 import {
   CardListComponent,
   CardListConfig,
   CardSeverity,
   FileUploadComponent,
+  ToggleComponent,
 } from '../../../../ngx-eco-theme/src/public-api';
 
 interface MyItem {
@@ -47,8 +62,9 @@ export interface Alert {
     HeaderComponent,
     FileUploadComponent,
     CardListComponent,
-    ButtonComponent
-],
+    ButtonComponent,
+    ToggleComponent,
+  ],
   providers: [{ provide: BACK_ROUTES, useValue: [] }],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -63,7 +79,21 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   currentSearchText = signal('');
 
   alert = alert;
-  chipStatuses: ChipStatus[] = ['active', 'inactive', 'completed', 'in-progress', 'new', 'closed', 'sanitary', 'unsanitary', 'warning', 'info', 'neutral', 'black', 'grey'];
+  chipStatuses: ChipStatus[] = [
+    'active',
+    'inactive',
+    'completed',
+    'in-progress',
+    'new',
+    'closed',
+    'sanitary',
+    'unsanitary',
+    'warning',
+    'info',
+    'neutral',
+    'black',
+    'grey',
+  ];
   isDisabled = signal(true);
 
   private queryParams$$ = new Subject<FilterEvent>();

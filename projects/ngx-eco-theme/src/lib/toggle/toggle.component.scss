@@ -1,0 +1,73 @@
+@use '../../assets/styles/variables' as *;
+
+.script-toggle {
+  display: inline-flex;
+  align-items: center;
+  width: 53px;
+  height: 25px;
+  border-radius: 100px;
+  padding: 3px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: relative;
+  transition: background 0.25s ease;
+  background: #e8e8e8;
+
+  .thumb {
+    position: absolute;
+    left: 3px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 2px 6px rgba(58, 175, 169, 0.45);
+    transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .label {
+    position: absolute;
+    font-family: 'Roboto', sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    color: #666;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .label-off {
+    right: 7px;
+    opacity: 1;
+  }
+
+  .label-on {
+    left: 7px;
+    opacity: 0;
+  }
+
+  &.is-on {
+    .thumb {
+      left: calc(100% - 22px);
+    }
+
+    .label-off {
+      opacity: 0;
+    }
+    .label-on {
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #3aafa9;
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}

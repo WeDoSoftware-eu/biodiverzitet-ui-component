@@ -2,7 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
+import { EcoLanguage, HeaderComponent } from '../header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
@@ -34,4 +34,5 @@ export class LayoutComponent {
   showAdminPortal = input<boolean>(true);
 
   logoutClicked = output<void>();
+  languageClicked = output<EcoLanguage>();
 }

@@ -33,6 +33,14 @@
     </button>
   }
 
+  <eco-toggle
+    class="m-r-8"
+    labelOff="LAT"
+    labelOn="ЋИР"
+    [(ngModel)]="isCyrillic"
+    (ngModelChange)="onLanguageToggle($event)"
+  />
+
   <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
     <div class="profile-content">
       <div class="profile-info-inline">

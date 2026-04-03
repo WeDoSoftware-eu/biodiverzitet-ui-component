@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, DestroyRef, output } from '@angular/core';
+import { Component, inject, input, OnInit, DestroyRef, output, signal } from '@angular/core';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
@@ -11,6 +11,11 @@ import { AsyncPipe, Location } from '@angular/common';
 import { filter, Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BACK_ROUTES } from './back-route.token';
+import { ToggleComponent } from '../toggle/toggle.component';
+import { FormsModule } from '@angular/forms';
+import { ECO_INITIAL_LANG } from './language.token';
+
+export type EcoLanguage = 'sr-Latn' | 'sr-Cyrl';
 
 interface profileItems {
   id: number;
@@ -30,6 +35,8 @@ interface profileItems {
     MatToolbarModule,
     IconComponent,
     AsyncPipe,
+    ToggleComponent,
+    FormsModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -48,6 +55,9 @@ export class HeaderComponent implements OnInit {
   hideNotifications = input<boolean>(false);
 
   logoutClicked = output<void>();
+  languageChanged = output<EcoLanguage>();
+
+  isCyrillic = signal(inject(ECO_INITIAL_LANG) === 'sr-Cyrl');
 
   profileLinks: profileItems[] = [
     {
@@ -93,6 +103,11 @@ export class HeaderComponent implements OnInit {
   //Call auth store to logout user
   async onLogout() {
     this.logoutClicked.emit();
+  }
+
+  onLanguageToggle(isCyrillic: boolean): void {
+    const lang: EcoLanguage = isCyrillic ? 'sr-Cyrl' : 'sr-Latn';
+    this.languageChanged.emit(lang);
   }
 
   //Call this function if link is null

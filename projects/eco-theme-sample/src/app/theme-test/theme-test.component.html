@@ -116,7 +116,7 @@
 
 <section>
   @for (status of chipStatuses; track $index) {
-    <eco-chip [status]="status">{{status}}</eco-chip>
+    <eco-chip [status]="status">{{ status }}</eco-chip>
   }
 </section>
 <mat-divider></mat-divider>
@@ -149,14 +149,21 @@
 <mat-divider></mat-divider>
 
 <section>
-  <mat-slide-toggle [checked]="cardConfig.selectable" (toggleChange)="cardConfig.selectable = !cardConfig.selectable">Selectable</mat-slide-toggle>
+  <mat-slide-toggle
+    [checked]="cardConfig.selectable"
+    (toggleChange)="cardConfig.selectable = !cardConfig.selectable"
+    >Selectable</mat-slide-toggle
+  >
   &nbsp;
-  <mat-slide-toggle [checked]="cardConfig.clickable" (toggleChange)="cardConfig.clickable = !cardConfig.clickable">Clickable</mat-slide-toggle>
+  <mat-slide-toggle
+    [checked]="cardConfig.clickable"
+    (toggleChange)="cardConfig.clickable = !cardConfig.clickable"
+    >Clickable</mat-slide-toggle
+  >
 
-  <eco-card-list
-    [config]="cardConfig"
-    [data]="mockData()"
-    (selectRowAction)="onSelect($event)"
-  />
+  <eco-card-list [config]="cardConfig" [data]="mockData()" (selectRowAction)="onSelect($event)" />
 </section>
 
+<section>
+  <eco-toggle labelOff="LAT" labelOn="ЋИР" />
+</section>
