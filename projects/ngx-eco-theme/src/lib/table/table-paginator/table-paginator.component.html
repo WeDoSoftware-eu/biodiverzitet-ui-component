@@ -15,7 +15,7 @@
           (click)="changePage('first')"
           [matTooltip]="i18n.paginator.firstPage | async"
           [disabled]="pageIndex() === 0"
-          aria-label="First page"
+          aria-label="Прва страна"
         >
           <eco-icon class="icon-16" icon="first-page"></eco-icon>
         </button>
@@ -26,7 +26,7 @@
           (click)="changePage(-1)"
           [matTooltip]="i18n.paginator.previousPage | async"
           [disabled]="pageIndex() === 0"
-          aria-label="Previous page"
+          aria-label="Претходна страна"
         >
           <eco-icon class="icon-16" icon="previous-page"></eco-icon>
         </button>
@@ -53,7 +53,7 @@
           (click)="changePage(1)"
           [matTooltip]="i18n.paginator.nextPage | async"
           [disabled]="pageIndex() === totalPages() - 1"
-          aria-label="Next page"
+          aria-label="Следећа страна"
         >
           <eco-icon class="icon-16" icon="next-page"></eco-icon>
         </button>
@@ -64,7 +64,7 @@
           (click)="changePage('last')"
           [matTooltip]="i18n.paginator.lastPage | async"
           [disabled]="pageIndex() === totalPages() - 1"
-          aria-label="Last page"
+          aria-label="Последња страна"
         >
           <eco-icon class="icon-16" icon="last-page"></eco-icon>
         </button>

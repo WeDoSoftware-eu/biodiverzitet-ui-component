@@ -60,7 +60,12 @@ eco-icon {
   font-size: $snackbar-icon;
 }
 .close-icon {
-  font-size: 14px;
   color: $text-color;
   cursor: pointer;
+  border: none;
+  background: transparent;
+
+  eco-icon {
+    font-size: 14px;
+  }
 }
