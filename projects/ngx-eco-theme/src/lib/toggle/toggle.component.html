@@ -1,0 +1,13 @@
+<button
+  class="script-toggle"
+  [class.is-on]="checked"
+  [disabled]="disabled"
+  (click)="toggle()"
+  role="switch"
+  [attr.aria-checked]="checked"
+  type="button"
+>
+  <span class="label label-off">{{ labelOff() }}</span>
+  <span class="thumb"></span>
+  <span class="label label-on">{{ labelOn() }}</span>
+</button>

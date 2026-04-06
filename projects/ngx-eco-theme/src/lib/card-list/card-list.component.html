@@ -47,7 +47,7 @@
 
         @for (badge of card.badges; track badge.value) {
           @if (badge.visible) {
-            <eco-chip [status]="badge.cssClass" [icon]="badge.icon">
+            <eco-chip class="card-list-chip" [status]="badge.cssClass" [icon]="badge.icon">
               {{ badge.value | async }}
             </eco-chip>
           }

@@ -3,7 +3,7 @@
     <div>
       @if (showBackButton) {
         <button
-          aria-label="Previous page"
+          aria-label="Претходна страна"
           class="previous-btn rounded-full m-r-8"
           (click)="goBack()"
         >
@@ -12,10 +12,10 @@
       }
     </div>
     <div>
-      <h2 class="page-title" [attr.aria-label]="'title:' + title()">
+      <h2 class="page-title">
         {{ title() }}
       </h2>
-      <p class="page-subtitle mat-body-medium" [attr.aria-label]="'subtitle:' + subtitle()">
+      <p class="page-subtitle mat-body-medium">
         {{ subtitle() }}
       </p>
     </div>
@@ -25,7 +25,7 @@
 
   @if (!hideNotifications()) {
     <button
-      aria-label="Notifications"
+      aria-label="Обавештења"
       class="notification-btn rounded-full m-r-8"
       routerLink="/notifications"
     >
@@ -33,7 +33,15 @@
     </button>
   }
 
-  <button mat-button aria-label="Profile" class="profile-btn" [matMenuTriggerFor]="profilemenu">
+  <eco-toggle
+    class="m-r-8"
+    labelOff="LAT"
+    labelOn="ЋИР"
+    [(ngModel)]="isCyrillic"
+    (ngModelChange)="onLanguageToggle($event)"
+  />
+
+  <button mat-button aria-label="Профил" class="profile-btn" [matMenuTriggerFor]="profilemenu">
     <div class="profile-content">
       <div class="profile-info-inline">
         <div class="full-name-div d-flex">

@@ -107,13 +107,11 @@ export class CardListComponent<T> {
   }
 
   rowClick(card: ProcessedCard<T>): void {
-    if (!this.config().selectable && !this.config().clickable)
-      return;
+    if (!this.config().selectable && !this.config().clickable) return;
 
     const ref = { _original: card._original };
 
-    if (this.config().selectable)
-      this.selectedRow.set(ref);
+    if (this.config().selectable) this.selectedRow.set(ref);
 
     this.selectRowAction.emit(ref);
   }

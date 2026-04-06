@@ -74,7 +74,21 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   currentSearchText = signal('');
 
   alert = alert;
-  chipStatuses: ChipStatus[] = ['active', 'inactive', 'completed', 'in-progress', 'new', 'closed', 'sanitary', 'unsanitary', 'warning', 'info', 'neutral', 'black', 'grey'];
+  chipStatuses: ChipStatus[] = [
+    'active',
+    'inactive',
+    'completed',
+    'in-progress',
+    'new',
+    'closed',
+    'sanitary',
+    'unsanitary',
+    'warning',
+    'info',
+    'neutral',
+    'black',
+    'grey',
+  ];
   isDisabled = signal(true);
 
   private queryParams$$ = new Subject<FilterEvent>();
@@ -115,11 +129,11 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   constructor() {
     this.tableConfig.set({
       columns: [
-        { key: 'id', label: of('ID') },
-        { key: 'name', label: of('Ime') },
+        { key: 'id', label: 'ID' },
+        { key: 'name', label: 'Ime' },
         {
           key: 'status',
-          label: of('Status'),
+          label: 'Status',
           type: 'badge',
           align: 'center',
           badgeConfig: {
@@ -130,7 +144,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
         },
         {
           key: 'actions',
-          label: of('Akcije'),
+          label: 'Akcije',
           type: 'actions',
           width: '10%',
           align: 'center',

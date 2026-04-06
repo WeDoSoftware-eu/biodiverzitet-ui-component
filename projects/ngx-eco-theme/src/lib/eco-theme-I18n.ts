@@ -37,6 +37,7 @@ export interface EcoThemeI18n {
   };
   modal: {
     save: Observable<string>;
+    close: Observable<string>;
   };
   header: {
     profile: Observable<string>;
@@ -73,16 +74,19 @@ export interface EcoThemeI18n {
     maxFileSize: Observable<string>;
     click: Observable<string>;
     forAddOrDrag: Observable<string>;
+    removeFile: Observable<string>;
   };
   documentUpload: {
     clickToUpload: Observable<string>;
     orDragFile: Observable<string>;
     maxFileSize: Observable<string>;
     fileTooLarge: Observable<string>;
+    removeFile: Observable<string>;
   };
   documentPreview: {
     unsupportedPreview: Observable<string>;
     downloadFile: Observable<string>;
+    close: Observable<string>;
   };
 }
 
@@ -124,6 +128,7 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
   },
   modal: {
     save: of('Сачувај'),
+    close: of('Затвори'),
   },
   header: {
     profile: of('Профил'),
@@ -160,15 +165,18 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     maxFileSize: of('Максимална величина фајла'),
     click: of('Кликни'),
     forAddOrDrag: of('за додавање или превуци'),
+    removeFile: of('Уклони фајл'),
   },
   documentUpload: {
     clickToUpload: of('Кликни за отпремање'),
     orDragFile: of('или превуци фајл'),
     maxFileSize: of('Максимална величина фајла:'),
     fileTooLarge: of('Фајл је превелик'),
+    removeFile: of('Уклони фајл'),
   },
   documentPreview: {
     unsupportedPreview: of('Детаљан приказ није доступан за овај тип фајла.'),
     downloadFile: of('Преузми фајл'),
+    close: of('Затвори'),
   },
 };

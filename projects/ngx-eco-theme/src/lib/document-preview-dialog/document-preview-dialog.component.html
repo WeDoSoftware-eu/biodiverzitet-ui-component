@@ -1,7 +1,7 @@
 <div class="preview-dialog">
   <div class="preview-header">
     <span class="preview-title">{{ data.name }}</span>
-    <button class="close-btn" type="button" (click)="close()">
+    <button class="close-btn" type="button" (click)="close()" [attr.aria-label]="i18n.documentPreview.close | async">
       <eco-icon icon="cancel"></eco-icon>
     </button>
   </div>

@@ -2,6 +2,7 @@
   class="file-drop-zone"
   role="button"
   tabindex="0"
+  [attr.aria-label]="i18n.documentUpload.clickToUpload | async"
   [class.drag-over]="isDragOver()"
   (click)="fileInput.click()"
   (keydown.enter)="fileInput.click()"
@@ -24,7 +25,7 @@
   <div class="selected-file">
     <eco-icon icon="file-paper"></eco-icon>
     <span>{{ file.name }}</span>
-    <button type="button" class="remove-file-btn" (click)="removeFile($index)">
+    <button type="button" class="remove-file-btn" (click)="removeFile($index)" [attr.aria-label]="i18n.documentUpload.removeFile | async">
       <eco-icon icon="cancel"></eco-icon>
     </button>
   </div>

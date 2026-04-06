@@ -28,7 +28,7 @@
     </div>
 
   </div>
-  <button mat-icon-button mat-dialog-close class="close-button">
+  <button mat-icon-button mat-dialog-close class="close-button" [attr.aria-label]="i18n.modal.close | async">
     <eco-icon icon="cancel"></eco-icon>
   </button>
 </div>

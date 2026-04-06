@@ -3,7 +3,7 @@ import { EcoIcon } from '../icon/icon.component';
 
 export interface TableColumn<T> {
   key: string;
-  label: Observable<string>;
+  label: string;
   tooltip?: Observable<string>;
   type?: 'text' | 'badge' | 'date' | 'actions' | 'number' | 'enum' | 'icon';
   width?: string;

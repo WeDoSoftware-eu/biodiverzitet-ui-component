@@ -22,6 +22,7 @@ export * from './lib/document-upload/document-upload.component';
 export * from './lib/document-preview-dialog/document-preview-dialog.component';
 export * from './lib/card-list/card-list.component';
 export * from './lib/stat-card/stat-card.component';
+export * from './lib/toggle/toggle.component';
 export * from './lib/progress-circle-card/progress-circle-card.component';
 export * from './lib/gis/base-layer-button/base-layer-button.component';
 export * from './lib/gis/base-layer-selector/base-layer-selector.component';
@@ -60,6 +61,7 @@ export * from './lib/eco-theme-I18n';
 export * from './lib/modal/modal.token';
 export * from './lib/user/user.token';
 export * from './lib/header/back-route.token';
+export * from './lib/header/language.token';
 
 /* STORE */
 export * from './lib/table/table-filter/table-filter-store';

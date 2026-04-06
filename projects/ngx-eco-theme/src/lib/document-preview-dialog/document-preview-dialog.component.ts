@@ -27,7 +27,9 @@ export class DocumentPreviewDialogComponent {
     ? { ...DEFAULT_ECO_THEME_I18N, ...this._injectedI18n }
     : DEFAULT_ECO_THEME_I18N;
 
-  readonly safePdfUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.url);
+  readonly safePdfUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+    this.data.url
+  );
   readonly safeImageUrl: SafeUrl = this.sanitizer.bypassSecurityTrustUrl(this.data.url);
 
   get isPdf(): boolean {

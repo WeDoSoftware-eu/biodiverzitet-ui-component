@@ -1,7 +1,7 @@
 <div class="card-header">
   <span class="card-label">{{ label() }}</span>
   @if (icon()) {
-    <img [src]="icon()" alt="" class="icon" />
+    <img [src]="icon()" alt="" aria-hidden="true" class="icon" />
   }
 </div>
 <div class="card-value">{{ value() }}</div>

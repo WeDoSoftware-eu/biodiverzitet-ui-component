@@ -2,6 +2,7 @@
 
 .card-list-container {
   position: relative;
+  margin-top: 5px;
 }
 
 .loading-overlay {
@@ -192,5 +193,11 @@
     .button-action {
       font-size: 18px;
     }
+  }
+}
+
+::ng-deep .card-list-chip {
+  mat-chip {
+    height: 26px !important;
   }
 }
