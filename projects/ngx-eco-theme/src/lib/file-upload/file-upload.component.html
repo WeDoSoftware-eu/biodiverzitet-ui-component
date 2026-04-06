@@ -14,7 +14,7 @@
               <button
                 class="remove-button rounded-full"
                 (click)="removeFile($index)"
-                aria-label="Уклони фајл"
+                [attr.aria-label]="i18n.fileUpload.removeFile | async"
               >
                 <eco-icon icon="cancel"></eco-icon>
               </button>
@@ -28,6 +28,7 @@
     <button
       type="button"
       class="dropzone"
+      [attr.aria-label]="i18n.fileUpload.click | async"
       [class.dragover]="isDragOver"
       (dragover)="onDragOver($event)"
       (dragleave)="isDragOver = false"

@@ -33,7 +33,7 @@
 
         @for (page of pagesToDisplay(); track $index) {
           @if (page === '...') {
-            <button mat-mini-fab class="rounded-2">...</button>
+            <button mat-mini-fab class="rounded-2" aria-hidden="true" tabindex="-1" disabled>...</button>
           } @else {
             <button
               class="rounded-2"
