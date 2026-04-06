@@ -67,6 +67,7 @@ export class CardListComponent<T> {
 
         title: cfg.getTitle(row),
         description: cfg.getDescription ? cfg.getDescription(row) : null,
+        isMultilineDescription: cfg.getIsMultilineDescription ? cfg.getIsMultilineDescription(row) : false,
         severity,
         severityIcon: severity !== 'none' ? SEVERITY_ICON_MAP[severity] : null,
 

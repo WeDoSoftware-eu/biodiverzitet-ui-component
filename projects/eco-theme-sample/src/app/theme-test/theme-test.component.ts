@@ -1,43 +1,40 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {
-  BACK_ROUTES,
-  ButtonComponent,
-  ChipComponent,
-  ChipStatus,
-  ECO_ICONS,
-  FilterEvent,
-  FilterFieldConfig,
-  HeaderComponent,
-  IconComponent,
-  TableComponent,
-  TableConfig,
-  TableFilterComponent,
-  TablePaginatorComponent,
-} from 'ngx-eco-theme';
-import { Subject, debounceTime, of, takeUntil } from 'rxjs';
+import { BACK_ROUTES, ChipComponent, ChipStatus, ECO_ICONS, EcoIcon, FilterEvent, FilterFieldConfig, HeaderComponent, IconComponent, TableComponent, TableConfig, TableFilterComponent, TablePaginatorComponent } from 'ngx-eco-theme';
+import { debounceTime, of, Subject, takeUntil } from 'rxjs';
 import {
   CardListComponent,
   CardListConfig,
   CardSeverity,
   FileUploadComponent,
-  ToggleComponent,
+  ModalComponent,
 } from '../../../../ngx-eco-theme/src/public-api';
+import { AlarmModalComponent } from '../components/alarm-modal/alarm-modal.component';
 
 interface MyItem {
   id: number;
   name: string;
   status: 'active' | 'inactive';
 }
-export interface Alert {
+
+type AlarmSeverity = 'low' | 'medium' | 'high';
+
+type AlarmType =  'AreaIncrease' | 'AreaDecrease' | 'AreaChangePrediction';
+
+export interface Alarm {
   id: number;
-  name: string;
-  severity: 'low' | 'medium' | 'high';
-  type: 'THRESHOLD' | 'PREDICTIVE' | 'SURFACE_CHANGE';
+  title: string;
+  subtitle?: string;
+  isMultilineSubtitle?: boolean,
+  severity: AlarmSeverity;
+  type: AlarmType;
+  lessThanThreshold?: number | null;
+  moreThanThreshold?: number | null;
   description: string;
   date: string;
   lat: number;
@@ -61,10 +58,8 @@ export interface Alert {
     TableFilterComponent,
     HeaderComponent,
     FileUploadComponent,
-    CardListComponent,
-    ButtonComponent,
-    ToggleComponent,
-  ],
+    CardListComponent
+],
   providers: [{ provide: BACK_ROUTES, useValue: [] }],
   templateUrl: './theme-test.component.html',
   styleUrl: './theme-test.component.scss',
@@ -98,6 +93,8 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
 
   private queryParams$$ = new Subject<FilterEvent>();
   private destroy$$ = new Subject<void>();
+
+  private dialog = inject(MatDialog);
 
   icons = ECO_ICONS;
 
@@ -208,12 +205,12 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
   }
 
   // ── Mockup podaci ────────────────────────────────────────────────────────────
-  mockData = signal<Alert[]>([
+  mockData = signal<Alarm[]>([
     {
       id: 1,
-      name: 'Deponija Rakovica - Sektor B',
+      title: 'Deponija Rakovica - Sektor B',
       severity: 'low',
-      type: 'THRESHOLD',
+      type: 'AreaIncrease',
       description: 'Prag povećanja površine > 100%. Površina deponije povećana za 460 m2.',
       date: 'jun 2025.',
       lat: 44.7625,
@@ -223,9 +220,9 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     },
     {
       id: 2,
-      name: 'Nova Deponija Zvezdara',
+      title: 'Nova Deponija Zvezdara',
       severity: 'medium',
-      type: 'PREDICTIVE',
+      type: 'AreaChangePrediction',
       description: 'Predikcija ukazuje na visoku verovatnoću od 80% širenja deponije.',
       date: 'jun 2025.',
       lat: 44.7866,
@@ -234,9 +231,9 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     },
     {
       id: 3,
-      name: 'Deponija Barajevo',
+      title: 'Deponija Barajevo',
       severity: 'high',
-      type: 'PREDICTIVE',
+      type: 'AreaChangePrediction',
       description: 'Predikcija ukazuje na srednju verovatnoću od 65% širenja deponije.',
       date: 'jun 2025.',
       lat: 44.555,
@@ -245,9 +242,9 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     },
     {
       id: 4,
-      name: 'Deponija Voždovac - Istočni deo',
+      title: 'Deponija Voždovac - Istočni deo',
       severity: 'low',
-      type: 'SURFACE_CHANGE',
+      type: 'AreaDecrease',
       description: 'Prag smanjene površine < 50%. Površina deponije smanjena za 100 m2.',
       date: 'jun 2025.',
       lat: 44.765,
@@ -255,53 +252,77 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
       estimatedArea: 400,
       canDelete: true,
     },
+    {
+      id: 5,
+      title: 'Multiline text',
+      subtitle: 'The quick brown fox jumps over the lazy dog\n-Multiline-\nThe quick brown fox jumps over the lazy dog',
+      isMultilineSubtitle: true,
+      severity: 'low',
+      type: 'AreaIncrease',
+      lessThanThreshold: 0.2,
+      moreThanThreshold: 0.1,
+      description: 'The quick brown fox jumps over the lazy dog\n-Multiline-\nThe quick brown fox jumps over the lazy dog',
+      date: 'jun 2025.',
+      lat: 44.7625,
+      lng: 20.4217,
+      estimatedArea: 860,
+      canDelete: true,
+    },
+    {
+      id: 6,
+      title: 'Inline text',
+      subtitle: 'The quick brown fox jumps over the lazy dog\n-Inline-\nThe quick brown fox jumps over the lazy dog',
+      severity: 'medium',
+      moreThanThreshold: 0.2,
+      type: 'AreaChangePrediction',
+      description: 'The quick brown fox jumps over the lazy dog\n-Inline-\nThe quick brown fox jumps over the lazy dog',
+      date: 'jun 2025.',
+      lat: 44.7866,
+      lng: 20.5089,
+      canDelete: false,
+    },
   ]);
+
+  alarmLabels: Record<AlarmType, string> = {
+    AreaIncrease: 'Prag povećanja površine',
+    AreaChangePrediction: 'Prediktivni alarm',
+    AreaDecrease: 'Smanjenje površine',
+  };
 
   // ── Konfiguracija kartice ────────────────────────────────────────────────────
 
-  cardConfig: CardListConfig<Alert> = {
+  cardConfig: CardListConfig<Alarm> = {
     selectable: true,
     clickable: true,
 
     getSeverity: (row): CardSeverity => {
-      const map: Record<string, CardSeverity> = {
-        warning: 'warning',
+      const map: Record<AlarmSeverity, CardSeverity> = {
+        low: 'blocked',
+        medium: 'warning',
+        high: 'warning',
       };
+
       return map[row.severity] ?? 'warning';
     },
 
-    getTitle: row => of(row.name),
+    getTitle: row => of(row.title),
 
     getDescription: row => of(row.description),
+
+    getIsMultilineDescription: row => row.isMultilineSubtitle ?? false,
 
     badges: [
       {
         // Tip alarma
         getValue: row => {
-          const labels: Record<string, string> = {
-            THRESHOLD: 'Prag povećanja površine',
-            PREDICTIVE: 'Prediktivni alarm',
-            SURFACE_CHANGE: 'Smanjenje površine',
-          };
-          return of(labels[row.type] ?? row.type);
+          return of(this.alarmLabels[row.type] ?? row.type);
         },
         getClass: () => 'neutral',
       },
       {
         // Severity chip
         getValue: row => of(row.severity),
-        getClass: row => {
-          switch (row.severity) {
-            case 'low':
-              return 'sanitary';
-            case 'medium':
-              return 'unsanitary';
-            case 'high':
-              return 'warning';
-            default:
-              return 'neutral';
-          }
-        },
+        getClass: row => this.getChipStatusForAlarm(row.severity),
       },
     ],
 
@@ -325,7 +346,7 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
       {
         icon: 'eye',
         tooltip: 'Pregled',
-        onClick: (row: any) => console.log('Pregled:', row),
+        onClick: (row: Alarm) => this.openModal(row),
       },
       {
         icon: 'delete',
@@ -336,8 +357,52 @@ export class ThemeTestComponent implements OnInit, OnDestroy {
     ],
   };
 
+    openModal(data: Alarm): void {
+      console.log('Pregled:', data);
+
+      this.dialog.open(ModalComponent, {
+        data: {
+          title: of(data.title),
+          subtitle: of(data.subtitle),
+          isMultilineSubtitle: data.isMultilineSubtitle,
+          severity: data.canDelete ? 'delete' : 'warning',
+          chipHeader: [
+            {
+              icon: this.getAlarmTypeIcon(data.type),
+              text: of(this.alarmLabels[data.type] ?? data.type),
+              status: 'neutral',
+            },
+            {
+              text: of(data.severity?.toLocaleLowerCase()),
+              status: this.getChipStatusForAlarm(data.severity ?? 'Unknown'),
+            },
+          ],
+          component: AlarmModalComponent,
+          mode: 'view',
+          data: { ...data },
+        },
+      });
+  }
+
+  getChipStatusForAlarm(severity: AlarmSeverity): ChipStatus {
+    switch (severity) {
+      case 'low':
+        return 'sanitary';
+      case 'medium':
+        return 'unsanitary';
+      case 'high':
+        return 'warning';
+      default:
+        return 'neutral';
+    }
+  }
+
+  getAlarmTypeIcon(type: AlarmType): EcoIcon {
+    return type === 'AreaChangePrediction' ? 'warning-yellow' : 'chart';
+  }
+
   // ── Selekcija ────────────────────────────────────────────────────────────────
-  onSelect(event: { _original: Alert }): void {
+  onSelect(event: { _original: Alarm }): void {
     console.log('Selektovano:', event._original);
   }
 }

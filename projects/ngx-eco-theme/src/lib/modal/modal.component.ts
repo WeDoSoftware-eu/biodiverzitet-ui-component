@@ -24,6 +24,11 @@ export type ModalMode = 'add' | 'edit' | 'view';
 export interface ModalData<T extends ModalFormComponent> {
   title: Observable<string>;
   subtitle: Observable<string>;
+  /**
+   * Allows for subtitle to be multiline by using '\n' in subtitle text.
+   * @default false
+   */
+  isMultilineSubtitle?: boolean;
   component: Type<T>;
   mode: ModalMode;
   payload?: unknown;

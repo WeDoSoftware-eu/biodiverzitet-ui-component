@@ -10,20 +10,23 @@
       </span>
     }
     <div class="text-container">
-      <h2 class="mat-headline-medium">{{ data.title | async }}</h2>
-      <p class="mat-body-small modal-subtitle">{{ data.subtitle | async }}</p>
-    </div>
-    <div class="chip-container m-l-4">
-      @if (data.chipHeader) {
-        <div class="d-flex">
-          @for (chip of data.chipHeader; track chip.text) {
-            <eco-chip class="m-l-4" [status]="chip.status" [icon]="chip.icon">{{
-              chip.text | async
-            }}</eco-chip>
+      <div class="d-flex">
+        <h2 class="mat-headline-medium">{{ data.title | async }}</h2>
+        <div class="chip-container m-l-4">
+          @if (data.chipHeader) {
+            <div class="d-flex">
+              @for (chip of data.chipHeader; track chip.text) {
+                <eco-chip class="m-l-4" [status]="chip.status" [icon]="chip.icon">{{
+                  chip.text | async
+                }}</eco-chip>
+              }
+            </div>
           }
         </div>
-      }
+      </div>
+      <p class="mat-body-small modal-subtitle" [class.text-pre-wrap]="data.isMultilineSubtitle">{{ data.subtitle | async }}</p>
     </div>
+
   </div>
   <button mat-icon-button mat-dialog-close class="close-button" [attr.aria-label]="i18n.modal.close | async">
     <eco-icon icon="cancel"></eco-icon>

@@ -32,6 +32,11 @@ export interface CardListConfig<T> {
   /** Resolves the main description text */
   getDescription?: (row: T) => Observable<string> | null;
 
+  /**
+   * Getter for displaying multiline description, by using '\n' in description text.
+   */
+  getIsMultilineDescription?: (row: T) => boolean;
+
   /** Left-side severity icon */
   getSeverity?: (row: T) => CardSeverity;
 
@@ -76,6 +81,7 @@ export interface ProcessedCard<T> {
   _isSelected: boolean;
   title: Observable<string>;
   description: Observable<string> | null;
+  isMultilineDescription: boolean;
   severity: CardSeverity | 'none';
   severityIcon: EcoIcon | null;
   badges: ProcessedCardBadge[];
