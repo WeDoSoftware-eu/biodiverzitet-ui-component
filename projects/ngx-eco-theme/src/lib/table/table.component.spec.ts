@@ -5,6 +5,7 @@ import { TableComponent } from './table.component';
 import { TableConfig } from './table.model';
 import { of } from 'rxjs';
 
+
 interface TestModel {
   id: number;
   name: string;
@@ -31,11 +32,11 @@ describe('TableComponent', () => {
       columns: [
         {
           key: 'id',
-          label: of('ID'),
+          label: 'ID',
         },
         {
           key: 'name',
-          label: of('Name'),
+          label: 'Name',
         },
       ],
     };
