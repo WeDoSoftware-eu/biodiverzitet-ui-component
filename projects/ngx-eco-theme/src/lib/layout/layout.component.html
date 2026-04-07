@@ -1,4 +1,5 @@
 <mat-drawer-container class="layout-container" [dir]="'ltr'">
+  <!-- LEFT: navigation sidebar, always visible -->
   <mat-drawer [disableClose]="true" mode="side" opened class="side-container rounded-0">
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
     @if (showAdminPortal()) {
@@ -8,6 +9,42 @@
       </button>
     }
   </mat-drawer>
+
+  <!-- RIGHT: mobile profile panel -->
+  <mat-drawer #profileDrawer position="end" mode="over" class="profile-drawer">
+    <div class="profile-drawer-content">
+      <div class="profile-drawer-user d-flex align-items-center p-y-16">
+        <div>
+          <div class="name-toggle-container d-flex">
+            <h6 class="mat-body-medium m-0">{{ authUser?.fullName | async }}</h6>
+
+            <eco-toggle
+              labelOff="LAT"
+              labelOn="ЋИР"
+              [(ngModel)]="isCyrillic"
+              (ngModelChange)="onMobileLanguageToggle($event)"
+            />
+          </div>
+          <span class="mat-body-medium">{{ authUser?.email | async }}</span>
+        </div>
+      </div>
+
+      <div class="profile-drawer-links p-t-8">
+        @for (profile of mobileProfileLinks; track profile.id) {
+          <a
+            [routerLink]="profile.link || null"
+            (click)="handleMobileProfileClick(profile, $event); profileDrawer.close()"
+          >
+            <div class="menu-item d-flex align-items-center p-x-12 p-y-8 rounded-10">
+              <eco-icon class="mat-headline-medium m-r-16 m-b-0" [icon]="profile.icon"></eco-icon>
+              <h5 class="mat-body-medium m-0">{{ profile.title | async }}</h5>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </mat-drawer>
+
   <mat-drawer-content class="content-container">
     <eco-header
       [title]="title()"
@@ -15,6 +52,7 @@
       [hideNotifications]="hideNotifications()"
       (logoutClicked)="logoutClicked.emit()"
       (languageChanged)="languageClicked.emit($event)"
+      (mobileMenuToggle)="profileDrawer.toggle()"
     ></eco-header>
     <main class="components-route">
       <ng-content></ng-content>

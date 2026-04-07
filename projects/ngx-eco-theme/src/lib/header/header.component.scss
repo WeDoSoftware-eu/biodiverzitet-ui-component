@@ -147,6 +147,32 @@ mat-toolbar.topbar {
 }
 
 /* ----------------------------------
+ * MOBILE MENU BUTTON
+ * ---------------------------------- */
+mat-toolbar.topbar {
+  .mobile-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: $header-notifications-button-size;
+    height: $header-notifications-button-size;
+    border: none;
+    cursor: pointer;
+    background-color: $buttons-secondary-bg;
+
+    eco-icon {
+      display: flex;
+      font-size: var(--sys-notifications-size);
+      color: $text-color;
+    }
+
+    &:hover {
+      background-color: $text-hover;
+    }
+  }
+}
+
+/* ----------------------------------
  * RESPONSIVE
  * ---------------------------------- */
 @media (max-width: 991px) {
@@ -155,10 +181,12 @@ mat-toolbar.topbar {
       font-size: var(--sys-subtitle-size);
     }
 
-    .profile-btn {
-      .profile-info-inline {
-        display: none;
-      }
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-menu-btn {
+      display: inline-flex;
     }
 
     .previous-btn,

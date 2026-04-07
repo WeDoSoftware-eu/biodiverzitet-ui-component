@@ -56,6 +56,7 @@ export class HeaderComponent implements OnInit {
 
   logoutClicked = output<void>();
   languageChanged = output<EcoLanguage>();
+  mobileMenuToggle = output<void>();
 
   isCyrillic = signal(inject(ECO_INITIAL_LANG) === 'sr-Cyrl');
 
