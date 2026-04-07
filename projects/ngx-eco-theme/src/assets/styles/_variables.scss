@@ -26,8 +26,9 @@ $light-success: #36c76c26;
 // breakpoints
 $breakpoints: (
   lg: 900px,
-  lg-down: 991px,
+  lg-down: 1024px,
   md: 768px,
+  md-down: 767px,
   sm: 580px,
   xs: 480px,
 );
@@ -73,7 +74,7 @@ $header-height: 70px;
 $header-padding: 45px 20px;
 $header-notifications-icons-color: #626262;
 $header-notifications-button-size: 44px;
-
+$header-icons-color: rgba(115, 115, 115, 1);
 //Sidebar
 $logo-text-size: 12px !important;
 $sidebar-expand-icon: 8px;

@@ -1,4 +1,14 @@
 <mat-toolbar class="topbar">
+  @if (!showBackButton) {
+    <button
+      class="sidebar-toggle-btn rounded-full mobile-only m-r-8"
+      aria-label="Навигациони мени"
+      (click)="sidebarToggle.emit()"
+    >
+      <mat-icon class="hamburger">menu</mat-icon>
+    </button>
+  }
+
   <div class="topbar-left gap-2">
     <div>
       @if (showBackButton) {
@@ -33,11 +43,7 @@
     </button>
   }
 
-  <button
-    class="mobile-menu-btn rounded-full"
-    aria-label="Мени"
-    (click)="mobileMenuToggle.emit()"
-  >
+  <button class="mobile-menu-btn rounded-full" aria-label="Мени" (click)="mobileMenuToggle.emit()">
     <eco-icon icon="person"></eco-icon>
   </button>
 
@@ -49,7 +55,12 @@
     (ngModelChange)="onLanguageToggle($event)"
   />
 
-  <button mat-button aria-label="Профил" class="profile-btn desktop-only" [matMenuTriggerFor]="profilemenu">
+  <button
+    mat-button
+    aria-label="Профил"
+    class="profile-btn desktop-only"
+    [matMenuTriggerFor]="profilemenu"
+  >
     <div class="profile-content">
       <div class="profile-info-inline">
         <div class="full-name-div d-flex">

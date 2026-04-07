@@ -99,6 +99,10 @@
   background-color: transparent !important;
 }
 
+::ng-deep .profile-drawer .mat-drawer-inner-container {
+  overflow: hidden;
+}
+
 /* ----------------------------------
  * RIGHT PROFILE DRAWER (mobile)
  * ---------------------------------- */

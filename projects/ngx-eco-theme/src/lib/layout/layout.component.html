@@ -1,6 +1,13 @@
 <mat-drawer-container class="layout-container" [dir]="'ltr'">
-  <!-- LEFT: navigation sidebar, always visible -->
-  <mat-drawer [disableClose]="true" mode="side" opened class="side-container rounded-0">
+
+  <!-- LEFT: navigation sidebar -->
+  <mat-drawer
+    #sideDrawer
+    [mode]="isMobile() ? 'over' : 'side'"
+    [opened]="!isMobile()"
+    [disableClose]="!isMobile()"
+    class="side-container rounded-0"
+  >
     <eco-sidebar [brandingTitle]="brandingTitle()"></eco-sidebar>
     @if (showAdminPortal()) {
       <button class="admin-panel-button p-8 rounded-4" routerLink="/admin">
@@ -10,7 +17,7 @@
     }
   </mat-drawer>
 
-  <!-- RIGHT: mobile profile panel -->
+  <!-- RIGHT: profile panel (tablet + mobile) -->
   <mat-drawer #profileDrawer position="end" mode="over" class="profile-drawer">
     <div class="profile-drawer-content">
       <div class="profile-drawer-user d-flex align-items-center p-y-16">
@@ -53,9 +60,11 @@
       (logoutClicked)="logoutClicked.emit()"
       (languageChanged)="languageClicked.emit($event)"
       (mobileMenuToggle)="profileDrawer.toggle()"
+      (sidebarToggle)="sideDrawer.toggle()"
     ></eco-header>
     <main class="components-route">
       <ng-content></ng-content>
     </main>
   </mat-drawer-content>
+
 </mat-drawer-container>

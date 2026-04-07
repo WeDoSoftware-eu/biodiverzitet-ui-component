@@ -12,7 +12,9 @@ import { AUTH_USER_TOKEN } from '../user/user.token';
 import { ECO_INITIAL_LANG } from '../header/language.token';
 import { ToggleComponent } from '../toggle/toggle.component';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map, Observable } from 'rxjs';
 
 interface MobileProfileItem {
   id: number;
@@ -41,8 +43,9 @@ interface MobileProfileItem {
 })
 export class LayoutComponent {
   i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
-
   authUser = inject(AUTH_USER_TOKEN, { optional: true });
+
+  private breakpointObserver = inject(BreakpointObserver);
 
   brandingTitle = input<string>('');
   title = input<string>('');
@@ -52,6 +55,12 @@ export class LayoutComponent {
 
   logoutClicked = output<void>();
   languageClicked = output<EcoLanguage>();
+
+  /** true when viewport ≤ 767px (mobile) */
+  isMobile = toSignal(
+    this.breakpointObserver.observe('(max-width: 767px)').pipe(map(r => r.matches)),
+    { initialValue: false }
+  );
 
   isCyrillic = signal(inject(ECO_INITIAL_LANG) === 'sr-Cyrl');
 

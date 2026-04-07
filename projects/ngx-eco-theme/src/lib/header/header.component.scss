@@ -147,10 +147,11 @@ mat-toolbar.topbar {
 }
 
 /* ----------------------------------
- * MOBILE MENU BUTTON
+ * ICON BUTTONS (mobile toggles)
  * ---------------------------------- */
 mat-toolbar.topbar {
-  .mobile-menu-btn {
+  .mobile-menu-btn,
+  .sidebar-toggle-btn {
     display: none;
     align-items: center;
     justify-content: center;
@@ -170,11 +171,29 @@ mat-toolbar.topbar {
       background-color: $text-hover;
     }
   }
+
+  .sidebar-toggle-btn {
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: $header-icons-color;
+      span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: $text-color;
+        border-radius: 2px;
+      }
+    }
+  }
 }
 
 /* ----------------------------------
  * RESPONSIVE
  * ---------------------------------- */
+
+/* Tablet + mobile (≤ 991px): hide toggle & profile, show person icon */
 @media (max-width: 991px) {
   mat-toolbar.topbar {
     .page-subtitle {
@@ -187,11 +206,23 @@ mat-toolbar.topbar {
 
     .mobile-menu-btn {
       display: inline-flex;
+      eco-icon {
+        color: $header-icons-color;
+      }
     }
 
     .previous-btn,
     .notification-btn {
       margin-right: 4px !important;
+    }
+  }
+}
+
+/* Mobile only (≤ 767px): show hamburger for left sidebar */
+@media (max-width: 767px) {
+  mat-toolbar.topbar {
+    .mobile-only {
+      display: inline-flex;
     }
   }
 }
