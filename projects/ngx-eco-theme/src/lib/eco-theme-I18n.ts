@@ -28,6 +28,7 @@ export interface EcoThemeI18n {
     no: Observable<string>;
     search: Observable<string>;
     noResultsFound: Observable<string>;
+    filter: Observable<string>;
   };
   tableSerach: {
     search: Observable<string>;
@@ -119,6 +120,7 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     no: of('Не'),
     search: of('Претрага'),
     noResultsFound: of('Нема резултата'),
+    filter: of('Филтрирај'),
   },
   tableSerach: {
     search: of('Претрага'),

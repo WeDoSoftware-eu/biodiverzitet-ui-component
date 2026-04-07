@@ -74,15 +74,16 @@
               eco-table-search {
                 flex-shrink: 0; // Prevent search from shrinking
                 min-width: 200px; // Ensure minimum width for search
+
+                @media (max-width: 1200px) {
+                  flex: 1 1 0;
+                  min-width: 0;
+                }
               }
 
               eco-table-filter {
-                flex: 1;
+                flex: 0 0 auto;
                 min-width: 0; // Allow it to shrink below content size
-
-                @media (max-width: 1200px) {
-                  width: 100%; // Force full width on smaller screens
-                }
               }
             }
           }

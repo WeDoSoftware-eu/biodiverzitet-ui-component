@@ -8,14 +8,17 @@ import {
   signal,
   OnDestroy,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
+import { ButtonComponent } from '../../button/button.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule, MatDatepicker } from '@angular/material/datepicker';
-import { debounceTime, takeUntil } from 'rxjs';
+import { debounceTime, map, takeUntil } from 'rxjs';
 import { Subject } from 'rxjs';
 import { TableFilterStoreService } from './table-filter-store';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../../eco-theme-I18n';
@@ -63,6 +66,7 @@ export interface TriStateValue {
   standalone: true,
   imports: [
     CommonModule,
+    AsyncPipe,
     ReactiveFormsModule,
     MatMenuModule,
     MatFormFieldModule,
@@ -73,6 +77,7 @@ export interface TriStateValue {
     DatePickerMonthYearComponent,
     MatTooltipModule,
     SearchableSelectComponent,
+    ButtonComponent,
   ],
   templateUrl: './table-filter.component.html',
   styleUrl: './table-filter.component.scss',
@@ -80,9 +85,11 @@ export interface TriStateValue {
 export class TableFilterComponent implements OnDestroy {
   public i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
 
+  private breakpointObserver = inject(BreakpointObserver);
+
   id = input.required<string>();
   fields = input.required<FilterFieldConfig[]>();
-  flex = input<'end' | 'start'>('end'); // Right fields flex (flex-end or flex-start)
+  flex = input<'end' | 'start'>('end');
   changed = output<Record<string, unknown>>();
 
   private store = inject(TableFilterStoreService);
@@ -92,6 +99,18 @@ export class TableFilterComponent implements OnDestroy {
   form = signal<FormGroup>(new FormGroup({}));
   formReady = signal(false);
   formValue = signal<Record<string, unknown>>({});
+
+  /** true when viewport ≤ 1200px — show "Filtriraj" button instead of inline fields */
+  isCompact = toSignal(
+    this.breakpointObserver.observe('(max-width: 1200px)').pipe(map(r => r.matches)),
+    { initialValue: false }
+  );
+
+  filtersVisible = signal(false);
+
+  toggleFilters(): void {
+    this.filtersVisible.set(!this.filtersVisible());
+  }
 
   triStateLabels = computed(() => {
     const values = this.formValue();
