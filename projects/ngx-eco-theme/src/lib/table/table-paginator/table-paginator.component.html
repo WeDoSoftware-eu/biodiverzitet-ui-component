@@ -1,14 +1,15 @@
 <div class="paginator-container">
   @if (totalPages() > 0) {
     <div class="custom-paginator-controls gap-8">
-      <div class="last-update-text">
-        @if (showLastUpdate()) {
-          {{ lastUpdateTitle() }}:
-          <p class="m-l-5">{{ lastUpdate() }}</p>
-        }
-      </div>
+      <div class="paginator-main-row">
+        <div class="last-update-text">
+          @if (showLastUpdate()) {
+            {{ lastUpdateTitle() }}:
+            <p class="m-l-5">{{ lastUpdate() }}</p>
+          }
+        </div>
 
-      <div class="pagination-buttons gap-6">
+        <div class="pagination-buttons gap-6">
         <button
           class="rounded-2"
           mat-mini-fab
@@ -83,6 +84,7 @@
             <p class="mat-body-medium">{{ i18n.paginator.side | async }}</p>
           </div>
         }
+        </div>
       </div>
 
       <div class="generate-button">

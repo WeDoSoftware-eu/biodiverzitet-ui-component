@@ -12,6 +12,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .paginator-main-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+
+      @media (max-width: 375px) {
+        flex-wrap: wrap;
+      }
+    }
 
     button.mat-mdc-mini-fab {
       width: 32px;
@@ -74,6 +87,55 @@
       font-size: var(--mat-sys-body-medium-size);
       color: $paginator-text-color;
       display: flex;
+    }
+
+    .generate-button {
+      @media (max-width: 991px) {
+        flex: 0 0 100%;
+        order: 99;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+// Tablet (≤ 991px): hide goto-page, wrap last-update-text
+@media (max-width: 991px) {
+  .paginator-container {
+    .goto-page-container {
+      display: none !important;
+    }
+
+    .last-update-text {
+      flex-wrap: wrap;
+      max-width: 160px;
+    }
+  }
+}
+
+// Mobile (≤ 767px): smaller buttons and tighter gap to stay in one row
+@media (max-width: 767px) {
+  .paginator-container {
+    .custom-paginator-controls {
+      gap: 4px;
+
+      .last-update-text {
+        max-width: 100px;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+    }
+
+    .pagination-buttons {
+      gap: 3px !important;
+    }
+
+    button.mat-mdc-mini-fab {
+      width: 26px !important;
+      height: 26px !important;
+      line-height: 26px !important;
+      font-size: 11px !important;
     }
   }
 }
