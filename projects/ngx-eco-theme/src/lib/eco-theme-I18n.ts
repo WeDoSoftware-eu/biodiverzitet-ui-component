@@ -89,6 +89,10 @@ export interface EcoThemeI18n {
     downloadFile: Observable<string>;
     close: Observable<string>;
   };
+  noAccess: {
+    message: Observable<string>;
+    advice: Observable<string>;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -180,5 +184,9 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     unsupportedPreview: of('Детаљан приказ није доступан за овај тип фајла.'),
     downloadFile: of('Преузми фајл'),
     close: of('Затвори'),
+  },
+  noAccess: {
+    message: of('Ова функционалност је оптимизована за десктоп уређаје.'),
+    advice: of('За детаљан преглед отворите портал на рачунару.'),
   },
 };

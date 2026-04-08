@@ -1,6 +1,8 @@
 <div class="paginator-container">
   @if (totalPages() > 0) {
     <div class="custom-paginator-controls gap-8">
+
+      <!-- Wrapper: transparent on desktop (display:contents), flex on tablet/mobile -->
       <div class="paginator-main-row">
         <div class="last-update-text">
           @if (showLastUpdate()) {
@@ -10,80 +12,80 @@
         </div>
 
         <div class="pagination-buttons gap-6">
-        <button
-          class="rounded-2"
-          mat-mini-fab
-          (click)="changePage('first')"
-          [matTooltip]="i18n.paginator.firstPage | async"
-          [disabled]="pageIndex() === 0"
-          aria-label="Прва страна"
-        >
-          <eco-icon class="icon-16" icon="first-page"></eco-icon>
-        </button>
+          <button
+            class="rounded-2"
+            mat-mini-fab
+            (click)="changePage('first')"
+            [matTooltip]="i18n.paginator.firstPage | async"
+            [disabled]="pageIndex() === 0"
+            aria-label="Прва страна"
+          >
+            <eco-icon class="icon-16" icon="first-page"></eco-icon>
+          </button>
 
-        <button
-          class="rounded-2"
-          mat-mini-fab
-          (click)="changePage(-1)"
-          [matTooltip]="i18n.paginator.previousPage | async"
-          [disabled]="pageIndex() === 0"
-          aria-label="Претходна страна"
-        >
-          <eco-icon class="icon-16" icon="previous-page"></eco-icon>
-        </button>
+          <button
+            class="rounded-2"
+            mat-mini-fab
+            (click)="changePage(-1)"
+            [matTooltip]="i18n.paginator.previousPage | async"
+            [disabled]="pageIndex() === 0"
+            aria-label="Претходна страна"
+          >
+            <eco-icon class="icon-16" icon="previous-page"></eco-icon>
+          </button>
 
-        @for (page of pagesToDisplay(); track $index) {
-          @if (page === '...') {
-            <button mat-mini-fab class="rounded-2" aria-hidden="true" tabindex="-1" disabled>...</button>
-          } @else {
-            <button
-              class="rounded-2"
-              mat-mini-fab
-              [class.active-page]="page === pageIndex() + 1"
-              [matTooltip]="(i18n.paginator.page | async)! + page"
-              (click)="goToPage(page)"
-            >
-              {{ page }}
-            </button>
+          @for (page of pagesToDisplay(); track $index) {
+            @if (page === '...') {
+              <button mat-mini-fab class="rounded-2" aria-hidden="true" tabindex="-1" disabled>...</button>
+            } @else {
+              <button
+                class="rounded-2"
+                mat-mini-fab
+                [class.active-page]="page === pageIndex() + 1"
+                [matTooltip]="(i18n.paginator.page | async)! + page"
+                (click)="goToPage(page)"
+              >
+                {{ page }}
+              </button>
+            }
           }
-        }
 
-        <button
-          class="rounded-2"
-          mat-mini-fab
-          (click)="changePage(1)"
-          [matTooltip]="i18n.paginator.nextPage | async"
-          [disabled]="pageIndex() === totalPages() - 1"
-          aria-label="Следећа страна"
-        >
-          <eco-icon class="icon-16" icon="next-page"></eco-icon>
-        </button>
+          <button
+            class="rounded-2"
+            mat-mini-fab
+            (click)="changePage(1)"
+            [matTooltip]="i18n.paginator.nextPage | async"
+            [disabled]="pageIndex() === totalPages() - 1"
+            aria-label="Следећа страна"
+          >
+            <eco-icon class="icon-16" icon="next-page"></eco-icon>
+          </button>
 
-        <button
-          class="rounded-2"
-          mat-mini-fab
-          (click)="changePage('last')"
-          [matTooltip]="i18n.paginator.lastPage | async"
-          [disabled]="pageIndex() === totalPages() - 1"
-          aria-label="Последња страна"
-        >
-          <eco-icon class="icon-16" icon="last-page"></eco-icon>
-        </button>
+          <button
+            class="rounded-2"
+            mat-mini-fab
+            (click)="changePage('last')"
+            [matTooltip]="i18n.paginator.lastPage | async"
+            [disabled]="pageIndex() === totalPages() - 1"
+            aria-label="Последња страна"
+          >
+            <eco-icon class="icon-16" icon="last-page"></eco-icon>
+          </button>
 
-        @if (goToPageShow()) {
-          <div class="goto-page-container gap-6 m-l-20">
-            <p class="mat-body-medium">{{ i18n.paginator.goTo | async }}</p>
-            <input
-              class="rounded-2"
-              type="number"
-              [(ngModel)]="pageInput"
-              min="1"
-              [max]="totalPages()"
-              (ngModelChange)="goToPage(pageInput)"
-            />
-            <p class="mat-body-medium">{{ i18n.paginator.side | async }}</p>
-          </div>
-        }
+          @if (goToPageShow()) {
+            <div class="goto-page-container gap-6 m-l-20">
+              <p class="mat-body-medium">{{ i18n.paginator.goTo | async }}</p>
+              <input
+                class="rounded-2"
+                type="number"
+                [(ngModel)]="pageInput"
+                min="1"
+                [max]="totalPages()"
+                (ngModelChange)="goToPage(pageInput)"
+              />
+              <p class="mat-body-medium">{{ i18n.paginator.side | async }}</p>
+            </div>
+          }
         </div>
       </div>
 
@@ -94,6 +96,7 @@
           }}</eco-button>
         }
       </div>
+
     </div>
   }
 </div>

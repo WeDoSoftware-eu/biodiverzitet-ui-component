@@ -24,6 +24,7 @@ export * from './lib/card-list/card-list.component';
 export * from './lib/stat-card/stat-card.component';
 export * from './lib/toggle/toggle.component';
 export * from './lib/progress-circle-card/progress-circle-card.component';
+export * from './lib/no-access-mobile/no-access-mobile.component';
 export * from './lib/gis/base-layer-button/base-layer-button.component';
 export * from './lib/gis/base-layer-selector/base-layer-selector.component';
 export * from './lib/gis/layers-button/layers-button.component';

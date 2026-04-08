@@ -1,8 +1,9 @@
 @use '../../../assets/styles/variables' as *;
 
 .paginator-container {
-  align-items: center;
+  width: 100%;
   margin: 15px 0;
+  overflow: hidden;
 
   .pagination-buttons {
     display: flex;
@@ -14,17 +15,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
-
-    .paginator-main-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-
-      @media (max-width: 375px) {
-        flex-wrap: wrap;
-      }
-    }
 
     button.mat-mdc-mini-fab {
       width: 32px;
@@ -74,6 +64,7 @@
 
       input[type='number'] {
         -moz-appearance: textfield;
+        appearance: textfield;
       }
 
       button.mat-mdc-stroked-button {
@@ -87,9 +78,30 @@
       font-size: var(--mat-sys-body-medium-size);
       color: $paginator-text-color;
       display: flex;
+      flex-shrink: 0;
+    }
+
+    // Desktop: transparent, children appear as direct siblings → space-between works with 3 items
+    // Tablet/mobile: groups last-update + pagination so they never split
+    .paginator-main-row {
+      display: contents;
+
+      @media (max-width: 991px) {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        flex-wrap: nowrap;
+      }
+
+      @media (max-width: 375px) {
+        flex-wrap: wrap;
+      }
     }
 
     .generate-button {
+      flex-shrink: 0;
+
       @media (max-width: 991px) {
         flex: 0 0 100%;
         order: 99;
@@ -114,7 +126,7 @@
   }
 }
 
-// Mobile (≤ 767px): smaller buttons and tighter gap to stay in one row
+// Mobile (≤ 767px): smaller buttons, tighter gap
 @media (max-width: 767px) {
   .paginator-container {
     .custom-paginator-controls {
@@ -127,15 +139,29 @@
       }
     }
 
+    .paginator-main-row {
+      gap: 4px !important;
+    }
+
     .pagination-buttons {
-      gap: 3px !important;
+      gap: 2px !important;
     }
 
     button.mat-mdc-mini-fab {
       width: 26px !important;
       height: 26px !important;
       line-height: 26px !important;
-      font-size: 11px !important;
+      font-size: 10px !important;
+      min-width: unset !important;
+    }
+  }
+}
+
+// Min screen (≤ 375px): pagination can wrap below last-update-text
+@media (max-width: 375px) {
+  .paginator-container {
+    .pagination-buttons {
+      flex-wrap: wrap;
     }
   }
 }

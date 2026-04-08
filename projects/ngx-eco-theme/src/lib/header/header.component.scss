@@ -3,8 +3,8 @@
 mat-toolbar.topbar {
   display: flex;
   align-items: center;
-  height: $header-height;
-  padding: $header-padding;
+  min-height: $header-height !important;
+  height: auto !important;
 
   position: sticky;
   top: 0;
@@ -20,20 +20,32 @@ mat-toolbar.topbar {
   .topbar-left {
     display: flex;
     align-items: center;
+    flex: 1 1 0;
+    min-width: 0;
+
+    // inner div wrapping title + subtitle
+    > div:last-child {
+      min-width: 0;
+      overflow: hidden;
+    }
 
     .page-title {
       text-align: start;
+      word-break: break-word;
+      white-space: normal;
     }
 
     .page-subtitle {
       margin: 0;
       text-align: start;
       align-self: flex-start;
+      word-break: break-word;
+      white-space: normal;
     }
   }
 
   .flex-spacer {
-    flex: 1 1 auto;
+    flex: 0 0 8px;
   }
 
   /* ----------------------------------
@@ -44,6 +56,7 @@ mat-toolbar.topbar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     width: $header-notifications-button-size;
     height: $header-notifications-button-size;
@@ -155,6 +168,7 @@ mat-toolbar.topbar {
     display: none;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     width: $header-notifications-button-size;
     height: $header-notifications-button-size;
     border: none;
