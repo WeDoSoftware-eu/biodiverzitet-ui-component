@@ -316,6 +316,10 @@ html {
 }
 eco-table-paginator {
   margin-top: auto !important;
+
+  @media (max-width: 991px) {
+    margin-top: 16px !important;
+  }
 }
 .mat-mdc-chip-focus-overlay {
   display: none !important;
