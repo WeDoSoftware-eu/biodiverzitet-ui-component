@@ -14,6 +14,7 @@ import { BACK_ROUTES } from './back-route.token';
 import { ToggleComponent } from '../toggle/toggle.component';
 import { FormsModule } from '@angular/forms';
 import { ECO_INITIAL_LANG } from './language.token';
+import { MatIconModule } from '@angular/material/icon';
 
 export type EcoLanguage = 'sr-Latn' | 'sr-Cyrl';
 
@@ -37,6 +38,7 @@ interface profileItems {
     AsyncPipe,
     ToggleComponent,
     FormsModule,
+    MatIconModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -56,6 +58,8 @@ export class HeaderComponent implements OnInit {
 
   logoutClicked = output<void>();
   languageChanged = output<EcoLanguage>();
+  mobileMenuToggle = output<void>();
+  sidebarToggle = output<void>();
 
   isCyrillic = signal(inject(ECO_INITIAL_LANG) === 'sr-Cyrl');
 

@@ -4,6 +4,7 @@
   width: 100%;
   background: $white;
   overflow: hidden;
+  overflow-x: auto;
 
   .loading-container {
     display: flex;
@@ -30,6 +31,7 @@
 
     table {
       width: 100%;
+      min-width: 1200px;
       background: transparent;
       box-shadow: none;
 

@@ -28,6 +28,7 @@ export interface EcoThemeI18n {
     no: Observable<string>;
     search: Observable<string>;
     noResultsFound: Observable<string>;
+    filter: Observable<string>;
   };
   tableSerach: {
     search: Observable<string>;
@@ -88,6 +89,10 @@ export interface EcoThemeI18n {
     downloadFile: Observable<string>;
     close: Observable<string>;
   };
+  noAccess: {
+    message: Observable<string>;
+    advice: Observable<string>;
+  };
 }
 
 export const ECO_THEME_I18N = new InjectionToken<EcoThemeI18n>('ECO_THEME_I18N');
@@ -119,6 +124,7 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     no: of('Не'),
     search: of('Претрага'),
     noResultsFound: of('Нема резултата'),
+    filter: of('Филтрирај'),
   },
   tableSerach: {
     search: of('Претрага'),
@@ -178,5 +184,9 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
     unsupportedPreview: of('Детаљан приказ није доступан за овај тип фајла.'),
     downloadFile: of('Преузми фајл'),
     close: of('Затвори'),
+  },
+  noAccess: {
+    message: of('Ова функционалност је оптимизована за десктоп уређаје.'),
+    advice: of('За детаљан преглед отворите портал на рачунару.'),
   },
 };

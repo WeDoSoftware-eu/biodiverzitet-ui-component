@@ -3,8 +3,8 @@
 mat-toolbar.topbar {
   display: flex;
   align-items: center;
-  height: $header-height;
-  padding: $header-padding;
+  min-height: $header-height !important;
+  height: auto !important;
 
   position: sticky;
   top: 0;
@@ -20,20 +20,32 @@ mat-toolbar.topbar {
   .topbar-left {
     display: flex;
     align-items: center;
+    flex: 1 1 0;
+    min-width: 0;
+
+    // inner div wrapping title + subtitle
+    > div:last-child {
+      min-width: 0;
+      overflow: hidden;
+    }
 
     .page-title {
       text-align: start;
+      word-break: break-word;
+      white-space: normal;
     }
 
     .page-subtitle {
       margin: 0;
       text-align: start;
       align-self: flex-start;
+      word-break: break-word;
+      white-space: normal;
     }
   }
 
   .flex-spacer {
-    flex: 1 1 auto;
+    flex: 0 0 8px;
   }
 
   /* ----------------------------------
@@ -44,6 +56,7 @@ mat-toolbar.topbar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     width: $header-notifications-button-size;
     height: $header-notifications-button-size;
@@ -147,23 +160,83 @@ mat-toolbar.topbar {
 }
 
 /* ----------------------------------
+ * ICON BUTTONS (mobile toggles)
+ * ---------------------------------- */
+mat-toolbar.topbar {
+  .mobile-menu-btn,
+  .sidebar-toggle-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: $header-notifications-button-size;
+    height: $header-notifications-button-size;
+    border: none;
+    cursor: pointer;
+    background-color: $buttons-secondary-bg;
+
+    eco-icon {
+      display: flex;
+      font-size: var(--sys-notifications-size);
+      color: $text-color;
+    }
+
+    &:hover {
+      background-color: $text-hover;
+    }
+  }
+
+  .sidebar-toggle-btn {
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: $header-icons-color;
+      span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: $text-color;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+/* ----------------------------------
  * RESPONSIVE
  * ---------------------------------- */
+
+/* Tablet + mobile (≤ 991px): hide toggle & profile, show person icon */
 @media (max-width: 991px) {
   mat-toolbar.topbar {
     .page-subtitle {
       font-size: var(--sys-subtitle-size);
     }
 
-    .profile-btn {
-      .profile-info-inline {
-        display: none;
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-menu-btn {
+      display: inline-flex;
+      eco-icon {
+        color: $header-icons-color;
       }
     }
 
     .previous-btn,
     .notification-btn {
       margin-right: 4px !important;
+    }
+  }
+}
+
+/* Mobile only (≤ 767px): show hamburger for left sidebar */
+@media (max-width: 767px) {
+  mat-toolbar.topbar {
+    .mobile-only {
+      display: inline-flex;
     }
   }
 }

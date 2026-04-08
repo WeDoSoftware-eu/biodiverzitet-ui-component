@@ -1,0 +1,16 @@
+@use '../../assets/styles/variables' as *;
+
+.no-access-content {
+  border: $snackbar-border-info;
+  background-color: $snackbar-bg-info;
+  color: $snackbar-info;
+
+  eco-icon {
+    font-size: 20px;
+  }
+  p {
+    font-size: 24px;
+    font-weight: 600;
+    color: $text-color;
+  }
+}
