@@ -2,8 +2,8 @@
   class="download-button"
   [class.active]="isActive()"
   (click)="onClick()"
-  aria-label="Stampa"
-  title="Stampa"
+  [attr.aria-label]="i18n.map.buttons.print | async"
+  [title]="(i18n.map.buttons.print | async) ?? ''"
 >
   <span class="icon">
     <eco-icon [icon]="'printer'" />

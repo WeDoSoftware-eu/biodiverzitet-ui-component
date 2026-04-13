@@ -1,7 +1,7 @@
 <div class="base-layer-selector">
   <div class="header">
-    <span class="title">Подлоге</span>
-    <button class="close-button" (click)="onClose()" aria-label="Zatvori">
+    <span class="title">{{ i18n.map.baseLayers.title | async }}</span>
+    <button class="close-button" (click)="onClose()" [attr.aria-label]="i18n.map.buttons.close | async">
       <eco-icon [icon]="'cancel'" />
     </button>
   </div>
@@ -12,11 +12,11 @@
         class="base-layer-button"
         [class.selected]="selectedLayer() === 'map'"
         (click)="selectLayer('map')"
-        aria-label="Карта"
+        [attr.aria-label]="i18n.map.baseLayers.map | async"
       >
         <img src="assets/images/osm.jpg" alt="OSM Karta" class="base-layer-image" />
       </button>
-      <span class="base-layer-label">Карта</span>
+      <span class="base-layer-label">{{ i18n.map.baseLayers.map | async }}</span>
     </div>
 
     <div class="base-layer-option">
@@ -24,11 +24,11 @@
         class="base-layer-button"
         [class.selected]="selectedLayer() === 'satellite'"
         (click)="selectLayer('satellite')"
-        aria-label="Сателит"
+        [attr.aria-label]="i18n.map.baseLayers.satellite | async"
       >
         <img src="assets/images/satelite.jpg" alt="Satelit" class="base-layer-image" />
       </button>
-      <span class="base-layer-label">Сателит</span>
+      <span class="base-layer-label">{{ i18n.map.baseLayers.satellite | async }}</span>
     </div>
   </div>
 </div>

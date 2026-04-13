@@ -2,8 +2,8 @@
   class="measure-button"
   [class.active]="isActive()"
   (click)="onClick()"
-  aria-label="Merenje distance"
-  title="Merenje"
+  [attr.aria-label]="i18n.map.buttons.measure | async"
+  [title]="(i18n.map.buttons.measure | async) ?? ''"
 >
   <span class="icon">
     <eco-icon [icon]="'ruler'" />

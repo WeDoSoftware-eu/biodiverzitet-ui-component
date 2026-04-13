@@ -1,16 +1,19 @@
-import { Component, OnInit, input, output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit, input, output, signal } from '@angular/core';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { IconComponent } from '../../icon/icon.component';
+import { ECO_THEME_I18N, DEFAULT_ECO_THEME_I18N } from '../../eco-theme-I18n';
 
 @Component({
   selector: 'eco-search',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, AsyncPipe, IconComponent],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  placeholder = input<string>('Претрага');
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
+  placeholder = input<string>('');
   value = input<string>('');
 
   searchSubmit = output<string>();

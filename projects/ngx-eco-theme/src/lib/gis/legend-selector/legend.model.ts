@@ -8,6 +8,7 @@ export interface LegendColorChangeEvent {
 export interface LegendItem {
   id: string;
   name: string;
+  nameKey?: string;
   type: 'fill' | 'line' | 'icon' | 'composite' | 'point';
   color?: string;
   strokeColor?: string;

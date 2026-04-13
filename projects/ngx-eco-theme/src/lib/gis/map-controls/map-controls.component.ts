@@ -1,15 +1,18 @@
-import { Component, input, output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, input, output, signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { IconComponent } from '../../icon/icon.component';
+import { ECO_THEME_I18N, DEFAULT_ECO_THEME_I18N } from '../../eco-theme-I18n';
 
 @Component({
   selector: 'eco-map-controls',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [AsyncPipe, IconComponent],
   templateUrl: './map-controls.component.html',
   styleUrls: ['./map-controls.component.scss'],
 })
 export class MapControlsComponent {
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   zoomLevel = input<string | number>('100%');
 
   zoomIn = output<void>();

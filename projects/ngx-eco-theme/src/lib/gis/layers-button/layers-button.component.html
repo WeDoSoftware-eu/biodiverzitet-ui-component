@@ -2,8 +2,8 @@
   class="layers-button"
   [class.active]="isActive()"
   (click)="onClick()"
-  aria-label="Slojevi mape"
-  title="Slojevi"
+  [attr.aria-label]="i18n.map.buttons.layers | async"
+  [title]="(i18n.map.buttons.layers | async) ?? ''"
 >
   <span class="icon">
     <eco-icon [icon]="'layers-overlay'" />

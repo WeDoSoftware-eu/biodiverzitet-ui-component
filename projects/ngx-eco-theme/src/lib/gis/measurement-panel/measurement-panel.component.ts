@@ -1,17 +1,20 @@
-import { Component, input, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, input, output } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { IconComponent } from '../../icon/icon.component';
+import { ECO_THEME_I18N, DEFAULT_ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MeasurementItem, MeasurementType } from './measurement.model';
 
 @Component({
   selector: 'eco-measurement-panel',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [AsyncPipe, IconComponent],
   templateUrl: './measurement-panel.component.html',
   styleUrls: ['./measurement-panel.component.scss'],
 })
 export class MeasurementPanelComponent {
-  title = input<string>('Мерење');
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
+  title = input<string>('');
   measurements = input<MeasurementItem[]>([]);
   activeTab = input<MeasurementType>('point');
   isDrawing = input<boolean>(false);
@@ -22,10 +25,10 @@ export class MeasurementPanelComponent {
   addNew = output<void>();
   stopDrawing = output<void>();
 
-  tabs: { type: MeasurementType; label: string }[] = [
-    { type: 'point', label: 'Тачка' },
-    { type: 'line', label: 'Линија' },
-    { type: 'polygon', label: 'Полигон' },
+  tabs: { type: MeasurementType; i18nKey: 'point' | 'line' | 'polygon' }[] = [
+    { type: 'point', i18nKey: 'point' },
+    { type: 'line', i18nKey: 'line' },
+    { type: 'polygon', i18nKey: 'polygon' },
   ];
 
   onClose(): void {

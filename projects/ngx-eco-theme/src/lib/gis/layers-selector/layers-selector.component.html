@@ -1,7 +1,7 @@
 <div class="layers-selector">
   <div class="header">
-    <span class="title">{{ title() }}</span>
-    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+    <span class="title">{{ title() || (i18n.map.layers.title | async) }}</span>
+    <button class="close-button" (click)="onClose()" [attr.aria-label]="i18n.map.buttons.close | async">
       <eco-icon [icon]="'cancel'" />
     </button>
   </div>
@@ -44,7 +44,9 @@
                 <span
                   class="visibility-toggle"
                   [attr.aria-label]="
-                    layer.visible ? 'Сакриј слој ' + layer.name : 'Прикажи слој ' + layer.name
+                    layer.visible
+                      ? (i18n.map.layersSelector.hideLayer | async) + ' ' + layer.name
+                      : (i18n.map.layersSelector.showLayer | async) + ' ' + layer.name
                   "
                 >
                   @if (layer.visible) {
@@ -76,7 +78,9 @@
         <span
           class="visibility-toggle"
           [attr.aria-label]="
-            layer.visible ? 'Сакриј слој ' + layer.name : 'Прикажи слој ' + layer.name
+            layer.visible
+              ? (i18n.map.layersSelector.hideLayer | async) + ' ' + layer.name
+              : (i18n.map.layersSelector.showLayer | async) + ' ' + layer.name
           "
         >
           @if (layer.visible) {
@@ -89,7 +93,7 @@
     }
 
     @if (groups().length === 0 && layers().length === 0) {
-      <div class="no-layers">Нема доступних слојева</div>
+      <div class="no-layers">{{ i18n.map.layersSelector.noLayersAvailable | async }}</div>
     }
   </div>
 </div>

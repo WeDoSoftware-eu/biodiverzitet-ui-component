@@ -1,7 +1,7 @@
 <div class="measurement-panel">
   <div class="header">
-    <span class="title">{{ title() }}</span>
-    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+    <span class="title">{{ title() || (i18n.map.measurement.title | async) }}</span>
+    <button class="close-button" (click)="onClose()" [attr.aria-label]="i18n.map.buttons.close | async">
       <eco-icon [icon]="'cancel'" />
     </button>
   </div>
@@ -27,7 +27,7 @@
               }
             }
           </span>
-          <span class="tab-label">{{ tab.label }}</span>
+          <span class="tab-label">{{ i18n.map.measurement[tab.i18nKey] | async }}</span>
         </button>
       }
     </div>
@@ -50,20 +50,20 @@
           </span>
           <span class="measurement-label">{{ item.label }}</span>
           <span class="measurement-value">{{ item.value }}</span>
-          <button class="delete-button" (click)="onDelete(item.id)" aria-label="Обриши">
+          <button class="delete-button" (click)="onDelete(item.id)" [attr.aria-label]="i18n.map.measurement.delete | async">
             <eco-icon [icon]="'cancel'" />
           </button>
         </div>
       }
 
       @if (filteredMeasurements.length === 0 && !isDrawing()) {
-        <div class="no-items">Нема мерења</div>
+        <div class="no-items">{{ i18n.map.measurement.noMeasurements | async }}</div>
       }
 
       @if (isDrawing()) {
         <div class="drawing-indicator">
           <span class="drawing-dot"></span>
-          Цртање у току...
+          {{ i18n.map.measurement.drawing | async }}
         </div>
       }
     </div>
@@ -71,9 +71,9 @@
 
   <div class="panel-footer">
     @if (isDrawing()) {
-      <button class="action-button stop-button" (click)="onStopDrawing()">Заустави</button>
+      <button class="action-button stop-button" (click)="onStopDrawing()">{{ i18n.map.measurement.stop | async }}</button>
     } @else {
-      <button class="action-button add-button" (click)="onAddNew()">+ Додај ново</button>
+      <button class="action-button add-button" (click)="onAddNew()">+ {{ i18n.map.measurement.addNew | async }}</button>
     }
   </div>
 </div>

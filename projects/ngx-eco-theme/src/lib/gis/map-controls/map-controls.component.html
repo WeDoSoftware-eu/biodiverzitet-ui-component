@@ -5,7 +5,7 @@
       [class.clicked]="zoomInClicked()"
       (click)="onZoomIn()"
       aria-label="Zoom in"
-      title="Uvećaj"
+      [title]="(i18n.map.buttons.zoomIn | async) ?? ''"
     >
       <eco-icon [icon]="'zoom-in'" />
     </button>
@@ -15,7 +15,7 @@
       [class.clicked]="zoomOutClicked()"
       (click)="onZoomOut()"
       aria-label="Zoom out"
-      title="Umanji"
+      [title]="(i18n.map.buttons.zoomOut | async) ?? ''"
     >
       <eco-icon [icon]="'zoom-out'" />
     </button>
@@ -24,8 +24,8 @@
       class="control-btn"
       [class.clicked]="homeViewClicked()"
       (click)="onHomeViewClick()"
-      aria-label="Početni pogled"
-      title="Početni pogled"
+      [attr.aria-label]="i18n.map.buttons.homeView | async"
+      [title]="(i18n.map.buttons.homeView | async) ?? ''"
     >
       <eco-icon [icon]="'home-view'" />
     </button>
@@ -33,7 +33,7 @@
 
   <div class="divider"></div>
 
-  <button class="control-btn" (click)="onFullscreen()" aria-label="Fullscreen" title="Ceo ekran">
+  <button class="control-btn" (click)="onFullscreen()" aria-label="Fullscreen" [title]="(i18n.map.buttons.fullscreen | async) ?? ''">
     <eco-icon [icon]="'full-screen'" />
   </button>
 </div>
