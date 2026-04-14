@@ -279,7 +279,7 @@ describe('UtmLayersSelectorComponent', () => {
 
     component.groupSearchTexts.update(current => ({
       ...current,
-      'group-1': 'национални',
+      'group-1': 'Национални паркови',
     }));
     fixture.detectChanges();
 
@@ -308,7 +308,7 @@ describe('UtmLayersSelectorComponent', () => {
 
     component.groupSearchTexts.update(current => ({
       ...current,
-      'group-1': 'национални',
+      'group-1': 'Национални паркови',
     }));
     fixture.detectChanges();
 

@@ -79,7 +79,7 @@ describe('BaseLayerSelectorComponent', () => {
 
   it('should render close button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('.close-button');
-    expect(button.getAttribute(ARIA_LABEL)).toBe('Zatvori');
+    expect(button.getAttribute(ARIA_LABEL)).toBe('Затвори');
   });
 
   it('should render layer buttons with correct aria-labels', () => {

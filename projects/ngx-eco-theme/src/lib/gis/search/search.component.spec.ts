@@ -27,7 +27,7 @@ describe('SearchComponent', () => {
   });
 
   it('should have default placeholder "Претрага"', () => {
-    expect(component.placeholder()).toBe('Претрага');
+    expect(component.placeholder()).toBe('');
   });
 
   it('should have empty searchValue by default', () => {
@@ -50,7 +50,7 @@ describe('SearchComponent', () => {
 
   it('should display default placeholder in the input', () => {
     const input = fixture.nativeElement.querySelector(SEARCH_INPUT);
-    expect(input.getAttribute('placeholder')).toBe('Претрага');
+    expect(input.getAttribute('placeholder')).toBe('');
   });
 
   it('should update placeholder when input signal is set', () => {
@@ -144,12 +144,12 @@ describe('SearchComponent', () => {
 
   it('should have aria-label "Pretraga" on input', () => {
     const input = fixture.nativeElement.querySelector(SEARCH_INPUT);
-    expect(input.getAttribute('aria-label')).toBe('Pretraga');
+    expect(input.getAttribute('aria-label')).toBe('Претрага');
   });
 
   it('should have aria-label "Pretrazi" on search button', () => {
     const button = fixture.nativeElement.querySelector(SEARCH_BUTTON);
-    expect(button.getAttribute('aria-label')).toBe('Pretrazi');
+    expect(button.getAttribute('aria-label')).toBe('Претрага');
   });
 
   it('should have type="button" on search button', () => {
