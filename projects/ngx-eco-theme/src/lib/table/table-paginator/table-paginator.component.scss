@@ -89,7 +89,7 @@
       @media (max-width: 991px) {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 40px;
         flex: 1;
         flex-wrap: nowrap;
       }
@@ -121,7 +121,12 @@
 
     .last-update-text {
       flex-wrap: wrap;
-      max-width: 160px;
+      max-width: 75px;
+      word-break: normal;
+      overflow-wrap: normal;
+      white-space: normal;
+      flex-shrink: 0;
+      font-size: 14px;
     }
   }
 }
@@ -133,14 +138,15 @@
       gap: 4px;
 
       .last-update-text {
-        max-width: 100px;
+        max-width: 75px;
         font-size: 11px;
-        white-space: nowrap;
+        white-space: normal;
+        flex-shrink: 0;
       }
     }
 
     .paginator-main-row {
-      gap: 4px !important;
+      gap: 12px !important;
     }
 
     .pagination-buttons {
