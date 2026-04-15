@@ -39,6 +39,7 @@
     touch-action: auto;
 
     eco-header {
+      position: -webkit-sticky;
       position: sticky;
       top: 0;
       z-index: $header-z-index;
@@ -180,6 +181,11 @@
             color: $text-color;
             font-weight: 300;
           }
+        }
+
+        .user-email {
+          display: block;
+          text-align: start;
         }
       }
     }

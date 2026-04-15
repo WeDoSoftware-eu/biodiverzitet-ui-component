@@ -6,6 +6,7 @@ mat-toolbar.topbar {
   min-height: $header-height !important;
   height: auto !important;
 
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: $header-z-index;
@@ -151,6 +152,10 @@ mat-toolbar.topbar {
       background-color: $muted-color;
     }
   }
+}
+
+.email-mobile {
+  flex: inline-start;
 }
 /* ----------------------------------
  * SHARED MENU STYLES
