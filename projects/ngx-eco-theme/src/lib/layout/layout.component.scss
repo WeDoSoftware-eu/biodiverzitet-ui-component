@@ -2,6 +2,7 @@
 
 .layout-container {
   min-height: 100vh;
+  touch-action: pan-y;
 
   .side-container {
     background-color: $side-nav-bg;
