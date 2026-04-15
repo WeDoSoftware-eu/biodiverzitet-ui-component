@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavItemComponent } from './nav-item/nav-item.component';
 import { MatListModule } from '@angular/material/list';
@@ -23,6 +23,7 @@ import { RoutingService } from './routing.service';
 })
 export class SidebarComponent {
   brandingTitle = input<string>('');
+  itemSelected = output<void>();
 
   navItems = inject(SIDEBAR_ITEMS);
   expandedSections = signal<Set<string>>(new Set());

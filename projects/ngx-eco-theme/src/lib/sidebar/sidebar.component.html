@@ -6,6 +6,6 @@
     </p>
   </div>
   @for (item of navItems; track item) {
-    <eco-nav-item [item]="item"> </eco-nav-item>
+    <eco-nav-item [item]="item" (notify)="itemSelected.emit()"> </eco-nav-item>
   }
 </div>

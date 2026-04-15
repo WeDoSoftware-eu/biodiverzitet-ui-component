@@ -9,9 +9,11 @@
   display: contents;
 }
 
-// The eco-button sits inline with search — flex-shrink: 0 so it never wraps
+// The eco-button sits inline with search — fixed size, never grows or shrinks
 eco-button {
   flex-shrink: 0;
+  flex-grow: 0;
+  align-self: flex-start;
 }
 
 // The form panel
@@ -97,6 +99,16 @@ eco-button {
       order: -1;
       flex-shrink: 0;
     }
+  }
+}
+
+/* ----------------------------------
+ * SMALL MOBILE (≤ 425px)
+ * 1-column grid, one item per row
+ * ---------------------------------- */
+@media (max-width: 425px) {
+  .compact-fields {
+    grid-template-columns: 1fr;
   }
 }
 

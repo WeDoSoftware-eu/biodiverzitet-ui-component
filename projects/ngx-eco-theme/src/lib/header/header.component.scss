@@ -210,8 +210,13 @@ mat-toolbar.topbar {
 /* Tablet + mobile (≤ 991px): hide toggle & profile, show person icon */
 @media (max-width: 991px) {
   mat-toolbar.topbar {
+    .page-title {
+      font-size: 18px;
+    }
+
     .page-subtitle {
-      font-size: var(--sys-subtitle-size);
+      font-size: 14px;
+      font-weight: 300;
     }
 
     .desktop-only {
