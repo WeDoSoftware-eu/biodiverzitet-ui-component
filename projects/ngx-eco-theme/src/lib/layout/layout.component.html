@@ -8,13 +8,15 @@
     [disableClose]="!isMobile()"
     class="side-container rounded-0"
   >
-    <eco-sidebar [brandingTitle]="brandingTitle()" (itemSelected)="isMobile() && sideDrawer.close()"></eco-sidebar>
-    @if (showAdminPortal()) {
-      <button class="admin-panel-button p-8 rounded-4" routerLink="/admin">
-        <eco-icon icon="person" class="m-r-8"></eco-icon>
-        <a>{{ i18n.sideBar.adminPanel | async }}</a>
-      </button>
-    }
+    <div class="side-inner">
+      <eco-sidebar [brandingTitle]="brandingTitle()" (itemSelected)="isMobile() && sideDrawer.close()"></eco-sidebar>
+      @if (showAdminPortal()) {
+        <button class="admin-panel-button p-8 rounded-4" routerLink="/admin">
+          <eco-icon icon="person" class="m-r-8"></eco-icon>
+          <a>{{ i18n.sideBar.adminPanel | async }}</a>
+        </button>
+      }
+    </div>
   </mat-drawer>
 
   <!-- RIGHT: profile panel (tablet + mobile) -->
