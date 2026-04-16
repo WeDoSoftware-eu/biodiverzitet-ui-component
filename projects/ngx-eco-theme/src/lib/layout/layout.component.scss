@@ -12,13 +12,18 @@
     .admin-panel-button {
       position: absolute;
       bottom: 20px;
-      place-self: center;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
       background-color: $white;
       width: 90%;
       border: none;
       cursor: pointer;
       text-align: start;
+      display: -webkit-inline-flex;
       display: inline-flex;
+      -webkit-align-items: center;
+      align-items: center;
       eco-icon {
         font-size: 18px;
       }
