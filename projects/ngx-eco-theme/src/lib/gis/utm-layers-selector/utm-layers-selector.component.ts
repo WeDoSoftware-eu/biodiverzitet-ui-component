@@ -58,12 +58,15 @@ export class UtmLayersSelectorComponent {
     this.closeSelector.emit();
   }
 
+  setGroupSearch(groupId: string, value: string): void {
+    this.groupSearchTexts.update(current => ({ ...current, [groupId]: value }));
+    if (value && !this.isGroupExpanded(groupId)) {
+      this.expandedGroups.update(current => new Set([...current, groupId]));
+    }
+  }
+
   onGroupSearchInput(groupId: string, event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.groupSearchTexts.update(current => ({
-      ...current,
-      [groupId]: input.value,
-    }));
+    this.setGroupSearch(groupId, (event.target as HTMLInputElement).value);
   }
 
   clearGroupSearch(groupId: string): void {

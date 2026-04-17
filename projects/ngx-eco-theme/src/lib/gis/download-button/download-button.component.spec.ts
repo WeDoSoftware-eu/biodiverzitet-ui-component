@@ -48,7 +48,7 @@ describe('DownloadButtonComponent', () => {
 
   it('should render the button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('button');
-    expect(button.getAttribute('aria-label')).toBe('Stampa');
+    expect(button.getAttribute('aria-label')).toBe('Штампа');
   });
 
   it('should render the eco-icon inside the button', () => {

@@ -279,7 +279,7 @@ describe('UtmLayersSelectorComponent', () => {
 
     component.groupSearchTexts.update(current => ({
       ...current,
-      'group-1': 'национални',
+      'group-1': 'Национални паркови',
     }));
     fixture.detectChanges();
 
@@ -306,10 +306,7 @@ describe('UtmLayersSelectorComponent', () => {
 
     expect(component.isGroupExpanded('group-1')).toBeFalse();
 
-    component.groupSearchTexts.update(current => ({
-      ...current,
-      'group-1': 'национални',
-    }));
+    component.setGroupSearch('group-1', 'Национални паркови');
     fixture.detectChanges();
 
     expect(component.isGroupExpanded('group-1')).toBeTrue();
