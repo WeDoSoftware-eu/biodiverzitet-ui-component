@@ -1,6 +1,5 @@
 @if (formReady()) {
   <div class="filter-container">
-
     <!-- Compact mode: "Filtriraj" button — stays in the same row as search, never wraps -->
     @if (isCompact()) {
       <eco-button icon="tune" buttonClass="tertiary" (click)="toggleFilters()">{{
@@ -11,7 +10,6 @@
     <!-- Fields: always visible on > 1200px, toggled on ≤ 1200px -->
     @if (!isCompact() || filtersVisible()) {
       <form [formGroup]="form()" class="table-filter-form" [class.expanded-panel]="isCompact()">
-
         @if (isCompact()) {
           <!-- Compact layout: all fields (tristate + others) in a 2-column grid -->
           <div class="compact-fields">
@@ -42,12 +40,18 @@
                           >
                             <div class="checkbox-group">
                               <mat-checkbox
-                                [checked]="triStateCheckedStates()[f.key + ':' + option.value + ':yes'] || false"
+                                [checked]="
+                                  triStateCheckedStates()[f.key + ':' + option.value + ':yes'] ||
+                                  false
+                                "
                                 (change)="onTriStateChange(f.key, option.value, true)"
                                 (click)="$event.stopPropagation()"
                               ></mat-checkbox>
                               <mat-checkbox
-                                [checked]="triStateCheckedStates()[f.key + ':' + option.value + ':no'] || false"
+                                [checked]="
+                                  triStateCheckedStates()[f.key + ':' + option.value + ':no'] ||
+                                  false
+                                "
                                 (change)="onTriStateChange(f.key, option.value, false)"
                                 (click)="$event.stopPropagation()"
                               ></mat-checkbox>
@@ -65,12 +69,23 @@
                   }
                   @case ('select') {
                     <mat-form-field subscriptSizing="dynamic" appearance="outline" class="w-100">
-                      <mat-select [placeholder]="f.label" [formControlName]="f.key" panelClass="filter-select">
+                      <mat-select
+                        [placeholder]="f.label"
+                        [formControlName]="f.key"
+                        panelClass="filter-select"
+                      >
                         @if ((f.options?.length ?? 0) > 0) {
-                          <mat-option [value]="null">-- {{ i18n.tableFilter.clear | async }} --</mat-option>
+                          <mat-option [value]="null"
+                            >-- {{ i18n.tableFilter.clear | async }} --</mat-option
+                          >
                         }
                         @for (o of f.options ?? []; track o.value) {
-                          <mat-option [matTooltip]="o.description" matTooltipPosition="left" [value]="o.value">{{ o.label }}</mat-option>
+                          <mat-option
+                            [matTooltip]="o.description"
+                            matTooltipPosition="left"
+                            [value]="o.value"
+                            >{{ o.label }}</mat-option
+                          >
                         }
                       </mat-select>
                     </mat-form-field>
@@ -86,7 +101,12 @@
                   }
                   @case ('date') {
                     <mat-form-field subscriptSizing="dynamic" appearance="outline" class="w-100">
-                      <input matInput [placeholder]="f.label" [matDatepicker]="picker" [formControlName]="f.key" />
+                      <input
+                        matInput
+                        [placeholder]="f.label"
+                        [matDatepicker]="picker"
+                        [formControlName]="f.key"
+                      />
                       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -138,12 +158,18 @@
                           >
                             <div class="checkbox-group">
                               <mat-checkbox
-                                [checked]="triStateCheckedStates()[f.key + ':' + option.value + ':yes'] || false"
+                                [checked]="
+                                  triStateCheckedStates()[f.key + ':' + option.value + ':yes'] ||
+                                  false
+                                "
                                 (change)="onTriStateChange(f.key, option.value, true)"
                                 (click)="$event.stopPropagation()"
                               ></mat-checkbox>
                               <mat-checkbox
-                                [checked]="triStateCheckedStates()[f.key + ':' + option.value + ':no'] || false"
+                                [checked]="
+                                  triStateCheckedStates()[f.key + ':' + option.value + ':no'] ||
+                                  false
+                                "
                                 (change)="onTriStateChange(f.key, option.value, false)"
                                 (click)="$event.stopPropagation()"
                               ></mat-checkbox>
@@ -164,18 +190,38 @@
                   <div class="form-field-group p-0">
                     @switch (f.type) {
                       @case ('text') {
-                        <mat-form-field [matTooltip]="f.label" subscriptSizing="dynamic" appearance="outline">
+                        <mat-form-field
+                          [matTooltip]="f.label"
+                          subscriptSizing="dynamic"
+                          appearance="outline"
+                        >
                           <input matInput [placeholder]="f.label" [formControlName]="f.key" />
                         </mat-form-field>
                       }
                       @case ('select') {
-                        <mat-form-field [matTooltip]="f.label" subscriptSizing="dynamic" appearance="outline">
-                          <mat-select [placeholder]="f.label" [multiple]="false" [formControlName]="f.key" panelClass="filter-select">
+                        <mat-form-field
+                          [matTooltip]="f.label"
+                          subscriptSizing="dynamic"
+                          appearance="outline"
+                        >
+                          <mat-select
+                            [placeholder]="f.label"
+                            [multiple]="false"
+                            [formControlName]="f.key"
+                            panelClass="filter-select"
+                          >
                             @if ((f.options?.length ?? 0) > 0) {
-                              <mat-option [value]="null">-- {{ i18n.tableFilter.clear | async }} --</mat-option>
+                              <mat-option [value]="null"
+                                >-- {{ i18n.tableFilter.clear | async }} --</mat-option
+                              >
                             }
                             @for (o of f.options ?? []; track o.value) {
-                              <mat-option matTooltipPosition="left" [matTooltip]="o.description" [value]="o.value">{{ o.label }}</mat-option>
+                              <mat-option
+                                matTooltipPosition="left"
+                                [matTooltip]="o.description"
+                                [value]="o.value"
+                                >{{ o.label }}</mat-option
+                              >
                             }
                           </mat-select>
                         </mat-form-field>
@@ -190,9 +236,21 @@
                         />
                       }
                       @case ('date') {
-                        <mat-form-field [matTooltip]="f.label" subscriptSizing="dynamic" appearance="outline">
-                          <input matInput [placeholder]="f.label" [matDatepicker]="picker" [formControlName]="f.key" />
-                          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-form-field
+                          [matTooltip]="f.label"
+                          subscriptSizing="dynamic"
+                          appearance="outline"
+                        >
+                          <input
+                            matInput
+                            [placeholder]="f.label"
+                            [matDatepicker]="picker"
+                            [formControlName]="f.key"
+                          />
+                          <mat-datepicker-toggle
+                            matIconSuffix
+                            [for]="picker"
+                          ></mat-datepicker-toggle>
                           <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                       }
@@ -201,6 +259,7 @@
                           [matTooltip]="f.label"
                           [placeholder]="f.label"
                           [control]="getControl(f.key)"
+                          [showClearButton]="true"
                         />
                       }
                       @case ('checkbox') {
@@ -216,9 +275,7 @@
             </div>
           </div>
         }
-
       </form>
     }
-
   </div>
 }
