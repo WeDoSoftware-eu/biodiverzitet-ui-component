@@ -1,4 +1,10 @@
-<div class="lightbox">
-  <button class="lightbox-backdrop" (click)="dialogRef.close()" aria-label="Затвори приказ"></button>
-  <img [src]="data.url" [alt]="data.name" />
+<div class="modal-header">
+  <h2 class="mat-headline-medium">{{ data.name }}</h2>
+  <button mat-icon-button (click)="dialogRef.close()" class="close-button" aria-label="Затвори приказ">
+    <eco-icon icon="cancel"></eco-icon>
+  </button>
 </div>
+
+<mat-dialog-content>
+  <img [src]="data.url" [alt]="data.name" />
+</mat-dialog-content>
