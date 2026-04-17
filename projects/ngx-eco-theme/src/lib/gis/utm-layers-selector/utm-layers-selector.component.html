@@ -1,7 +1,7 @@
 <div class="layers-selector">
   <div class="header">
-    <span class="title">{{ title() }}</span>
-    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+    <span class="title">{{ title() || (i18n.map.filters.title | async) }}</span>
+    <button class="close-button" (click)="onClose()" [attr.aria-label]="i18n.map.buttons.close | async">
       <eco-icon [icon]="'cancel'" />
     </button>
   </div>
@@ -36,11 +36,13 @@
             (keydown.enter)="onToggleAll(group)"
             (keydown.space)="onToggleAll(group)"
           >
-            <span class="layer-name show-all-label">{{ showAllLabel() }}</span>
+            <span class="layer-name show-all-label">{{ showAllLabel() || (i18n.map.filters.showAll | async) }}</span>
             <span
               class="visibility-toggle"
               [attr.aria-label]="
-                isAllSelected(group) ? 'Сакриј све слојеве' : 'Прикажи све слојеве'
+                isAllSelected(group)
+                  ? (i18n.map.filters.hideAllLayers | async)
+                  : (i18n.map.filters.showAllLayers | async)
               "
             >
               @if (isAllSelected(group)) {
@@ -55,16 +57,16 @@
             <input
               type="text"
               class="search-input"
-              placeholder="Претрага..."
+              [placeholder]="(i18n.map.filters.search | async) ?? ''"
               [value]="getGroupSearchText(group.id)"
               (input)="onGroupSearchInput(group.id, $event)"
-              [attr.aria-label]="'Претрага у ' + group.name"
+              [attr.aria-label]="(i18n.map.filters.search | async) + ' ' + group.name"
             />
             @if (getGroupSearchText(group.id)) {
               <button
                 class="clear-search"
                 (click)="clearGroupSearch(group.id)"
-                aria-label="Обриши претрагу"
+                [attr.aria-label]="i18n.map.filters.clearSearch | async"
               >
                 <eco-icon [icon]="'cancel'" />
               </button>
@@ -86,7 +88,9 @@
                 <span
                   class="visibility-toggle"
                   [attr.aria-label]="
-                    layer.visible ? 'Сакриј слој ' + layer.name : 'Прикажи слој ' + layer.name
+                    layer.visible
+                      ? (i18n.map.layersSelector.hideLayer | async) + ' ' + layer.name
+                      : (i18n.map.layersSelector.showLayer | async) + ' ' + layer.name
                   "
                 >
                   @if (layer.visible) {
@@ -103,7 +107,7 @@
     }
 
     @if (filteredGroups().length === 0) {
-      <div class="no-layers">Нема доступних филтера</div>
+      <div class="no-layers">{{ i18n.map.filters.noFilters | async }}</div>
     }
   </div>
 </div>

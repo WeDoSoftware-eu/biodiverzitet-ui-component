@@ -6,9 +6,9 @@
     [value]="searchValue()"
     (input)="onInput($event)"
     (keydown)="onKeydown($event)"
-    aria-label="Pretraga"
+    [attr.aria-label]="i18n.map.search | async"
   />
-  <button class="search-button" (click)="onSearch()" aria-label="Pretrazi" type="button">
+  <button class="search-button" (click)="onSearch()" [attr.aria-label]="i18n.map.search | async" type="button">
     <eco-icon [icon]="'search'" />
   </button>
 </div>

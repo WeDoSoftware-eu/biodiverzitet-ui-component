@@ -54,7 +54,7 @@ describe('MapControlsComponent', () => {
   });
 
   it('should have correct aria-label on home view button', () => {
-    const button = fixture.nativeElement.querySelector('[aria-label="Početni pogled"]');
+    const button = fixture.nativeElement.querySelector('[aria-label="Почетни приказ"]');
     expect(button).toBeTruthy();
   });
 
@@ -149,7 +149,7 @@ describe('MapControlsComponent', () => {
       emitted = true;
     });
 
-    const button = fixture.nativeElement.querySelector('[aria-label="Početni pogled"]');
+    const button = fixture.nativeElement.querySelector('[aria-label="Почетни приказ"]');
     button.click();
 
     expect(emitted).toBeTrue();

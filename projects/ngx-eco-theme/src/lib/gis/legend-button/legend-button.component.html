@@ -2,8 +2,8 @@
   class="legend-button"
   [class.active]="isActive()"
   (click)="onClick()"
-  aria-label="Legenda"
-  title="Legenda"
+  [attr.aria-label]="i18n.map.buttons.legend | async"
+  [title]="(i18n.map.buttons.legend | async) ?? ''"
 >
   <span class="icon">
     <eco-icon [icon]="'legend'" />

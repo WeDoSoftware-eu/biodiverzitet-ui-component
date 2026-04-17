@@ -70,6 +70,65 @@ export interface EcoThemeI18n {
       satellite: Observable<string>;
       terrain: Observable<string>;
     };
+    buttons: {
+      layers: Observable<string>;
+      legend: Observable<string>;
+      measure: Observable<string>;
+      print: Observable<string>;
+      location: Observable<string>;
+      zoomIn: Observable<string>;
+      zoomOut: Observable<string>;
+      homeView: Observable<string>;
+      fullscreen: Observable<string>;
+      close: Observable<string>;
+    };
+    baseLayers: {
+      title: Observable<string>;
+      map: Observable<string>;
+      satellite: Observable<string>;
+    };
+    layersSelector: {
+      hideLayer: Observable<string>;
+      showLayer: Observable<string>;
+      noLayersAvailable: Observable<string>;
+    };
+    legend: {
+      title: Observable<string>;
+      basicMode: Observable<string>;
+      advancedMode: Observable<string>;
+      displayMode: Observable<string>;
+      changeColorFor: Observable<string>;
+      noItems: Observable<string>;
+    };
+    measurement: {
+      title: Observable<string>;
+      point: Observable<string>;
+      line: Observable<string>;
+      polygon: Observable<string>;
+      noMeasurements: Observable<string>;
+      drawing: Observable<string>;
+      stop: Observable<string>;
+      addNew: Observable<string>;
+      delete: Observable<string>;
+    };
+    tooltip: {
+      name: Observable<string>;
+      type: Observable<string>;
+      regNumber: Observable<string>;
+    };
+    filters: {
+      title: Observable<string>;
+      showAll: Observable<string>;
+      search: Observable<string>;
+      clearSearch: Observable<string>;
+      noFilters: Observable<string>;
+      hideAllLayers: Observable<string>;
+      showAllLayers: Observable<string>;
+    };
+    utmLegend: {
+      title: Observable<string>;
+      noActiveFilters: Observable<string>;
+    };
   };
   fileUpload: {
     maxFileSize: Observable<string>;
@@ -165,6 +224,65 @@ export const DEFAULT_ECO_THEME_I18N: EcoThemeI18n = {
       street: of('Карта'),
       satellite: of('Сателит'),
       terrain: of('Терен'),
+    },
+    buttons: {
+      layers: of('Слојеви'),
+      legend: of('Легенда'),
+      measure: of('Мерење'),
+      print: of('Штампа'),
+      location: of('Моја локација'),
+      zoomIn: of('Увећај'),
+      zoomOut: of('Умањи'),
+      homeView: of('Почетни приказ'),
+      fullscreen: of('Цео екран'),
+      close: of('Затвори'),
+    },
+    baseLayers: {
+      title: of('Подлоге'),
+      map: of('Карта'),
+      satellite: of('Сателит'),
+    },
+    layersSelector: {
+      hideLayer: of('Сакриј слој'),
+      showLayer: of('Прикажи слој'),
+      noLayersAvailable: of('Нема доступних слојева'),
+    },
+    legend: {
+      title: of('Легенда'),
+      basicMode: of('Основни'),
+      advancedMode: of('Напредни'),
+      displayMode: of('Режим приказа легенде'),
+      changeColorFor: of('Промени боју за'),
+      noItems: of('Нема ставки у легенди'),
+    },
+    measurement: {
+      title: of('Мерење'),
+      point: of('Тачка'),
+      line: of('Линија'),
+      polygon: of('Полигон'),
+      noMeasurements: of('Нема мерења'),
+      drawing: of('Цртање у току...'),
+      stop: of('Заустави'),
+      addNew: of('Додај ново'),
+      delete: of('Обриши'),
+    },
+    tooltip: {
+      name: of('Назив:'),
+      type: of('Тип:'),
+      regNumber: of('Рег. бр:'),
+    },
+    filters: {
+      title: of('Филтери'),
+      showAll: of('Прикажи све'),
+      search: of('Претрага...'),
+      clearSearch: of('Обриши претрагу'),
+      noFilters: of('Нема доступних филтера'),
+      hideAllLayers: of('Сакриј све слојеве'),
+      showAllLayers: of('Прикажи све слојеве'),
+    },
+    utmLegend: {
+      title: of('Легенда'),
+      noActiveFilters: of('Нема активних филтера'),
     },
   },
   fileUpload: {

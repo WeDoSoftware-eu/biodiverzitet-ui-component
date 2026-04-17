@@ -48,7 +48,7 @@ describe('LocationButtonComponent', () => {
 
   it('should render the button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('button');
-    expect(button.getAttribute('aria-label')).toBe('Pronadi moju lokaciju');
+    expect(button.getAttribute('aria-label')).toBe('Моја локација');
   });
 
   it('should render the eco-icon inside the button', () => {

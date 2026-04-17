@@ -3,8 +3,8 @@
     class="location-button"
     [class.active]="isActive()"
     (click)="onClick()"
-    aria-label="Pronadi moju lokaciju"
-    title="Moja lokacija"
+    [attr.aria-label]="i18n.map.buttons.location | async"
+    [title]="(i18n.map.buttons.location | async) ?? ''"
     type="button"
   >
     <span class="icon">

@@ -1,7 +1,7 @@
 <div class="utm-legend">
   <div class="header">
-    <span class="title">{{ title() }}</span>
-    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+    <span class="title">{{ title() || (i18n.map.utmLegend.title | async) }}</span>
+    <button class="close-button" (click)="onClose()" [attr.aria-label]="i18n.map.buttons.close | async">
       <eco-icon [icon]="'cancel'" />
     </button>
   </div>
@@ -25,7 +25,7 @@
     }
 
     @if (items().length === 0) {
-      <div class="no-items">Нема активних филтера</div>
+      <div class="no-items">{{ i18n.map.utmLegend.noActiveFilters | async }}</div>
     }
   </div>
 </div>

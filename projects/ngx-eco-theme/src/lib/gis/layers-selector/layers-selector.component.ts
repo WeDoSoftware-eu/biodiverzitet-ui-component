@@ -1,21 +1,24 @@
-import { Component, input, output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, input, output, signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '../../icon/icon.component';
+import { ECO_THEME_I18N, DEFAULT_ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MapLayer, MapLayerGroup } from './layer.model';
 
 @Component({
   selector: 'eco-layers-selector',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule, IconComponent],
+  imports: [AsyncPipe, MatTooltipModule, IconComponent],
   templateUrl: './layers-selector.component.html',
   styleUrls: ['./layers-selector.component.scss'],
 })
 export class LayersSelectorComponent {
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   // Inputs
   layers = input<MapLayer[]>([]);
   groups = input<MapLayerGroup[]>([]);
-  title = input<string>('Слојеви');
+  title = input<string>('');
 
   // State
   expandedGroups = signal<Set<string>>(new Set());

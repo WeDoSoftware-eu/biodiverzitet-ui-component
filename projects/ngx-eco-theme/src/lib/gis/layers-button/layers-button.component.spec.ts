@@ -48,7 +48,7 @@ describe('LayersButtonComponent', () => {
 
   it('should render the button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('button');
-    expect(button.getAttribute('aria-label')).toBe('Slojevi mape');
+    expect(button.getAttribute('aria-label')).toBe('Слојеви');
   });
 
   it('should render the eco-icon inside the button', () => {

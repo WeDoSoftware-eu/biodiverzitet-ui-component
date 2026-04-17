@@ -1,10 +1,10 @@
 <div class="legend-selector">
   <div class="header">
     <div class="title-row">
-      <span class="title">{{ title() }}</span>
+      <span class="title">{{ title() || (i18n.map.legend.title | async) }}</span>
 
       @if (showModeToggle()) {
-        <div class="mode-toggle" role="group" aria-label="Режим приказа легенде">
+        <div class="mode-toggle" role="group" [attr.aria-label]="i18n.map.legend.displayMode | async">
           <button
             type="button"
             class="mode-button"
@@ -12,7 +12,7 @@
             [attr.aria-pressed]="mode() === 'basic'"
             (click)="onModeSelect('basic')"
           >
-            {{ modeBasicLabel() }}
+            {{ modeBasicLabel() || (i18n.map.legend.basicMode | async) }}
           </button>
           <button
             type="button"
@@ -21,13 +21,13 @@
             [attr.aria-pressed]="mode() === 'advanced'"
             (click)="onModeSelect('advanced')"
           >
-            {{ modeAdvancedLabel() }}
+            {{ modeAdvancedLabel() || (i18n.map.legend.advancedMode | async) }}
           </button>
         </div>
       }
     </div>
 
-    <button class="close-button" (click)="onClose()" aria-label="Затвори">
+    <button class="close-button" (click)="onClose()" [attr.aria-label]="i18n.map.buttons.close | async">
       <eco-icon [icon]="'cancel'" />
     </button>
   </div>
@@ -160,7 +160,7 @@
             class="color-input"
             type="color"
             [value]="getColorValue(item)"
-            [attr.aria-label]="'Промени боју за ' + item.name"
+            [attr.aria-label]="(i18n.map.legend.changeColorFor | async) + ' ' + item.name"
             (input)="onColorChange(item, $event)"
           />
         }
@@ -168,7 +168,7 @@
     }
 
     @if (items().length === 0) {
-      <div class="no-items">Нема ставки у легенди</div>
+      <div class="no-items">{{ i18n.map.legend.noItems | async }}</div>
     }
   </div>
 </div>

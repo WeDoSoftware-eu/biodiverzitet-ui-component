@@ -48,7 +48,7 @@ describe('MeasureButtonComponent', () => {
 
   it('should render the button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('button');
-    expect(button.getAttribute('aria-label')).toBe('Merenje distance');
+    expect(button.getAttribute('aria-label')).toBe('Мерење');
   });
 
   it('should render the eco-icon inside the button', () => {

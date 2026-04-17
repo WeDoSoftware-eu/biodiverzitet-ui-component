@@ -1,21 +1,25 @@
-import { Component, computed, input, output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '../../icon/icon.component';
+import { ECO_THEME_I18N, DEFAULT_ECO_THEME_I18N } from '../../eco-theme-I18n';
 import { MapLayer, MapLayerGroup } from '../layers-selector/layer.model';
+import { normalizeForSearch } from '../../searchable-select/sr-transliterate';
 
 @Component({
   selector: 'eco-utm-layers-selector',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule, IconComponent],
+  imports: [AsyncPipe, MatTooltipModule, IconComponent],
   templateUrl: './utm-layers-selector.component.html',
   styleUrls: ['./utm-layers-selector.component.scss'],
 })
 export class UtmLayersSelectorComponent {
+  i18n = inject(ECO_THEME_I18N, { optional: true }) ?? DEFAULT_ECO_THEME_I18N;
+
   // Inputs
   groups = input<MapLayerGroup[]>([]);
-  title = input<string>('Филтери');
-  showAllLabel = input<string>('Прикажи све');
+  title = input<string>('');
+  showAllLabel = input<string>('');
 
   // State
   groupSearchTexts = signal<Record<string, string>>({});
@@ -32,13 +36,13 @@ export class UtmLayersSelectorComponent {
     const allGroups = this.groups();
 
     return allGroups.map(group => {
-      const search = (searchTexts[group.id] || '').toLowerCase().trim();
+      const search = normalizeForSearch((searchTexts[group.id] || '').trim());
       if (!search) {
         return group;
       }
       return {
         ...group,
-        layers: group.layers.filter(layer => layer.name.toLowerCase().includes(search)),
+        layers: group.layers.filter(layer => normalizeForSearch(layer.name).includes(search)),
       };
     });
   });
@@ -54,12 +58,15 @@ export class UtmLayersSelectorComponent {
     this.closeSelector.emit();
   }
 
+  setGroupSearch(groupId: string, value: string): void {
+    this.groupSearchTexts.update(current => ({ ...current, [groupId]: value }));
+    if (value && !this.isGroupExpanded(groupId)) {
+      this.expandedGroups.update(current => new Set([...current, groupId]));
+    }
+  }
+
   onGroupSearchInput(groupId: string, event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.groupSearchTexts.update(current => ({
-      ...current,
-      [groupId]: input.value,
-    }));
+    this.setGroupSearch(groupId, (event.target as HTMLInputElement).value);
   }
 
   clearGroupSearch(groupId: string): void {
@@ -85,10 +92,6 @@ export class UtmLayersSelectorComponent {
   }
 
   isGroupExpanded(groupId: string): boolean {
-    const searchText = (this.groupSearchTexts()[groupId] || '').trim();
-    if (searchText) {
-      return true;
-    }
     return this.expandedGroups().has(groupId);
   }
 

@@ -48,7 +48,7 @@ describe('LegendButtonComponent', () => {
 
   it('should render the button with correct aria-label', () => {
     const button = fixture.nativeElement.querySelector('button');
-    expect(button.getAttribute('aria-label')).toBe('Legenda');
+    expect(button.getAttribute('aria-label')).toBe('Легенда');
   });
 
   it('should render the eco-icon inside the button', () => {
