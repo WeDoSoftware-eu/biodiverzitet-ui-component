@@ -2,31 +2,43 @@
 
 .layout-container {
   min-height: 100vh;
+  touch-action: pan-y;
 
   .side-container {
     background-color: $side-nav-bg;
     width: 260px;
     text-align: center;
 
-    .admin-panel-button {
-      position: absolute;
-      bottom: 20px;
-      place-self: center;
-      background-color: $white;
-      width: 90%;
-      border: none;
-      cursor: pointer;
-      text-align: start;
-      display: inline-flex;
-      eco-icon {
-        font-size: 18px;
-      }
-      a {
-        color: $text-color;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 14px;
-        margin-top: 2px;
+    .side-inner {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      height: 100%;
+
+      .admin-panel-button {
+        margin-top: auto;
+        margin-bottom: 20px;
+        -webkit-align-self: center;
+        align-self: center;
+        background-color: $white;
+        width: calc(100% - 40px);
+        border: none;
+        cursor: pointer;
+        text-align: start;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        -webkit-align-items: center;
+        align-items: center;
+        eco-icon {
+          font-size: 18px;
+        }
+        a {
+          color: $text-color;
+          text-decoration: none;
+          font-weight: 400;
+          font-size: 14px;
+        }
       }
     }
   }
@@ -35,8 +47,10 @@
     height: 100vh !important;
     display: flex;
     flex-direction: column;
+    touch-action: auto;
 
     eco-header {
+      position: -webkit-sticky;
       position: sticky;
       top: 0;
       z-index: $header-z-index;
@@ -97,8 +111,13 @@
   background-color: $sidebar-bg-color;
 }
 
+//Mat drawer expandend background shadow
 ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
   background-color: transparent !important;
+  opacity: 0 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 ::ng-deep .profile-drawer .mat-drawer-inner-container {
@@ -173,6 +192,11 @@
             color: $text-color;
             font-weight: 300;
           }
+        }
+
+        .user-email {
+          display: block;
+          text-align: start;
         }
       }
     }

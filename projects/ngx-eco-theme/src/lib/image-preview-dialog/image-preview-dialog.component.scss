@@ -1,23 +1,44 @@
-.lightbox {
-  position: relative;
+:host {
+  display: block;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #acafb740;
+
+  h2 {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  button eco-icon {
+    font-size: 16px;
+  }
+}
+
+.close-button {
+  color: #5d5f5f;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .lightbox-backdrop {
-    position: fixed;
-    inset: 0;
-    background: transparent;
-    cursor: pointer;
-    border: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
   }
+}
+
+mat-dialog-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-height: unset !important;
 
   img {
-    position: relative;
-    z-index: 1;
-    max-width: 90vw;
-    max-height: 90vh;
+    display: block;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    border-radius: 8px;
   }
 }

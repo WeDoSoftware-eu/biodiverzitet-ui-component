@@ -1,3 +1,23 @@
 .datepicker-month-year {
   max-width: 205px;
+
+  .suffix-icons {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .clear-button {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    eco-icon {
+      font-size: 16px;
+      padding-top: 2px;
+    }
+  }
 }

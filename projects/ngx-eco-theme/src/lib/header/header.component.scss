@@ -6,6 +6,7 @@ mat-toolbar.topbar {
   min-height: $header-height !important;
   height: auto !important;
 
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: $header-z-index;
@@ -152,6 +153,10 @@ mat-toolbar.topbar {
     }
   }
 }
+
+.email-mobile {
+  flex: inline-start;
+}
 /* ----------------------------------
  * SHARED MENU STYLES
  * ---------------------------------- */
@@ -210,8 +215,13 @@ mat-toolbar.topbar {
 /* Tablet + mobile (≤ 991px): hide toggle & profile, show person icon */
 @media (max-width: 991px) {
   mat-toolbar.topbar {
+    .page-title {
+      font-size: 18px;
+    }
+
     .page-subtitle {
-      font-size: var(--sys-subtitle-size);
+      font-size: 14px;
+      font-weight: 300;
     }
 
     .desktop-only {

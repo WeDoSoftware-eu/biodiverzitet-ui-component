@@ -5,7 +5,19 @@
     [matDatepicker]="pickerMonthYear"
     [formControl]="control()"
   />
-  <mat-datepicker-toggle matIconSuffix [for]="pickerMonthYear"></mat-datepicker-toggle>
+  <span matIconSuffix class="suffix-icons">
+    <button
+      mat-icon-button
+      type="button"
+      class="clear-button"
+      [style.visibility]="hasValue() ? 'visible' : 'hidden'"
+      [attr.aria-label]="i18n.datePicker.clearDateLabel | async"
+      (click)="clearDate(); $event.stopPropagation()"
+    >
+      <eco-icon icon="cancel"></eco-icon>
+    </button>
+    <mat-datepicker-toggle [for]="pickerMonthYear" class="calendar-toggle"></mat-datepicker-toggle>
+  </span>
   <mat-datepicker
     #pickerMonthYear
     startView="multi-year"
