@@ -24,6 +24,16 @@
             *matCellDef="let row"
             [style.text-align]="column.align || 'left'"
             [style.place-items]="column.align || 'left'"
+            [matTooltip]="!column.type || column.type === 'text'
+              ? column.pipe === 'date'
+                ? (row[column.key].raw | date: column.pipeFormat || 'dd-MM-yy HH:mm')
+                : column.pipe === 'number'
+                  ? (row[column.key].raw | number: column.pipeFormat || '1.0-2')
+                  : column.valuePrepareFunction
+                    ? column.valuePrepareFunction(column.key, row._original)
+                    : row[column.key].raw
+              : undefined"
+            [matTooltipDisabled]="!column.showCellTooltip"
           >
             @if (!column.type || column.type === 'text') {
               @if (column.pipe === 'date') {

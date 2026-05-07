@@ -5,6 +5,10 @@ export interface TableColumn<T> {
   key: string;
   label: string;
   tooltip?: Observable<string>;
+  /**
+   * Flag indicating should cell value be displayed in tooltip.
+   */
+  showCellTooltip?: boolean;
   type?: 'text' | 'badge' | 'date' | 'actions' | 'number' | 'enum' | 'icon';
   width?: string;
   align?: 'left' | 'center' | 'right';
