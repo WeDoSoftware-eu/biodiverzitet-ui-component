@@ -51,6 +51,7 @@ export class LayoutComponent {
   title = input<string>('');
   subtitle = input<string>('');
   hideNotifications = input<boolean>(false);
+  notificationCount = input<number>(0);
   showAdminPortal = input<boolean>(true);
 
   logoutClicked = output<void>();
