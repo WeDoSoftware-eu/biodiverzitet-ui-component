@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit {
   title = input<string>('');
   subtitle = input<string>('');
   hideNotifications = input<boolean>(false);
+  notificationCount = input<number>(0);
 
   logoutClicked = output<void>();
   languageChanged = output<EcoLanguage>();

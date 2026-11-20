@@ -40,6 +40,9 @@
       routerLink="/notifications"
     >
       <eco-icon icon="notifications"></eco-icon>
+      @if (notificationCount() > 0) {
+        <span class="notification-badge">{{ notificationCount() > 99 ? '99+' : notificationCount() }}</span>
+      }
     </button>
   }
 
