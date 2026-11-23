@@ -60,11 +60,18 @@
       [subtitle]="subtitle()"
       [hideNotifications]="hideNotifications()"
       [notificationCount]="notificationCount()"
+      [notificationsMenu]="notificationsMenu()"
+      (notificationsOpened)="notificationsOpened.emit()"
+      (notificationsClosed)="notificationsClosed.emit()"
       (logoutClicked)="logoutClicked.emit()"
       (languageChanged)="languageClicked.emit($event)"
       (mobileMenuToggle)="profileDrawer.toggle()"
       (sidebarToggle)="sideDrawer.toggle()"
-    ></eco-header>
+    >
+      <ng-container ngProjectAs="[ecoNotificationsPanel]">
+        <ng-content select="[ecoNotificationsPanel]"></ng-content>
+      </ng-container>
+    </eco-header>
     <main class="components-route">
       <ng-content></ng-content>
     </main>
