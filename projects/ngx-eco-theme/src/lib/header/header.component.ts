@@ -7,7 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EcoIcon, IconComponent } from '../icon/icon.component';
 import { AUTH_USER_TOKEN } from '../user/user.token';
 import { DEFAULT_ECO_THEME_I18N, ECO_THEME_I18N } from '../eco-theme-I18n';
-import { AsyncPipe, Location } from '@angular/common';
+import { AsyncPipe, Location, NgTemplateOutlet } from '@angular/common';
 import { filter, Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BACK_ROUTES } from './back-route.token';
@@ -36,6 +36,7 @@ interface profileItems {
     MatToolbarModule,
     IconComponent,
     AsyncPipe,
+    NgTemplateOutlet,
     ToggleComponent,
     FormsModule,
     MatIconModule,
@@ -55,7 +56,11 @@ export class HeaderComponent implements OnInit {
   title = input<string>('');
   subtitle = input<string>('');
   hideNotifications = input<boolean>(false);
+  notificationCount = input<number>(0);
+  notificationsMenu = input<boolean>(false);
 
+  notificationsOpened = output<void>();
+  notificationsClosed = output<void>();
   logoutClicked = output<void>();
   languageChanged = output<EcoLanguage>();
   mobileMenuToggle = output<void>();

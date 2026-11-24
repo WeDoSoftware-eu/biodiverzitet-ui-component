@@ -34,14 +34,37 @@
   <span class="flex-spacer"></span>
 
   @if (!hideNotifications()) {
-    <button
-      aria-label="Обавештења"
-      class="notification-btn rounded-full m-r-8"
-      routerLink="/notifications"
-    >
-      <eco-icon icon="notifications"></eco-icon>
-    </button>
+    @if (notificationsMenu()) {
+      <button
+        aria-label="Обавештења"
+        class="notification-btn rounded-full m-r-8"
+        [matMenuTriggerFor]="notificationsmenu"
+        (menuOpened)="notificationsOpened.emit()"
+        (menuClosed)="notificationsClosed.emit()"
+      >
+        <ng-container *ngTemplateOutlet="bellContent"></ng-container>
+      </button>
+    } @else {
+      <button
+        aria-label="Обавештења"
+        class="notification-btn rounded-full m-r-8"
+        routerLink="/notifications"
+      >
+        <ng-container *ngTemplateOutlet="bellContent"></ng-container>
+      </button>
+    }
   }
+
+  <ng-template #bellContent>
+    <eco-icon icon="notifications"></eco-icon>
+    @if (notificationCount() > 0) {
+      <span class="notification-badge">{{ notificationCount() > 99 ? '99+' : notificationCount() }}</span>
+    }
+  </ng-template>
+
+  <mat-menu #notificationsmenu="matMenu" xPosition="before" class="notifications-menu-panel rounded-12">
+    <ng-content select="[ecoNotificationsPanel]"></ng-content>
+  </mat-menu>
 
   <button class="mobile-menu-btn rounded-full" aria-label="Мени" (click)="mobileMenuToggle.emit()">
     <eco-icon icon="person"></eco-icon>

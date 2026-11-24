@@ -51,8 +51,12 @@ export class LayoutComponent {
   title = input<string>('');
   subtitle = input<string>('');
   hideNotifications = input<boolean>(false);
+  notificationCount = input<number>(0);
+  notificationsMenu = input<boolean>(false);
   showAdminPortal = input<boolean>(true);
 
+  notificationsOpened = output<void>();
+  notificationsClosed = output<void>();
   logoutClicked = output<void>();
   languageClicked = output<EcoLanguage>();
 

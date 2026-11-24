@@ -300,6 +300,17 @@ html {
   min-width: 300px;
 }
 
+.mat-mdc-menu-panel.notifications-menu-panel {
+  background-color: white;
+  width: 400px;
+  max-width: calc(100vw - 16px);
+  max-height: min(600px, calc(100vh - 96px));
+
+  .mat-mdc-menu-content {
+    padding: 0;
+  }
+}
+
 .mat-mdc-tab-group {
   flex: 1;
   min-height: 0;
